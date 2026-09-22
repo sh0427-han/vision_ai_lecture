@@ -23,6 +23,10 @@
 - `ml_workflow.svg`
 - `human_feature_to_cnn.svg`
 - `cnn_flow.svg`
+- `intro_question_apple.svg`
+- `intro_human_vs_computer.svg`
+- `supervised_unsupervised_industry.svg`
+- `vision_tasks_comparison.svg`
 
 ## AI 기초 참고 자료
 
