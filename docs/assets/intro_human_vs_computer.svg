@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="620" viewBox="0 0 1400 620">
+<rect width="1400" height="620" fill="#fff"/>
+<style>
+.t{font:700 30px Arial,sans-serif;fill:#111827}.h{font:700 22px Arial,sans-serif;fill:#111827}.s{font:400 16px Arial,sans-serif;fill:#64748b}
+.box{fill:#fff;stroke:#dbe2ea;stroke-width:2}.soft{fill:#f8fafc;stroke:#dbe2ea;stroke-width:2}.a{fill:#eff6ff;stroke:#93c5fd;stroke-width:2}
+.num{font:600 14px monospace;fill:#334155}.arrow{stroke:#64748b;stroke-width:3;marker-end:url(#m)}
+</style>
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3z" fill="#64748b"/></marker></defs>
+<text x="700" y="45" text-anchor="middle" class="t">같은 이미지를 사람과 컴퓨터는 처음부터 다르게 본다</text>
+
+<g transform="translate(70 105)">
+<rect width="560" height="420" rx="24" class="box"/>
+<text x="280" y="40" text-anchor="middle" class="h">사람에게는 “사과”</text>
+<circle cx="280" cy="210" r="115" fill="#ef4444"/>
+<ellipse cx="235" cy="175" rx="28" ry="18" fill="#fca5a5" opacity=".55"/>
+<rect x="270" y="70" width="20" height="65" rx="8" fill="#7c2d12" transform="rotate(8 280 102)"/>
+<ellipse cx="326" cy="95" rx="50" ry="22" fill="#65a30d" transform="rotate(-22 326 95)"/>
+<text x="85" y="120" class="s">색</text><line x1="120" y1="115" x2="190" y2="165" class="arrow"/>
+<text x="75" y="285" class="s">둥근 윤곽</text><line x1="155" y1="280" x2="190" y2="245" class="arrow"/>
+<text x="390" y="135" class="s">꼭지 / 잎</text><line x1="390" y1="140" x2="335" y2="112" class="arrow"/>
+<text x="390" y="290" class="s">표면 질감</text><line x1="390" y1="285" x2="345" y2="245" class="arrow"/>
+<text x="280" y="375" text-anchor="middle" class="h">→ 여러 특징을 종합해 의미를 인식</text>
+</g>
+
+<g transform="translate(770 105)">
+<rect width="560" height="420" rx="24" class="box"/>
+<text x="280" y="40" text-anchor="middle" class="h">컴퓨터에게는 “숫자 배열”</text>
+<g transform="translate(55 90)">
+<rect x="0" y="0" width="210" height="210" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
+<circle cx="105" cy="112" r="72" fill="#ef4444"/>
+<rect x="99" y="30" width="12" height="42" rx="5" fill="#7c2d12"/>
+<ellipse cx="135" cy="48" rx="30" ry="14" fill="#65a30d" transform="rotate(-20 135 48)"/>
+<g stroke="#fff" stroke-width="1" opacity=".5">
+<path d="M0 35H210M0 70H210M0 105H210M0 140H210M0 175H210"/>
+<path d="M35 0V210M70 0V210M105 0V210M140 0V210M175 0V210"/>
+</g>
+</g>
+<path d="M285 195 L335 195" class="arrow"/>
+<g transform="translate(345 92)">
+<rect width="165" height="220" rx="12" class="soft"/>
+<text x="82" y="25" text-anchor="middle" class="s">RGB values</text>
+<text x="18" y="55" class="num">[244, 233, 231]</text>
+<text x="18" y="80" class="num">[239,  68,  68]</text>
+<text x="18" y="105" class="num">[227,  56,  56]</text>
+<text x="18" y="130" class="num">[124,  45,  18]</text>
+<text x="18" y="155" class="num">[101, 163,  13]</text>
+<text x="18" y="180" class="num">...</text>
+</g>
+<text x="280" y="350" text-anchor="middle" class="h">→ 의미는 아직 없다</text>
+<text x="280" y="382" text-anchor="middle" class="s">처음 입력은 Pixel과 Channel의 숫자뿐</text>
+</g>
+
+<text x="700" y="575" text-anchor="middle" class="h">Vision AI의 핵심 질문: 이 숫자에서 어떻게 “사과”라는 의미를 찾을까?</text>
+</svg>
