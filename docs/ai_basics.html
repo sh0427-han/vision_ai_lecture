@@ -45,27 +45,7 @@
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">규칙을 사람이 직접 쓰는 것 vs 데이터에서 배우는 것</h2>
-      <div class="slide-columns top">
-        <div>
-          <h3>전통적인 Rule-based 방식</h3>
-          <div class="flow">사람이 규칙 작성
-if 밝기 > 100
-and 면적 > 50
-→ abnormal</div>
-          <p class="slide-subtitle">조건이 명확하면 강력하지만 복잡한 이미지에서는 규칙 수가 빠르게 늘어날 수 있습니다.</p>
-        </div>
-        <div>
-          <h3>Machine Learning</h3>
-          <div class="flow">Data + Label
-      ↓
-Model Training
-      ↓
-Weight 학습
-      ↓
-Prediction</div>
-          <p class="slide-subtitle">모든 규칙을 사람이 직접 쓰기보다 데이터에서 유용한 관계를 찾습니다.</p>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/rule_vs_ml.svg" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
     </div>
   </section>
 
@@ -73,23 +53,7 @@ Prediction</div>
     <div class="slide-inner">
       <span class="slide-number">3</span>
       <h2 class="slide-title">AI는 어떤 방식으로 배울까?</h2>
-      <div class="grid">
-        <div class="card">
-          <span class="number">SUPERVISED</span>
-          <h3>지도학습</h3>
-          <p>입력과 정답 Label을 함께 보며 입력→정답 관계를 학습합니다.</p>
-        </div>
-        <div class="card">
-          <span class="number">UNSUPERVISED</span>
-          <h3>비지도학습</h3>
-          <p>정답 Label 없이 데이터의 구조, 군집, 표현을 찾습니다.</p>
-        </div>
-        <div class="card">
-          <span class="number">REINFORCEMENT</span>
-          <h3>강화학습</h3>
-          <p>행동에 따른 보상을 이용해 더 좋은 행동 전략을 학습합니다.</p>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/learning_types.svg" alt="지도학습 비지도학습 강화학습 비교"></div>
     </div>
   </section>
 
@@ -113,21 +77,8 @@ Prediction</div>
     <div class="slide-inner">
       <span class="slide-number">5</span>
       <h2 class="slide-title">분류와 회귀</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="term"><strong>Classification · 분류</strong>정해진 범주 중 어느 Class인지 예측합니다.</div>
-          <div class="flow">Normal / Abnormal
-Cat / Dog
-Scratch / Particle / Normal</div>
-        </div>
-        <div>
-          <div class="term"><strong>Regression · 회귀</strong>연속적인 숫자 값을 예측합니다.</div>
-          <div class="flow">거리 = 12.4 mm
-온도 = 37.1 °C
-위치 offset = 2.8 px</div>
-        </div>
-      </div>
-      <div class="callout">Vision AI에는 분류뿐 아니라 Detection의 좌표, 거리·각도 예측처럼 회귀 성격의 출력도 함께 등장합니다.</div>
+      <p class="slide-subtitle">Classification은 범주를, Regression은 연속적인 숫자 값을 예측합니다.</p>
+      <div class="figure"><img src="assets/classification_regression.svg" alt="분류와 회귀의 출력 차이"></div>
     </div>
   </section>
 
@@ -285,21 +236,7 @@ ReLU
     <div class="slide-inner">
       <span class="slide-number">14</span>
       <h2 class="slide-title">Feature와 Representation</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="term"><strong>Feature</strong>문제를 푸는 데 유용한 특징입니다.</div>
-          <div class="term"><strong>Representation</strong>입력을 모델 내부에서 유용한 숫자 형태로 다시 표현한 결과입니다.</div>
-        </div>
-        <div>
-          <div class="flow">Raw Input
-   ↓
-Simple Feature
-   ↓
-Combined Feature
-   ↓
-Task에 유용한 Representation</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/feature_representation.svg" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
     </div>
   </section>
 
@@ -315,17 +252,7 @@ Task에 유용한 Representation</div>
     <div class="slide-inner">
       <span class="slide-number">16</span>
       <h2 class="slide-title">Loss, Gradient, Backpropagation, Optimizer</h2>
-      <div class="grid-2">
-        <div>
-          <div class="term"><strong>Loss</strong>Prediction과 정답 사이의 차이를 수치화합니다.</div>
-          <div class="term"><strong>Gradient</strong>Weight를 바꿨을 때 Loss가 어느 방향으로 변하는지 알려줍니다.</div>
-        </div>
-        <div>
-          <div class="term"><strong>Backpropagation</strong>출력의 Loss에서 시작해 각 Weight의 Gradient를 계산합니다.</div>
-          <div class="term"><strong>Optimizer</strong>Gradient를 이용해 Weight를 실제로 수정합니다.</div>
-        </div>
-      </div>
-      <div class="flow">new_weight = old_weight - learning_rate × gradient</div>
+      <div class="figure"><img src="assets/gradient_update.svg" alt="Loss가 줄어드는 방향으로 Weight를 수정하는 과정"></div>
     </div>
   </section>
 
@@ -333,18 +260,7 @@ Task에 유용한 Representation</div>
     <div class="slide-inner">
       <span class="slide-number">17</span>
       <h2 class="slide-title">Batch, Iteration, Epoch</h2>
-      <table>
-        <thead><tr><th>용어</th><th>의미</th><th>예시</th></tr></thead>
-        <tbody>
-          <tr><td>Batch</td><td>한 번의 학습 Step에서 함께 사용하는 샘플 묶음</td><td>32 images</td></tr>
-          <tr><td>Iteration / Step</td><td>한 Batch를 사용해 Weight를 한 번 Update</td><td>1 update</td></tr>
-          <tr><td>Epoch</td><td>Train Dataset 전체를 한 번 사용</td><td>10,000장을 1회</td></tr>
-        </tbody>
-      </table>
-      <div class="flow">10,000 images / batch 32
-≈ 313 iterations
-≈ 1 epoch</div>
-      <p class="slide-subtitle">Mini-batch는 전체 Dataset을 한 번에 계산하지 않고 작은 묶음으로 나누어 학습합니다.</p>
+      <div class="figure"><img src="assets/batch_epoch.svg" alt="Dataset Batch Iteration Epoch 관계"></div>
     </div>
   </section>
 
@@ -373,17 +289,7 @@ Task에 유용한 Representation</div>
     <div class="slide-inner">
       <span class="slide-number">20</span>
       <h2 class="slide-title">좋은 Train 성능 ≠ 좋은 AI</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="term"><strong>Underfitting</strong>Train 데이터조차 충분히 학습하지 못한 상태입니다.</div>
-          <div class="term"><strong>Overfitting</strong>Train 데이터의 일반 패턴뿐 아니라 노이즈와 세부 특징까지 과하게 맞춘 상태입니다.</div>
-          <div class="term"><strong>Generalization</strong>처음 보는 새로운 데이터에서도 잘 동작하는 능력입니다.</div>
-        </div>
-        <div>
-          <div class="callout"><strong>과적합 완화 방법</strong><br>더 다양한 데이터 · 적절한 Data Augmentation · 모델 복잡도 조절 · Regularization · Early Stopping 등</div>
-          <div class="callout"><strong>Data Leakage</strong><br>같은 원본 영상의 거의 동일한 Frame이 Train/Test에 들어가면 성능이 실제보다 좋아 보일 수 있습니다.</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/overfit_leakage.svg" alt="Generalization Overfitting Data Leakage 도식"></div>
     </div>
   </section>
 
@@ -399,27 +305,7 @@ Task에 유용한 Representation</div>
     <div class="slide-inner">
       <span class="slide-number">22</span>
       <h2 class="slide-title">이미지 학습에서 Convolution과 Activation</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="flow">Image Tensor
-    ↓
-Convolution
-    ↓
-Activation
-    ↓
-Feature
-    ↓
-Convolution
-    ↓
-더 복잡한 Feature
-    ↓
-Prediction</div>
-        </div>
-        <div>
-          <p class="big-statement">Vision AI에서 자주 쓰는 CNN의 Kernel도 Dataset을 통해 학습되는 Weight입니다.</p>
-          <div class="callout">Convolution과 Activation을 반복하면서 이미지에서 Task에 유용한 Feature를 학습합니다.</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/cnn_training.svg" alt="CNN 학습 순환 도식"></div>
     </div>
   </section>
 </main>

@@ -36,23 +36,8 @@
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">먼저 Task를 정하고, 그 다음 모델을 고릅니다</h2>
-      <div class="slide-columns">
-        <div>
-          <p class="big-statement">“무슨 모델을 쓸까?”보다 “무엇을 출력해야 할까?”가 먼저입니다.</p>
-        </div>
-        <div>
-          <div class="flow">문제 정의
-   ↓
-원하는 Output
-   ↓
-Vision Task
-   ↓
-Model Architecture
-   ↓
-Dataset / Label 설계</div>
-        </div>
-      </div>
-      <div class="callout">Classification / Detection / Segmentation은 엄밀히는 <strong>Task</strong>이고, 실제 구현에서는 흔히 “분류 모델”, “검출 모델”처럼 부릅니다.</div>
+      <p class="slide-subtitle">“무슨 모델을 쓸까?”보다 “무엇을 출력해야 할까?”가 먼저입니다.</p>
+      <div class="figure"><img src="assets/vision_task_selection.svg" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
     </div>
   </section>
 
@@ -60,27 +45,8 @@ Dataset / Label 설계</div>
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">Classification — 이 이미지가 무엇인가?</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="flow">Image
-  ↓
-Model
-  ↓
-Normal     0.03
-Abnormal   0.97</div>
-          <div class="term"><strong>Output</strong>이미지 전체에 대한 Class 또는 Probability</div>
-        </div>
-        <div>
-          <h3>산업 예시</h3>
-          <ul class="compact-list">
-            <li>제품 정상 / 불량 판정</li>
-            <li>불량 종류 분류</li>
-            <li>부품 종류 식별</li>
-            <li>공정 상태 분류</li>
-          </ul>
-          <div class="callout"><strong>장점:</strong> Label이 비교적 간단합니다.<br><strong>한계:</strong> 불량이 “어디에 있는지”는 직접 알려주지 않습니다.</div>
-        </div>
-      </div>
+      <p class="slide-subtitle">이미지 전체에 하나의 Class 또는 Probability를 출력합니다.</p>
+      <div class="figure"><img src="assets/task_classification.svg" alt="이미지 전체에 대한 Classification 결과"></div>
     </div>
   </section>
 
@@ -88,28 +54,8 @@ Abnormal   0.97</div>
     <div class="slide-inner">
       <span class="slide-number">3</span>
       <h2 class="slide-title">Object Detection — 무엇이 어디에 있는가?</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="flow">Image
-  ↓
-Detection Model
-  ↓
-Class
-+ Bounding Box
-+ Confidence</div>
-          <div class="term"><strong>Bounding Box</strong>물체의 위치를 사각형 영역으로 표현합니다.</div>
-        </div>
-        <div>
-          <h3>산업 예시</h3>
-          <ul class="compact-list">
-            <li>결함 위치 찾기</li>
-            <li>부품 존재 / 누락 검출</li>
-            <li>여러 객체 동시 검출</li>
-            <li>관심 ROI 자동 지정</li>
-          </ul>
-          <div class="callout">위치 정보가 필요하지만 정확한 Pixel 형상까지는 필요하지 않을 때 적합합니다.</div>
-        </div>
-      </div>
+      <p class="slide-subtitle">여러 객체의 Class, 위치, Confidence를 함께 출력합니다.</p>
+      <div class="figure"><img src="assets/task_detection.svg" alt="Bounding Box를 이용한 Object Detection 결과"></div>
     </div>
   </section>
 
@@ -117,26 +63,8 @@ Class
     <div class="slide-inner">
       <span class="slide-number">4</span>
       <h2 class="slide-title">Segmentation — 정확히 어느 Pixel인가?</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="flow">Image
-  ↓
-Segmentation Model
-  ↓
-Pixel Mask</div>
-          <div class="term"><strong>Mask</strong>어떤 Pixel이 관심 물체 또는 영역에 속하는지 표시한 결과입니다.</div>
-        </div>
-        <div>
-          <h3>산업 예시</h3>
-          <ul class="compact-list">
-            <li>결함 면적 측정</li>
-            <li>물체 실제 형상 추출</li>
-            <li>윤곽 기반 치수 계산</li>
-            <li>복잡한 형태의 ROI 생성</li>
-          </ul>
-          <div class="callout"><strong>Detection = Box</strong><br><strong>Segmentation = Pixel-level Shape</strong></div>
-        </div>
-      </div>
+      <p class="slide-subtitle">관심 물체나 결함의 정확한 영역과 형상을 Pixel 단위로 구분합니다.</p>
+      <div class="figure"><img src="assets/task_segmentation.svg" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
     </div>
   </section>
 
@@ -144,15 +72,7 @@ Pixel Mask</div>
     <div class="slide-inner">
       <span class="slide-number">5</span>
       <h2 class="slide-title">산업 문제를 Vision Task로 바꿔보면</h2>
-      <table>
-        <thead><tr><th>현장 질문</th><th>주요 Task</th><th>대표 Output</th></tr></thead>
-        <tbody>
-          <tr><td>제품이 정상인가?</td><td>Classification</td><td>Class / Probability</td></tr>
-          <tr><td>불량이 어디에 있는가?</td><td>Detection</td><td>Bounding Box</td></tr>
-          <tr><td>불량 면적이 얼마나 되는가?</td><td>Segmentation</td><td>Pixel Mask / Area</td></tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>문제 정의가 Label 방식과 평가 지표까지 결정합니다.</strong></div>
+      <div class="figure"><img src="assets/problem_to_task.svg" alt="현장 질문과 Vision Task의 매핑"></div>
     </div>
   </section>
 
@@ -160,22 +80,8 @@ Pixel Mask</div>
     <div class="slide-inner">
       <span class="slide-number">6</span>
       <h2 class="slide-title">그럼 모델은 이미지에서 무엇을 보고 판단할까?</h2>
-      <div class="slide-columns">
-        <div>
-          <p class="big-statement">사람은 색, 윤곽, 질감, 부분 구조 같은 여러 시각적 단서를 종합합니다.</p>
-        </div>
-        <div>
-          <div class="flow">빨간색
-+ 둥근 윤곽
-+ 꼭지
-+ 표면 질감
-      ↓
-특징 조합
-      ↓
-“사과 같다”</div>
-        </div>
-      </div>
-      <div class="callout">※ 인간의 시각 처리와 CNN의 계산 구조는 동일하지 않습니다.</div>
+      <p class="slide-subtitle">사람은 색, 윤곽, 질감, 부분 구조 같은 여러 시각적 단서를 종합합니다.</p>
+      <div class="figure"><img src="assets/human_visual_cues.svg" alt="사람이 색 윤곽 부분 구조를 조합하는 직관"></div>
     </div>
   </section>
 
@@ -191,23 +97,7 @@ Pixel Mask</div>
     <div class="slide-inner">
       <span class="slide-number">8</span>
       <h2 class="slide-title">CNN의 Feature Hierarchy</h2>
-      <div class="slide-columns">
-        <div><p class="big-statement">처음에는 작은 지역 패턴을 보고, Layer가 깊어질수록 더 복잡한 특징을 조합합니다.</p></div>
-        <div>
-          <div class="flow">Pixel
- ↓
-Edge / 방향
- ↓
-Texture / 반복 패턴
- ↓
-Shape
- ↓
-Object Part
- ↓
-Object-level Feature</div>
-        </div>
-      </div>
-      <div class="callout">실제 Feature는 사람이 붙인 의미와 1:1로 대응하지 않을 수 있습니다.</div>
+      <div class="figure"><img src="assets/cnn_hierarchy.svg" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
     </div>
   </section>
 
@@ -215,25 +105,7 @@ Object-level Feature</div>
     <div class="slide-inner">
       <span class="slide-number">9</span>
       <h2 class="slide-title">Kernel과 Convolution</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="term"><strong>Kernel / Filter</strong>이미지의 작은 영역에서 패턴을 추출하기 위한 학습 가능한 Weight입니다.</div>
-          <div class="flow">3 × 3 Kernel
-[ w₁ w₂ w₃ ]
-[ w₄ w₅ w₆ ]
-[ w₇ w₈ w₉ ]</div>
-        </div>
-        <div>
-          <div class="term"><strong>Convolution</strong>같은 Kernel을 이미지 여러 위치에 적용해 패턴 반응을 계산합니다.</div>
-          <div class="flow">작은 Image Patch
-      ×
-     Kernel
-      ↓
-곱하고 더함
-      ↓
-Feature 값</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/convolution_visual.svg" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
     </div>
   </section>
 
@@ -241,23 +113,7 @@ Feature 값</div>
     <div class="slide-inner">
       <span class="slide-number">10</span>
       <h2 class="slide-title">Feature Map과 Channel</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="term"><strong>Feature Map</strong>특정 Kernel이 각 위치에서 얼마나 반응했는지를 나타내는 출력입니다.</div>
-          <div class="flow">224 × 224 × 3
-       ↓
-64 Filters
-       ↓
-224 × 224 × 64</div>
-        </div>
-        <div>
-          <div class="term"><strong>Channel</strong>서로 다른 Feature Map을 쌓아 놓은 축입니다.</div>
-          <div class="flow">Filter 1 → Map 1
-Filter 2 → Map 2
-...
-Filter 64 → Map 64</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/feature_maps.svg" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
     </div>
   </section>
 
@@ -265,22 +121,7 @@ Filter 64 → Map 64</div>
     <div class="slide-inner">
       <span class="slide-number">11</span>
       <h2 class="slide-title">깊어질수록 더 넓은 문맥을 봅니다</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="term"><strong>Receptive Field</strong>특정 Feature가 원본 이미지에서 영향을 받는 영역입니다.</div>
-          <div class="flow">3×3 Conv 1 layer → 약 3×3
-3×3 Conv 2 layers → 약 5×5
-3×3 Conv 3 layers → 약 7×7</div>
-        </div>
-        <div>
-          <div class="term"><strong>Downsampling</strong>Feature Map의 공간 크기를 줄여 연산량을 줄이고 더 넓은 문맥을 효율적으로 표현합니다.</div>
-          <div class="flow">224×224×64
-    ↓
-112×112×128
-    ↓
-56×56×256</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/receptive_field.svg" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
     </div>
   </section>
 
@@ -288,25 +129,7 @@ Filter 64 → Map 64</div>
     <div class="slide-inner">
       <span class="slide-number">12</span>
       <h2 class="slide-title">CNN도 Dataset으로 “볼 특징”을 학습합니다</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="flow">Image + Label
-      ↓
-CNN Forward
-      ↓
-Prediction
-      ↓
-Loss
-      ↓
-Backpropagation
-      ↓
-Kernel Weight Update</div>
-        </div>
-        <div>
-          <p class="big-statement">사람이 모든 Filter를 직접 설계하지 않습니다.</p>
-          <div class="callout">Task의 Loss가 줄어들도록 Kernel Weight가 학습되면서 문제 해결에 유용한 Feature가 만들어집니다.</div>
-        </div>
-      </div>
+      <div class="figure"><img src="assets/cnn_training.svg" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
     </div>
   </section>
 
@@ -314,22 +137,7 @@ Kernel Weight Update</div>
     <div class="slide-inner">
       <span class="slide-number">13</span>
       <h2 class="slide-title">Vision AI를 한 흐름으로 정리하면</h2>
-      <div class="flow">현장 문제
-   ↓
-어떤 Output이 필요한가?
-   ↓
-Classification / Detection / Segmentation
-   ↓
-Dataset + Label
-   ↓
-CNN 같은 Feature Extractor / Model Architecture
-   ↓
-Training
-   ↓
-Evaluation
-   ↓
-Deployment</div>
-      <p class="big-statement">모델 이름보다 먼저 문제와 Output을 정의하는 것이 Vision AI 개발의 출발점입니다.</p>
+      <div class="figure"><img src="assets/vision_project_pipeline.svg" alt="Vision AI 프로젝트 전체 흐름"></div>
     </div>
   </section>
 </main>
