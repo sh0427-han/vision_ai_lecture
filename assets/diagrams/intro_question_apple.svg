@@ -8,5 +8,4 @@
 <path d="M692 163 C686 125 690 102 712 82" fill="none" stroke="#7c2d12" stroke-width="22" stroke-linecap="round"/>
 <ellipse cx="755" cy="128" rx="70" ry="30" fill="#65a30d" transform="rotate(-20 755 128)"/>
 <ellipse cx="700" cy="455" rx="190" ry="22" fill="#cbd5e1" opacity=".35"/>
-<text x="700" y="555" text-anchor="middle" class="s">설명하지 말고 잠깐 화면만 보여준 뒤, 청중에게 먼저 답을 받아보세요.</text>
 </svg>
