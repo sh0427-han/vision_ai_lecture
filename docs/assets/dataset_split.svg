@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="500" viewBox="0 0 1400 500">
+  <rect width="1400" height="500" fill="#ffffff"/>
+  <style>
+    .title{font:700 28px Arial,sans-serif;fill:#111827}
+    .label{font:700 18px Arial,sans-serif;fill:#111827}
+    .small{font:400 14px Arial,sans-serif;fill:#64748b}
+    .train{fill:#dbeafe;stroke:#60a5fa;stroke-width:2}
+    .val{fill:#dcfce7;stroke:#4ade80;stroke-width:2}
+    .test{fill:#ffedd5;stroke:#fb923c;stroke-width:2}
+  </style>
+  <text x="700" y="44" text-anchor="middle" class="title">Dataset은 단순한 ‘이미지 모음’이 아니라 모델이 배우는 세상이다</text>
+  <g transform="translate(110 120)">
+    <rect x="0" y="0" width="760" height="110" rx="18" fill="#f8fafc" stroke="#dbe2ea" stroke-width="2"/>
+    <rect x="20" y="20" width="500" height="70" rx="12" class="train"/>
+    <rect x="530" y="20" width="100" height="70" rx="12" class="val"/>
+    <rect x="640" y="20" width="100" height="70" rx="12" class="test"/>
+    <text x="270" y="62" text-anchor="middle" class="label">Train</text>
+    <text x="580" y="62" text-anchor="middle" class="label">Val</text>
+    <text x="690" y="62" text-anchor="middle" class="label">Test</text>
+  </g>
+  <g transform="translate(930 95)">
+    <rect width="360" height="220" rx="18" fill="#ffffff" stroke="#dbe2ea" stroke-width="2"/>
+    <text x="180" y="38" text-anchor="middle" class="label">좋은 Dataset의 조건</text>
+    <text x="35" y="78" class="small">• 실제 환경을 충분히 대표</text>
+    <text x="35" y="108" class="small">• Label이 정확하고 기준이 일관</text>
+    <text x="35" y="138" class="small">• 희귀 Class가 완전히 사라지지 않음</text>
+    <text x="35" y="168" class="small">• Train / Val / Test 사이 Leakage 방지</text>
+    <text x="35" y="198" class="small">• 운영 조건 변화까지 고려</text>
+  </g>
+  <text x="490" y="300" text-anchor="middle" class="small">예: 70 / 15 / 15는 흔한 예시일 뿐이며 문제와 데이터 규모에 따라 달라질 수 있다.</text>
+  <text x="700" y="390" text-anchor="middle" class="label">모델이 학습하지 못한 조건은 운영 환경에서도 잘 모를 가능성이 높다.</text>
+</svg>
