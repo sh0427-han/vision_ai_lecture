@@ -134,22 +134,81 @@ Weight가 크다는 것은 해당 입력을 더 강하게 반영한다는 뜻으
 
 ## 7. 왜 Layer와 비선형성이 필요한가?
 
-단순한 하나의 선형 결정 경계로는 XOR 같은 문제를 해결할 수 없습니다.
+비선형성을 이해할 때 **AND Gate와 XOR Gate**를 비교하면 가장 직관적입니다.
+
+### AND Gate — 직선 하나로 구분 가능
 
 ```text
-0,0 → 0
-0,1 → 1
-1,0 → 1
-1,1 → 0
+0 AND 0 → 0
+0 AND 1 → 0
+1 AND 0 → 0
+1 AND 1 → 1
 ```
 
-Hidden Layer를 사용하면 중간 Feature를 만들 수 있지만, Linear/Affine Layer만 연속해서 쌓으면 전체는 다시 하나의 Affine Transformation으로 합쳐집니다.
+입력을 좌표 `(x1, x2)`로 그리면 Output 1은 `(1,1)` 한 점뿐입니다.
 
-![Linear vs Nonlinear](../../assets/diagrams/linear_vs_nonlinear.svg)
+따라서 0과 1을 **직선 하나로 분리할 수 있습니다.**
 
-그래서 Layer 사이에 **Activation Function**을 넣어 비선형성을 부여합니다.
+이를 **Linearly Separable**하다고 합니다.
 
-### ReLU
+### XOR Gate — 직선 하나로 구분 불가
+
+```text
+0 XOR 0 → 0
+0 XOR 1 → 1
+1 XOR 0 → 1
+1 XOR 1 → 0
+```
+
+XOR는 Output 1인 점 `(0,1)`, `(1,0)`과 Output 0인 점 `(0,0)`, `(1,1)`이 대각선으로 배치됩니다.
+
+![AND vs XOR](../../assets/diagrams/and_xor_linear_separability.svg)
+
+어떤 직선 하나를 그어도 두 Class를 완전히 분리할 수 없습니다.
+
+즉 XOR는 **Non-linearly Separable**한 문제입니다.
+
+### Linear Layer를 여러 개 쌓으면 해결될까?
+
+Activation 없이 다음처럼 Linear/Affine Layer를 여러 개 쌓아봅니다.
+
+```text
+h1 = W1x + b1
+h2 = W2h1 + b2
+```
+
+두 번째 식에 첫 번째 식을 넣으면:
+
+```text
+h2
+= W2(W1x + b1) + b2
+= (W2W1)x + (W2b1 + b2)
+= W*x + b*
+```
+
+결국 다시 하나의 Affine Transformation과 같은 형태가 됩니다.
+
+![Linear Layers Collapse](../../assets/diagrams/linear_layers_collapse.svg)
+
+따라서 **Linear Layer를 2개, 10개, 100개 쌓아도 중간에 비선형성이 없다면 표현력은 본질적으로 하나의 Linear/Affine Layer와 같습니다.**
+
+XOR처럼 복잡한 결정 경계가 필요한 문제를 표현하려면 Layer 사이에 **Activation Function**이 필요합니다.
+
+### Activation Function
+
+```text
+Linear
+   ↓
+ReLU
+   ↓
+Linear
+   ↓
+ReLU
+   ↓
+복잡한 Decision Boundary
+```
+
+대표적인 예가 ReLU입니다.
 
 ```text
 ReLU(x) = max(0, x)
@@ -158,6 +217,8 @@ ReLU(x) = max(0, x)
         ↓
 [ 0,  0,   0, 1, 3]
 ```
+
+Activation이 들어가면 Layer 조합이 더 이상 하나의 Linear Transformation으로 합쳐지지 않으며, 신경망이 비선형 관계를 표현할 수 있게 됩니다.
 
 ## 8. Feature와 Representation
 
