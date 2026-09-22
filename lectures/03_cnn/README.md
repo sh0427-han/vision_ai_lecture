@@ -1,144 +1,148 @@
-# 03. CNN — 이미지를 작은 영역부터 이해하기
+# 03. CNN — 작은 특징을 조합해 사물을 인식하기
 
-## 학습 목표
+## 핵심 직관
 
-- Convolution이 무엇인지 설명할 수 있다.
-- Kernel, Feature Map, Stride, Padding을 구분할 수 있다.
-- CNN이 깊어질수록 어떤 Feature를 학습하는지 설명할 수 있다.
-- VGG와 ResNet의 핵심 아이디어를 이해한다.
+사람은 사물을 볼 때 Pixel 전체의 숫자를 외워서 판단하지 않습니다.
 
-![CNN Flow](../../assets/diagrams/cnn_flow.svg)
-
-## 1. AI 기초와 CNN 연결
-
-앞 챕터에서 본 것처럼 신경망의 Weight는 Dataset을 이용한 Forward → Loss → Backpropagation → Optimizer 과정을 통해 학습됩니다.
-
-CNN도 같습니다. 차이는 일반 Linear Layer 대신 이미지의 공간 구조를 잘 활용하는 **Convolution**을 핵심 연산으로 사용한다는 점입니다.
-
-## 2. CNN의 핵심 아이디어
-
-CNN은 이미지를 처음부터 전체로 이해하려 하지 않습니다.
-
-작은 영역부터 봅니다.
+예를 들어 사과를 보면:
 
 ```text
-Image
-  ↓
-3×3 Kernel
-  ↓
-Local Feature
-  ↓
-더 많은 Convolution
-  ↓
-점점 큰 Feature
-  ↓
-Semantic Feature
+빨간색
++ 둥근 윤곽
++ 꼭지
++ 표면 질감
+        ↓
+여러 특징을 종합
+        ↓
+"사과 같다"
 ```
 
-## 3. Kernel / Filter
+처럼 여러 시각적 단서를 종합해 빠르게 판단합니다.
 
-`3×3` Kernel은 9개의 Weight를 가진 작은 창이라고 생각할 수 있습니다.
+CNN도 교육적인 관점에서는 비슷한 흐름으로 이해할 수 있습니다.
+
+![Human Feature and CNN](../../assets/diagrams/human_feature_to_cnn.svg)
+
+단, **인간의 시각 처리 메커니즘과 CNN의 계산 구조가 실제로 동일하다는 뜻은 아닙니다.** 이 비교는 CNN의 Feature Hierarchy를 쉽게 이해하기 위한 직관입니다.
+
+## 1. CNN의 핵심: Local → Complex
 
 ```text
- 1   0  -1
- 1   0  -1
- 1   0  -1
+Pixel
+ ↓
+Edge / 방향
+ ↓
+Texture / 반복 패턴
+ ↓
+Shape
+ ↓
+Object Part
+ ↓
+Object-level Feature
 ```
 
-이 예시는 사람이 설계한 수직 Edge Filter와 비슷하지만, 실제 CNN에서는 Filter Weight를 학습으로 찾습니다.
+실제 Feature가 사람이 붙인 이름대로 정확히 분리되는 것은 아니지만, 단순한 지역 패턴에서 더 복잡한 표현으로 바뀐다는 직관이 중요합니다.
 
-## 4. Convolution
+## 2. Kernel / Filter
 
-입력의 작은 영역과 Kernel의 값을 위치별로 곱하고 모두 더합니다.
+**Kernel / Filter**는 이미지의 작은 영역에서 패턴을 추출하기 위한 학습 가능한 Weight입니다.
 
 ```text
-Input Patch         Kernel
+3 × 3 Kernel
+
+[ w1 w2 w3 ]
+[ w4 w5 w6 ]
+[ w7 w8 w9 ]
+```
+
+Kernel Weight는 Dataset을 통해 학습됩니다.
+
+## 3. Convolution
+
+**Convolution**은 같은 Kernel을 이미지 여러 위치에 적용해 각 위치에서 패턴 반응값을 계산하는 연산입니다.
+
+```text
+Input Patch         Example Filter
 
 1 2 1               1  0 -1
 0 1 0       ×       1  0 -1
 1 2 1               1  0 -1
 ```
 
-이 연산을 이미지 여러 위치에서 반복해 Feature Map을 만듭니다.
+위 Filter는 개념 설명용 예시입니다. 실제 CNN에서는 Weight가 학습으로 결정됩니다.
 
-## 5. Feature Map
+### Weight Sharing
 
-Kernel이 특정 패턴에 강하게 반응한 위치가 크게 나타나는 출력입니다.
+같은 Kernel Weight를 이미지 여러 위치에서 공유해 사용합니다.
 
-초기 Layer에서는 Edge나 Texture에 가까운 패턴이 나타날 수 있고, 깊은 Layer에서는 더 복잡한 형태와 의미적 특징이 표현될 수 있습니다.
+## 4. Feature Map
 
-교육적으로 다음처럼 이해하면 쉽습니다.
-
-```text
-Pixel
- ↓
-Edge
- ↓
-Texture
- ↓
-Shape
- ↓
-Object Part
- ↓
-Semantic Feature
-```
-
-이 단계가 항상 사람이 해석 가능한 단일 의미로 깔끔하게 분리되는 것은 아닙니다.
-
-## 6. Channel
-
-입력이 `224×224×3`이고 64개의 Filter를 사용한다고 가정하면 출력은 예를 들어 다음과 같을 수 있습니다.
+**Feature Map**은 특정 Kernel이 이미지의 각 위치에서 얼마나 반응했는지를 공간적으로 표현한 출력입니다.
 
 ```text
+Input
 224 × 224 × 3
-       ↓
-   Conv 64
+
+Conv 64 filters
        ↓
 224 × 224 × 64
 ```
 
-출력 Channel 수는 Filter 수와 대응합니다.
+## 5. Channel
 
-## 7. Stride와 Padding
+서로 다른 Feature Map을 쌓아 놓은 축입니다.
 
-출력 크기는 다음 관계로 계산할 수 있습니다.
+```text
+Filter 1  → Feature Map 1
+Filter 2  → Feature Map 2
+...
+Filter 64 → Feature Map 64
+
+= 64 Channels
+```
+
+## 6. Stride와 Padding
+
+### Stride
+Kernel이 한 번에 몇 Pixel씩 이동할지 정합니다.
+
+### Padding
+입력 가장자리에 값을 추가해 출력 크기와 경계 처리를 조절합니다.
+
+출력 크기:
 
 ```text
 O = floor((W - K + 2P) / S) + 1
 ```
 
 예:
-- 입력 `W=224`
-- Kernel `K=3`
-- Padding `P=1`
-- Stride `S=1`
-
-이면 출력은 `224`입니다.
-
-## 8. Receptive Field
-
-첫 번째 `3×3 Conv`는 원본의 작은 영역을 봅니다.  
-그 위에 Conv를 계속 쌓으면 한 Feature가 간접적으로 참고하는 원본 영역이 점점 커집니다.
-
-Stride 1의 단순한 `3×3 Conv`를 연속해서 쌓는 예:
 
 ```text
-1 layer  → 약 3×3
+W=224
+K=3
+P=1
+S=1
+
+→ O=224
+```
+
+## 7. Receptive Field
+
+특정 Feature가 원본 이미지에서 영향을 받는 영역입니다.
+
+Stride=1인 3×3 Conv를 단순히 연속해서 쌓는 예:
+
+```text
+1 layer → 약 3×3
 2 layers → 약 5×5
 3 layers → 약 7×7
 ```
 
-이것이 CNN이 작은 영역에서 시작해 더 넓은 문맥을 이해하는 핵심입니다.
+CNN이 깊어질수록 더 넓은 영역의 정보를 조합할 수 있습니다.
 
-## 9. Pooling / Downsampling
+## 8. Downsampling
 
-공간 크기를 줄이는 이유:
-
-- 연산량 감소
-- 더 넓은 문맥 확보
-- 세부 위치보다 의미적 특징에 집중
-
-예:
+Feature Map의 H×W를 줄이는 과정입니다.
 
 ```text
 224×224×64
@@ -148,51 +152,46 @@ Stride 1의 단순한 `3×3 Conv`를 연속해서 쌓는 예:
 56×56×256
 ```
 
-보통 H×W는 줄고 Channel은 늘어나는 방향으로 설계됩니다.
+Pooling이나 Strided Convolution 등을 사용할 수 있습니다.
 
-## 10. VGG가 보여준 것
+목적은 보통:
 
-VGG는 작은 `3×3 Conv`를 반복해 깊은 네트워크를 구성하는 설계를 널리 알렸습니다.
+- 연산량 감소
+- 더 넓은 문맥 표현
+- 세밀한 위치보다 의미 있는 특징에 집중
 
-핵심 질문:
+등입니다.
 
-> 큰 Kernel 하나 대신 작은 Kernel을 여러 번 쌓으면 어떤 장점이 있을까?
-
-- 더 많은 비선형 변환
-- 점진적인 Feature 추출
-- 구조가 단순하고 규칙적
-
-원 논문: https://arxiv.org/abs/1409.1556
-
-## 11. ResNet이 해결한 문제
-
-단순히 Layer를 계속 깊게 쌓는다고 학습이 항상 쉬워지는 것은 아닙니다.
-
-ResNet은 입력을 몇 Layer 뒤에 직접 더하는 Residual Connection을 사용합니다.
+## 9. CNN도 학습으로 Feature를 찾는다
 
 ```text
-x ───────────────────┐
-│                    │
-↓                    │
-Conv → ReLU → Conv   │
-│                    │
-└────── F(x) + x ←───┘
+Image + Label
+      ↓
+CNN Forward
+      ↓
+Prediction
+      ↓
+Loss
+      ↓
+Backpropagation
+      ↓
+Kernel Weight Update
 ```
 
-수식:
+사람이 특정 Kernel을 직접 지정하는 것이 아니라 Task의 Loss가 줄어들도록 Kernel Weight가 학습됩니다.
+
+## 10. 한 문장 정리
+
+> **CNN은 작은 지역 패턴을 학습하고 여러 Layer에서 그 패턴을 조합해 점점 더 복잡하고 의미 있는 Feature를 만드는 신경망입니다.**
+
+강의에서는 Kernel 수식을 외우기보다 다음 흐름을 먼저 기억합니다.
 
 ```text
-y = F(x) + x
+특징을 찾는다
+   ↓
+특징을 조합한다
+   ↓
+더 복잡한 특징을 만든다
+   ↓
+판단한다
 ```
-
-원 논문: https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html
-
-## 12. CNN을 한 문장으로
-
-> **CNN은 작은 지역 패턴을 반복적으로 추출하고 조합하면서 점점 넓고 추상적인 Feature를 만드는 모델입니다.**
-
-## 13. 다음 챕터
-
-CNN과 완전히 다른 관점으로 이미지를 보는 방법을 살펴봅니다.
-
-→ [04. Vision Transformer](../04_vision_transformer/README.md)
