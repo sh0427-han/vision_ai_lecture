@@ -1,6 +1,6 @@
 # 02. AI 기초 — 데이터에서 규칙을 배우는 방법
 
-CNN을 보기 전에 AI, 머신러닝, 딥러닝의 관계와 신경망이 어떻게 학습하는지 이해합니다.
+Vision AI 모델을 보기 전에 AI, 머신러닝, 딥러닝의 관계와 신경망이 어떻게 학습하는지 이해합니다.
 
 ## 1. AI / Machine Learning / Deep Learning
 
@@ -51,6 +51,24 @@ Prediction
 
 ### 강화학습 Reinforcement Learning
 행동에 따른 보상을 이용해 더 좋은 행동 전략을 학습합니다.
+
+### 산업에서는 어떻게 사용할까?
+
+![Supervised vs Unsupervised Industry](../../assets/diagrams/supervised_unsupervised_industry.svg)
+
+지도학습 예:
+- 정상 / 불량 분류
+- 결함 Bounding Box Detection
+- Pixel Mask Segmentation
+- OCR / 품종 판정
+
+비지도학습 예:
+- 유사 패턴 군집화
+- 라벨 기준을 만들기 전 데이터 탐색
+- 미라벨 데이터의 Representation 학습
+- 정상 분포와 다른 이상 후보 탐색
+
+단, **Anomaly Detection이 항상 비지도학습인 것은 아닙니다.** 지도학습, One-class, Self-supervised 등 여러 접근이 사용됩니다.
 
 ## 4. 분류와 회귀
 
@@ -314,7 +332,7 @@ Vision 문제에서는 실제 독립 단위가 무엇인지 생각하고 Split�
 
 실제 Vision AI 개발에서는 배포 후에도 모니터링, 실패 사례 수집, 재학습이 이어지므로 반복 Cycle에 가깝습니다.
 
-## 16. CNN으로 연결
+## 16. Vision AI로 연결
 
 ```text
 Image Tensor
@@ -332,9 +350,9 @@ Higher-level Feature
 Prediction
 ```
 
-CNN의 Kernel도 고정된 규칙이 아니라 Dataset에서 학습되는 Weight입니다.
+Vision AI에서 자주 쓰는 CNN의 Kernel도 고정된 규칙이 아니라 Dataset에서 학습되는 Weight입니다.
 
-→ [03. CNN](../03_cnn/README.md)
+→ [03. Vision AI](../03_vision_ai/README.md)
 
 ## 참고
 
