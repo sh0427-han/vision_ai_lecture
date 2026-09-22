@@ -27,6 +27,8 @@
 - `intro_human_vs_computer.svg`
 - `supervised_unsupervised_industry.svg`
 - `vision_tasks_comparison.svg`
+- `and_xor_linear_separability.svg`
+- `linear_layers_collapse.svg`
 
 ## AI 기초 참고 자료
 
