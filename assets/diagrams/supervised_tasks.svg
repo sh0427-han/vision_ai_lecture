@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560">
+<rect width="1400" height="560" fill="#fff"/>
+<style>.t{font:700 30px Arial;fill:#111827}.l{font:700 21px Arial;fill:#111827}.s{font:400 15px Arial;fill:#64748b}.box{fill:#fff;stroke:#dbe2ea;stroke-width:2}.a{fill:#eff6ff;stroke:#93c5fd;stroke-width:2}.g{fill:#f0fdf4;stroke:#86efac;stroke-width:2}.arrow{stroke:#64748b;stroke-width:3;marker-end:url(#m)}</style>
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3z" fill="#64748b"/></marker></defs>
+<text x="700" y="45" text-anchor="middle" class="t">지도학습: 문제(X)와 정답(y)을 함께 보며 규칙을 학습</text>
+<g transform="translate(65 125)"><rect width="250" height="130" rx="18" class="box"/><text x="125" y="48" text-anchor="middle" class="l">Input X</text><text x="125" y="80" text-anchor="middle" class="s">이미지 · 센서값 · Feature</text></g>
+<path d="M315 190 L390 190" class="arrow"/>
+<g transform="translate(395 125)"><rect width="250" height="130" rx="18" class="a"/><text x="125" y="48" text-anchor="middle" class="l">Model</text><text x="125" y="80" text-anchor="middle" class="s">데이터에서 관계를 학습</text></g>
+<path d="M645 190 L720 190" class="arrow"/>
+<g transform="translate(725 85)"><rect width="290" height="105" rx="18" class="g"/><text x="145" y="40" text-anchor="middle" class="l">Classification</text><text x="145" y="72" text-anchor="middle" class="s">정상 / 불량, Cat / Dog</text></g>
+<g transform="translate(725 215)"><rect width="290" height="105" rx="18" class="box"/><text x="145" y="40" text-anchor="middle" class="l">Regression</text><text x="145" y="72" text-anchor="middle" class="s">거리 12.4 mm, 온도 37.1°C</text></g>
+<g transform="translate(1070 125)"><rect width="260" height="130" rx="18" class="box"/><text x="130" y="45" text-anchor="middle" class="l">Label y</text><text x="130" y="78" text-anchor="middle" class="s">학습 때 제공되는 정답</text></g>
+<text x="700" y="410" text-anchor="middle" class="l">분류는 ‘어느 범주인가?’, 회귀는 ‘얼마인가?’를 예측합니다.</text>
+<text x="700" y="447" text-anchor="middle" class="s">Vision AI에서는 분류뿐 아니라 Detection·Segmentation도 정답 Label을 이용한 지도학습으로 많이 학습합니다.</text>
+</svg>
