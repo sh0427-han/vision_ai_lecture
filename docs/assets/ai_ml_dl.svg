@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560">
+<rect width="1400" height="560" fill="#fff"/>
+<style>.t{font:700 30px Arial;fill:#111827}.l{font:700 22px Arial;fill:#111827}.s{font:400 16px Arial;fill:#64748b}.ai{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}.ml{fill:#eff6ff;stroke:#93c5fd;stroke-width:2}.dl{fill:#eef2ff;stroke:#a5b4fc;stroke-width:2}</style>
+<text x="700" y="45" text-anchor="middle" class="t">AI ⊃ Machine Learning ⊃ Deep Learning</text>
+<rect x="150" y="90" width="1100" height="380" rx="30" class="ai"/>
+<text x="210" y="140" class="l">Artificial Intelligence</text><text x="210" y="168" class="s">사람이 하던 판단·추론·인식 등을 컴퓨터가 수행하도록 만드는 넓은 개념</text>
+<rect x="340" y="185" width="720" height="235" rx="26" class="ml"/>
+<text x="390" y="235" class="l">Machine Learning</text><text x="390" y="263" class="s">규칙을 모두 직접 쓰기보다 데이터에서 패턴을 학습</text>
+<rect x="535" y="285" width="330" height="95" rx="22" class="dl"/>
+<text x="700" y="325" text-anchor="middle" class="l">Deep Learning</text><text x="700" y="353" text-anchor="middle" class="s">여러 Layer의 신경망으로 Feature까지 학습</text>
+<text x="700" y="515" text-anchor="middle" class="s">CNN은 Deep Learning 모델의 대표적인 예입니다.</text>
+</svg>
