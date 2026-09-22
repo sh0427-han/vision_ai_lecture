@@ -2285,110 +2285,201 @@ body.deck-page {
 
 
 /* Intro signal vs noise */
-.signal-noise-grid {
+.human-noise-compare {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  margin-top: 16px;
+  width: min(1180px, 100%);
+  margin: 16px auto 0;
 }
 
-.signal-noise-card {
+.human-noise-panel {
   min-width: 0;
-  padding: 14px;
-  border: 1px solid #d8e1ed;
-  border-radius: 18px;
-  background: #f8fafc;
 }
 
-.signal-noise-head {
+.human-noise-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #17243b;
+}
+
+.human-noise-label span {
   display: grid;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-
-.signal-chip {
-  display: inline-block;
-  width: fit-content;
-  padding: 4px 9px;
+  place-items: center;
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #17243b;
+  color: #fff;
   font-size: 11px;
   font-weight: 850;
-  letter-spacing: .02em;
 }
 
-.signal-noise-head strong {
-  color: #17243b;
-  font-size: 16px;
-  line-height: 1.3;
+.human-noise-label strong {
+  font-size: 18px;
+  letter-spacing: -.01em;
 }
 
-.signal-noise-visual {
+.human-noise-image {
   position: relative;
   overflow: hidden;
   width: 100%;
   aspect-ratio: 5 / 3;
-  border: 1px solid #cbd5e1;
-  border-radius: 13px;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
   background: #64748b;
+  box-shadow: 0 12px 28px rgb(15 23 42 / 11%);
 }
 
-.signal-noise-visual img,
-.signal-noise-visual svg {
+.human-noise-image img,
+.human-noise-image svg {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.signal-noise-overlay {
+.human-noise-overlay {
   position: absolute;
   inset: 0;
-  opacity: .42;
+  opacity: .48;
   mix-blend-mode: screen;
   pointer-events: none;
 }
 
-.signal-noise-visual--mixed img {
-  filter: contrast(1.08) saturate(.9);
+.human-noise-image--mixed img {
+  filter: contrast(1.08) saturate(.92);
 }
 
-.signal-noise-card p {
-  margin: 9px 0 0;
-  color: #53647b;
+.human-view-note {
+  margin-top: 8px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.human-view-note b {
+  color: #1d4ed8;
+}
+
+.human-computer-contrast {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 46px minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+  width: min(960px, 100%);
+  margin: 18px auto 0;
+}
+
+.human-contrast-box,
+.computer-contrast-box {
+  display: grid;
+  gap: 4px;
+  padding: 13px 16px;
+  border-radius: 14px;
+}
+
+.human-contrast-box {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+}
+
+.computer-contrast-box {
+  border: 1px solid #fde68a;
+  background: #fffbeb;
+}
+
+.human-contrast-box span,
+.computer-contrast-box span {
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.human-contrast-box span { color: #2563eb; }
+.computer-contrast-box span { color: #b45309; }
+
+.human-contrast-box strong,
+.computer-contrast-box strong {
+  color: #17243b;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.human-contrast-box small,
+.computer-contrast-box small {
+  color: #64748b;
   font-size: 12px;
-  line-height: 1.45;
+  line-height: 1.4;
+}
+
+.contrast-arrow {
+  display: grid;
+  place-items: center;
+  color: #94a3b8;
+  font-size: 28px;
+  font-weight: 900;
 }
 
 @media (max-height: 760px) and (min-width: 901px) {
-  .signal-noise-grid {
-    gap: 10px;
+  .human-noise-compare {
+    gap: 12px;
     margin-top: 8px;
   }
 
-  .signal-noise-card {
-    padding: 9px;
+  .human-noise-label {
+    margin-bottom: 5px;
   }
 
-  .signal-noise-head {
-    gap: 3px;
-    margin-bottom: 6px;
+  .human-noise-label strong {
+    font-size: 15px;
   }
 
-  .signal-noise-head strong {
+  .human-noise-label span {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .human-view-note {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .human-computer-contrast {
+    margin-top: 9px;
+  }
+
+  .human-contrast-box,
+  .computer-contrast-box {
+    padding: 9px 12px;
+  }
+
+  .human-contrast-box strong,
+  .computer-contrast-box strong {
     font-size: 14px;
   }
 
-  .signal-noise-card p {
-    margin-top: 5px;
-    font-size: 11px;
-    line-height: 1.35;
+  .human-contrast-box small,
+  .computer-contrast-box small {
+    font-size: 10.5px;
   }
 }
 
 @media (max-width: 900px) {
-  .signal-noise-grid {
+  .human-noise-compare {
     grid-template-columns: 1fr;
+  }
+
+  .human-computer-contrast {
+    grid-template-columns: 1fr;
+  }
+
+  .contrast-arrow {
+    transform: rotate(90deg);
   }
 }
