@@ -31,6 +31,42 @@
 
 ---
 
+
+
+## Sensor / Imaging
+
+### RGB Camera
+가시광 영역의 색과 밝기를 일반적으로 R, G, B 세 Channel의 이미지로 기록하는 카메라입니다.
+
+### Monochrome / Mono Camera
+색 Channel 없이 밝기 중심의 영상을 얻는 카메라입니다. 출력은 보통 1 Channel 이미지입니다.
+
+### IR / NIR
+Infrared / Near-Infrared. 사람의 눈에 보이지 않는 적외선 영역의 빛을 이용하거나 측정합니다.
+
+### Thermal Camera
+물체에서 방출되는 열 복사를 측정해 온도 분포를 영상 형태로 표현하는 센서입니다.
+
+### Depth Map
+각 Pixel 위치에 색이 아니라 카메라에서 물체까지의 거리 값을 저장한 2차원 배열입니다.
+
+### Stereo Vision
+두 개 이상의 서로 다른 시점의 이미지를 비교해 시차(Disparity)로부터 깊이를 추정하는 방법입니다.
+
+### ToF
+Time of Flight. 빛을 보내고 돌아오는 시간이나 위상 차이를 이용해 거리를 추정하는 방식입니다.
+
+### LiDAR
+Light Detection and Ranging. Laser를 이용해 주변 물체까지의 거리를 측정하며 결과를 3차원 Point Cloud로 표현하는 경우가 많습니다.
+
+### Point Cloud
+3차원 공간의 여러 점을 모은 데이터입니다. 기본적으로 각 점이 `(x, y, z)` 좌표를 가집니다.
+
+### Event Camera
+고정 FPS로 전체 Frame을 저장하는 대신, 각 Pixel의 밝기 변화가 발생했을 때 시간·위치·변화 방향을 Event로 출력하는 센서입니다.
+
+---
+
 ## CNN
 
 ### Kernel / Filter
