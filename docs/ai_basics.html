@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="slide.css">
   <script src="slide.js" defer></script>
 </head>
-<body class="deck-page" data-prev-page="intro.html" data-next-page="cnn.html">
+<body class="deck-page" data-prev-page="intro.html" data-next-page="vision_ai.html">
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="index.html">Vision AI</a>
     <div class="nav-links">
       <a href="intro.html">01 Intro</a>
       <a href="ai_basics.html">02 AI Basics</a>
-      <a href="cnn.html">03 CNN</a>
+      <a href="vision_ai.html">03 Vision AI</a>
     </div>
   </nav>
 </header>
@@ -26,7 +26,7 @@
       <span class="chapter-chip">Lecture 02 · AI Fundamentals</span>
       <h1 class="slide-title">AI는 어떻게 데이터에서 규칙을 배울까?</h1>
       <p class="slide-subtitle">
-        CNN을 보기 전에 AI·머신러닝·딥러닝의 관계부터
+        Vision AI 모델을 보기 전에 AI·머신러닝·딥러닝의 관계부터
         지도학습, 신경망, 비선형성, 학습, Dataset과 평가까지 연결해서 봅니다.
       </p>
       <div class="flow">Data → Model → Prediction → Loss → Learning → Generalization</div>
@@ -92,6 +92,15 @@ Prediction</div>
         </div>
       </div>
       <div class="callout">이번 Vision AI 기초 강의에서는 <strong>지도학습</strong>을 중심으로 봅니다.</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">3-1</span>
+      <h2 class="slide-title">산업에서는 지도학습과 비지도학습을 어떻게 사용할까?</h2>
+      <div class="figure"><img src="assets/supervised_unsupervised_industry.svg" alt="산업의 지도학습과 비지도학습 활용 예"></div>
+    </div>
     </div>
   </section>
 
@@ -360,7 +369,7 @@ Task에 유용한 Representation</div>
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">20</span>
-      <h2 class="slide-title">이제 CNN으로 연결합니다</h2>
+      <h2 class="slide-title">이제 Vision AI로 연결합니다</h2>
       <div class="slide-columns">
         <div>
           <div class="flow">Image Tensor
@@ -378,8 +387,8 @@ Convolution
 Prediction</div>
         </div>
         <div>
-          <p class="big-statement">CNN의 Kernel도 Dataset을 통해 학습되는 Weight입니다.</p>
-          <div class="callout">CNN을 배우면 “이미지에서 어떤 특징을 어떻게 만들어 가는가?”를 구체적으로 볼 수 있습니다.</div>
+          <p class="big-statement">Vision AI에서 자주 쓰는 CNN의 Kernel도 Dataset을 통해 학습되는 Weight입니다.</p>
+          <div class="callout">다음 챕터에서는 Classification, Detection, Segmentation 같은 Vision Task와 CNN의 Feature 추출 원리를 함께 봅니다.</div>
         </div>
       </div>
     </div>
