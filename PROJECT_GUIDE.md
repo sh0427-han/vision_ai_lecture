@@ -13,6 +13,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 - 사람과 컴퓨터가 이미지를 보는 방식의 차이
 - Pixel / RGB Channel과 이미지 숫자 배열
+- Signal / Noise 비교: Noise only / Apple + Noise / Apple only
 - 조명, 시점, 크기, 가림, 초점, 색온도 등에 따른 이미지 변화
 - 카메라 RGB 입력 → 3채널 데이터 → Feature 학습 → 결과
 - Vision AI가 필요한 이유
