@@ -2344,13 +2344,14 @@ body.deck-page {
 .human-noise-overlay {
   position: absolute;
   inset: 0;
-  opacity: .48;
-  mix-blend-mode: screen;
+  opacity: .72;
+  mix-blend-mode: hard-light;
+  filter: contrast(1.18);
   pointer-events: none;
 }
 
 .human-noise-image--mixed img {
-  filter: contrast(1.08) saturate(.92);
+  filter: contrast(1.12) saturate(.84) brightness(.96);
 }
 
 .human-view-note {
