@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="620" viewBox="0 0 1400 620">
+<rect width="1400" height="620" fill="#fff"/>
+<style>.t{font:700 30px Arial;fill:#111827}.h{font:700 21px Arial;fill:#111827}.s{font:400 15px Arial;fill:#64748b}.box{fill:#fff;stroke:#dbe2ea;stroke-width:2}.sup{fill:#eff6ff;stroke:#93c5fd;stroke-width:2}.uns{fill:#f0fdf4;stroke:#86efac;stroke-width:2}.tag{font:700 13px Arial;fill:#475569}</style>
+<text x="700" y="45" text-anchor="middle" class="t">산업에서는 지도학습과 비지도학습을 어떻게 사용할까?</text>
+<g transform="translate(65 95)">
+<rect width="610" height="430" rx="24" class="sup"/>
+<text x="305" y="42" text-anchor="middle" class="h">지도학습 Supervised Learning</text>
+<text x="305" y="70" text-anchor="middle" class="s">“정답 Label이 있는 데이터”로 원하는 판단을 직접 학습</text>
+<g transform="translate(45 110)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">QUALITY INSPECTION</text><text x="20" y="58" class="h">정상 / 불량 분류</text><text x="20" y="83" class="s">제품 이미지 + 정답 Class</text>
+</g>
+<g transform="translate(335 110)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">DETECTION</text><text x="20" y="58" class="h">결함 위치 검출</text><text x="20" y="83" class="s">Bounding Box Label</text>
+</g>
+<g transform="translate(45 250)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">SEGMENTATION</text><text x="20" y="58" class="h">결함 면적 측정</text><text x="20" y="83" class="s">Pixel Mask Label</text>
+</g>
+<g transform="translate(335 250)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">OCR / CLASSIFY</text><text x="20" y="58" class="h">문자·품종 판정</text><text x="20" y="83" class="s">정답이 명확한 반복 작업</text>
+</g>
+</g>
+
+<g transform="translate(725 95)">
+<rect width="610" height="430" rx="24" class="uns"/>
+<text x="305" y="42" text-anchor="middle" class="h">비지도학습 Unsupervised Learning</text>
+<text x="305" y="70" text-anchor="middle" class="s">“정답 Label 없이” 데이터의 구조나 유사성, 특이 패턴을 탐색</text>
+<g transform="translate(45 110)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">CLUSTERING</text><text x="20" y="58" class="h">유사 패턴 군집화</text><text x="20" y="83" class="s">공정 이미지 유형 탐색</text>
+</g>
+<g transform="translate(335 110)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">DATA EXPLORATION</text><text x="20" y="58" class="h">새 패턴 발견</text><text x="20" y="83" class="s">라벨 기준 만들기 전 탐색</text>
+</g>
+<g transform="translate(45 250)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">REPRESENTATION</text><text x="20" y="58" class="h">Feature 구조 학습</text><text x="20" y="83" class="s">대규모 미라벨 데이터 활용</text>
+</g>
+<g transform="translate(335 250)">
+<rect width="230" height="105" rx="15" class="box"/><text x="20" y="28" class="tag">ANOMALY</text><text x="20" y="58" class="h">이상 후보 탐색</text><text x="20" y="83" class="s">정상 분포와 다른 샘플 탐색</text>
+</g>
+</g>
+<text x="700" y="575" text-anchor="middle" class="s">※ 이상 탐지는 항상 비지도학습인 것은 아닙니다. 지도·One-class·Self-supervised 등 여러 방식이 사용됩니다.</text>
+</svg>
