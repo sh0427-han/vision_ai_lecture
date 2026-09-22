@@ -28,3 +28,21 @@ https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_C
 ### Vision Transformer
 https://openreview.net/forum?id=YicbFdNTTy
 https://arxiv.org/abs/2010.11929
+
+
+## Intro / Sensor References
+
+### OpenCV Mat - The Basic Image Container
+https://docs.opencv.org/4.10.0/d6/d6d/tutorial_mat_the_basic_image_container.html
+
+- 디지털 이미지의 Pixel, Channel, Matrix 저장 방식 참고.
+
+### Intel RealSense D400 Documentation
+https://dev.intelrealsense.com/docs/multiple-depth-cameras-configuration%C2%A0
+
+- Depth / Color sensor와 3D Point Cloud 응용 설명 참고.
+
+### Event-based Vision: A Survey
+https://arxiv.org/abs/1904.08405
+
+- Event Camera의 비동기 밝기 변화 측정 원리와 응용 설명 참고.
