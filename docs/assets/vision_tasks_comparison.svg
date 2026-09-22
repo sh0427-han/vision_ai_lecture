@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="650" viewBox="0 0 1500 650">
+<rect width="1500" height="650" fill="#fff"/>
+<style>.t{font:700 30px Arial;fill:#111827}.h{font:700 19px Arial;fill:#111827}.s{font:400 14px Arial;fill:#64748b}.card{fill:#fff;stroke:#dbe2ea;stroke-width:2}.img{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}.bb{fill:none;stroke:#2563eb;stroke-width:5}.mask{fill:#60a5fa;opacity:.45}.def{fill:#ef4444}.tag{font:700 13px Arial;fill:#2563eb}</style>
+<text x="750" y="44" text-anchor="middle" class="t">같은 이미지라도 “무엇을 알고 싶은가?”에 따라 Vision Task가 달라진다</text>
+
+<g transform="translate(45 100)">
+<rect width="330" height="450" rx="22" class="card"/><text x="165" y="36" text-anchor="middle" class="h">Classification</text><text x="165" y="62" text-anchor="middle" class="s">이 이미지 전체는 무엇인가?</text>
+<g transform="translate(40 90)"><rect width="250" height="210" rx="14" class="img"/><rect x="45" y="58" width="160" height="95" rx="14" fill="#94a3b8"/><circle cx="192" cy="72" r="13" class="def"/></g>
+<text x="165" y="350" text-anchor="middle" class="tag">OUTPUT</text><text x="165" y="380" text-anchor="middle" class="h">Abnormal 97%</text><text x="165" y="410" text-anchor="middle" class="s">위치는 알려주지 않음</text>
+</g>
+
+<g transform="translate(405 100)">
+<rect width="330" height="450" rx="22" class="card"/><text x="165" y="36" text-anchor="middle" class="h">Object Detection</text><text x="165" y="62" text-anchor="middle" class="s">무엇이 어디에 있는가?</text>
+<g transform="translate(40 90)"><rect width="250" height="210" rx="14" class="img"/><rect x="45" y="58" width="160" height="95" rx="14" fill="#94a3b8"/><circle cx="192" cy="72" r="13" class="def"/><rect x="172" y="51" width="42" height="42" class="bb"/></g>
+<text x="165" y="350" text-anchor="middle" class="tag">OUTPUT</text><text x="165" y="380" text-anchor="middle" class="h">Defect + Bounding Box</text><text x="165" y="410" text-anchor="middle" class="s">위치를 Box 단위로 표현</text>
+</g>
+
+<g transform="translate(765 100)">
+<rect width="330" height="450" rx="22" class="card"/><text x="165" y="36" text-anchor="middle" class="h">Segmentation</text><text x="165" y="62" text-anchor="middle" class="s">정확히 어느 Pixel인가?</text>
+<g transform="translate(40 90)"><rect width="250" height="210" rx="14" class="img"/><rect x="45" y="58" width="160" height="95" rx="14" fill="#94a3b8"/><circle cx="192" cy="72" r="13" class="def"/><circle cx="192" cy="72" r="20" class="mask"/></g>
+<text x="165" y="350" text-anchor="middle" class="tag">OUTPUT</text><text x="165" y="380" text-anchor="middle" class="h">Defect Mask</text><text x="165" y="410" text-anchor="middle" class="s">면적·형상 측정에 유리</text>
+</g>
+
+<g transform="translate(1125 100)">
+<rect width="330" height="450" rx="22" class="card"/><text x="165" y="36" text-anchor="middle" class="h">Tracking / Depth</text><text x="165" y="62" text-anchor="middle" class="s">시간과 공간 정보까지</text>
+<g transform="translate(40 90)"><rect width="250" height="210" rx="14" class="img"/><rect x="45" y="58" width="160" height="95" rx="14" fill="#94a3b8"/><circle cx="180" cy="82" r="11" fill="#2563eb"/><path d="M75 160 C115 135,135 105,180 82" fill="none" stroke="#2563eb" stroke-width="4" stroke-dasharray="8 6"/><text x="50" y="190" class="s">ID 3 → trajectory</text></g>
+<text x="165" y="350" text-anchor="middle" class="tag">OUTPUT</text><text x="165" y="380" text-anchor="middle" class="h">ID / Motion / Distance</text><text x="165" y="410" text-anchor="middle" class="s">영상 추적·거리·3D 판단</text>
+</g>
+<text x="750" y="605" text-anchor="middle" class="h">문제 정의가 먼저이고, 모델 선택은 그 다음이다.</text>
+</svg>
