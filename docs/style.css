@@ -280,3 +280,149 @@ th {
     padding-top: 56px;
   }
 }
+
+
+.hero-questions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.question {
+  min-height: 112px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.use-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.use-card .tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.use-card h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.use-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.big-number {
+  margin: 10px 0 4px;
+  color: #0f172a;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.metric-note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.sensor-table td:first-child {
+  min-width: 130px;
+  font-weight: 700;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.step {
+  position: relative;
+  padding: 20px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.step strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.step span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.references {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .hero-questions,
+  .grid-4,
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-questions,
+  .grid-4,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
