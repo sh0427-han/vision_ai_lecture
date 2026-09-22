@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vision AI Study & Lecture</title>
-  <meta name="description" content="Vision AI를 처음부터 CNN과 Vision Transformer까지 배우는 강의">
+  <meta name="description" content="Vision AI를 처음부터 AI 기초와 CNN까지 배우는 완전 기초 강의">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="slide.css">
   <script src="slide.js" defer></script>
@@ -17,7 +17,6 @@
       <a href="intro.html">01 Intro</a>
       <a href="ai_basics.html">02 AI Basics</a>
       <a href="cnn.html">03 CNN</a>
-      <a href="vit.html">04 ViT</a>
       <a href="https://github.com/sh0427-han/vision_ai">GitHub</a>
     </div>
   </nav>
@@ -26,7 +25,7 @@
 <main class="deck" aria-live="polite">
   <section class="slide active">
     <div class="slide-inner slide-hero">
-      <span class="chapter-chip">Vision AI Study & Lecture</span>
+      <span class="chapter-chip">Vision AI · Beginner Lecture</span>
       <h1 class="slide-title">AI는 세상을 어떻게 볼까?</h1>
       <p class="slide-subtitle">
         우리는 장면을 보면 곧바로 의미를 이해하지만 컴퓨터가 처음 받는 것은 Pixel, 거리, 온도, 3차원 점처럼 수많은 숫자입니다.
@@ -44,9 +43,7 @@
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">Vision AI는 “이미지를 분류하는 AI”보다 더 넓습니다</h2>
-      <div class="figure">
-        <img src="assets/vision_ai_pipeline.svg" alt="Vision AI 전체 파이프라인">
-      </div>
+      <div class="figure"><img src="assets/vision_ai_pipeline.svg" alt="Vision AI 전체 파이프라인"></div>
     </div>
   </section>
 
@@ -71,9 +68,7 @@
     <div class="slide-inner">
       <span class="slide-number">3</span>
       <h2 class="slide-title">Vision 정보는 여러 센서에서 옵니다</h2>
-      <div class="figure">
-        <img src="assets/sensor_overview.svg" alt="Vision Sensor 비교">
-      </div>
+      <div class="figure"><img src="assets/sensor_overview.svg" alt="Vision Sensor 비교"></div>
     </div>
   </section>
 
@@ -81,23 +76,19 @@
     <div class="slide-inner">
       <span class="slide-number">4</span>
       <h2 class="slide-title">사람은 장면을 보고, 컴퓨터는 숫자를 받습니다</h2>
-      <div class="figure">
-        <img src="assets/image_as_numbers.svg" alt="이미지와 숫자 배열 비교">
-      </div>
+      <div class="figure"><img src="assets/image_as_numbers.svg" alt="이미지와 숫자 배열 비교"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">5</span>
-      <h2 class="slide-title">강의 흐름</h2>
-      <div class="grid-4">
-        <div class="card"><span class="number">01</span><h3>Vision AI 입문</h3><p>센서, Pixel, 대표 Task, 어려운 이유</p></div>
-        <div class="card"><span class="number">02</span><h3>AI 기초</h3><p>비선형성, Loss, Backprop, Dataset</p></div>
-        <div class="card"><span class="number">03</span><h3>CNN</h3><p>Kernel, Convolution, Feature Map</p></div>
-        <div class="card"><span class="number">04</span><h3>Vision Transformer</h3><p>Patch, Token, Attention</p></div>
+      <h2 class="slide-title">이 강의에서 딱 세 단계만 봅니다</h2>
+      <div class="grid">
+        <div class="card"><span class="number">01</span><h3>Vision AI 입문</h3><p>센서, Pixel, 대표 Task, 왜 어려운지</p></div>
+        <div class="card"><span class="number">02</span><h3>AI 기초</h3><p>Weight, 비선형성, Loss, Backprop, Dataset</p></div>
+        <div class="card"><span class="number">03</span><h3>CNN</h3><p>작은 특징을 찾아 조합하면서 사물을 인식하는 방법</p></div>
       </div>
-      <div class="callout">다음 슬라이드에서 마지막으로 전체 학습 흐름을 확인한 뒤 Lecture 01로 바로 이어집니다.</div>
     </div>
   </section>
 
@@ -113,12 +104,12 @@ Numeric Data
     ↓
 AI Learning
     ↓
-CNN / Vision Transformer
+CNN
     ↓
 Feature / Representation
     ↓
 Classification · Detection · Segmentation · Tracking · 3D</div>
-      <p class="big-statement">이제 Lecture 01에서 “컴퓨터는 무엇을 보는가?”부터 시작합니다.</p>
+      <p class="big-statement">완전 기초 강의의 목표는 “CNN이 이미지를 어떻게 특징으로 바꾸는지” 감을 잡는 것입니다.</p>
     </div>
   </section>
 </main>
@@ -127,12 +118,8 @@ Classification · Detection · Segmentation · Tracking · 3D</div>
   <div class="deck-controls-inner">
     <button class="deck-button" type="button" data-slide-prev>← 이전</button>
     <div class="deck-status">
-      <span class="deck-counter">
-        <span data-slide-current>1</span> / <span data-slide-total>1</span>
-      </span>
-      <div class="deck-progress">
-        <div class="deck-progress-bar" data-slide-progress></div>
-      </div>
+      <span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
+      <div class="deck-progress"><div class="deck-progress-bar" data-slide-progress></div></div>
     </div>
     <button class="deck-button" type="button" data-slide-next>다음 →</button>
   </div>
