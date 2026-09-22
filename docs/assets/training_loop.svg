@@ -2,7 +2,7 @@
 <text x="36" y="52.0" font-size="30" fill="#17243b" text-anchor="start">예측 → 오차 → 기울기 → 가중치 갱신</text>
 <path d="M32 76 L1168 76" fill="none" stroke="#d8e1ed" stroke-width="1"/>
 <rect x="32" y="548" width="1136" height="40" rx="10" fill="#edf3fc" stroke="none" stroke-width="2"/>
-<text x="600.0" y="575.1999999999999" font-size="18" fill="#53647b" text-anchor="middle">지도학습 예시 · 같은 과정을 Mini-batch마다 반복합니다.</text>
+<text x="600.0" y="575.1999999999999" font-size="18" fill="#53647b" text-anchor="middle">정답이 있는 학습 예시 · 같은 과정을 Mini-batch마다 반복합니다.</text>
 <rect x="32.0" y="114" width="254.0" height="352" rx="16" fill="#f4f7fc" stroke="#d8e1ed" stroke-width="2"/>
 <rect x="52.0" y="136" width="5" height="26" rx="2" fill="#2563eb" stroke="none" stroke-width="2"/>
 <text x="74.0" y="159.6" font-size="24" fill="#17243b" text-anchor="start">01  Forward</text>
