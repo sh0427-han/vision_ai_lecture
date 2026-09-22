@@ -2,8 +2,6 @@
 
 ## 1. 첫 질문
 
-강의는 정의부터 시작하지 않습니다.
-
 ![Intro Question](../../assets/diagrams/intro_question_apple.svg)
 
 > 이 이미지는 무엇으로 보이나요?
@@ -32,7 +30,7 @@ Pixel / Channel 값
 숫자 배열
 ```
 
-Vision AI의 핵심 질문은 다음입니다.
+**Vision AI의 핵심 질문**
 
 > 이 숫자에서 어떻게 물체와 상태의 의미를 찾을까?
 
@@ -102,7 +100,7 @@ B
 “사과”
 ```
 
-이것이 **Generalization**을 이해하는 첫 번째 직관입니다.
+**Generalization**은 입력 조건이 달라져도 중요한 특징을 유지해 올바르게 판단하는 능력입니다.
 
 학습에서 본 이미지와 완전히 같은 이미지만 맞히는 것이 아니라,
 새로운 조명·각도·배경에서도 중요한 특징을 찾아야 합니다.
@@ -154,7 +152,7 @@ Vision AI에서 입력은 일반적인 RGB 사진만이 아닙니다.
 
 ![Sensor Overview](../../assets/diagrams/sensor_overview.svg)
 
-문제에 따라 먼저 생각해야 할 질문은:
+센서 선택에서 중요한 질문:
 
 > 어떤 모델을 쓸까?
 
@@ -164,9 +162,7 @@ Vision AI에서 입력은 일반적인 RGB 사진만이 아닙니다.
 
 에 가깝습니다.
 
-## 9. 다음 질문
-
-이제 다음 질문으로 넘어갑니다.
+## 9. AI는 숫자에서 규칙과 Feature를 학습한다
 
 ```text
 Sensor / Image
