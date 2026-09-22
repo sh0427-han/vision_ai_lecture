@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=layoutfix-20260922-3">
-  <script src="slide.js?v=layoutfix-20260922-3" defer></script>
+  <link rel="stylesheet" href="slide.css?v=mathfix-20260922-4">
+  <script src="slide.js?v=mathfix-20260922-4" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -37,7 +37,7 @@
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3"
+            src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -64,7 +64,7 @@
             <h3>“사과”라는 의미</h3>
           </div>
           <div class="apple-photo-frame apple-photo-frame--comparison">
-            <img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="사람이 보는 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="사람이 보는 사과 사진">
           </div>
           <p class="visual-panel-note">색 · 윤곽 · 꼭지 · 표면 질감을 함께 보고 의미를 판단</p>
         </article>
@@ -77,39 +77,50 @@
             <h3>RGB 3채널 숫자 배열</h3>
           </div>
           <div class="rgb-tensor" aria-label="가로, 세로, 채널 축으로 쌓인 RGB 3차원 숫자 배열">
-            <div class="tensor-axis tensor-axis--width">Width → 960 px</div>
-            <div class="tensor-axis tensor-axis--height">Height → 640 px</div>
-            <div class="tensor-axis tensor-axis--channel">Channel → R · G · B</div>
+            <div class="tensor-stage">
+              <div class="tensor-plane tensor-plane--b">
+                <span class="tensor-plane-label">B</span>
+                <pre>101 119 137  92  83  74  66
+140 128 112  96  82  68  56
+134 110  85  72  61  51  42
+ 93 100  88  76  64  53  43
+ 88  91  84  75  64  55  46</pre>
+              </div>
 
-            <div class="tensor-plane tensor-plane--b">
-              <span class="tensor-plane-label">B</span>
-              <pre>101 119 137  92  83  74  66  57  51
-140 128 112  96  82  68  56  48  41
-134 110  85  72  61  51  42  35  29
- 93 100  88  76  64  53  43  34  18
- 88  91  84  75  64  55  46  38  31
- 82  85  81  74  66  57  49  42  36</pre>
-            </div>
-            <div class="tensor-plane tensor-plane--g">
-              <span class="tensor-plane-label">G</span>
-              <pre>141 128 168 112 101  92  83  74  66
-149 138 124 109  94  82  71  63  58
-136 126 109  97  84  71  60  52  45
-109 110 102  94  81  69  57  48  39
-101 104  99  91  80  68  58  49  42
- 96  98  95  89  79  70  61  54  47</pre>
-            </div>
-            <div class="tensor-plane tensor-plane--r">
-              <span class="tensor-plane-label">R</span>
-              <pre>224 232 231 221 208 196 181 166 151
-239 228 214 196 172 145 118 104  92
-238 226 205 181 154 128 101  87  79
-222 217 198 174 149 121  96  82  71
-207 201 185 165 143 119  97  83  76
-190 184 171 157 138 120 103  92  84</pre>
+              <div class="tensor-plane tensor-plane--g">
+                <span class="tensor-plane-label">G</span>
+                <pre>141 128 168 112 101  92  83
+149 138 124 109  94  82  71
+136 126 109  97  84  71  60
+109 110 102  94  81  69  57
+101 104  99  91  80  68  58</pre>
+              </div>
+
+              <div class="tensor-plane tensor-plane--r tensor-plane--front">
+                <span class="tensor-plane-label">R</span>
+                <pre>224 232 231 221 208 196 181
+239 228 214 196 172 145 118
+238 226 205 181 154 128 101
+222 217 198 174 149 121  96
+207 201 185 165 143 119  97</pre>
+              </div>
+
+              <div class="tensor-axis tensor-axis--width">
+                <span class="tensor-axis-line" aria-hidden="true"></span>
+                <strong>Width = 960 px</strong>
+              </div>
+              <div class="tensor-axis tensor-axis--height">
+                <span class="tensor-axis-line" aria-hidden="true"></span>
+                <strong>Height = 640 px</strong>
+              </div>
+              <div class="tensor-axis tensor-axis--channel">
+                <span class="tensor-axis-line" aria-hidden="true"></span>
+                <strong>Channel = 3</strong>
+                <small>R · G · B</small>
+              </div>
             </div>
           </div>
-          <div class="tensor-shape-note"><strong>Image = 640 × 960 × 3</strong><span>세로 × 가로 × RGB Channel</span></div>
+          <div class="tensor-shape-note"><strong>Image = 640 × 960 × 3</strong><span>Height × Width × Channel</span></div>
           <p class="visual-panel-note">실제 이미지는 이런 숫자가 가로·세로 전체 Pixel에 걸쳐 존재합니다.</p>
         </article>
       </div>
@@ -125,7 +136,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -160,14 +171,14 @@
       <h2 class="slide-title">같은 사과도 촬영 조건에 따라 전혀 다른 숫자가 됩니다</h2>
       <p class="slide-subtitle">사람에게는 같은 물체지만 조명·거리·시점·가림·초점·색 환경이 바뀌면 Pixel 분포는 크게 달라집니다.</p>
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="어두운 조명"></div><p>밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>시점 변화</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="시점이 달라진 사과"></div><p>윤곽과 보이는 면이 변화</p></article>
-        <article class="variation-card"><h3>작은 크기</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 보이지 않음</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 / 화이트밸런스</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="조명 색과 화이트밸런스 변화로 초록빛이 강해진 사과"></div><p>같은 물체도 RGB 균형이 크게 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="어두운 조명"></div><p>밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>시점 변화</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="시점이 달라진 사과"></div><p>윤곽과 보이는 면이 변화</p></article>
+        <article class="variation-card"><h3>작은 크기</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 보이지 않음</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 / 화이트밸런스</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="조명 색과 화이트밸런스 변화로 초록빛이 강해진 사과"></div><p>같은 물체도 RGB 균형이 크게 변화</p></article>
       </div>
     </div>
   </section>
@@ -177,7 +188,7 @@
       <span class="slide-number">4</span>
       <h2 class="slide-title">AI가 배워야 하는 것은 “변하는 Pixel”이 아니라 “유지되는 의미”</h2>
       <p class="slide-subtitle">학습에서 보지 못한 조건에서도 중요한 특징을 찾아 같은 의미로 판단해야 합니다.</p>
-      <div class="figure"><img src="assets/visual_generalization.svg?v=layoutfix-20260922-3" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
+      <div class="figure"><img src="assets/visual_generalization.svg?v=mathfix-20260922-4" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
     </div>
   </section>
 
@@ -190,7 +201,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
         <div class="pipeline-arrow" aria-hidden="true">→</div>
@@ -245,7 +256,7 @@
       <div class="sensor-example-grid">
         <article class="sensor-example-card">
           <div class="sensor-card-head"><span>RGB</span><strong>색 · 밝기 · 질감</strong></div>
-          <div class="sensor-preview sensor-preview--rgb"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="RGB 카메라 영상 예시"></div>
+          <div class="sensor-preview sensor-preview--rgb"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="RGB 카메라 영상 예시"></div>
           <div class="sensor-data"><b>출력 예</b><span>H × W × 3 이미지</span><code>[R, G, B]</code></div>
         </article>
         <article class="sensor-example-card">
@@ -271,7 +282,7 @@
         </article>
         <article class="sensor-example-card">
           <div class="sensor-card-head"><span>IR</span><strong>적외선 · 열 분포</strong></div>
-          <div class="sensor-preview sensor-preview--thermal"><img src="assets/vision_task_apple_reference.jpg?v=layoutfix-20260922-3" alt="적외선 데이터의 의사색상 시각화 예시"><span>pseudo-color</span></div>
+          <div class="sensor-preview sensor-preview--thermal"><img src="assets/vision_task_apple_reference.jpg?v=mathfix-20260922-4" alt="적외선 데이터의 의사색상 시각화 예시"><span>pseudo-color</span></div>
           <div class="sensor-data"><b>출력 예</b><span>IR intensity / temperature map</span><code>1 channel → colorized view</code></div>
         </article>
       </div>
