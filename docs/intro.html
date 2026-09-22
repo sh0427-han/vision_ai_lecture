@@ -11,60 +11,136 @@
   <nav class="nav">
     <a class="brand" href="index.html">Vision AI</a>
     <div class="nav-links">
+      <a href="index.html#sensors">Sensors</a>
       <a href="intro.html">Intro</a>
       <a href="cnn.html">CNN</a>
       <a href="vit.html">ViT</a>
     </div>
   </nav>
 </header>
+
 <main>
   <article class="article">
     <p class="eyebrow">Lecture 01</p>
     <h1>Vision AI 입문</h1>
-    <p>사람에게는 사진이지만, 컴퓨터에게는 숫자 배열입니다.</p>
+    <p>
+      모델 구조부터 시작하지 않습니다. 먼저 현실 세계가 센서를 통해 어떤 숫자로 바뀌고,
+      왜 그 숫자에서 의미를 찾는 일이 어려운지를 이해합니다.
+    </p>
 
-    <h2>컴퓨터가 보는 이미지</h2>
-    <div class="flow">224 × 224 RGB Image
-        ↓
-224 × 224 × 3 Tensor
-        ↓
-150,528 numeric values</div>
+    <h2>1. Vision AI란?</h2>
+    <p>
+      Vision AI는 이미지나 영상, 거리 지도, 3차원 Point Cloud 같은 시각 데이터를 이용해
+      장면의 의미를 추출하는 AI 기술입니다. 무엇인지 분류하는 것뿐 아니라 위치, 형태,
+      움직임, 거리, 이상 여부를 판단하는 문제까지 포함합니다.
+    </p>
+    <div class="figure">
+      <img src="assets/vision_ai_pipeline.svg" alt="Vision AI 전체 파이프라인">
+    </div>
+
+    <h2>2. Vision 정보는 어디에서 얻을까?</h2>
+    <div class="figure">
+      <img src="assets/sensor_overview.svg" alt="다양한 Vision Sensor">
+    </div>
+
+    <div class="term"><strong>RGB Camera</strong>가시광의 색과 밝기를 Pixel 형태로 기록합니다. 가장 익숙한 일반 카메라입니다.</div>
+    <div class="term"><strong>Mono Camera</strong>색보다 밝기 정보를 중심으로 기록합니다. 산업 검사에서는 높은 감도나 단순한 형상 분석에 유리한 경우가 있습니다.</div>
+    <div class="term"><strong>IR / NIR</strong>사람의 눈에 보이지 않는 적외선 영역을 이용해 야간이나 특정 재질 특성을 관찰합니다.</div>
+    <div class="term"><strong>Thermal Camera</strong>열 복사를 기반으로 온도 분포를 영상처럼 표현합니다.</div>
+    <div class="term"><strong>Depth Camera</strong>각 Pixel에 색 대신 또는 색과 함께 거리를 저장합니다. Stereo나 ToF가 대표적인 깊이 측정 방식입니다.</div>
+    <div class="term"><strong>LiDAR</strong>레이저를 이용해 3차원 거리 정보를 얻으며, 결과를 Point Cloud로 표현하는 경우가 많습니다.</div>
+    <div class="term"><strong>Event Camera</strong>정해진 FPS로 전체 Frame을 찍기보다 각 Pixel의 밝기 변화가 발생할 때 비동기 Event를 출력합니다.</div>
+
+    <h2>3. 사람에게 사진, 컴퓨터에게 숫자</h2>
+    <div class="figure">
+      <img src="assets/image_as_numbers.svg" alt="이미지를 숫자 배열로 보는 방법">
+    </div>
 
     <div class="term">
       <strong>Pixel</strong>
-      이미지의 가장 작은 단위입니다. RGB 이미지에서는 한 Pixel이 R, G, B 세 값으로 표현됩니다.
+      디지털 이미지를 구성하는 작은 위치 단위입니다. RGB 영상에서는 한 Pixel에 보통 R, G, B 세 Channel 값이 있습니다.
+    </div>
+    <div class="term">
+      <strong>Channel</strong>
+      한 Pixel이 갖는 정보의 축입니다. RGB는 3 Channel이고, Gray Image는 보통 1 Channel입니다.
     </div>
     <div class="term">
       <strong>Tensor</strong>
-      딥러닝에서 이미지, Batch, Feature Map 등을 담는 다차원 숫자 배열입니다.
+      딥러닝에서 이미지와 Feature를 담는 다차원 숫자 배열입니다. PyTorch에서는 이미지 Batch가 흔히 B×C×H×W 형태입니다.
     </div>
 
-    <h2>왜 같은 물체를 알아보기 어려울까?</h2>
+    <h3>수치 예시</h3>
+    <div class="flow">1920 × 1080 RGB Image
+          ↓
+1920 × 1080 × 3
+          ↓
+6,220,800 channel values / frame
+
+30 FPS
+          ↓
+186,624,000 channel values / second</div>
+
+    <h2>4. 그런데 왜 이미지 인식은 어려울까?</h2>
     <p>
-      같은 제품이라도 조명, 회전, 카메라 각도, 거리, 가림, Blur가 바뀌면
-      Pixel 값은 크게 달라집니다.
+      사람은 조명이 조금 바뀌어도 같은 컵이라고 쉽게 판단합니다. 하지만 컴퓨터 입장에서는
+      Pixel 값이 직접 달라집니다.
     </p>
+
     <div class="flow">같은 물체
   ↓
-밝기 / 위치 / 회전 / 배경 변화
+조명 / 시점 / 크기 / 회전 / 가림 / Blur / 배경
   ↓
-서로 다른 Pixel 배열
+서로 다른 숫자 배열
   ↓
 그래도 같은 의미를 찾아야 함</div>
 
-    <h2>대표 Vision Task</h2>
+    <p>
+      예를 들어 밝은 환경의 한 Pixel이 <code>[180, 170, 165]</code>였다가,
+      어두운 환경에서는 <code>[80, 75, 72]</code>가 될 수 있습니다.
+    </p>
+
+    <h2>5. Vision AI는 어떤 질문에 답할까?</h2>
     <table>
-      <thead><tr><th>Task</th><th>질문</th><th>출력</th></tr></thead>
+      <thead><tr><th>Task</th><th>질문</th><th>대표 출력</th></tr></thead>
       <tbody>
-        <tr><td>Classification</td><td>무엇인가?</td><td>Class probability</td></tr>
-        <tr><td>Detection</td><td>무엇이 어디에 있는가?</td><td>Class + Bounding Box</td></tr>
-        <tr><td>Segmentation</td><td>정확히 어느 Pixel인가?</td><td>Pixel Mask</td></tr>
+        <tr><td>Classification</td><td>이 이미지가 무엇인가?</td><td>Class Probability</td></tr>
+        <tr><td>Object Detection</td><td>무엇이 어디에 있는가?</td><td>Class + Bounding Box</td></tr>
+        <tr><td>Segmentation</td><td>정확히 어느 Pixel이 물체인가?</td><td>Pixel Mask</td></tr>
+        <tr><td>Tracking</td><td>시간에 따라 어디로 움직이는가?</td><td>ID + Trajectory</td></tr>
+        <tr><td>Depth / 3D</td><td>얼마나 멀고 어떤 공간인가?</td><td>Depth / 3D Geometry</td></tr>
       </tbody>
     </table>
 
+    <h2>6. 결국 모델은 무엇을 배우는가?</h2>
+    <p>
+      입력 숫자를 그대로 비교하기보다, 판단에 필요한 Feature를 만들어야 합니다.
+      여기서부터 CNN과 Vision Transformer가 등장합니다.
+    </p>
+
+    <div class="flow">Raw Sensor Data
+      ↓
+Feature Extraction
+      ↓
+Representation
+      ↓
+Classification / Detection / Segmentation / Measurement</div>
+
     <div class="callout">
-      다음 질문은 자연스럽습니다. <strong>수많은 Pixel에서 어떻게 유용한 특징을 찾을까?</strong>
-      이 질문에 대한 대표적인 답이 CNN입니다.
+      다음 질문은 <strong>“수백만 개의 숫자에서 어떻게 유용한 Feature를 만들까?”</strong>입니다.
+      CNN은 작은 지역의 패턴을 반복적으로 추출하는 방식으로 이 문제를 풀기 시작합니다.
+    </div>
+
+    <div class="references">
+      <p>
+        OpenCV · Mat - The Basic Image Container:
+        <a href="https://docs.opencv.org/4.10.0/d6/d6d/tutorial_mat_the_basic_image_container.html">
+          Pixel, Channel, Matrix 표현
+        </a>
+      </p>
+      <p>
+        Gallego et al. · Event-based Vision: A Survey:
+        <a href="https://arxiv.org/abs/1904.08405">Event Camera 개요</a>
+      </p>
     </div>
   </article>
 </main>
