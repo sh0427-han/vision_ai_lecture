@@ -12,21 +12,27 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 ### 01. Vision AI Intro
 
 - 사람과 컴퓨터가 이미지를 보는 방식의 차이
-- Pixel / Channel / Tensor
-- 조명, 시점, 크기, 가림 등에 따른 이미지 변화
+- Pixel / RGB Channel과 이미지 숫자 배열
+- 조명, 시점, 크기, 가림, 초점, 색온도 등에 따른 이미지 변화
+- 카메라 RGB 입력 → 3채널 데이터 → Feature 학습 → 결과
 - Vision AI가 필요한 이유
-- Vision Sensor
+- 대표 Vision Sensor: RGB / LiDAR / IR과 각 센서의 출력 데이터
 
 ### 02. AI Basics
 
-- AI / Machine Learning / Deep Learning
-- 지도학습 / 비지도학습
+- AI / Machine Learning / Deep Learning / Computer Vision의 관계
 - Classification / Regression
+- Linear Regression
+- Loss Function / Gradient / Optimizer
+- Parameter / Hyperparameter
 - Perceptron
 - AND / XOR
 - 비선형성과 Activation Function
-- Loss / Gradient / Backpropagation
+- Backpropagation
+- Batch / Iteration / Epoch
 - Train / Validation / Test
+- Data Leakage와 Group 단위 Split
+- K-Fold / Group K-Fold / Leave-One-Out
 - Overfitting / Generalization
 
 ### 03. Vision AI
