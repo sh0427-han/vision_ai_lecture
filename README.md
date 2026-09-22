@@ -4,7 +4,7 @@
 
 강의용 웹 슬라이드는 아래 GitHub Pages에서 바로 확인할 수 있습니다.
 
-**https://sh0427-han.github.io/vision_ai/**
+**https://sh0427-han.github.io/vision_ai_lecture/**
 
 
 
@@ -93,7 +93,7 @@ Object-level Feature
 ## 저장소 구조
 
 ```text
-vision_ai/
+vision_ai_lecture/
 ├── README.md
 ├── lectures/
 │   ├── 01_intro/
