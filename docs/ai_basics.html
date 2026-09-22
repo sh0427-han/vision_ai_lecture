@@ -24,45 +24,48 @@
   <section class="slide active">
     <div class="slide-inner slide-hero">
       <span class="chapter-chip">Lecture 02 · AI Fundamentals</span>
-      <h1 class="slide-title">신경망은 어떻게 학습할까?</h1>
+      <h1 class="slide-title">AI는 어떻게 데이터에서 규칙을 배울까?</h1>
       <p class="slide-subtitle">
-        CNN을 보기 전에 Weight가 무엇이고, 왜 비선형성이 필요하며,
-        Loss와 Backpropagation이 어떻게 Dataset에서 학습으로 이어지는지 이해합니다.
+        CNN을 보기 전에 AI·머신러닝·딥러닝의 관계부터
+        지도학습, 신경망, 비선형성, 학습, Dataset과 평가까지 연결해서 봅니다.
       </p>
-      <div class="flow">Dataset → Forward → Loss → Backpropagation → Weight Update → Feature Learning</div>
+      <div class="flow">Data → Model → Prediction → Loss → Learning → Generalization</div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">1</span>
-      <h2 class="slide-title">AI 모델은 결국 숫자를 바꾸는 함수</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="flow">Input x
-  ↓
-Model f(x; θ)
-  ↓
-Prediction ŷ</div>
-        </div>
-        <div>
-          <div class="term"><strong>Parameter</strong>학습 과정에서 값이 바뀌는 숫자입니다.</div>
-          <div class="term"><strong>Weight</strong>입력을 얼마나 반영할지 결정하는 대표적인 Parameter입니다.</div>
-          <div class="flow">y = wx + b</div>
-        </div>
-      </div>
+      <h2 class="slide-title">AI, Machine Learning, Deep Learning은 어떻게 다를까?</h2>
+      <div class="figure"><img src="assets/ai_ml_dl.svg" alt="AI Machine Learning Deep Learning 관계"></div>
+      <div class="callout"><strong>CNN은 Deep Learning 모델</strong>이고, Deep Learning은 Machine Learning의 한 갈래입니다.</div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">2</span>
-      <h2 class="slide-title">왜 비선형성이 필요한가?</h2>
-      <p class="slide-subtitle">
-        Activation Function 없이 Affine Layer만 여러 개 쌓으면 전체를 다시 하나의 Affine Transformation으로 합칠 수 있습니다.
-      </p>
-      <div class="figure">
-        <img src="assets/linear_vs_nonlinear.svg" alt="선형과 비선형 모델의 표현력 비교">
+      <h2 class="slide-title">규칙을 사람이 직접 쓰는 것 vs 데이터에서 배우는 것</h2>
+      <div class="slide-columns top">
+        <div>
+          <h3>전통적인 Rule-based 방식</h3>
+          <div class="flow">사람이 규칙 작성
+if 밝기 > 100
+and 면적 > 50
+→ abnormal</div>
+          <p class="slide-subtitle">조건이 명확하면 강력하지만 복잡한 이미지에서는 규칙 수가 빠르게 늘어날 수 있습니다.</p>
+        </div>
+        <div>
+          <h3>Machine Learning</h3>
+          <div class="flow">Data + Label
+      ↓
+Model Training
+      ↓
+Weight 학습
+      ↓
+Prediction</div>
+          <p class="slide-subtitle">모든 규칙을 사람이 직접 쓰기보다 데이터에서 유용한 관계를 찾습니다.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -70,27 +73,103 @@ Prediction ŷ</div>
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
-      <h2 class="slide-title">Activation Function이 깊은 네트워크를 의미 있게 만듭니다</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="term"><strong>Activation Function</strong>Layer 출력에 비선형 변환을 추가하는 함수입니다.</div>
-          <div class="flow">ReLU(x) = max(0, x)
+      <h2 class="slide-title">AI는 어떤 방식으로 배울까?</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="number">SUPERVISED</span>
+          <h3>지도학습</h3>
+          <p>입력과 정답 Label을 함께 보며 입력→정답 관계를 학습합니다.</p>
+        </div>
+        <div class="card">
+          <span class="number">UNSUPERVISED</span>
+          <h3>비지도학습</h3>
+          <p>정답 Label 없이 데이터의 구조, 군집, 표현을 찾습니다.</p>
+        </div>
+        <div class="card">
+          <span class="number">REINFORCEMENT</span>
+          <h3>강화학습</h3>
+          <p>행동에 따른 보상을 이용해 더 좋은 행동 전략을 학습합니다.</p>
+        </div>
+      </div>
+      <div class="callout">이번 Vision AI 기초 강의에서는 <strong>지도학습</strong>을 중심으로 봅니다.</div>
+    </div>
+  </section>
 
-[-2, -0.5, 0, 1, 3]
-        ↓
-[ 0,  0,   0, 1, 3]</div>
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">4</span>
+      <h2 class="slide-title">지도학습: 문제와 정답을 같이 본다</h2>
+      <div class="figure"><img src="assets/supervised_tasks.svg" alt="지도학습 분류 회귀"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">5</span>
+      <h2 class="slide-title">분류와 회귀</h2>
+      <div class="slide-columns top">
+        <div>
+          <div class="term"><strong>Classification · 분류</strong>정해진 범주 중 어느 Class인지 예측합니다.</div>
+          <div class="flow">Normal / Abnormal
+Cat / Dog
+Scratch / Particle / Normal</div>
         </div>
         <div>
-          <div class="flow">Linear
+          <div class="term"><strong>Regression · 회귀</strong>연속적인 숫자 값을 예측합니다.</div>
+          <div class="flow">거리 = 12.4 mm
+온도 = 37.1 °C
+위치 offset = 2.8 px</div>
+        </div>
+      </div>
+      <div class="callout">Vision AI에는 분류뿐 아니라 Detection의 좌표, 거리·각도 예측처럼 회귀 성격의 출력도 함께 등장합니다.</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">6</span>
+      <h2 class="slide-title">이진 분류와 다중 클래스 분류</h2>
+      <div class="slide-columns">
+        <div>
+          <div class="term"><strong>Binary Classification</strong>두 선택지 중 하나를 고릅니다.</div>
+          <div class="flow">raw score
+   ↓
+Sigmoid
+   ↓
+Abnormal = 0.87</div>
+        </div>
+        <div>
+          <div class="term"><strong>Multi-class Classification</strong>세 개 이상의 Class 중 하나를 고릅니다.</div>
+          <div class="flow">raw scores
+   ↓
+Softmax
+   ↓
+Normal 0.10
+CaseA  0.75
+CaseB  0.15</div>
+        </div>
+      </div>
+      <p class="slide-subtitle">Sigmoid와 Softmax는 모델의 출력 점수를 해석하기 쉬운 값으로 바꾸는 데 자주 사용됩니다.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">7</span>
+      <h2 class="slide-title">Model, Parameter, Hyperparameter</h2>
+      <div class="slide-columns top">
+        <div>
+          <div class="flow">Input x
   ↓
-ReLU
+Model f(x; θ)
   ↓
-Linear
-  ↓
-ReLU
-  ↓
-Linear</div>
-          <p class="slide-subtitle">현대 모델에서는 ReLU 외에도 GELU, SiLU 같은 Activation을 사용합니다.</p>
+Prediction ŷ</div>
+          <div class="term"><strong>Parameter</strong>학습 과정에서 모델이 스스로 바꾸는 값입니다. Weight와 Bias가 대표적입니다.</div>
+        </div>
+        <div>
+          <div class="term"><strong>Hyperparameter</strong>Learning Rate, Batch Size, Layer 수처럼 학습 전에 사람이 설정하는 값입니다.</div>
+          <div class="flow">Parameter      → 모델이 학습
+Hyperparameter → 사람이 설정/탐색</div>
         </div>
       </div>
     </div>
@@ -98,20 +177,87 @@ Linear</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">4</span>
+      <span class="slide-number">8</span>
+      <h2 class="slide-title">신경망의 가장 작은 직관: Perceptron</h2>
+      <div class="figure"><img src="assets/perceptron.svg" alt="Perceptron 구조"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">9</span>
+      <h2 class="slide-title">왜 Layer를 여러 개 쌓을까?</h2>
+      <div class="slide-columns top">
+        <div>
+          <p class="big-statement">하나의 단순한 결정 경계로는 풀 수 없는 문제가 있습니다.</p>
+          <div class="flow">XOR
+0,0 → 0
+0,1 → 1
+1,0 → 1
+1,1 → 0</div>
+        </div>
+        <div>
+          <div class="term"><strong>Hidden Layer</strong>입력과 출력 사이에서 새로운 Feature를 만드는 중간 Layer입니다.</div>
+          <div class="term"><strong>Deep Neural Network</strong>여러 Hidden Layer를 가진 깊은 신경망입니다.</div>
+          <div class="callout">하지만 Layer만 많이 쌓는 것만으로는 충분하지 않습니다. <strong>비선형성</strong>이 필요합니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">10</span>
+      <h2 class="slide-title">왜 비선형성이 필요한가?</h2>
+      <p class="slide-subtitle">Activation Function 없이 Affine Layer만 여러 개 쌓으면 전체를 다시 하나의 Affine Transformation으로 합칠 수 있습니다.</p>
+      <div class="figure"><img src="assets/linear_vs_nonlinear.svg" alt="선형과 비선형 모델의 표현력 비교"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">11</span>
+      <h2 class="slide-title">Activation Function</h2>
+      <div class="slide-columns">
+        <div>
+          <div class="term"><strong>Activation Function</strong>Layer 출력에 비선형성을 추가합니다.</div>
+          <div class="flow">ReLU(x) = max(0, x)
+
+[-2, -0.5, 0, 1, 3]
+        ↓
+[ 0,  0,   0, 1, 3]</div>
+        </div>
+        <div>
+          <div class="flow">Linear / Conv
+      ↓
+Activation
+      ↓
+Linear / Conv
+      ↓
+Activation
+      ↓
+복잡한 Function</div>
+          <p class="slide-subtitle">CNN에서는 ReLU, SiLU 같은 Activation이 널리 사용됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">12</span>
       <h2 class="slide-title">Feature와 Representation</h2>
-      <p class="slide-subtitle">모델의 목표는 Pixel을 그대로 외우는 것이 아니라 문제 해결에 유용한 내부 표현을 만드는 것입니다.</p>
       <div class="slide-columns">
         <div>
           <div class="term"><strong>Feature</strong>문제를 푸는 데 유용한 특징입니다.</div>
-          <div class="term"><strong>Representation</strong>입력을 모델 내부에서 다시 표현한 숫자 형태입니다.</div>
+          <div class="term"><strong>Representation</strong>입력을 모델 내부에서 유용한 숫자 형태로 다시 표현한 결과입니다.</div>
         </div>
         <div>
-          <div class="flow">Raw Pixel
+          <div class="flow">Raw Input
    ↓
-Edge / Texture
+Simple Feature
    ↓
-Shape
+Combined Feature
    ↓
 Task에 유용한 Representation</div>
         </div>
@@ -121,26 +267,24 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">5</span>
+      <span class="slide-number">13</span>
       <h2 class="slide-title">“학습”은 Weight를 반복 수정하는 과정</h2>
-      <div class="figure">
-        <img src="assets/training_loop.svg" alt="딥러닝 학습 루프">
-      </div>
+      <div class="figure"><img src="assets/training_loop.svg" alt="딥러닝 학습 루프"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">6</span>
-      <h2 class="slide-title">Forward → Loss → Backpropagation → Optimizer</h2>
+      <span class="slide-number">14</span>
+      <h2 class="slide-title">Loss, Gradient, Backpropagation, Optimizer</h2>
       <div class="grid-2">
         <div>
-          <div class="term"><strong>Forward</strong>현재 Weight로 Prediction을 계산합니다.</div>
-          <div class="term"><strong>Loss</strong>Prediction과 정답 Label의 차이를 수치화합니다.</div>
+          <div class="term"><strong>Loss</strong>Prediction과 정답 사이의 차이를 수치화합니다.</div>
+          <div class="term"><strong>Gradient</strong>Weight를 바꿨을 때 Loss가 어느 방향으로 변하는지 알려줍니다.</div>
         </div>
         <div>
-          <div class="term"><strong>Gradient</strong>Parameter 변화가 Loss에 미치는 방향과 크기입니다.</div>
-          <div class="term"><strong>Backpropagation</strong>Loss에서 시작해 각 Parameter의 Gradient를 계산합니다.</div>
+          <div class="term"><strong>Backpropagation</strong>출력의 Loss에서 시작해 각 Weight의 Gradient를 계산합니다.</div>
+          <div class="term"><strong>Optimizer</strong>Gradient를 이용해 Weight를 실제로 수정합니다.</div>
         </div>
       </div>
       <div class="flow">new_weight = old_weight - learning_rate × gradient</div>
@@ -149,69 +293,57 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">7</span>
-      <h2 class="slide-title">Learning Rate, Batch, Epoch</h2>
+      <span class="slide-number">15</span>
+      <h2 class="slide-title">Batch, Iteration, Epoch</h2>
       <table>
         <thead><tr><th>용어</th><th>의미</th><th>예시</th></tr></thead>
         <tbody>
-          <tr><td>Learning Rate</td><td>한 번 Update할 때 Weight를 얼마나 크게 움직일지 결정</td><td>0.001</td></tr>
-          <tr><td>Batch</td><td>한 번의 Forward/Backward에 함께 사용하는 샘플 묶음</td><td>32 images</td></tr>
-          <tr><td>Epoch</td><td>Train Dataset 전체를 한 번 모두 사용한 횟수</td><td>30 epochs</td></tr>
+          <tr><td>Batch</td><td>한 번의 학습 Step에서 함께 사용하는 샘플 묶음</td><td>32 images</td></tr>
+          <tr><td>Iteration / Step</td><td>한 Batch를 사용해 Weight를 한 번 Update</td><td>1 update</td></tr>
+          <tr><td>Epoch</td><td>Train Dataset 전체를 한 번 사용</td><td>10,000장을 1회</td></tr>
         </tbody>
       </table>
-      <div class="callout">Learning Rate가 너무 크면 학습이 불안정할 수 있고, 너무 작으면 학습이 지나치게 느릴 수 있습니다.</div>
+      <div class="flow">10,000 images / batch 32
+≈ 313 iterations
+≈ 1 epoch</div>
+      <p class="slide-subtitle">Mini-batch는 전체 Dataset을 한 번에 계산하지 않고 작은 묶음으로 나누어 학습합니다.</p>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">8</span>
+      <span class="slide-number">16</span>
       <h2 class="slide-title">Dataset은 모델이 배우는 세상</h2>
-      <div class="figure">
-        <img src="assets/dataset_split.svg" alt="Train Validation Test 데이터 분리">
-      </div>
+      <div class="figure"><img src="assets/dataset_split.svg" alt="Train Validation Test 데이터 분리"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">9</span>
-      <h2 class="slide-title">Train / Validation / Test</h2>
-      <div class="grid-2">
-        <div>
-          <div class="term"><strong>Train</strong>실제로 Weight를 Update하는 데이터입니다.</div>
-          <div class="term"><strong>Validation</strong>모델 선택, Hyperparameter 조정, Early Stopping 등에 사용합니다.</div>
-          <div class="term"><strong>Test</strong>최종 일반화 성능을 평가하기 위해 가능한 한 독립적으로 유지합니다.</div>
-        </div>
-        <div>
-          <div class="callout"><strong>Data Leakage</strong><br>평가 시 알면 안 되는 정보가 Train 과정에 들어가 성능이 실제보다 좋아 보이는 문제입니다.</div>
-          <div class="flow">같은 원본 영상
-Train: frame_001
-Test : frame_002
-→ 거의 같은 장면이면 평가가 왜곡될 수 있음</div>
-        </div>
+      <span class="slide-number">17</span>
+      <h2 class="slide-title">Train / Validation / Test의 역할은 다릅니다</h2>
+      <div class="grid">
+        <div class="card"><span class="number">TRAIN</span><h3>문제집</h3><p>정답을 보며 Weight를 실제로 학습합니다.</p></div>
+        <div class="card"><span class="number">VALIDATION</span><h3>모의고사</h3><p>모델 선택, Hyperparameter 조정, Overfitting 확인에 사용합니다.</p></div>
+        <div class="card"><span class="number">TEST</span><h3>최종 시험</h3><p>가능한 한 마지막까지 보지 않고 일반화 성능을 평가합니다.</p></div>
       </div>
+      <div class="callout"><strong>Validation을 계속 보며 선택하면 Validation에도 맞춰집니다.</strong> 그래서 최종 Test는 별도로 유지하는 것이 중요합니다.</div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">10</span>
-      <h2 class="slide-title">Overfitting과 Data Augmentation</h2>
+      <span class="slide-number">18</span>
+      <h2 class="slide-title">좋은 Train 성능 ≠ 좋은 AI</h2>
       <div class="slide-columns top">
         <div>
-          <table>
-            <thead><tr><th>상태</th><th>Train</th><th>Val/Test</th></tr></thead>
-            <tbody>
-              <tr><td>Underfitting</td><td>낮음</td><td>낮음</td></tr>
-              <tr><td>적절한 학습</td><td>높음</td><td>높음</td></tr>
-              <tr><td>Overfitting</td><td>매우 높음</td><td>상대적으로 낮음</td></tr>
-            </tbody>
-          </table>
+          <div class="term"><strong>Underfitting</strong>Train 데이터조차 충분히 학습하지 못한 상태입니다.</div>
+          <div class="term"><strong>Overfitting</strong>Train 데이터의 일반 패턴뿐 아니라 노이즈와 세부 특징까지 과하게 맞춘 상태입니다.</div>
+          <div class="term"><strong>Generalization</strong>처음 보는 새로운 데이터에서도 잘 동작하는 능력입니다.</div>
         </div>
         <div>
-          <div class="term"><strong>Data Augmentation</strong>Flip, Crop, 밝기, Blur 등으로 Train Data를 변형해 다양한 조건을 경험하게 합니다.</div>
-          <div class="callout"><strong>주의:</strong> 실제 Task 의미를 깨뜨리는 증강은 오히려 학습을 방해할 수 있습니다.</div>
+          <div class="callout"><strong>과적합 완화 방법</strong><br>더 다양한 데이터 · 적절한 Data Augmentation · 모델 복잡도 조절 · Regularization · Early Stopping 등</div>
+          <div class="callout"><strong>Data Leakage</strong><br>같은 원본 영상의 거의 동일한 Frame이 Train/Test에 들어가면 성능이 실제보다 좋아 보일 수 있습니다.</div>
         </div>
       </div>
     </div>
@@ -219,8 +351,16 @@ Test : frame_002
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">11</span>
-      <h2 class="slide-title">이제 CNN을 보면 다르게 보입니다</h2>
+      <span class="slide-number">19</span>
+      <h2 class="slide-title">실제 AI 개발은 학습 한 번으로 끝나지 않습니다</h2>
+      <div class="figure"><img src="assets/ml_workflow.svg" alt="머신러닝 워크플로우"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">20</span>
+      <h2 class="slide-title">이제 CNN으로 연결합니다</h2>
       <div class="slide-columns">
         <div>
           <div class="flow">Image Tensor
@@ -233,11 +373,13 @@ Feature
     ↓
 Convolution
     ↓
+더 복잡한 Feature
+    ↓
 Prediction</div>
         </div>
         <div>
-          <p class="big-statement">Kernel은 고정된 규칙이 아니라 Dataset에서 학습되는 Weight입니다.</p>
-          <div class="callout">Forward → Loss → Backpropagation → Optimizer의 학습 원리가 CNN에도 그대로 적용됩니다.</div>
+          <p class="big-statement">CNN의 Kernel도 Dataset을 통해 학습되는 Weight입니다.</p>
+          <div class="callout">CNN을 배우면 “이미지에서 어떤 특징을 어떻게 만들어 가는가?”를 구체적으로 볼 수 있습니다.</div>
         </div>
       </div>
     </div>
@@ -248,12 +390,8 @@ Prediction</div>
   <div class="deck-controls-inner">
     <button class="deck-button" type="button" data-slide-prev>← 이전</button>
     <div class="deck-status">
-      <span class="deck-counter">
-        <span data-slide-current>1</span> / <span data-slide-total>1</span>
-      </span>
-      <div class="deck-progress">
-        <div class="deck-progress-bar" data-slide-progress></div>
-      </div>
+      <span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
+      <div class="deck-progress"><div class="deck-progress-bar" data-slide-progress></div></div>
     </div>
     <button class="deck-button" type="button" data-slide-next>다음 →</button>
   </div>
