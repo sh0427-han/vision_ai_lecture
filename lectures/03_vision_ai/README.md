@@ -84,44 +84,15 @@ Detection   = Box
 Segmentation = Pixel-level Shape
 ```
 
-## 5. Tracking
-
-영상에서 시간에 따라 같은 객체를 계속 따라갑니다.
-
-```text
-Frame 1 → ID 3
-Frame 2 → ID 3
-Frame 3 → ID 3
-        ↓
-Trajectory / Speed / Event
-```
-
-## 6. Depth / 3D
-
-거리와 공간 구조가 필요한 문제입니다.
-
-- Depth Map
-- Stereo
-- LiDAR
-- Point Cloud
-
-산업 예:
-- 두 물체 사이 거리
-- 충돌 판단
-- 높이 / 부피
-- 로봇 공간 인식
-
-## 7. 산업 문제를 Task로 바꾸기
+## 5. 산업 문제를 Task로 바꾸기
 
 | 현장 질문 | 주요 Task | 대표 Output |
 |---|---|---|
 | 제품이 정상인가? | Classification | Class / Probability |
 | 불량이 어디에 있는가? | Detection | Bounding Box |
 | 불량 면적은? | Segmentation | Pixel Mask |
-| 물체가 어떻게 움직이는가? | Tracking | ID / Trajectory |
-| 두 물체 사이 거리는? | Depth / 3D | Distance / Point Cloud |
 
-## 8. CNN은 어디에 들어갈까?
+## 6. CNN은 어디에 들어갈까?
 
 Classification / Detection / Segmentation은 **무엇을 예측할지**에 대한 Task입니다.
 
@@ -153,7 +124,7 @@ Prediction
 
 ※ 인간의 시각 처리와 CNN의 계산 구조는 동일하지 않습니다.
 
-## 9. CNN Feature Hierarchy
+## 7. CNN Feature Hierarchy
 
 ```text
 Pixel
@@ -171,7 +142,7 @@ Object-level Feature
 
 실제 Feature는 사람이 이름 붙일 수 있는 형태로 깔끔하게 분리되지 않을 수 있습니다.
 
-## 10. Kernel / Filter
+## 8. Kernel / Filter
 
 작은 이미지 영역에서 패턴을 찾기 위한 학습 가능한 Weight입니다.
 
@@ -183,7 +154,7 @@ Object-level Feature
 [ w7 w8 w9 ]
 ```
 
-## 11. Convolution
+## 9. Convolution
 
 같은 Kernel을 이미지 여러 위치에 적용해 패턴 반응을 계산합니다.
 
@@ -198,7 +169,7 @@ Feature Value
 ### Weight Sharing
 같은 Kernel Weight를 여러 위치에서 공유합니다.
 
-## 12. Feature Map / Channel
+## 10. Feature Map / Channel
 
 **Feature Map**은 특정 Kernel이 각 위치에서 얼마나 반응했는지를 나타냅니다.
 
@@ -212,7 +183,7 @@ Feature Value
 
 여기서 64개의 Feature Map이 Channel 축에 쌓입니다.
 
-## 13. Receptive Field / Downsampling
+## 11. Receptive Field / Downsampling
 
 ### Receptive Field
 한 Feature가 원본 이미지에서 영향을 받는 영역입니다.
@@ -235,7 +206,7 @@ Feature Value
 
 공간 크기를 줄여 연산량을 줄이고 더 넓은 문맥을 효율적으로 표현합니다.
 
-## 14. CNN도 학습으로 볼 특징을 정한다
+## 12. CNN도 학습으로 볼 특징을 정한다
 
 ```text
 Image + Label
@@ -253,7 +224,7 @@ Kernel Weight Update
 
 사람이 모든 Filter를 직접 지정하는 것이 아니라 Loss가 줄어드는 방향으로 Weight가 학습됩니다.
 
-## 15. 전체 흐름
+## 13. 전체 흐름
 
 ```text
 현장 문제
