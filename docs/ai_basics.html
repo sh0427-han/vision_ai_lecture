@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02. AI 기초</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html">Vision AI</a>
+    <div class="nav-links">
+      <a href="intro.html">Intro</a>
+      <a href="ai_basics.html">AI Basics</a>
+      <a href="cnn.html">CNN</a>
+      <a href="vit.html">ViT</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <article class="article">
+    <p class="eyebrow">Lecture 02</p>
+    <h1>AI 기초: 신경망은 어떻게 학습하는가?</h1>
+    <p>CNN과 ViT를 보기 전에 모델의 Weight가 어떻게 학습되고, 왜 비선형성과 Dataset이 중요한지 먼저 이해합니다.</p>
+
+    <h2>1. 모델은 결국 숫자를 바꾸는 함수</h2>
+    <div class="flow">Input x
+  ↓
+Model f(x; θ)
+  ↓
+Prediction ŷ</div>
+    <div class="term"><strong>Parameter / Weight</strong>학습 과정에서 값이 바뀌는 숫자입니다. y = wx + b에서 w와 b가 대표적인 학습 대상입니다.</div>
+
+    <h2>2. 왜 비선형성이 필요한가?</h2>
+    <p>Linear/Affine Layer는 보통 <code>y = Wx + b</code> 형태입니다. Activation Function 없이 이런 Layer만 여러 개 쌓으면 전체를 다시 하나의 Affine Transformation으로 합칠 수 있습니다.</p>
+    <div class="figure"><img src="assets/linear_vs_nonlinear.svg" alt="선형과 비선형 모델의 표현력 비교"></div>
+    <div class="callout"><strong>핵심:</strong> 현실의 이미지 문제는 직선이나 평면 하나로 설명하기 어려운 복잡한 관계를 가지므로 비선형성이 필요합니다.</div>
+
+    <h2>3. Activation Function</h2>
+    <div class="term"><strong>Activation Function</strong>Layer 출력에 비선형 변환을 추가해 깊은 네트워크의 표현력을 높이는 함수입니다.</div>
+    <div class="flow">ReLU(x) = max(0, x)
+
+[-2, -0.5, 0, 1, 3]
+        ↓
+[ 0,  0,   0, 1, 3]</div>
+    <p>현대 모델에서는 ReLU뿐 아니라 GELU, SiLU 같은 함수도 사용합니다.</p>
+
+    <h2>4. Feature와 Representation</h2>
+    <div class="term"><strong>Feature</strong>문제를 푸는 데 유용한 특징입니다.</div>
+    <div class="term"><strong>Representation</strong>입력을 모델 내부에서 문제 해결에 유용한 숫자 형태로 바꾼 표현입니다.</div>
+    <div class="flow">Raw Pixel
+   ↓
+Edge / Texture
+   ↓
+Shape
+   ↓
+Task에 유용한 Representation</div>
+
+    <h2>5. 학습은 Weight를 반복해서 수정하는 과정</h2>
+    <div class="figure"><img src="assets/training_loop.svg" alt="딥러닝 학습 루프"></div>
+    <div class="term"><strong>Forward</strong>현재 Weight로 Prediction을 계산합니다.</div>
+    <div class="term"><strong>Loss</strong>Prediction과 정답 Label 사이의 차이를 수치화합니다.</div>
+    <div class="term"><strong>Gradient</strong>Parameter를 바꿀 때 Loss가 어느 방향으로 변하는지 나타냅니다.</div>
+    <div class="term"><strong>Backpropagation</strong>Loss에서 시작해 각 Parameter의 Gradient를 뒤에서 앞으로 계산합니다.</div>
+    <div class="term"><strong>Optimizer</strong>Gradient를 이용해 Weight를 실제로 업데이트합니다.</div>
+    <div class="flow">new_weight
+=
+old_weight - learning_rate × gradient</div>
+
+    <h2>6. Learning Rate, Batch, Epoch</h2>
+    <table>
+      <thead><tr><th>용어</th><th>의미</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td>Learning Rate</td><td>한 번 Update할 때 Weight를 얼마나 크게 움직일지 결정</td><td>0.001</td></tr>
+        <tr><td>Batch</td><td>한 번의 Forward/Backward에 함께 넣는 샘플 묶음</td><td>32 images</td></tr>
+        <tr><td>Epoch</td><td>Train Dataset 전체를 한 번 모두 사용한 횟수</td><td>30 epochs</td></tr>
+      </tbody>
+    </table>
+
+    <h2>7. Dataset은 모델이 배우는 세상</h2>
+    <div class="figure"><img src="assets/dataset_split.svg" alt="Train Validation Test 데이터 분리"></div>
+    <p>모델은 우리가 제공한 데이터에서 패턴을 배우기 때문에 Architecture만큼 데이터의 다양성, Label 품질, 운영 환경 대표성이 중요합니다.</p>
+    <div class="term"><strong>Train</strong>실제로 Weight를 업데이트하는 데이터입니다.</div>
+    <div class="term"><strong>Validation</strong>학습 중 모델 선택과 Hyperparameter 조정에 사용하는 데이터입니다.</div>
+    <div class="term"><strong>Test</strong>최종 일반화 성능을 평가하기 위해 가능한 한 독립적으로 유지하는 데이터입니다.</div>
+
+    <h2>8. Data Leakage</h2>
+    <div class="term"><strong>Data Leakage</strong>평가 시 모델이 알면 안 되는 정보가 Train 과정에 들어가 성능이 실제보다 좋아 보이는 문제입니다.</div>
+    <p>예를 들어 같은 영상에서 나온 거의 동일한 연속 Frame이 Train과 Test에 동시에 들어가면 새로운 영상에 대한 성능보다 Test 결과가 지나치게 좋아질 수 있습니다.</p>
+
+    <h2>9. Overfitting과 Underfitting</h2>
+    <table>
+      <thead><tr><th>상태</th><th>Train</th><th>Validation / Test</th></tr></thead>
+      <tbody>
+        <tr><td>Underfitting</td><td>낮음</td><td>낮음</td></tr>
+        <tr><td>적절한 학습</td><td>높음</td><td>높음</td></tr>
+        <tr><td>Overfitting</td><td>매우 높음</td><td>상대적으로 낮음</td></tr>
+      </tbody>
+    </table>
+    <div class="term"><strong>Data Augmentation</strong>Flip, Crop, 밝기 변화처럼 Train Data를 변형해 다양한 조건을 경험하게 하는 방법입니다. 실제 문제의 의미를 깨뜨리지 않는 범위에서 사용해야 합니다.</div>
+
+    <h2>10. 이제 CNN을 보면</h2>
+    <div class="flow">Image Tensor
+    ↓
+Convolution
+    ↓
+Activation Function
+    ↓
+Feature
+    ↓
+Convolution
+    ↓
+Activation Function
+    ↓
+Prediction
+
+Kernel Weight는
+Forward → Loss → Backpropagation → Optimizer
+과정으로 Dataset에서 학습된다.</div>
+    <div class="callout">이제 CNN의 Kernel을 “고정된 필터”가 아니라 <strong>Dataset을 통해 학습되는 Weight</strong>로 볼 수 있습니다.</div>
+    <p><a href="cnn.html">다음: 03. CNN →</a></p>
+  </article>
+</main>
+</body>
+</html>
