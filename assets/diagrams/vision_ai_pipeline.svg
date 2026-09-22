@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420">
+  <rect width="1400" height="420" fill="#ffffff"/>
+  <style>
+    .title{font:700 28px Arial,sans-serif;fill:#111827}
+    .label{font:700 19px Arial,sans-serif;fill:#111827}
+    .small{font:400 14px Arial,sans-serif;fill:#64748b}
+    .box{fill:#ffffff;stroke:#dbe2ea;stroke-width:2}
+    .accent{fill:#eff6ff;stroke:#93c5fd;stroke-width:2}
+    .green{fill:#f0fdf4;stroke:#86efac;stroke-width:2}
+    .arrow{stroke:#64748b;stroke-width:3;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+  <text x="700" y="46" text-anchor="middle" class="title">Vision AI는 ‘보는 것’에서 ‘판단하는 것’까지의 파이프라인이다</text>
+  <g transform="translate(45 125)">
+    <rect width="210" height="120" rx="18" class="box"/>
+    <circle cx="72" cy="56" r="24" fill="#e2e8f0"/>
+    <rect x="104" y="35" width="58" height="42" rx="8" fill="#cbd5e1"/>
+    <text x="105" y="96" text-anchor="middle" class="label">Real World</text>
+    <text x="105" y="116" text-anchor="middle" class="small">사람 · 제품 · 도로 · 장면</text>
+  </g>
+  <path d="M255 185 L330 185" class="arrow"/>
+  <g transform="translate(335 125)">
+    <rect width="210" height="120" rx="18" class="accent"/>
+    <rect x="45" y="28" width="120" height="58" rx="12" fill="#bfdbfe"/>
+    <circle cx="105" cy="57" r="20" fill="#60a5fa"/>
+    <text x="105" y="102" text-anchor="middle" class="label">Sensor</text>
+    <text x="105" y="121" text-anchor="middle" class="small">RGB · IR · Depth · LiDAR</text>
+  </g>
+  <path d="M545 185 L620 185" class="arrow"/>
+  <g transform="translate(625 125)">
+    <rect width="210" height="120" rx="18" class="box"/>
+    <g transform="translate(40 25)">
+      <rect x="0" y="0" width="28" height="28" fill="#cbd5e1"/><rect x="31" y="0" width="28" height="28" fill="#94a3b8"/><rect x="62" y="0" width="28" height="28" fill="#e2e8f0"/><rect x="93" y="0" width="28" height="28" fill="#64748b"/>
+      <rect x="0" y="31" width="28" height="28" fill="#94a3b8"/><rect x="31" y="31" width="28" height="28" fill="#e2e8f0"/><rect x="62" y="31" width="28" height="28" fill="#475569"/><rect x="93" y="31" width="28" height="28" fill="#cbd5e1"/>
+    </g>
+    <text x="105" y="102" text-anchor="middle" class="label">Numeric Data</text>
+    <text x="105" y="121" text-anchor="middle" class="small">Pixel · Depth · Point Cloud</text>
+  </g>
+  <path d="M835 185 L910 185" class="arrow"/>
+  <g transform="translate(915 125)">
+    <rect width="210" height="120" rx="18" class="accent"/>
+    <circle cx="67" cy="52" r="20" fill="#93c5fd"/>
+    <circle cx="143" cy="52" r="20" fill="#93c5fd"/>
+    <line x1="87" y1="52" x2="123" y2="52" stroke="#2563eb" stroke-width="4"/>
+    <text x="105" y="102" text-anchor="middle" class="label">Vision Model</text>
+    <text x="105" y="121" text-anchor="middle" class="small">CNN · ViT · Detection · Seg.</text>
+  </g>
+  <path d="M1125 185 L1200 185" class="arrow"/>
+  <g transform="translate(1205 125)">
+    <rect width="150" height="120" rx="18" class="green"/>
+    <path d="M48 54 l16 16 l38 -42" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="75" y="102" text-anchor="middle" class="label">Decision</text>
+    <text x="75" y="121" text-anchor="middle" class="small">판단 · 측정 · 제어</text>
+  </g>
+  <text x="700" y="315" text-anchor="middle" class="small">센서는 세상을 숫자로 바꾸고, Vision AI는 그 숫자에서 의미 있는 패턴을 찾아 의사결정에 연결한다.</text>
+</svg>
