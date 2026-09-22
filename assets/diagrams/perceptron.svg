@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560">
+<rect width="1400" height="560" fill="#fff"/>
+<style>.t{font:700 30px Arial;fill:#111827}.l{font:700 20px Arial;fill:#111827}.s{font:400 15px Arial;fill:#64748b}.node{fill:#eff6ff;stroke:#60a5fa;stroke-width:3}.out{fill:#f0fdf4;stroke:#4ade80;stroke-width:3}.line{stroke:#64748b;stroke-width:3}.w{font:600 15px Arial;fill:#2563eb}</style>
+<text x="700" y="45" text-anchor="middle" class="t">Perceptron: 입력에 중요도를 곱하고, 더한 뒤, 출력한다</text>
+<g transform="translate(120 105)">
+<circle cx="80" cy="70" r="36" class="node"/><text x="80" y="77" text-anchor="middle" class="l">x₁</text>
+<circle cx="80" cy="180" r="36" class="node"/><text x="80" y="187" text-anchor="middle" class="l">x₂</text>
+<circle cx="80" cy="290" r="36" class="node"/><text x="80" y="297" text-anchor="middle" class="l">x₃</text>
+<circle cx="470" cy="180" r="65" class="node"/><text x="470" y="173" text-anchor="middle" class="l">Σ(wx)+b</text><text x="470" y="202" text-anchor="middle" class="s">가중합</text>
+<line x1="116" y1="70" x2="410" y2="155" class="line"/><text x="235" y="88" class="w">w₁</text>
+<line x1="116" y1="180" x2="405" y2="180" class="line"/><text x="245" y="169" class="w">w₂</text>
+<line x1="116" y1="290" x2="410" y2="205" class="line"/><text x="235" y="285" class="w">w₃</text>
+<line x1="535" y1="180" x2="685" y2="180" class="line"/>
+<circle cx="760" cy="180" r="62" class="out"/><text x="760" y="170" text-anchor="middle" class="l">Activation</text><text x="760" y="200" text-anchor="middle" class="s">출력 결정</text>
+<line x1="822" y1="180" x2="960" y2="180" class="line"/>
+<text x="1030" y="187" class="l">Prediction</text>
+</g>
+<text x="700" y="490" text-anchor="middle" class="s">Weight가 크다는 것은 해당 입력을 더 강하게 반영한다는 뜻이며, 학습은 이 Weight들을 데이터에 맞게 조정하는 과정입니다.</text>
+</svg>
