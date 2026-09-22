@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>02. AI 기초</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=visual-20260922">
-  <script src="slide.js?v=visual-20260922" defer></script>
+  <link rel="stylesheet" href="slide.css?v=lecturefix-20260922-2">
+  <script src="slide.js?v=lecturefix-20260922-2" defer></script>
 </head>
 <body class="deck-page" data-prev-page="intro.html" data-next-page="vision_ai.html">
 <header class="site-header">
@@ -26,9 +26,9 @@
       <span class="chapter-chip">Lecture 02 · AI Fundamentals</span>
       <h1 class="slide-title">AI는 어떻게 데이터에서 규칙을 배울까?</h1>
       <p class="slide-subtitle">
-        AI는 Data와 Label에서 패턴을 학습하고, Prediction Error가 줄어들도록 Weight를 조정합니다.
+        가장 단순한 Linear Regression부터 시작해, Prediction Error가 줄어들도록 Parameter를 반복 수정하는 과정을 이해합니다.
       </p>
-      <div class="flow">Data → Model → Prediction → Loss → Learning → Generalization</div>
+      <div class="flow">Data → Model → Prediction → Loss → Optimizer → Parameter Update → Generalization</div>
     </div>
   </section>
 
@@ -36,8 +36,8 @@
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">AI, Machine Learning, Deep Learning은 어떻게 다를까?</h2>
-      <div class="figure"><img src="assets/ai_ml_dl.svg?v=visual-20260922" alt="AI Machine Learning Deep Learning 관계"></div>
-      <div class="callout"><strong>CNN은 Deep Learning 모델</strong>이고, Deep Learning은 Machine Learning의 한 갈래입니다.</div>
+      <div class="figure"><img src="assets/ai_ml_dl.svg?v=lecturefix-20260922-2" alt="AI Machine Learning Deep Learning 관계"></div>
+      <div class="callout"><strong>Computer Vision은 이미지·영상 문제를 다루는 분야</strong>이고, 그 문제를 해결하기 위해 전통적 영상처리, Machine Learning, Deep Learning을 모두 사용할 수 있습니다.</div>
     </div>
   </section>
 
@@ -45,57 +45,110 @@
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">규칙을 사람이 직접 쓰는 것 vs 데이터에서 배우는 것</h2>
-      <div class="figure"><img src="assets/rule_vs_ml.svg?v=visual-20260922" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
+      <div class="figure"><img src="assets/rule_vs_ml.svg?v=lecturefix-20260922-2" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
     </div>
   </section>
+
+  
+
+  
+
+  
+
+  
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
-      <h2 class="slide-title">지도학습과 비지도학습</h2>
-      <p class="slide-subtitle">지도학습은 정답을 이용하고, 비지도학습은 정답 없이 데이터 자체의 구조를 찾습니다.</p>
-      <div class="figure"><img src="assets/learning_types.svg?v=visual-20260922" alt="지도학습과 비지도학습의 차이"></div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">3-1</span>
-      <h2 class="slide-title">비지도학습 — 정답 없이 데이터의 구조를 찾는다</h2>
-      <p class="slide-subtitle">비슷한 샘플을 모으고, 일반적인 패턴에서 벗어난 데이터를 이상 후보로 찾을 수 있습니다.</p>
-      <div class="figure"><img src="assets/unsupervised_learning.svg?v=visual-20260922" alt="비지도학습의 데이터 구조 발견과 이상 후보 탐색"></div>
-      <div class="callout"><strong>중요:</strong> 비지도학습은 Class 이름을 바로 맞히는 방식이 아닙니다. 결과의 의미를 현장 지식 또는 후속 검증으로 해석해야 합니다.</div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">INDUSTRY</span>
-      <h2 class="slide-title">산업에서는 지도학습과 비지도학습을 어떻게 사용할까?</h2>
-      <div class="figure"><img src="assets/supervised_unsupervised_industry.svg?v=visual-20260922" alt="산업의 지도학습과 비지도학습 활용 예"></div>
+      <h2 class="slide-title">분류와 회귀</h2>
+      <p class="slide-subtitle">Classification은 범주를, Regression은 연속적인 숫자 값을 예측합니다.</p>
+      <div class="figure"><img src="assets/classification_regression.svg?v=lecturefix-20260922-2" alt="분류와 회귀의 출력 차이"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">4</span>
-      <h2 class="slide-title">지도학습: 문제와 정답을 같이 본다</h2>
-      <div class="figure"><img src="assets/supervised_tasks.svg?v=visual-20260922" alt="지도학습 분류 회귀"></div>
+      <h2 class="slide-title">Linear Regression으로 “학습”을 가장 단순하게 보자</h2>
+      <p class="slide-subtitle">입력 x와 정답 y가 있을 때, 데이터에 가장 잘 맞는 직선 ŷ = wx + b의 기울기 w와 절편 b를 찾는 문제입니다.</p>
+      <div class="regression-layout">
+        <div class="regression-plot">
+          <svg viewBox="0 0 650 390" role="img" aria-label="데이터 점과 선형 회귀 직선">
+            <rect width="650" height="390" fill="#fff"/>
+            <line x1="72" y1="318" x2="605" y2="318" stroke="#94a3b8" stroke-width="2"/>
+            <line x1="72" y1="318" x2="72" y2="48" stroke="#94a3b8" stroke-width="2"/>
+            <text x="610" y="342" font-size="18" fill="#64748b">x</text>
+            <text x="52" y="45" font-size="18" fill="#64748b">y</text>
+            <line x1="95" y1="292" x2="570" y2="83" stroke="#2563eb" stroke-width="5"/>
+            <g fill="#17243b">
+              <circle cx="125" cy="276" r="8"/><circle cx="195" cy="248" r="8"/><circle cx="255" cy="214" r="8"/>
+              <circle cx="325" cy="194" r="8"/><circle cx="392" cy="153" r="8"/><circle cx="465" cy="129" r="8"/><circle cx="535" cy="94" r="8"/>
+            </g>
+            <text x="392" y="105" font-size="22" font-weight="700" fill="#2563eb">ŷ = wx + b</text>
+          </svg>
+        </div>
+        <div class="formula-card">
+          <strong>모델이 배워야 할 값</strong>
+          <div class="formula">w, b</div>
+          <p><b>w</b> : 직선의 기울기<br><b>b</b> : 직선의 시작 위치</p>
+          <div class="callout">처음에는 임의의 직선에서 시작하고, 예측이 틀린 정도를 보고 w와 b를 조금씩 수정합니다.</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">5</span>
-      <h2 class="slide-title">분류와 회귀</h2>
-      <p class="slide-subtitle">Classification은 범주를, Regression은 연속적인 숫자 값을 예측합니다.</p>
-      <div class="figure"><img src="assets/classification_regression.svg?v=visual-20260922" alt="분류와 회귀의 출력 차이"></div>
+      <h2 class="slide-title">Loss Function은 “얼마나 틀렸는지”를 하나의 숫자로 만듭니다</h2>
+      <p class="slide-subtitle">Regression에서는 예측값 ŷ와 정답 y의 차이를 제곱해 평균낸 MSE를 가장 기본적인 예로 볼 수 있습니다.</p>
+      <div class="regression-layout">
+        <div class="regression-plot">
+          <svg viewBox="0 0 650 390" role="img" aria-label="회귀 직선과 예측 오차">
+            <rect width="650" height="390" fill="#fff"/>
+            <line x1="72" y1="318" x2="605" y2="318" stroke="#94a3b8" stroke-width="2"/>
+            <line x1="72" y1="318" x2="72" y2="48" stroke="#94a3b8" stroke-width="2"/>
+            <line x1="95" y1="292" x2="570" y2="105" stroke="#2563eb" stroke-width="5"/>
+            <g stroke="#ef4444" stroke-width="3" stroke-dasharray="6 5">
+              <line x1="170" y1="260" x2="170" y2="278"/><line x1="270" y1="215" x2="270" y2="245"/>
+              <line x1="370" y1="176" x2="370" y2="196"/><line x1="470" y1="130" x2="470" y2="153"/>
+            </g>
+            <g fill="#17243b"><circle cx="170" cy="260" r="8"/><circle cx="270" cy="215" r="8"/><circle cx="370" cy="176" r="8"/><circle cx="470" cy="130" r="8"/></g>
+            <g fill="#ef4444"><circle cx="170" cy="278" r="6"/><circle cx="270" cy="245" r="6"/><circle cx="370" cy="196" r="6"/><circle cx="470" cy="153" r="6"/></g>
+            <text x="386" y="92" font-size="20" font-weight="700" fill="#2563eb">prediction</text>
+            <text x="487" y="179" font-size="18" fill="#ef4444">error = y - ŷ</text>
+          </svg>
+        </div>
+        <div class="formula-card">
+          <strong>Mean Squared Error</strong>
+          <div class="formula">MSE = mean((y - ŷ)²)</div>
+          <p>Loss가 <b>크다</b> → 현재 직선이 데이터와 잘 맞지 않음<br>Loss가 <b>작다</b> → 예측이 정답에 가까움</p>
+          <div class="callout">학습의 목표는 단순합니다. <strong>Loss가 더 작아지는 Parameter를 찾는 것</strong>입니다.</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">6</span>
+      <h2 class="slide-title">Optimizer는 Loss가 줄어드는 방향으로 Parameter를 바꿉니다</h2>
+      <p class="slide-subtitle">Gradient는 “어느 방향으로 얼마나 바꾸면 Loss가 증가하는가”를 알려주고, Optimizer는 그 정보를 이용해 w와 b를 업데이트합니다.</p>
+      <div class="learning-loop">
+        <div class="loop-step">현재<br>w, b</div><div class="loop-arrow">→</div>
+        <div class="loop-step">Prediction<br>ŷ</div><div class="loop-arrow">→</div>
+        <div class="loop-step">Loss<br>MSE</div><div class="loop-arrow">→</div>
+        <div class="loop-step">Gradient<br>∂L/∂w</div><div class="loop-arrow">→</div>
+        <div class="loop-step">Optimizer<br>Update</div>
+      </div>
+      <div class="optimizer-update">w ← w - learning_rate × ∂L/∂w &nbsp;&nbsp; | &nbsp;&nbsp; b ← b - learning_rate × ∂L/∂b</div>
+      <div class="callout"><strong>반복:</strong> 예측 → Loss 계산 → Gradient 계산 → Parameter 수정. 이 루프가 AI 학습의 핵심 뼈대입니다.</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">7</span>
       <h2 class="slide-title">이진 분류와 다중 클래스 분류</h2>
       <div class="slide-columns">
         <div>
@@ -123,7 +176,7 @@ CaseB  0.15</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">7</span>
+      <span class="slide-number">8</span>
       <h2 class="slide-title">Model, Parameter, Hyperparameter</h2>
       <div class="slide-columns top">
         <div>
@@ -145,15 +198,15 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">8</span>
+      <span class="slide-number">9</span>
       <h2 class="slide-title">신경망의 기본 단위: Perceptron</h2>
-      <div class="figure"><img src="assets/perceptron.svg?v=visual-20260922" alt="Perceptron 구조"></div>
+      <div class="figure"><img src="assets/perceptron.svg?v=lecturefix-20260922-2" alt="Perceptron 구조"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">9</span>
+      <span class="slide-number">10</span>
       <h2 class="slide-title">AND Gate — 직선 하나로 구분할 수 있는 문제</h2>
       <div class="slide-columns top">
         <div>
@@ -175,24 +228,24 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">10</span>
+      <span class="slide-number">11</span>
       <h2 class="slide-title">XOR Gate — 직선 하나로는 구분할 수 없는 문제</h2>
-      <div class="figure"><img src="assets/and_xor_linear_separability.svg?v=visual-20260922" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
+      <div class="figure"><img src="assets/and_xor_linear_separability.svg?v=lecturefix-20260922-2" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
       <div class="callout"><strong>XOR:</strong> (0,1), (1,0)은 1이고 (0,0), (1,1)은 0입니다. 같은 Class가 대각선으로 떨어져 있기 때문에 직선 하나로는 분리할 수 없습니다.</div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">11</span>
+      <span class="slide-number">12</span>
       <h2 class="slide-title">그럼 Linear Layer를 여러 개 쌓으면 XOR를 풀 수 있을까?</h2>
-      <div class="figure"><img src="assets/linear_layers_collapse.svg?v=visual-20260922" alt="여러 Linear Layer가 하나의 Affine Transformation으로 합쳐지는 과정"></div>
+      <div class="figure"><img src="assets/linear_layers_collapse.svg?v=lecturefix-20260922-2" alt="여러 Linear Layer가 하나의 Affine Transformation으로 합쳐지는 과정"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">12</span>
+      <span class="slide-number">13</span>
       <h2 class="slide-title">Activation이 없으면 깊어져도 표현력은 늘어나지 않습니다</h2>
       <div class="slide-columns">
         <div>
@@ -216,7 +269,7 @@ h₂ = W₂h₁ + b₂
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">13</span>
+      <span class="slide-number">14</span>
       <h2 class="slide-title">Activation Function이 비선형성을 추가합니다</h2>
       <div class="slide-columns">
         <div>
@@ -245,47 +298,51 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">14</span>
-      <h2 class="slide-title">Feature와 Representation</h2>
-      <div class="figure"><img src="assets/feature_representation.svg?v=visual-20260922" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
       <span class="slide-number">15</span>
-      <h2 class="slide-title">“학습”은 Weight를 반복 수정하는 과정</h2>
-      <div class="figure"><img src="assets/training_loop.svg?v=visual-20260922" alt="딥러닝 학습 루프"></div>
+      <h2 class="slide-title">Feature와 Representation</h2>
+      <div class="figure"><img src="assets/feature_representation.svg?v=lecturefix-20260922-2" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
     </div>
   </section>
 
+  
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">16</span>
-      <h2 class="slide-title">Loss, Gradient, Backpropagation, Optimizer</h2>
-      <div class="figure"><img src="assets/gradient_update.svg?v=visual-20260922" alt="Loss가 줄어드는 방향으로 Weight를 수정하는 과정"></div>
+      <h2 class="slide-title">Linear Regression에서 본 학습 원리는 신경망에서도 같습니다</h2>
+      <p class="slide-subtitle">모델이 복잡해져도 핵심은 Prediction을 만들고, Loss를 계산하고, Parameter를 수정하는 반복입니다.</p>
+      <div class="figure"><img src="assets/training_loop.svg?v=lecturefix-20260922-2" alt="예측 손실 계산 파라미터 업데이트로 이어지는 학습 루프"></div>
     </div>
   </section>
 
+  
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">17</span>
-      <h2 class="slide-title">Batch, Iteration, Epoch</h2>
-      <div class="figure"><img src="assets/batch_epoch.svg?v=visual-20260922" alt="Dataset Batch Iteration Epoch 관계"></div>
+      <h2 class="slide-title">신경망에서는 Backpropagation으로 각 Weight의 Gradient를 계산합니다</h2>
+      <p class="slide-subtitle">Loss에서 시작해 뒤쪽 Layer부터 Gradient를 전달하고, Optimizer가 각 Weight를 업데이트합니다.</p>
+      <div class="figure"><img src="assets/gradient_update.svg?v=lecturefix-20260922-2" alt="Loss에서 Gradient를 계산해 Weight를 수정하는 과정"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">18</span>
-      <h2 class="slide-title">Dataset은 모델이 배우는 세상</h2>
-      <div class="figure"><img src="assets/dataset_split.svg?v=visual-20260922" alt="Train Validation Test 데이터 분리"></div>
+      <h2 class="slide-title">Batch, Iteration, Epoch</h2>
+      <div class="figure"><img src="assets/batch_epoch.svg?v=lecturefix-20260922-2" alt="Dataset Batch Iteration Epoch 관계"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">19</span>
+      <h2 class="slide-title">Dataset은 모델이 배우는 세상</h2>
+      <div class="figure"><img src="assets/dataset_split.svg?v=lecturefix-20260922-2" alt="Train Validation Test 데이터 분리"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">20</span>
       <h2 class="slide-title">Train / Validation / Test의 역할은 다릅니다</h2>
       <div class="grid">
         <div class="card"><span class="number">TRAIN</span><h3>문제집</h3><p>정답을 보며 Weight를 실제로 학습합니다.</p></div>
@@ -296,29 +353,87 @@ ReLU
     </div>
   </section>
 
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">20</span>
-      <h2 class="slide-title">좋은 Train 성능 ≠ 좋은 AI</h2>
-      <div class="figure"><img src="assets/overfit_leakage.svg?v=visual-20260922" alt="Generalization Overfitting Data Leakage 도식"></div>
-    </div>
-  </section>
-
+  
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">21</span>
-      <h2 class="slide-title">실제 AI 개발은 학습 한 번으로 끝나지 않습니다</h2>
-      <div class="figure"><img src="assets/ml_workflow.svg?v=visual-20260922" alt="머신러닝 워크플로우"></div>
+      <h2 class="slide-title">Data Leakage — 모델이 “보면 안 되는 정보”를 미리 본 경우</h2>
+      <p class="slide-subtitle">Validation/Test 성능은 좋아 보이지만 실제 새로운 데이터에서는 성능이 떨어질 수 있어, 모델 평가를 가장 크게 왜곡하는 원인 중 하나입니다.</p>
+      <div class="leakage-grid">
+        <article class="leakage-card"><h3>① 같은 원본이 양쪽 Split에 존재</h3><p>예: 한 영상에서 뽑은 인접 Frame 일부는 Train, 일부는 Validation에 들어감. 거의 같은 장면을 이미 본 상태가 됩니다.</p></article>
+        <article class="leakage-card"><h3>② 전체 데이터로 전처리 기준 계산</h3><p>Normalization, Feature Selection 등의 통계를 Train뿐 아니라 Validation/Test까지 포함해 계산하면 미래 정보가 학습에 섞입니다.</p></article>
+        <article class="leakage-card"><h3>③ Test를 보며 모델을 계속 선택</h3><p>Test 결과를 보고 Threshold나 Hyperparameter를 반복 조정하면 Test가 사실상 Validation 역할을 하게 됩니다.</p></article>
+      </div>
+      <div class="callout"><strong>원칙:</strong> Split 이후에는 각 단계가 접근할 수 있는 데이터를 명확히 제한해야 합니다.</div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">22</span>
-      <h2 class="slide-title">이미지 학습에서 Convolution과 Activation</h2>
-      <div class="figure"><img src="assets/cnn_training.svg?v=visual-20260922" alt="CNN 학습 순환 도식"></div>
+      <h2 class="slide-title">이미지·영상은 Random Split보다 “원본 단위 분리”가 중요할 때가 많습니다</h2>
+      <p class="slide-subtitle">서로 매우 비슷한 Frame이 다른 Split으로 섞이지 않도록 영상·설비·대상·시간 같은 Group 단위로 나누는 것이 안전합니다.</p>
+      <div class="split-groups">
+        <div class="split-group"><strong>Video A → Train</strong><span class="frame-chip train-cell">frame 001</span><span class="frame-chip train-cell">002</span><span class="frame-chip train-cell">003</span><span class="frame-chip train-cell">004</span><span class="frame-chip train-cell">005</span><span class="frame-chip train-cell">006</span></div>
+        <div class="split-group"><strong>Video B → Val</strong><span class="frame-chip val-cell">frame 001</span><span class="frame-chip val-cell">002</span><span class="frame-chip val-cell">003</span><span class="frame-chip val-cell">004</span><span class="frame-chip val-cell">005</span><span class="frame-chip val-cell">006</span></div>
+        <div class="split-group"><strong>Video C → Test</strong><span class="frame-chip test-cell">frame 001</span><span class="frame-chip test-cell">002</span><span class="frame-chip test-cell">003</span><span class="frame-chip test-cell">004</span><span class="frame-chip test-cell">005</span><span class="frame-chip test-cell">006</span></div>
+      </div>
+      <div class="callout">Frame 수가 많아 보여도 같은 원본에서 나온 데이터라면 독립적인 Sample이라고 보기 어렵습니다.</div>
     </div>
   </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">23</span>
+      <h2 class="slide-title">K-Fold Cross Validation — 검증 대상을 바꿔가며 반복 평가</h2>
+      <p class="slide-subtitle">데이터를 K개 Fold로 나누고, 매번 하나를 Validation으로 사용해 K번 학습합니다. 평균뿐 아니라 Fold 간 변동도 함께 봅니다.</p>
+      <div class="cv-visual">
+        <div class="fold-row"><strong>Fold 1</strong><span class="fold-cell is-val">VAL</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span></div>
+        <div class="fold-row"><strong>Fold 2</strong><span class="fold-cell">TRAIN</span><span class="fold-cell is-val">VAL</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span></div>
+        <div class="fold-row"><strong>Fold 3</strong><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell is-val">VAL</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span></div>
+        <div class="fold-row"><strong>Fold 4</strong><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell is-val">VAL</span><span class="fold-cell">TRAIN</span></div>
+        <div class="fold-row"><strong>Fold 5</strong><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell is-val">VAL</span></div>
+      </div>
+      <div class="cv-test-box">최종 Test Set은 Cross Validation 바깥에 별도로 유지하는 것이 일반적</div>
+      <p class="method-note">이미지·영상처럼 Group 상관관계가 강하면 일반 K-Fold 대신 <strong>Group K-Fold</strong>처럼 Group을 통째로 이동시키는 방식이 더 적절할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">24</span>
+      <h2 class="slide-title">LOO — 하나만 남기고 나머지 전부로 학습</h2>
+      <p class="slide-subtitle">Leave-One-Out은 N개 Sample이 있다면 매번 1개만 Validation으로 두고 N번 반복하는 Cross Validation의 극단적인 형태입니다.</p>
+      <div class="loo-visual">
+        <div class="loo-row"><strong>Run 1</strong><span class="loo-sample is-val">VAL</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span></div>
+        <div class="loo-row"><strong>Run 2</strong><span class="loo-sample">TRAIN</span><span class="loo-sample is-val">VAL</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span></div>
+        <div class="loo-row"><strong>…</strong><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample">…</span><span class="loo-sample">TRAIN</span><span class="loo-sample">TRAIN</span><span class="loo-sample is-val">VAL</span></div>
+      </div>
+      <div class="grid-2">
+        <div class="term"><strong>장점</strong>매 학습에서 거의 모든 데이터를 Training에 사용합니다. 데이터가 매우 적을 때 검토할 수 있습니다.</div>
+        <div class="term"><strong>단점</strong>N번 학습해야 하므로 계산량이 크고, 이미지·영상처럼 Sample 간 상관관계가 강한 데이터에는 Group 설계를 먼저 고려해야 합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">25</span>
+      <h2 class="slide-title">목표는 Train 점수가 아니라 “새로운 데이터에서의 성능”입니다</h2>
+      <p class="slide-subtitle">Overfitting과 Leakage를 피하고, 보지 못한 데이터에서도 성능이 유지되는 Generalization을 확인해야 합니다.</p>
+      <div class="figure"><img src="assets/overfit_leakage.svg?v=lecturefix-20260922-2" alt="Generalization과 Overfitting, Data Leakage 개념"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">26</span>
+      <h2 class="slide-title">실제 AI 개발은 학습 한 번으로 끝나지 않습니다</h2>
+      <div class="figure"><img src="assets/ml_workflow.svg?v=lecturefix-20260922-2" alt="머신러닝 워크플로우"></div>
+    </div>
+  </section>
+
+  
 </main>
 
 <div class="deck-controls">
