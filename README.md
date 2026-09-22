@@ -48,7 +48,7 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 별도 용어집을 외우게 하지 않습니다. 각 챕터에서 처음 등장하는 용어를 바로 설명합니다.
 
-\`\`\`text
+```text
 Vision AI
  ├─ Classification / Detection / Segmentation
  ├─ Tracking / Depth / 3D
@@ -57,7 +57,7 @@ Vision AI
      ├─ Kernel / Convolution
      ├─ Feature Map / Channel
      └─ Receptive Field
-\`\`\`
+```
 
 ## CNN을 이해하는 핵심 직관
 
