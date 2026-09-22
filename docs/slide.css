@@ -1722,10 +1722,10 @@ body.deck-page {
 
 .tensor-front-frame {
   position: absolute;
-  left: 66px;
-  top: 34px;
-  width: 72%;
-  aspect-ratio: 3 / 2;
+  left: 54px;
+  top: 28px;
+  width: 78%;
+  aspect-ratio: 5 / 3;
 }
 
 .tensor-front-frame .tensor-plane {
@@ -1734,7 +1734,7 @@ body.deck-page {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 34px 14px 12px;
+  padding: 28px 8px 8px;
   overflow: hidden;
   border: 2px solid;
   border-radius: 12px;
@@ -1760,8 +1760,8 @@ body.deck-page {
 
 .tensor-front-frame .tensor-plane--b pre {
   color: #64748b;
-  font-size: 8.6px;
-  line-height: 1.42;
+  font-size: 6.2px;
+  line-height: 1.18;
 }
 
 .tensor-front-frame .tensor-plane--g {
@@ -1774,8 +1774,8 @@ body.deck-page {
 
 .tensor-front-frame .tensor-plane--g pre {
   color: #475569;
-  font-size: 9.5px;
-  line-height: 1.42;
+  font-size: 6.8px;
+  line-height: 1.18;
 }
 
 .tensor-front-frame .tensor-plane--r {
@@ -1786,8 +1786,8 @@ body.deck-page {
 
 .tensor-front-frame .tensor-plane--front pre {
   color: #17243b;
-  font-size: clamp(11.5px, .94vw, 14px);
-  line-height: 1.45;
+  font-size: clamp(7.4px, .68vw, 9.6px);
+  line-height: 1.18;
   font-weight: 750;
 }
 
@@ -2033,27 +2033,28 @@ body.deck-page {
   .tensor-stage { height: 325px; }
 
   .tensor-front-frame {
-    top: 22px;
-    width: 64%;
+    left: 54px;
+    top: 18px;
+    width: 72%;
   }
 
   .tensor-front-frame .tensor-plane {
-    padding-top: 29px;
+    padding: 24px 6px 6px;
   }
 
   .tensor-front-frame .tensor-plane--front pre {
-    font-size: 10.5px;
-    line-height: 1.36;
+    font-size: 7.2px;
+    line-height: 1.14;
   }
 
   .tensor-front-frame .tensor-plane--g pre {
-    font-size: 7.5px;
-    line-height: 1.35;
+    font-size: 5.8px;
+    line-height: 1.12;
   }
 
   .tensor-front-frame .tensor-plane--b pre {
-    font-size: 7px;
-    line-height: 1.35;
+    font-size: 5.3px;
+    line-height: 1.12;
   }
 
   .math-block,
@@ -2079,13 +2080,13 @@ body.deck-page {
   .tensor-stage { height: 260px; }
 
   .tensor-front-frame {
-    left: 42px;
-    top: 28px;
-    width: 74%;
+    left: 36px;
+    top: 24px;
+    width: 78%;
   }
 
   .tensor-front-frame .tensor-plane {
-    padding: 24px 5px 7px;
+    padding: 21px 3px 5px;
   }
 
   .tensor-front-frame .tensor-plane--b {
@@ -2097,13 +2098,14 @@ body.deck-page {
   }
 
   .tensor-front-frame .tensor-plane--front pre {
-    font-size: 6.8px;
-    line-height: 1.32;
+    font-size: 4.8px;
+    line-height: 1.08;
   }
 
   .tensor-front-frame .tensor-plane--g pre,
   .tensor-front-frame .tensor-plane--b pre {
-    font-size: 5.5px;
+    font-size: 4.1px;
+    line-height: 1.08;
   }
 
   .tensor-axis--height { left: -30px; }
@@ -2278,5 +2280,115 @@ body.deck-page {
 
   .backprop-return {
     grid-column: auto;
+  }
+}
+
+
+/* Intro signal vs noise */
+.signal-noise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.signal-noise-card {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #d8e1ed;
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.signal-noise-head {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.signal-chip {
+  display: inline-block;
+  width: fit-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .02em;
+}
+
+.signal-noise-head strong {
+  color: #17243b;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.signal-noise-visual {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  border: 1px solid #cbd5e1;
+  border-radius: 13px;
+  background: #64748b;
+}
+
+.signal-noise-visual img,
+.signal-noise-visual svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signal-noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: .42;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.signal-noise-visual--mixed img {
+  filter: contrast(1.08) saturate(.9);
+}
+
+.signal-noise-card p {
+  margin: 9px 0 0;
+  color: #53647b;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-height: 760px) and (min-width: 901px) {
+  .signal-noise-grid {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .signal-noise-card {
+    padding: 9px;
+  }
+
+  .signal-noise-head {
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+
+  .signal-noise-head strong {
+    font-size: 14px;
+  }
+
+  .signal-noise-card p {
+    margin-top: 5px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 900px) {
+  .signal-noise-grid {
+    grid-template-columns: 1fr;
   }
 }
