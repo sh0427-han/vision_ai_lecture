@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520">
+  <rect width="1400" height="520" fill="#ffffff"/>
+  <style>
+    .title{font:700 28px Arial,sans-serif;fill:#111827}
+    .label{font:700 18px Arial,sans-serif;fill:#111827}
+    .small{font:400 14px Arial,sans-serif;fill:#64748b}
+    .card{fill:#ffffff;stroke:#dbe2ea;stroke-width:2}
+    .soft{fill:#f8fafc}
+  </style>
+  <text x="700" y="45" text-anchor="middle" class="title">Vision 정보를 얻는 센서는 하나가 아니다</text>
+  <g transform="translate(30 90)">
+    <g transform="translate(0 0)"><rect width="180" height="160" rx="16" class="card"/><circle cx="60" cy="55" r="27" fill="#60a5fa"/><circle cx="90" cy="55" r="27" fill="#22c55e" fill-opacity=".8"/><circle cx="75" cy="78" r="27" fill="#ef4444" fill-opacity=".75"/><text x="90" y="120" text-anchor="middle" class="label">RGB</text><text x="90" y="142" text-anchor="middle" class="small">색과 형태</text></g>
+    <g transform="translate(195 0)"><rect width="180" height="160" rx="16" class="card"/><rect x="43" y="28" width="94" height="62" rx="8" fill="#cbd5e1"/><circle cx="90" cy="59" r="20" fill="#64748b"/><text x="90" y="120" text-anchor="middle" class="label">Mono</text><text x="90" y="142" text-anchor="middle" class="small">밝기 중심</text></g>
+    <g transform="translate(390 0)"><rect width="180" height="160" rx="16" class="card"/><circle cx="90" cy="58" r="35" fill="#4f46e5" fill-opacity=".18"/><circle cx="90" cy="58" r="23" fill="#4f46e5" fill-opacity=".32"/><circle cx="90" cy="58" r="10" fill="#4f46e5"/><text x="90" y="120" text-anchor="middle" class="label">IR / NIR</text><text x="90" y="142" text-anchor="middle" class="small">비가시광 반사</text></g>
+    <g transform="translate(585 0)"><rect width="180" height="160" rx="16" class="card"/><rect x="45" y="28" width="90" height="62" rx="8" fill="#fee2e2"/><circle cx="72" cy="55" r="15" fill="#f59e0b"/><circle cx="108" cy="63" r="23" fill="#ef4444" fill-opacity=".75"/><text x="90" y="120" text-anchor="middle" class="label">Thermal</text><text x="90" y="142" text-anchor="middle" class="small">온도 분포</text></g>
+    <g transform="translate(780 0)"><rect width="180" height="160" rx="16" class="card"/><rect x="35" y="30" width="110" height="60" rx="8" fill="#dbeafe"/><path d="M45 78 C70 45,110 45,135 78" fill="none" stroke="#2563eb" stroke-width="4"/><text x="90" y="120" text-anchor="middle" class="label">Depth</text><text x="90" y="142" text-anchor="middle" class="small">거리 지도</text></g>
+    <g transform="translate(975 0)"><rect width="180" height="160" rx="16" class="card"/><g fill="#334155"><circle cx="50" cy="48" r="4"/><circle cx="72" cy="68" r="4"/><circle cx="92" cy="40" r="4"/><circle cx="112" cy="73" r="4"/><circle cx="132" cy="49" r="4"/><circle cx="82" cy="84" r="4"/></g><text x="90" y="120" text-anchor="middle" class="label">LiDAR</text><text x="90" y="142" text-anchor="middle" class="small">3D Point Cloud</text></g>
+    <g transform="translate(1170 0)"><rect width="180" height="160" rx="16" class="card"/><path d="M35 70 L60 48 L82 82 L105 40 L130 62 L145 45" fill="none" stroke="#0f172a" stroke-width="3"/><circle cx="60" cy="48" r="5" fill="#2563eb"/><circle cx="82" cy="82" r="5" fill="#2563eb"/><circle cx="105" cy="40" r="5" fill="#2563eb"/><text x="90" y="120" text-anchor="middle" class="label">Event</text><text x="90" y="142" text-anchor="middle" class="small">밝기 변화 이벤트</text></g>
+  </g>
+  <rect x="95" y="315" width="1210" height="120" rx="18" class="soft"/>
+  <text x="700" y="355" text-anchor="middle" class="label">같은 장면도 센서에 따라 전혀 다른 숫자로 표현된다</text>
+  <text x="700" y="387" text-anchor="middle" class="small">RGB는 색, Thermal은 온도, Depth는 거리, LiDAR는 3차원 점, Event Camera는 시간에 따른 밝기 변화를 주로 기록한다.</text>
+  <text x="700" y="416" text-anchor="middle" class="small">따라서 Vision AI 문제를 풀 때는 “어떤 모델?”보다 먼저 “어떤 정보를 센서로 얻을 수 있는가?”가 중요하다.</text>
+</svg>
