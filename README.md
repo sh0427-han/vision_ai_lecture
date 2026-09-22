@@ -1,5 +1,13 @@
 # Vision AI Study & Lecture
 
+## 🌐 배포 사이트
+
+강의용 웹 슬라이드는 아래 GitHub Pages에서 바로 확인할 수 있습니다.
+
+**https://sh0427-han.github.io/vision_ai/**
+
+
+
 Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → AI 학습 → CNN** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
 
 이 저장소는 세 가지를 함께 목표로 합니다.
