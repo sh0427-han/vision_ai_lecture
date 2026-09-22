@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>01. Vision AI 입문</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html">Vision AI</a>
+    <div class="nav-links">
+      <a href="intro.html">Intro</a>
+      <a href="cnn.html">CNN</a>
+      <a href="vit.html">ViT</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <article class="article">
+    <p class="eyebrow">Lecture 01</p>
+    <h1>Vision AI 입문</h1>
+    <p>사람에게는 사진이지만, 컴퓨터에게는 숫자 배열입니다.</p>
+
+    <h2>컴퓨터가 보는 이미지</h2>
+    <div class="flow">224 × 224 RGB Image
+        ↓
+224 × 224 × 3 Tensor
+        ↓
+150,528 numeric values</div>
+
+    <div class="term">
+      <strong>Pixel</strong>
+      이미지의 가장 작은 단위입니다. RGB 이미지에서는 한 Pixel이 R, G, B 세 값으로 표현됩니다.
+    </div>
+    <div class="term">
+      <strong>Tensor</strong>
+      딥러닝에서 이미지, Batch, Feature Map 등을 담는 다차원 숫자 배열입니다.
+    </div>
+
+    <h2>왜 같은 물체를 알아보기 어려울까?</h2>
+    <p>
+      같은 제품이라도 조명, 회전, 카메라 각도, 거리, 가림, Blur가 바뀌면
+      Pixel 값은 크게 달라집니다.
+    </p>
+    <div class="flow">같은 물체
+  ↓
+밝기 / 위치 / 회전 / 배경 변화
+  ↓
+서로 다른 Pixel 배열
+  ↓
+그래도 같은 의미를 찾아야 함</div>
+
+    <h2>대표 Vision Task</h2>
+    <table>
+      <thead><tr><th>Task</th><th>질문</th><th>출력</th></tr></thead>
+      <tbody>
+        <tr><td>Classification</td><td>무엇인가?</td><td>Class probability</td></tr>
+        <tr><td>Detection</td><td>무엇이 어디에 있는가?</td><td>Class + Bounding Box</td></tr>
+        <tr><td>Segmentation</td><td>정확히 어느 Pixel인가?</td><td>Pixel Mask</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      다음 질문은 자연스럽습니다. <strong>수많은 Pixel에서 어떻게 유용한 특징을 찾을까?</strong>
+      이 질문에 대한 대표적인 답이 CNN입니다.
+    </div>
+  </article>
+</main>
+</body>
+</html>
