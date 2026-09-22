@@ -8,7 +8,7 @@
 
 
 
-Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → AI 학습 → CNN** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
+Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → AI 학습 → Vision Task → CNN** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
 
 이 저장소는 세 가지를 함께 목표로 합니다.
 
@@ -27,14 +27,13 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
    - Loss / Backpropagation
    - Dataset / Train-Val-Test
         ↓
-03. CNN
-   - 사람이 특징을 보고 사물을 판단하는 직관
-   - Kernel / Convolution
-   - Feature Map / Channel
-   - Receptive Field
-   - VGG / ResNet
+03. Vision AI
+   - Classification / Detection / Segmentation
+   - Tracking / Depth / 3D
+   - 산업 문제와 Task 선택
+   - CNN의 Feature 추출 원리
         ↓
-Classification / Detection / Segmentation / Tracking / 3D
+실제 모델 설계 / 평가
         ↓
 실제 Vision AI 개발과 운영
 ```
@@ -43,21 +42,22 @@ Classification / Detection / Segmentation / Tracking / 3D
 |---|---|---|
 | 1 | [Vision AI 입문](lectures/01_intro/README.md) | 컴퓨터는 현실 세계를 어떤 데이터로 보는가? |
 | 2 | [AI 기초](lectures/02_ai_basics/README.md) | 신경망은 왜 비선형성이 필요하고 어떻게 학습하는가? |
-| 3 | [CNN](lectures/03_cnn/README.md) | 작은 특징들을 어떻게 조합해 사물을 인식하는가? |
+| 3 | [Vision AI](lectures/03_vision_ai/README.md) | 어떤 Vision Task를 선택하고 CNN은 이미지를 어떻게 특징으로 바꾸는가? |
 
 ## 설명 방식
 
 별도 용어집을 외우게 하지 않습니다. 각 챕터에서 처음 등장하는 용어를 바로 설명합니다.
 
-```text
-CNN
- ├─ 사람이 특징을 보고 판단한다는 직관
- ├─ Kernel이란?
- ├─ Convolution이란?
- ├─ Feature Map이란?
- ├─ Channel이란?
- └─ Receptive Field란?
-```
+\`\`\`text
+Vision AI
+ ├─ Classification / Detection / Segmentation
+ ├─ Tracking / Depth / 3D
+ └─ CNN
+     ├─ 사람이 특징을 보고 판단한다는 직관
+     ├─ Kernel / Convolution
+     ├─ Feature Map / Channel
+     └─ Receptive Field
+\`\`\`
 
 ## CNN을 이해하는 핵심 직관
 
@@ -100,7 +100,7 @@ vision_ai/
 ├── lectures/
 │   ├── 01_intro/
 │   ├── 02_ai_basics/
-│   └── 03_cnn/
+│   └── 03_vision_ai/
 ├── assets/
 │   ├── diagrams/
 │   └── SOURCES.md
