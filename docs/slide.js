@@ -105,6 +105,9 @@
   });
 
   addEventListener("wheel", (event) => {
+    // A tall slide must remain scrollable instead of switching pages mid-read.
+    const activeSlide = slides[currentIndex];
+    if (activeSlide.scrollHeight > activeSlide.clientHeight + 2) return;
     if (wheelLocked || Math.abs(event.deltaY) < 25) return;
     wheelLocked = true;
     if (event.deltaY > 0) next();

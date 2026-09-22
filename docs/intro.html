@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css">
-  <script src="slide.js" defer></script>
+  <link rel="stylesheet" href="slide.css?v=visual-20260922">
+  <script src="slide.js?v=visual-20260922" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -34,7 +34,7 @@
   <section class="slide">
     <div class="slide-inner">
       <div class="figure">
-        <img src="assets/intro_question_apple.svg" alt="사과 이미지를 보고 무엇인지 묻는 질문">
+        <img src="assets/intro_question_apple.svg?v=visual-20260922" alt="사과 이미지를 보고 무엇인지 묻는 질문">
       </div>
     </div>
   </section>
@@ -48,7 +48,7 @@
         컴퓨터가 처음 받는 것은 그 의미가 아니라 Pixel 값입니다.
       </p>
       <div class="figure">
-        <img src="assets/intro_human_vs_computer.svg" alt="사람과 컴퓨터가 같은 이미지를 보는 방식 비교">
+        <img src="assets/intro_human_vs_computer.svg?v=visual-20260922" alt="사람과 컴퓨터가 같은 이미지를 보는 방식 비교">
       </div>
     </div>
   </section>
@@ -57,18 +57,9 @@
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">이미지는 Pixel과 Channel로 이루어진 숫자 배열입니다</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="figure">
-            <img src="assets/image_as_numbers.svg" alt="이미지를 숫자 배열로 보는 방법">
-          </div>
-        </div>
-        <div>
-          <div class="term"><strong>Pixel</strong>이미지의 한 위치입니다.</div>
-          <div class="term"><strong>Channel</strong>한 Pixel이 가지는 정보 축입니다. RGB는 R/G/B 3개 Channel을 가집니다.</div>
-          <div class="term"><strong>Tensor</strong>딥러닝에서 이미지와 Feature를 표현하는 다차원 숫자 배열입니다.</div>
-          <div class="callout"><strong>224 × 224 RGB</strong> 이미지만 해도 150,528개의 Channel 값으로 표현됩니다.</div>
-        </div>
+      <p class="slide-subtitle">Pixel은 이미지의 한 위치, Channel은 그 위치의 정보 축입니다. Tensor는 이를 담는 다차원 숫자 배열입니다.</p>
+      <div class="figure">
+        <img src="assets/image_as_numbers.svg?v=visual-20260922" alt="같은 사과 사진의 픽셀 좌표와 실제 RGB 값, 960 곱하기 640 곱하기 3 배열">
       </div>
     </div>
   </section>
@@ -81,7 +72,7 @@
         사람은 여전히 같은 사과라고 이해하지만 카메라가 받는 밝기, 색, 모양, 경계와 Pixel 값은 계속 바뀝니다.
       </p>
       <div class="figure">
-        <img src="assets/apple_visual_variations.svg" alt="조명 시점 크기 가림 배경 흐림 색온도 노이즈에 따라 달라 보이는 같은 사과">
+        <img src="assets/apple_visual_variations.svg?v=visual-20260922" alt="조명 시점 크기 가림 배경 흐림 색온도 노이즈에 따라 달라 보이는 같은 사과">
       </div>
     </div>
   </section>
@@ -91,7 +82,7 @@
       <span class="slide-number">4</span>
       <h2 class="slide-title">AI가 배워야 하는 것은 “변하는 Pixel”이 아니라 “유지되는 의미”</h2>
       <p class="slide-subtitle">학습에서 보지 못한 조건에서도 중요한 특징을 찾아 같은 의미로 판단해야 합니다.</p>
-      <div class="figure"><img src="assets/visual_generalization.svg" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
+      <div class="figure"><img src="assets/visual_generalization.svg?v=visual-20260922" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
     </div>
   </section>
 
@@ -103,7 +94,7 @@
         시각 센서가 만든 Numeric Data를 사람이 원하는 의미로 바꾸고, 그 결과를 판단·측정·제어에 연결합니다.
       </p>
       <div class="figure">
-        <img src="assets/vision_ai_pipeline.svg" alt="Vision AI 전체 파이프라인">
+        <img src="assets/vision_ai_pipeline.svg?v=visual-20260922" alt="Vision AI 전체 파이프라인">
       </div>
     </div>
   </section>
@@ -133,7 +124,7 @@
         문제에 따라 색·밝기뿐 아니라 열, 거리, 3차원 위치, 밝기 변화 Event처럼 서로 다른 정보를 측정할 수 있습니다.
       </p>
       <div class="figure">
-        <img src="assets/sensor_overview.svg" alt="RGB Mono Thermal Depth LiDAR Event Camera 등 Vision Sensor">
+        <img src="assets/sensor_overview.svg?v=visual-20260922" alt="RGB Mono Thermal Depth LiDAR Event Camera 등 Vision Sensor">
       </div>
     </div>
   </section>
@@ -161,7 +152,7 @@
     <div class="slide-inner">
       <span class="slide-number">9</span>
       <h2 class="slide-title">AI는 숫자에서 규칙과 Feature를 학습합니다</h2>
-      <div class="figure"><img src="assets/intro_to_learning.svg" alt="센서 입력부터 AI 예측까지의 흐름"></div>
+      <div class="figure"><img src="assets/intro_to_learning.svg?v=visual-20260922" alt="센서 입력부터 AI 예측까지의 흐름"></div>
     </div>
   </section>
 </main>

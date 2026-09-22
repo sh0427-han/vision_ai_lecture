@@ -31,7 +31,32 @@
 - `linear_layers_collapse.svg`
 - `apple_visual_variations.svg`
 
-## AI 기초 참고 자료
+## 2026-09 도표 재구성
+
+- `docs/assets/*.svg`: 41개 도표를 1200×600 좌표계로 재구성.
+- 사과 이미지: 이 프로젝트에서 AI로 생성한 교육용 이미지.
+  `docs/assets/vision_task_apple_reference.jpg` (960×640).
+  실사 촬영이나 실제 검사 데이터가 아님.
+- 사과의 검출 박스, 분할 마스크, 0.98 점수는 설명용 예시이며 모델 추론 결과가 아님.
+- RGB 숫자는 해당 JPG를 디코딩한 픽셀에서 직접 취득.
+  밝기·크기·가림 변형은 SVG에서 만든 도식적 시뮬레이션.
+- Noto Sans CJK KR Regular의 사용 글리프만 WOFF로 부분 집합화해 SVG에 내장.
+  원본: https://github.com/notofonts/noto-cjk
+  라이선스: SIL Open Font License 1.1 (`assets/NOTO_FONT_LICENSE.txt`).
+- SVG를 HTML `img`로 사용할 때 외부 이미지 로딩이 제한되므로 JPG를 data URL로 내장.
+  근거: https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_as_an_image
+- 생성: `scripts/rebuild_visuals.py --font <NotoSansCJKkr-Regular.otf>`
+- 검증: `scripts/verify_visuals.py` (선택: `--render-dir <directory>`)
+
+### 레이아웃 및 내용 검증 기준
+
+1. 텍스트는 실제 글꼴 폭으로 줄바꿈하고 지정한 박스 높이를 초과하면 생성을 중단.
+2. 사진·폰트를 포함한 도표 내부 리소스는 외부 네트워크에 의존하지 않음.
+3. 합성곱: 5×5 / kernel 3×3 / stride 1 / padding 0 → 3×3 출력.
+4. Batch: 10장 / batch_size 4 / drop_last=False → 4+4+2, 총 3 step.
+5. 원본 이미지와 예시 annotation을 구분하고, AI 생성 이미지임을 명시.
+
+## AI 기초 참고 자료 (기존)
 
 ### WikiDocs — 딥 러닝 파이토치 교과서
 https://wikidocs.net/book/2788
