@@ -92,7 +92,7 @@
           <div class="math-block" aria-label="y hat equals w x plus b">
             <math display="block">
               <mrow>
-                <mover><mi>y</mi><mo>^</mo></mover>
+                <mover accent="true"><mi>y</mi><mo>^</mo></mover>
                 <mo>=</mo>
                 <mi>w</mi><mi>x</mi>
                 <mo>+</mo>
@@ -102,7 +102,7 @@
           </div>
           <div class="math-legend">
             <span><math><mi>x</mi></math> 입력</span>
-            <span><math><mover><mi>y</mi><mo>^</mo></mover></math> 예측값</span>
+            <span><math><mover accent="true"><mi>y</mi><mo>^</mo></mover></math> 예측값</span>
             <span><math><mi>w</mi></math> 기울기</span>
             <span><math><mi>b</mi></math> 절편</span>
           </div>
@@ -155,7 +155,7 @@
                     <mo>(</mo>
                     <msub><mi>y</mi><mi>i</mi></msub>
                     <mo>−</mo>
-                    <msub><mover><mi>y</mi><mo>^</mo></mover><mi>i</mi></msub>
+                    <msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi>i</mi></msub>
                     <mo>)</mo>
                   </mrow>
                   <mn>2</mn>
@@ -255,7 +255,7 @@ CaseB  0.15</div>
             <b>↓</b>
             <span>Model <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>;</mo><mi>θ</mi><mo>)</mo></mrow></math></span>
             <b>↓</b>
-            <span>Prediction <math><mover><mi>y</mi><mo>^</mo></mover></math></span>
+            <span>Prediction <math><mover accent="true"><mi>y</mi><mo>^</mo></mover></math></span>
           </div>
           <div class="term"><strong>Parameter</strong>학습 과정에서 모델이 스스로 바꾸는 값입니다. Weight와 Bias가 대표적입니다.</div>
         </div>
@@ -272,7 +272,31 @@ Hyperparameter → 사람이 설정/탐색</div>
     <div class="slide-inner">
       <span class="slide-number">9</span>
       <h2 class="slide-title">신경망의 기본 단위: Perceptron</h2>
-      <div class="figure"><img src="assets/perceptron.svg?v=mathfix-20260922-4" alt="Perceptron 구조"></div>
+      <div class="perceptron-layout">
+        <div class="figure"><img src="assets/perceptron.svg?v=mathfix-20260922-4" alt="Perceptron 구조"></div>
+        <div class="formula-card">
+          <strong>Perceptron 계산</strong>
+          <div class="math-block">
+            <math display="block">
+              <mrow>
+                <mi>z</mi><mo>=</mo>
+                <msup><mi>w</mi><mi>T</mi></msup><mi>x</mi>
+                <mo>+</mo><mi>b</mi>
+              </mrow>
+            </math>
+          </div>
+          <div class="math-block">
+            <math display="block">
+              <mrow>
+                <mover accent="true"><mi>y</mi><mo>^</mo></mover>
+                <mo>=</mo>
+                <mi>f</mi><mo>(</mo><mi>z</mi><mo>)</mo>
+              </mrow>
+            </math>
+          </div>
+          <p class="math-caption">입력의 가중합 <math><mi>z</mi></math>에 Activation Function <math><mi>f</mi></math>를 적용해 출력을 만듭니다.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -311,7 +335,16 @@ Hyperparameter → 사람이 설정/탐색</div>
     <div class="slide-inner">
       <span class="slide-number">12</span>
       <h2 class="slide-title">그럼 Linear Layer를 여러 개 쌓으면 XOR를 풀 수 있을까?</h2>
-      <div class="figure"><img src="assets/linear_layers_collapse.svg?v=mathfix-20260922-4" alt="여러 Linear Layer가 하나의 Affine Transformation으로 합쳐지는 과정"></div>
+      <div class="linear-collapse-flow" aria-label="여러 Linear Layer를 합성해도 하나의 Affine Transformation과 같다는 개념">
+        <div class="collapse-box"><span>Linear 1</span><small>Affine Transformation</small></div>
+        <b>→</b>
+        <div class="collapse-box"><span>Linear 2</span><small>Affine Transformation</small></div>
+        <b>→</b>
+        <div class="collapse-box"><span>Linear 3</span><small>Affine Transformation</small></div>
+        <strong>결국</strong>
+        <div class="collapse-box collapse-box--result"><span>하나의 Linear/Affine Layer</span><small>비선형성이 생기지 않음</small></div>
+      </div>
+      <div class="callout">다음 슬라이드에서 실제 식을 전개해 왜 하나의 Affine Transformation으로 합쳐지는지 확인합니다.</div>
     </div>
   </section>
 
@@ -403,7 +436,39 @@ ReLU
       <span class="slide-number">17</span>
       <h2 class="slide-title">신경망에서는 Backpropagation으로 각 Weight의 Gradient를 계산합니다</h2>
       <p class="slide-subtitle">Loss에서 시작해 뒤쪽 Layer부터 Gradient를 전달하고, Optimizer가 각 Weight를 업데이트합니다.</p>
-      <div class="figure"><img src="assets/gradient_update.svg?v=mathfix-20260922-4" alt="Loss에서 Gradient를 계산해 Weight를 수정하는 과정"></div>
+      <div class="backprop-layout">
+        <div class="backprop-flow">
+          <div class="backprop-node">Input</div><b>→</b>
+          <div class="backprop-node">Layer 1</div><b>→</b>
+          <div class="backprop-node">Layer 2</div><b>→</b>
+          <div class="backprop-node">Loss</div>
+          <div class="backprop-return">← Gradient가 뒤에서 앞으로 전달됨 ←</div>
+        </div>
+        <div class="formula-card">
+          <strong>Chain Rule 예시</strong>
+          <div class="math-block math-block--wide">
+            <math display="block">
+              <mrow>
+                <mfrac>
+                  <mrow><mo>∂</mo><mi>L</mi></mrow>
+                  <mrow><mo>∂</mo><msub><mi>w</mi><mn>1</mn></msub></mrow>
+                </mfrac>
+                <mo>=</mo>
+                <mfrac>
+                  <mrow><mo>∂</mo><mi>L</mi></mrow>
+                  <mrow><mo>∂</mo><msub><mi>h</mi><mn>1</mn></msub></mrow>
+                </mfrac>
+                <mo>·</mo>
+                <mfrac>
+                  <mrow><mo>∂</mo><msub><mi>h</mi><mn>1</mn></msub></mrow>
+                  <mrow><mo>∂</mo><msub><mi>w</mi><mn>1</mn></msub></mrow>
+                </mfrac>
+              </mrow>
+            </math>
+          </div>
+          <p class="math-caption">뒤쪽 Loss가 앞쪽 Weight에 얼마나 영향을 받는지 Chain Rule로 계산합니다.</p>
+        </div>
+      </div>
     </div>
   </section>
 
