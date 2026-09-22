@@ -29,7 +29,6 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
         ↓
 03. Vision AI
    - Classification / Detection / Segmentation
-   - Tracking / Depth / 3D
    - 산업 문제와 Task 선택
    - CNN의 Feature 추출 원리
         ↓
@@ -51,7 +50,6 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 ```text
 Vision AI
  ├─ Classification / Detection / Segmentation
- ├─ Tracking / Depth / 3D
  └─ CNN
      ├─ 사람이 특징을 보고 판단한다는 직관
      ├─ Kernel / Convolution
