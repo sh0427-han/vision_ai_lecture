@@ -1,35 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
   <title id="title">AI, Machine Learning, Deep Learning, Computer Vision 관계</title>
-  <desc id="desc">Artificial Intelligence 안에 Machine Learning, 그 안에 Deep Learning이 있고, Computer Vision은 AI의 시각 문제 영역으로 전통적 영상처리와 Machine Learning, Deep Learning 방법을 함께 사용할 수 있음을 보여주는 개념도.</desc>
+  <desc id="desc">AI 안에 Machine Learning과 Deep Learning이 포함되고, Computer Vision은 이미지와 영상을 다루는 문제 영역으로 여러 방법과 겹친다는 개념도.</desc>
   <style>
-    text{font-family:"Pretendard","Noto Sans KR","Noto Sans CJK KR","Malgun Gothic",sans-serif}
-    .label{font-size:28px;font-weight:800;fill:#17243b}
-    .sub{font-size:19px;fill:#53647b}
-    .small{font-size:17px;fill:#475569}
+    text{font-family:Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif}
+    .heading{font-size:30px;font-weight:800;fill:#17243b}
+    .label{font-size:26px;font-weight:800}
+    .sub{font-size:18px;fill:#53647b}
+    .foot{font-size:17px;fill:#53647b}
   </style>
   <rect width="1200" height="600" fill="#fff"/>
-  <text x="50" y="58" class="label">AI · Machine Learning · Deep Learning · Computer Vision</text>
-  <line x1="50" y1="78" x2="1150" y2="78" stroke="#d8e1ed"/>
+  <text x="42" y="58" class="heading">AI · Machine Learning · Deep Learning · Computer Vision</text>
+  <line x1="42" y1="80" x2="1158" y2="80" stroke="#d8e1ed"/>
 
-  <ellipse cx="520" cy="332" rx="430" ry="220" fill="#f4f8ff" stroke="#2563eb" stroke-width="3"/>
-  <text x="155" y="185" class="label" fill="#2563eb">Artificial Intelligence</text>
-  <text x="155" y="216" class="sub">판단 · 추론 · 인식 등 지능적 기능을 수행하는 넓은 영역</text>
+  <ellipse cx="500" cy="332" rx="405" ry="220" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="150" y="174" class="label" fill="#2563eb">Artificial Intelligence</text>
+  <text x="150" y="205" class="sub">판단 · 추론 · 인식 등을 수행하는 넓은 기술 영역</text>
 
-  <ellipse cx="505" cy="355" rx="300" ry="155" fill="#ecfdf5" fill-opacity=".78" stroke="#0f766e" stroke-width="3"/>
-  <text x="274" y="305" class="label" fill="#0f766e">Machine Learning</text>
-  <text x="304" y="337" class="sub">데이터에서 규칙을 학습</text>
+  <ellipse cx="485" cy="358" rx="280" ry="150" fill="#ecfdf5" fill-opacity=".9" stroke="#087f74" stroke-width="3"/>
+  <text x="272" y="300" class="label" fill="#087f74">Machine Learning</text>
+  <text x="300" y="332" class="sub">데이터에서 규칙을 학습</text>
 
-  <ellipse cx="500" cy="385" rx="170" ry="86" fill="#eef2ff" stroke="#4f46e5" stroke-width="3"/>
-  <text x="404" y="380" class="label" fill="#4f46e5">Deep Learning</text>
-  <text x="410" y="410" class="small">다층 신경망 기반 학습</text>
+  <ellipse cx="480" cy="401" rx="155" ry="76" fill="#eef2ff" stroke="#4f46e5" stroke-width="3"/>
+  <text x="480" y="392" class="label" fill="#4f46e5" text-anchor="middle">Deep Learning</text>
+  <text x="480" y="424" class="sub" text-anchor="middle">다층 신경망 기반</text>
 
-  <ellipse cx="805" cy="336" rx="245" ry="150" fill="#fff7ed" fill-opacity=".72" stroke="#ea580c" stroke-width="4" stroke-dasharray="12 9"/>
-  <text x="720" y="282" class="label" fill="#c2410c">Computer Vision</text>
-  <text x="696" y="314" class="sub">이미지 · 영상에서 의미를 얻는 분야</text>
-  <text x="690" y="353" class="small">전통적 영상처리</text>
-  <text x="690" y="382" class="small">Machine Learning</text>
-  <text x="690" y="411" class="small">Deep Learning</text>
+  <ellipse cx="815" cy="340" rx="250" ry="155" fill="#fff7ed" fill-opacity=".78" stroke="#ea580c" stroke-width="4" stroke-dasharray="12 9"/>
+  <text x="815" y="266" class="label" fill="#c2410c" text-anchor="middle">Computer Vision</text>
+  <text x="815" y="300" class="sub" text-anchor="middle">이미지 · 영상에서 의미를 얻는 분야</text>
+  <text x="815" y="348" class="sub" text-anchor="middle">전통적 영상처리</text>
+  <text x="815" y="379" class="sub" text-anchor="middle">Machine Learning</text>
+  <text x="815" y="410" class="sub" text-anchor="middle">Deep Learning</text>
 
   <rect x="82" y="535" width="1036" height="45" rx="12" fill="#edf3fc"/>
-  <text x="600" y="564" class="small" text-anchor="middle">Computer Vision은 문제 영역이고, Machine Learning과 Deep Learning은 그 문제를 해결하는 대표적인 방법입니다.</text>
+  <text x="600" y="564" class="foot" text-anchor="middle">Computer Vision은 문제 영역이고, ML·DL은 그 문제를 해결하는 대표적인 방법입니다.</text>
 </svg>

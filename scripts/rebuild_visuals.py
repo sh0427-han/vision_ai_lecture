@@ -267,11 +267,21 @@ def build_apples():
 
 
 def build_specials():
-    d=Diagram("AI 안에 ML, ML 안에 DL", "CNN은 Deep Learning에 속하는 신경망 구조의 한 예입니다.")
-    for x,y,w,h,title,detail,color in [(32,96,1136,432,"Artificial Intelligence","판단·추론·인식 등을 수행하는 기술",BLUE),(230,211,906,285,"Machine Learning","데이터에서 패턴을 학습",GREEN),(440,331,664,137,"Deep Learning","여러 층의 신경망으로 표현을 학습",BLUE)]:
-        d.rect(x,y,w,h,"#f0f5fc",color)
-        d.text(x+24,y+13,w-48,45,title,28,color)
-        d.text(x+24,y+65,w-48,47,detail,23,MUTED)
+    d=Diagram("AI · Machine Learning · Deep Learning · Computer Vision",
+              "Computer Vision은 문제 영역이고, Machine Learning과 Deep Learning은 이를 해결하는 대표적인 방법입니다.")
+    d.add('<ellipse cx="520" cy="332" rx="430" ry="220" fill="#f4f8ff" stroke="#2563eb" stroke-width="3"/>')
+    d.text(145, 130, 560, 50, "Artificial Intelligence", 28, BLUE)
+    d.text(145, 181, 610, 48, "판단 · 추론 · 인식 등 지능적 기능을 수행하는 넓은 영역", 20, MUTED)
+    d.add('<ellipse cx="505" cy="355" rx="300" ry="155" fill="#ecfdf5" fill-opacity=".78" stroke="#087f74" stroke-width="3"/>')
+    d.text(260, 276, 430, 48, "Machine Learning", 27, GREEN)
+    d.text(290, 327, 360, 42, "데이터에서 규칙을 학습", 21, MUTED)
+    d.add('<ellipse cx="500" cy="385" rx="170" ry="86" fill="#eef2ff" stroke="#4f46e5" stroke-width="3"/>')
+    d.text(384, 351, 250, 42, "Deep Learning", 24, "#4f46e5", "middle")
+    d.text(388, 398, 242, 38, "다층 신경망 기반 학습", 18, MUTED, "middle")
+    d.add('<ellipse cx="805" cy="336" rx="245" ry="150" fill="#fff7ed" fill-opacity=".72" stroke="#ea580c" stroke-width="4" stroke-dasharray="12 9"/>')
+    d.text(690, 244, 260, 44, "Computer Vision", 26, "#c2410c", "middle")
+    d.text(678, 294, 286, 42, "이미지 · 영상에서 의미를 얻는 분야", 19, MUTED, "middle")
+    d.text(690, 344, 260, 92, "전통적 영상처리\nMachine Learning\nDeep Learning", 18, MUTED, "middle")
     d.save("ai_ml_dl.svg")
     d=Diagram("입력 × 가중치 → 가중합 → 활성화 → 출력", "예: x = [0.8, 0.2], w = [0.5, −0.5], b = −0.1 → z = 0.2 → 계단함수 출력 1")
     for i,(label,detail) in enumerate([("입력 x","0.8\n0.2"),("가중합 z","0.8 × 0.5\n+ 0.2 × (−0.5) − 0.1"),("활성화","z ≥ 0이면 1\nz < 0이면 0"),("출력","1")]):
@@ -383,7 +393,7 @@ def build_remaining():
         ("feature_representation.svg","입력을 판단에 유용한 표현으로 바꿉니다",[("입력","photo","RGB 픽셀"),("초기 특징","feature","경계 · 국소 패턴"),("특징 조합","layers","질감 · 부분 구조"),("내부 표현","bars","분류에 사용하는 벡터")],"Feature는 유용한 단서, Representation은 그 단서를 담은 숫자 표현입니다."),
         ("cnn_hierarchy.svg","작은 패턴을 조합해 더 복잡한 특징으로",[("Pixel","matrix","색 · 밝기"),("국소 패턴","feature","경계 · 반복 무늬"),("부분 조합","layers","질감 · 형상"),("Task 특징","network","예측에 유용한 표현")],"이해를 돕는 도식이며, 각 채널이 항상 사람이 이름 붙일 수 있는 특징과 대응하지는 않습니다."),
         ("cnn_flow.svg","CNN의 특징 추출 흐름",[("입력","photo","224 × 224 × 3"),("Convolution","kernel","국소 영역의 곱과 합"),("Activation","ReLU","비선형 변환"),("Feature Maps","layers","다음 층의 입력")],"여러 층을 쌓아 공간 정보를 조합합니다. 크기·채널 수는 모델 설계에 따라 달라집니다."),
-        ("training_loop.svg","예측 → 오차 → 기울기 → 가중치 갱신",[("Forward","network","입력으로 예측 계산"),("Loss","label","예측과 정답 비교"),("Backward","bars","Gradient 계산"),("Optimizer","update","가중치 갱신")],"지도학습 예시 · 같은 과정을 Mini-batch마다 반복합니다."),
+        ("training_loop.svg","예측 → 오차 → 기울기 → 가중치 갱신",[("Forward","network","입력으로 예측 계산"),("Loss","label","예측과 정답 비교"),("Backward","bars","Gradient 계산"),("Optimizer","update","가중치 갱신")],"정답이 있는 학습 예시 · 같은 과정을 Mini-batch마다 반복합니다."),
         ("cnn_training.svg","CNN의 Kernel도 학습되는 가중치입니다",[("Forward","kernel","Kernel로 특징 계산"),("Loss","label","예측과 라벨 비교"),("Backward","bars","Kernel의 기울기 계산"),("Optimizer","update","Kernel Weight 갱신")],"학습할 때 가중치를 갱신하고, 추론할 때는 학습된 가중치를 사용합니다."),
         ("vision_project_pipeline.svg","현장 문제부터 운영까지",[("문제 정의","출력?","필요한 판단 정의"),("데이터·라벨","label","기준과 Split 설계"),("학습","network","모델 가중치 최적화"),("평가","bars","새 조건에서 검증"),("배포","모델","운영 시스템 연결"),("모니터링","update","변화 감지·데이터 보강")],"운영 결과를 바탕으로 문제 정의와 데이터를 다시 점검합니다."),
         ("ml_workflow.svg","모델 학습은 전체 과정의 한 단계",[("수집","photo","현장을 대표하는 데이터"),("탐색","scatter","분포·품질 확인"),("전처리","matrix","입력과 라벨 정리"),("학습","network","Train으로 가중치 학습"),("평가","bars","Val 선택 / Test 평가"),("운영","update","배포·모니터링")],"전처리 통계도 Train에서 계산하고 Val / Test에는 같은 변환을 적용합니다."),
@@ -440,9 +450,9 @@ def main():
     for page in (ROOT / "docs").glob("*.html"):
         markup = page.read_text(encoding="utf-8")
         markup = re.sub(r'(src="assets/[^"?]+\.svg)(?:\?[^" ]*)?"',
-                        r'\1?v=visual-20260922"', markup)
+                        r'\1?v=layoutfix-20260922-3"', markup)
         markup = re.sub(r'((?:href|src)="slide\.(?:css|js))(?:\?[^" ]*)?"',
-                        r'\1?v=visual-20260922"', markup)
+                        r'\1?v=layoutfix-20260922-3"', markup)
         page.write_text(markup, encoding="utf-8")
     print(f"Built {len(BUILT)} diagrams; measured {len(TEXTS)} text lines; embedded {len(buf.getvalue())} byte font.")
 
