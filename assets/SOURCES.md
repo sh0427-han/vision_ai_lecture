@@ -29,6 +29,7 @@
 - `vision_tasks_comparison.svg`
 - `and_xor_linear_separability.svg`
 - `linear_layers_collapse.svg`
+- `apple_visual_variations.svg`
 
 ## AI 기초 참고 자료
 
