@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="620" viewBox="0 0 1400 620">
+<rect width="1400" height="620" fill="#fff"/>
+<style>
+.t{font:700 30px Arial,sans-serif;fill:#111827}.h{font:700 20px Arial,sans-serif;fill:#111827}.s{font:400 15px Arial,sans-serif;fill:#64748b}
+.box{fill:#fff;stroke:#dbe2ea;stroke-width:2}.a{fill:#eff6ff;stroke:#93c5fd;stroke-width:2}.arrow{stroke:#64748b;stroke-width:3;marker-end:url(#m)}
+.eq{font:600 18px monospace;fill:#334155}.bad{fill:#fff7ed;stroke:#fdba74;stroke-width:2}
+</style>
+<defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3z" fill="#64748b"/></marker></defs>
+<text x="700" y="44" text-anchor="middle" class="t">Activation이 없으면 Linear Layer를 여러 개 쌓아도 결국 하나의 Linear/Affine 변환</text>
+
+<g transform="translate(70 120)">
+<rect x="0" y="80" width="150" height="90" rx="16" class="box"/><text x="75" y="118" text-anchor="middle" class="h">Input x</text>
+<path d="M150 125 L220 125" class="arrow"/>
+<rect x="225" y="80" width="190" height="90" rx="16" class="a"/><text x="320" y="112" text-anchor="middle" class="h">Linear 1</text><text x="320" y="142" text-anchor="middle" class="s">W₁x + b₁</text>
+<path d="M415 125 L485 125" class="arrow"/>
+<rect x="490" y="80" width="190" height="90" rx="16" class="a"/><text x="585" y="112" text-anchor="middle" class="h">Linear 2</text><text x="585" y="142" text-anchor="middle" class="s">W₂h + b₂</text>
+<path d="M680 125 L750 125" class="arrow"/>
+<rect x="755" y="80" width="190" height="90" rx="16" class="a"/><text x="850" y="112" text-anchor="middle" class="h">Linear 3</text><text x="850" y="142" text-anchor="middle" class="s">W₃h + b₃</text>
+<path d="M945 125 L1015 125" class="arrow"/>
+<rect x="1020" y="80" width="220" height="90" rx="16" class="box"/><text x="1130" y="118" text-anchor="middle" class="h">Output</text>
+
+<rect x="225" y="250" width="1015" height="165" rx="18" class="bad"/>
+<text x="732" y="292" text-anchor="middle" class="h">전부 펼치면</text>
+<text x="732" y="335" text-anchor="middle" class="eq">W₃(W₂(W₁x + b₁) + b₂) + b₃</text>
+<text x="732" y="380" text-anchor="middle" class="eq">= W*x + b*</text>
+<text x="732" y="405" text-anchor="middle" class="s">새로운 복잡한 경계가 생기는 것이 아니라, 결국 또 하나의 Affine Transformation</text>
+</g>
+<text x="700" y="565" text-anchor="middle" class="h">따라서 XOR처럼 비선형 결정 경계가 필요한 문제는 Activation 없이 해결할 수 없습니다.</text>
+</svg>
