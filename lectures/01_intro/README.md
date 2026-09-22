@@ -292,8 +292,8 @@ Task Output
 
 이제 다음 질문으로 넘어갑니다.
 
-> 수백만 개의 Pixel에서 어떻게 Feature를 찾을까?
+> 모델은 어떤 원리로 숫자에서 패턴을 학습할까?
 
-대표적인 답이 CNN입니다.
+CNN 구조를 보기 전에 Weight, Activation Function, Loss, Backpropagation, Dataset 같은 AI 기초를 먼저 이해합니다.
 
-→ [02. CNN](../02_cnn/README.md)
+→ [02. AI 기초](../02_ai_basics/README.md)
