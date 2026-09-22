@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560">
+  <rect width="1400" height="560" fill="#ffffff"/>
+  <style>
+    .title{font:700 28px Arial,sans-serif;fill:#111827}
+    .label{font:700 19px Arial,sans-serif;fill:#111827}
+    .small{font:400 15px Arial,sans-serif;fill:#64748b}
+    .axis{stroke:#94a3b8;stroke-width:2}
+    .line{stroke:#2563eb;stroke-width:4}
+    .curve{stroke:#7c3aed;stroke-width:4;fill:none}
+    .p1{fill:#60a5fa}.p2{fill:#f97316}
+    .card{fill:#ffffff;stroke:#dbe2ea;stroke-width:2}
+  </style>
+  <text x="700" y="46" text-anchor="middle" class="title">왜 신경망에는 비선형성이 필요한가?</text>
+  <g transform="translate(55 95)">
+    <rect width="605" height="385" rx="20" class="card"/>
+    <text x="302" y="38" text-anchor="middle" class="label">선형/아핀 변환만 사용</text>
+    <line x1="90" y1="315" x2="530" y2="315" class="axis"/>
+    <line x1="90" y1="70" x2="90" y2="315" class="axis"/>
+    <g>
+      <circle cx="155" cy="125" r="9" class="p1"/><circle cx="200" cy="170" r="9" class="p1"/><circle cx="245" cy="115" r="9" class="p1"/><circle cx="290" cy="165" r="9" class="p1"/>
+      <circle cx="335" cy="235" r="9" class="p2"/><circle cx="385" cy="185" r="9" class="p2"/><circle cx="430" cy="250" r="9" class="p2"/><circle cx="475" cy="200" r="9" class="p2"/>
+    </g>
+    <line x1="150" y1="290" x2="465" y2="95" class="line"/>
+    <text x="302" y="352" text-anchor="middle" class="small">여러 층을 쌓아도 활성화함수가 없으면 결국 하나의 아핀 변환으로 합쳐진다.</text>
+  </g>
+  <g transform="translate(740 95)">
+    <rect width="605" height="385" rx="20" class="card"/>
+    <text x="302" y="38" text-anchor="middle" class="label">활성화함수로 비선형성 추가</text>
+    <line x1="90" y1="315" x2="530" y2="315" class="axis"/>
+    <line x1="90" y1="70" x2="90" y2="315" class="axis"/>
+    <g>
+      <circle cx="150" cy="130" r="9" class="p1"/><circle cx="205" cy="175" r="9" class="p1"/><circle cx="255" cy="115" r="9" class="p1"/><circle cx="300" cy="165" r="9" class="p1"/>
+      <circle cx="330" cy="235" r="9" class="p2"/><circle cx="385" cy="180" r="9" class="p2"/><circle cx="435" cy="248" r="9" class="p2"/><circle cx="485" cy="205" r="9" class="p2"/>
+    </g>
+    <path d="M145 280 C210 245,225 205,280 205 C340 205,350 125,470 100" class="curve"/>
+    <text x="302" y="352" text-anchor="middle" class="small">ReLU 같은 비선형 함수를 사이에 넣으면 더 복잡한 결정 경계를 표현할 수 있다.</text>
+  </g>
+</svg>
