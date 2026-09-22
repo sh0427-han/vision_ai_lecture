@@ -26,7 +26,7 @@
       <span class="chapter-chip">Lecture 03 · Vision AI</span>
       <h1 class="slide-title">Vision AI는 무엇을 보고, 무엇을 예측할까?</h1>
       <p class="slide-subtitle">
-        같은 이미지라도 “무엇을 알고 싶은가?”에 따라 Classification, Detection, Segmentation, Tracking, Depth처럼 문제 정의가 달라집니다.
+        같은 이미지라도 “무엇을 알고 싶은가?”에 따라 Classification, Detection, Segmentation처럼 문제 정의가 달라집니다.
       </p>
       <div class="figure"><img src="assets/vision_tasks_comparison.svg" alt="Vision AI 대표 Task 비교"></div>
     </div>
@@ -143,53 +143,6 @@ Pixel Mask</div>
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">5</span>
-      <h2 class="slide-title">Tracking — 영상에서 같은 물체를 계속 따라가기</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="flow">Frame 1 → ID 3
-Frame 2 → ID 3
-Frame 3 → ID 3
-     ↓
-Trajectory / Speed / Event</div>
-        </div>
-        <div>
-          <div class="term"><strong>Tracking</strong>시간이 지나도 같은 객체에 같은 ID를 연결하는 문제입니다.</div>
-          <ul class="compact-list">
-            <li>물체 이동 경로</li>
-            <li>체류 시간</li>
-            <li>통과 개수</li>
-            <li>움직임 기반 이상 상태</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">6</span>
-      <h2 class="slide-title">Depth / 3D — 얼마나 멀리 있고 공간이 어떻게 생겼는가?</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="term"><strong>Depth Map</strong>각 Pixel 위치에 카메라와 물체 사이 거리를 저장합니다.</div>
-          <div class="term"><strong>Point Cloud</strong>공간을 (x, y, z) 형태의 3차원 점 집합으로 표현합니다.</div>
-        </div>
-        <div>
-          <ul class="compact-list">
-            <li>두 물체 사이 거리</li>
-            <li>충돌 가능성 판단</li>
-            <li>높이 / 부피 측정</li>
-            <li>로봇 공간 인식</li>
-          </ul>
-          <div class="callout">RGB 하나로 해결하기 어려운 문제는 Depth Camera, Stereo, LiDAR 같은 센서 정보가 필요할 수 있습니다.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">7</span>
       <h2 class="slide-title">산업 문제를 Vision Task로 바꿔보면</h2>
       <table>
         <thead><tr><th>현장 질문</th><th>주요 Task</th><th>대표 Output</th></tr></thead>
@@ -197,8 +150,6 @@ Trajectory / Speed / Event</div>
           <tr><td>제품이 정상인가?</td><td>Classification</td><td>Class / Probability</td></tr>
           <tr><td>불량이 어디에 있는가?</td><td>Detection</td><td>Bounding Box</td></tr>
           <tr><td>불량 면적이 얼마나 되는가?</td><td>Segmentation</td><td>Pixel Mask / Area</td></tr>
-          <tr><td>영상에서 물체가 어떻게 움직이는가?</td><td>Tracking</td><td>ID / Trajectory</td></tr>
-          <tr><td>두 물체 사이 거리는 얼마인가?</td><td>Depth / 3D</td><td>Distance / Point Cloud</td></tr>
         </tbody>
       </table>
       <div class="callout"><strong>문제 정의가 Label 방식과 평가 지표까지 결정합니다.</strong></div>
@@ -207,7 +158,7 @@ Trajectory / Speed / Event</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">8</span>
+      <span class="slide-number">6</span>
       <h2 class="slide-title">그럼 모델은 이미지에서 무엇을 보고 판단할까?</h2>
       <div class="slide-columns">
         <div>
@@ -230,7 +181,7 @@ Trajectory / Speed / Event</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">9</span>
+      <span class="slide-number">7</span>
       <h2 class="slide-title">CNN — 작은 특징을 조합해 더 큰 의미를 만든다</h2>
       <div class="figure"><img src="assets/human_feature_to_cnn.svg" alt="사람의 특징 기반 인식과 CNN 직관"></div>
     </div>
@@ -238,7 +189,7 @@ Trajectory / Speed / Event</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">10</span>
+      <span class="slide-number">8</span>
       <h2 class="slide-title">CNN의 Feature Hierarchy</h2>
       <div class="slide-columns">
         <div><p class="big-statement">처음에는 작은 지역 패턴을 보고, Layer가 깊어질수록 더 복잡한 특징을 조합합니다.</p></div>
@@ -262,7 +213,7 @@ Object-level Feature</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">11</span>
+      <span class="slide-number">9</span>
       <h2 class="slide-title">Kernel과 Convolution</h2>
       <div class="slide-columns top">
         <div>
@@ -288,7 +239,7 @@ Feature 값</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">12</span>
+      <span class="slide-number">10</span>
       <h2 class="slide-title">Feature Map과 Channel</h2>
       <div class="slide-columns">
         <div>
@@ -312,7 +263,7 @@ Filter 64 → Map 64</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">13</span>
+      <span class="slide-number">11</span>
       <h2 class="slide-title">깊어질수록 더 넓은 문맥을 봅니다</h2>
       <div class="slide-columns top">
         <div>
@@ -335,7 +286,7 @@ Filter 64 → Map 64</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">14</span>
+      <span class="slide-number">12</span>
       <h2 class="slide-title">CNN도 Dataset으로 “볼 특징”을 학습합니다</h2>
       <div class="slide-columns">
         <div>
@@ -361,13 +312,13 @@ Kernel Weight Update</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">15</span>
+      <span class="slide-number">13</span>
       <h2 class="slide-title">Vision AI를 한 흐름으로 정리하면</h2>
       <div class="flow">현장 문제
    ↓
 어떤 Output이 필요한가?
    ↓
-Classification / Detection / Segmentation / Tracking / 3D
+Classification / Detection / Segmentation
    ↓
 Dataset + Label
    ↓
