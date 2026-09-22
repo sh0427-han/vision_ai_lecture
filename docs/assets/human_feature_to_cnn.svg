@@ -15,7 +15,7 @@
     </marker>
   </defs>
 
-  <text x="700" y="45" text-anchor="middle" class="title">사람의 직관과 CNN의 공통점: 작은 특징을 조합해 의미를 만든다</text>
+  <text x="700" y="45" text-anchor="middle" class="title">특징을 조합해 더 복잡한 표현을 만든다</text>
 
   <g transform="translate(55 105)">
     <rect width="600" height="365" rx="22" class="box"/>
@@ -79,5 +79,5 @@
     <text x="300" y="298" text-anchor="middle" class="small">Shape → Part → Object-level representation</text>
   </g>
 
-  <text x="700" y="518" text-anchor="middle" class="small">이 비교는 이해를 위한 직관입니다. 인간의 시각 처리 과정과 CNN의 계산 구조가 실제로 동일하다는 뜻은 아닙니다.</text>
+  <text x="700" y="518" text-anchor="middle" class="small">※ 인간의 시각 처리와 CNN의 계산 구조는 동일하지 않습니다.</text>
 </svg>
