@@ -1,6 +1,6 @@
 # 02. AI 기초 — 데이터에서 규칙을 배우는 방법
 
-Vision AI 모델을 보기 전에 AI, 머신러닝, 딥러닝의 관계와 신경망이 어떻게 학습하는지 이해합니다.
+AI는 데이터에서 패턴을 학습하고 Prediction Error가 줄어들도록 Weight를 조정합니다.
 
 ## 1. AI / Machine Learning / Deep Learning
 
@@ -44,7 +44,7 @@ Prediction
 ## 3. 학습 방식
 
 ### 지도학습 Supervised Learning
-입력 X와 정답 y를 함께 보며 관계를 학습합니다. 이번 강의의 중심입니다.
+입력 X와 정답 y를 함께 보며 입력과 정답의 관계를 학습합니다.
 
 ### 비지도학습 Unsupervised Learning
 정답 Label 없이 데이터의 구조나 군집, 표현을 찾습니다.
@@ -134,7 +134,7 @@ Weight가 크다는 것은 해당 입력을 더 강하게 반영한다는 뜻으
 
 ## 7. 왜 Layer와 비선형성이 필요한가?
 
-비선형성을 이해할 때 **AND Gate와 XOR Gate**를 비교하면 가장 직관적입니다.
+**AND Gate와 XOR Gate**는 선형 분리 가능성의 차이를 보여주는 대표적인 예입니다.
 
 ### AND Gate — 직선 하나로 구분 가능
 
@@ -170,7 +170,7 @@ XOR는 Output 1인 점 `(0,1)`, `(1,0)`과 Output 0인 점 `(0,0)`, `(1,1)`이 �
 
 ### Linear Layer를 여러 개 쌓으면 해결될까?
 
-Activation 없이 다음처럼 Linear/Affine Layer를 여러 개 쌓아봅니다.
+Activation이 없는 Linear/Affine Layer를 합성하면:
 
 ```text
 h1 = W1x + b1
@@ -273,7 +273,7 @@ Weight를 조금 바꿀 때 Loss가 어느 방향으로 얼마나 변하는지�
 ### Optimizer
 Gradient를 이용해 Weight를 업데이트합니다.
 
-가장 단순한 직관:
+기본 형태:
 
 ```text
 new_weight
@@ -340,7 +340,7 @@ Weight를 실제로 학습합니다.
 ### Test
 가능한 한 마지막까지 독립적으로 유지하고 최종 일반화 성능을 평가합니다.
 
-교육적으로는 다음처럼 생각할 수 있습니다.
+역할을 간단히 정리하면:
 
 ```text
 Train      = 문제집
