@@ -1,4 +1,4 @@
-# 03. Vision AI — 문제에 맞는 Task와 CNN 이해하기
+# 03. Vision AI — 문제에 맞는 Task와 CNN
 
 ## 1. 모델보다 먼저 문제를 정의한다
 
@@ -127,7 +127,7 @@ Classification / Detection / Segmentation은 **무엇을 예측할지**에 대�
 
 CNN은 이미지를 처리해 Feature를 만드는 데 널리 사용된 대표적인 Neural Network 구조입니다.
 
-교육적으로 다음 직관으로 이해할 수 있습니다.
+CNN은 작은 지역 패턴을 조합해 더 복잡한 Feature를 만듭니다.
 
 ```text
 사람
@@ -151,7 +151,7 @@ Prediction
 
 ![Human Feature and CNN](../../assets/diagrams/human_feature_to_cnn.svg)
 
-인간의 실제 시각 처리와 CNN이 동일하다는 의미는 아니며, Feature Hierarchy를 이해하기 위한 비유입니다.
+※ 인간의 시각 처리와 CNN의 계산 구조는 동일하지 않습니다.
 
 ## 9. CNN Feature Hierarchy
 
