@@ -4,124 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vision AI Study & Lecture</title>
-  <meta name="description" content="Vision AI를 처음부터 AI 기초와 대표 Vision Task, CNN까지 배우는 완전 기초 강의">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css">
-  <script src="slide.js" defer></script>
+  <meta http-equiv="refresh" content="0; url=intro.html">
+  <link rel="canonical" href="intro.html">
+  <script>
+    window.location.replace("intro.html");
+  </script>
 </head>
-<body class="deck-page" data-next-page="intro.html">
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">Vision AI</a>
-    <div class="nav-links">
-      <a href="intro.html">01 Intro</a>
-      <a href="ai_basics.html">02 AI Basics</a>
-      <a href="vision_ai.html">03 Vision AI</a>
-      <a href="https://github.com/sh0427-han/vision_ai">GitHub</a>
-    </div>
-  </nav>
-</header>
-
-<main class="deck" aria-live="polite">
-  <section class="slide active">
-    <div class="slide-inner slide-hero">
-      <span class="chapter-chip">Vision AI · Beginner Lecture</span>
-      <h1 class="slide-title">AI는 세상을 어떻게 볼까?</h1>
-      <p class="slide-subtitle">
-        우리는 장면을 보면 곧바로 의미를 이해하지만 컴퓨터가 처음 받는 것은 Pixel, 거리, 온도, 3차원 점처럼 수많은 숫자입니다.
-      </p>
-      <div class="hero-questions">
-        <div class="question">스마트폰은 어떻게 얼굴과 문자를 알아볼까?</div>
-        <div class="question">자동차는 어떻게 차선과 보행자를 구분할까?</div>
-        <div class="question">공장은 어떻게 작은 흠집과 이상 상태를 찾을까?</div>
-      </div>
-      <p class="keyboard-hint">← → 방향키 또는 마우스 휠로 슬라이드를 넘길 수 있습니다.</p>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">1</span>
-      <h2 class="slide-title">Vision AI는 “이미지를 분류하는 AI”보다 더 넓습니다</h2>
-      <div class="figure"><img src="assets/vision_ai_pipeline.svg" alt="Vision AI 전체 파이프라인"></div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">2</span>
-      <h2 class="slide-title">일상과 산업 곳곳에 이미 쓰이고 있습니다</h2>
-      <div class="grid-4">
-        <div class="use-card"><span class="tag">Smartphone</span><h3>카메라</h3><p>얼굴, 장면, 배경 분리</p></div>
-        <div class="use-card"><span class="tag">Document</span><h3>OCR</h3><p>문자와 코드 인식</p></div>
-        <div class="use-card"><span class="tag">Mobility</span><h3>자율주행</h3><p>차선, 사람, 장애물</p></div>
-        <div class="use-card"><span class="tag">Factory</span><h3>품질 검사</h3><p>결함, 위치, 조립 상태</p></div>
-        <div class="use-card"><span class="tag">Medical</span><h3>의료 영상</h3><p>관심 영역 분석</p></div>
-        <div class="use-card"><span class="tag">Security</span><h3>모니터링</h3><p>추적과 이상 감지</p></div>
-        <div class="use-card"><span class="tag">Search</span><h3>Visual Search</h3><p>이미지 기반 검색</p></div>
-        <div class="use-card"><span class="tag">AR · 3D</span><h3>공간 인식</h3><p>거리와 자세 추정</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">3</span>
-      <h2 class="slide-title">Vision 정보는 여러 센서에서 옵니다</h2>
-      <div class="figure"><img src="assets/sensor_overview.svg" alt="Vision Sensor 비교"></div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">4</span>
-      <h2 class="slide-title">사람은 장면을 보고, 컴퓨터는 숫자를 받습니다</h2>
-      <div class="figure"><img src="assets/image_as_numbers.svg" alt="이미지와 숫자 배열 비교"></div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">5</span>
-      <h2 class="slide-title">이 강의에서 딱 세 단계만 봅니다</h2>
-      <div class="grid">
-        <div class="card"><span class="number">01</span><h3>Vision AI 입문</h3><p>사람 vs 컴퓨터, Pixel, 센서, 왜 Vision이 어려운지</p></div>
-        <div class="card"><span class="number">02</span><h3>AI 기초</h3><p>Weight, 비선형성, Loss, Backprop, Dataset</p></div>
-        <div class="card"><span class="number">03</span><h3>Vision AI</h3><p>Classification, Detection, Segmentation, Tracking, Depth와 CNN</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">6</span>
-      <h2 class="slide-title">입력 → 학습 → Feature → 판단</h2>
-      <div class="flow">Real World
-    ↓
-Sensor
-    ↓
-Numeric Data
-    ↓
-AI Learning
-    ↓
-Vision Task
-Classification · Detection · Segmentation · Tracking · 3D
-    ↓
-CNN 등 Feature Extractor / Model Architecture</div>
-      <p class="big-statement">완전 기초 강의의 목표는 “어떤 Vision 문제를 어떤 출력으로 풀고, 모델이 이미지를 어떻게 특징으로 바꾸는지” 감을 잡는 것입니다.</p>
-    </div>
-  </section>
-</main>
-
-<div class="deck-controls">
-  <div class="deck-controls-inner">
-    <button class="deck-button" type="button" data-slide-prev>← 이전</button>
-    <div class="deck-status">
-      <span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
-      <div class="deck-progress"><div class="deck-progress-bar" data-slide-progress></div></div>
-    </div>
-    <button class="deck-button" type="button" data-slide-next>다음 →</button>
-  </div>
-</div>
+<body>
+  <p><a href="intro.html">01. Vision AI 입문으로 이동</a></p>
 </body>
 </html>
