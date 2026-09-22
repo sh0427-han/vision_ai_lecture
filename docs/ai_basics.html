@@ -194,20 +194,61 @@ Hyperparameter → 사람이 설정/탐색</div>
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">9</span>
-      <h2 class="slide-title">왜 Layer를 여러 개 쌓을까?</h2>
+      <h2 class="slide-title">AND Gate — 직선 하나로 구분할 수 있는 문제</h2>
       <div class="slide-columns top">
         <div>
-          <p class="big-statement">하나의 단순한 결정 경계로는 풀 수 없는 문제가 있습니다.</p>
-          <div class="flow">XOR
-0,0 → 0
-0,1 → 1
-1,0 → 1
-1,1 → 0</div>
+          <div class="flow">AND
+
+0 AND 0 → 0
+0 AND 1 → 0
+1 AND 0 → 0
+1 AND 1 → 1</div>
+          <div class="term"><strong>Linearly Separable</strong>두 Class를 하나의 직선(고차원에서는 Hyperplane)으로 나눌 수 있다는 뜻입니다.</div>
         </div>
         <div>
-          <div class="term"><strong>Hidden Layer</strong>입력과 출력 사이에서 새로운 Feature를 만드는 중간 Layer입니다.</div>
-          <div class="term"><strong>Deep Neural Network</strong>여러 Hidden Layer를 가진 깊은 신경망입니다.</div>
-          <div class="callout">하지만 Layer만 많이 쌓는 것만으로는 충분하지 않습니다. <strong>비선형성</strong>이 필요합니다.</div>
+          <p class="big-statement">AND는 Output 1인 점이 (1,1) 하나뿐이라 직선 하나로 0과 1을 나눌 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="callout">즉, 단순한 Linear Model 하나로도 표현 가능한 문제입니다.</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">10</span>
+      <h2 class="slide-title">XOR Gate — 직선 하나로는 구분할 수 없는 문제</h2>
+      <div class="figure"><img src="assets/and_xor_linear_separability.svg" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
+      <div class="callout"><strong>XOR:</strong> (0,1), (1,0)은 1이고 (0,0), (1,1)은 0입니다. 같은 Class가 대각선으로 떨어져 있기 때문에 직선 하나로는 분리할 수 없습니다.</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">11</span>
+      <h2 class="slide-title">그럼 Linear Layer를 여러 개 쌓으면 XOR를 풀 수 있을까?</h2>
+      <div class="figure"><img src="assets/linear_layers_collapse.svg" alt="여러 Linear Layer가 하나의 Affine Transformation으로 합쳐지는 과정"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">14</span>
+      <h2 class="slide-title">Activation이 없으면 깊어져도 표현력은 늘어나지 않습니다</h2>
+      <div class="slide-columns">
+        <div>
+          <div class="flow">h₁ = W₁x + b₁
+
+h₂ = W₂h₁ + b₂
+
+= W₂(W₁x + b₁) + b₂
+
+= (W₂W₁)x + (W₂b₁ + b₂)
+
+= W*x + b*</div>
+        </div>
+        <div>
+          <p class="big-statement">Layer를 2개, 10개, 100개 쌓아도 중간에 비선형 함수가 없다면 결국 하나의 Affine Layer와 같습니다.</p>
+          <div class="callout">그래서 XOR처럼 <strong>비선형 결정 경계</strong>가 필요한 문제는 Linear Layer만 쌓아서는 표현할 수 없습니다.</div>
         </div>
       </div>
     </div>
@@ -215,20 +256,11 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">10</span>
-      <h2 class="slide-title">왜 비선형성이 필요한가?</h2>
-      <p class="slide-subtitle">Activation Function 없이 Affine Layer만 여러 개 쌓으면 전체를 다시 하나의 Affine Transformation으로 합칠 수 있습니다.</p>
-      <div class="figure"><img src="assets/linear_vs_nonlinear.svg" alt="선형과 비선형 모델의 표현력 비교"></div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">11</span>
-      <h2 class="slide-title">Activation Function</h2>
+      <span class="slide-number">15</span>
+      <h2 class="slide-title">Activation Function이 비선형성을 추가합니다</h2>
       <div class="slide-columns">
         <div>
-          <div class="term"><strong>Activation Function</strong>Layer 출력에 비선형성을 추가합니다.</div>
+          <div class="term"><strong>Activation Function</strong>Linear / Convolution Layer 사이에 비선형 변환을 넣어 복잡한 함수를 표현할 수 있게 합니다.</div>
           <div class="flow">ReLU(x) = max(0, x)
 
 [-2, -0.5, 0, 1, 3]
@@ -236,16 +268,16 @@ Hyperparameter → 사람이 설정/탐색</div>
 [ 0,  0,   0, 1, 3]</div>
         </div>
         <div>
-          <div class="flow">Linear / Conv
-      ↓
-Activation
-      ↓
-Linear / Conv
-      ↓
-Activation
-      ↓
-복잡한 Function</div>
-          <p class="slide-subtitle">CNN에서는 ReLU, SiLU 같은 Activation이 널리 사용됩니다.</p>
+          <div class="flow">Linear
+   ↓
+ReLU
+   ↓
+Linear
+   ↓
+ReLU
+   ↓
+복잡한 Decision Boundary</div>
+          <div class="callout">비선형성이 들어가면서 단순한 직선 하나가 아니라 여러 영역을 조합한 복잡한 판단 경계를 만들 수 있습니다.</div>
         </div>
       </div>
     </div>
@@ -283,7 +315,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">14</span>
+      <span class="slide-number">16</span>
       <h2 class="slide-title">Loss, Gradient, Backpropagation, Optimizer</h2>
       <div class="grid-2">
         <div>
@@ -301,7 +333,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">15</span>
+      <span class="slide-number">17</span>
       <h2 class="slide-title">Batch, Iteration, Epoch</h2>
       <table>
         <thead><tr><th>용어</th><th>의미</th><th>예시</th></tr></thead>
@@ -320,7 +352,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">16</span>
+      <span class="slide-number">18</span>
       <h2 class="slide-title">Dataset은 모델이 배우는 세상</h2>
       <div class="figure"><img src="assets/dataset_split.svg" alt="Train Validation Test 데이터 분리"></div>
     </div>
@@ -328,7 +360,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">17</span>
+      <span class="slide-number">19</span>
       <h2 class="slide-title">Train / Validation / Test의 역할은 다릅니다</h2>
       <div class="grid">
         <div class="card"><span class="number">TRAIN</span><h3>문제집</h3><p>정답을 보며 Weight를 실제로 학습합니다.</p></div>
@@ -341,7 +373,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">18</span>
+      <span class="slide-number">20</span>
       <h2 class="slide-title">좋은 Train 성능 ≠ 좋은 AI</h2>
       <div class="slide-columns top">
         <div>
@@ -359,7 +391,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">19</span>
+      <span class="slide-number">21</span>
       <h2 class="slide-title">실제 AI 개발은 학습 한 번으로 끝나지 않습니다</h2>
       <div class="figure"><img src="assets/ml_workflow.svg" alt="머신러닝 워크플로우"></div>
     </div>
@@ -367,7 +399,7 @@ Task에 유용한 Representation</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">20</span>
+      <span class="slide-number">22</span>
       <h2 class="slide-title">이제 Vision AI로 연결합니다</h2>
       <div class="slide-columns">
         <div>
