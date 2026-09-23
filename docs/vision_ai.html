@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>03. Vision AI</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=introflow-20260923-12">
-  <script src="slide.js?v=introflow-20260923-12" defer></script>
+  <link rel="stylesheet" href="slide.css?v=visionflow-20260923-13">
+  <script src="slide.js?v=visionflow-20260923-13" defer></script>
 </head>
 <body class="deck-page" data-prev-page="ai_basics.html">
 <header class="site-header">
@@ -28,16 +28,16 @@
       <p class="slide-subtitle">
         같은 이미지라도 “무엇을 알고 싶은가?”에 따라 Classification, Detection, Segmentation처럼 문제 정의가 달라집니다.
       </p>
-      <div class="figure"><img src="assets/vision_tasks_comparison.svg?v=introflow-20260923-12" alt="Vision AI 대표 Task 비교"></div>
+      <div class="figure"><img src="assets/vision_tasks_comparison.svg?v=visionflow-20260923-13" alt="Vision AI 대표 Task 비교"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">1</span>
-      <h2 class="slide-title">먼저 Task를 정하고, 그 다음 모델을 고릅니다</h2>
-      <p class="slide-subtitle">“무슨 모델을 쓸까?”보다 “무엇을 출력해야 할까?”가 먼저입니다.</p>
-      <div class="figure"><img src="assets/vision_task_selection.svg?v=introflow-20260923-12" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
+      <h2 class="slide-title">Vision AI는 모델보다 “원하는 Output”을 먼저 정합니다</h2>
+      <p class="slide-subtitle">현장 질문을 Output 형태로 바꾸면 Task와 Label 형태가 결정되고, 그 다음에 적절한 모델 구조를 선택할 수 있습니다.</p>
+      <div class="figure"><img src="assets/vision_task_selection.svg?v=visionflow-20260923-13" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
     </div>
   </section>
 
@@ -46,7 +46,7 @@
       <span class="slide-number">2</span>
       <h2 class="slide-title">Classification — 이 이미지가 무엇인가?</h2>
       <p class="slide-subtitle">이미지 전체에 하나의 Class 또는 Probability를 출력합니다.</p>
-      <div class="figure"><img src="assets/task_classification.svg?v=introflow-20260923-12" alt="이미지 전체에 대한 Classification 결과"></div>
+      <div class="figure"><img src="assets/task_classification.svg?v=visionflow-20260923-13" alt="이미지 전체에 대한 Classification 결과"></div>
     </div>
   </section>
 
@@ -55,7 +55,7 @@
       <span class="slide-number">3</span>
       <h2 class="slide-title">Object Detection — 무엇이 어디에 있는가?</h2>
       <p class="slide-subtitle">여러 객체의 Class, 위치, Confidence를 함께 출력합니다.</p>
-      <div class="figure"><img src="assets/task_detection.svg?v=introflow-20260923-12" alt="Bounding Box를 이용한 Object Detection 결과"></div>
+      <div class="figure"><img src="assets/task_detection.svg?v=visionflow-20260923-13" alt="Bounding Box를 이용한 Object Detection 결과"></div>
     </div>
   </section>
 
@@ -64,72 +64,188 @@
       <span class="slide-number">4</span>
       <h2 class="slide-title">Segmentation — 정확히 어느 Pixel인가?</h2>
       <p class="slide-subtitle">관심 물체나 결함의 정확한 영역과 형상을 Pixel 단위로 구분합니다.</p>
-      <div class="figure"><img src="assets/task_segmentation.svg?v=introflow-20260923-12" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
+      <div class="figure"><img src="assets/task_segmentation.svg?v=visionflow-20260923-13" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">5</span>
-      <h2 class="slide-title">산업 문제를 Vision Task로 바꿔보면</h2>
-      <div class="figure"><img src="assets/problem_to_task.svg?v=introflow-20260923-12" alt="현장 질문과 Vision Task의 매핑"></div>
+      <h2 class="slide-title">Task가 달라지면 정답 Label의 형태도 달라집니다</h2>
+      <p class="slide-subtitle">
+        같은 사과 이미지라도 무엇을 학습시키는지에 따라 정답 데이터의 구조가 달라집니다.
+        모델은 이 Label과 Prediction의 차이를 줄이도록 학습합니다.
+      </p>
+
+      <div class="vision-label-grid">
+        <article class="vision-label-card">
+          <div class="vision-label-head">
+            <span>Classification</span>
+            <strong>Class Label</strong>
+          </div>
+          <div class="intro-task-preview">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Classification label 예시">
+            <div class="classification-result">Apple</div>
+          </div>
+          <code>label = "apple"</code>
+          <small>이미지 전체에 하나의 Category</small>
+        </article>
+
+        <article class="vision-label-card">
+          <div class="vision-label-head">
+            <span>Detection</span>
+            <strong>Box Label</strong>
+          </div>
+          <div class="intro-task-preview">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Detection label 예시">
+            <span class="detection-demo-box" aria-hidden="true"></span>
+            <span class="detection-demo-label">Apple</span>
+          </div>
+          <code>class + (x, y, w, h)</code>
+          <small>객체마다 Class와 위치</small>
+        </article>
+
+        <article class="vision-label-card">
+          <div class="vision-label-head">
+            <span>Segmentation</span>
+            <strong>Pixel Mask</strong>
+          </div>
+          <div class="intro-task-preview">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Segmentation label 예시">
+            <span class="segmentation-demo-mask" aria-hidden="true"></span>
+          </div>
+          <code>mask[y, x] = class_id</code>
+          <small>관심 영역을 Pixel 단위로 표시</small>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">6</span>
-      <h2 class="slide-title">그럼 모델은 이미지에서 무엇을 보고 판단할까?</h2>
-      <p class="slide-subtitle">사람은 색, 윤곽, 질감, 부분 구조 같은 여러 시각적 단서를 종합합니다.</p>
-      <div class="figure"><img src="assets/human_visual_cues.svg?v=introflow-20260923-12" alt="사람이 색 윤곽 부분 구조를 조합하는 직관"></div>
+      <h2 class="slide-title">CNN은 작은 영역의 Pattern을 조합해 Feature를 만듭니다</h2>
+      <p class="slide-subtitle">
+        Convolutional Neural Network(CNN)는 이미지의 작은 지역에서 반복되는 반응을 찾고,
+        Layer를 거치며 이를 더 복잡한 Feature로 조합합니다.
+      </p>
+      <div class="figure"><img src="assets/human_feature_to_cnn.svg?v=visionflow-20260923-13" alt="사람의 특징 기반 인식과 CNN 직관"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">7</span>
-      <h2 class="slide-title">CNN — 작은 특징을 조합해 더 큰 의미를 만든다</h2>
-      <div class="figure"><img src="assets/human_feature_to_cnn.svg?v=introflow-20260923-12" alt="사람의 특징 기반 인식과 CNN 직관"></div>
+      <h2 class="slide-title">Kernel이 작은 영역을 훑으며 Convolution을 수행합니다</h2>
+      <p class="slide-subtitle">
+        작은 Weight 배열인 Kernel(Filter)을 여러 위치에 같은 방식으로 적용해
+        특정 Local Pattern에 얼마나 반응하는지 계산합니다.
+      </p>
+      <div class="figure"><img src="assets/convolution_visual.svg?v=visionflow-20260923-13" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">8</span>
-      <h2 class="slide-title">CNN의 Feature Hierarchy</h2>
-      <div class="figure"><img src="assets/cnn_hierarchy.svg?v=introflow-20260923-12" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
+      <h2 class="slide-title">한 Kernel의 반응 결과가 Feature Map 하나가 됩니다</h2>
+      <p class="slide-subtitle">
+        여러 Kernel을 사용하면 서로 다른 Pattern 반응이 여러 Feature Map으로 만들어지고,
+        이 Map들이 Channel 축으로 쌓입니다.
+      </p>
+      <div class="figure"><img src="assets/feature_maps.svg?v=visionflow-20260923-13" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">9</span>
-      <h2 class="slide-title">Kernel과 Convolution</h2>
-      <div class="figure"><img src="assets/convolution_visual.svg?v=introflow-20260923-12" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
+      <h2 class="slide-title">Layer가 깊어질수록 여러 Local Feature가 조합됩니다</h2>
+      <p class="slide-subtitle">
+        초기 Layer의 단순한 반응이 뒤쪽 Layer에서 조합되며 더 복잡한 형태와 부분 구조를 표현할 수 있습니다.
+      </p>
+      <div class="figure"><img src="assets/cnn_hierarchy.svg?v=visionflow-20260923-13" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">10</span>
-      <h2 class="slide-title">Feature Map과 Channel</h2>
-      <div class="figure"><img src="assets/feature_maps.svg?v=introflow-20260923-12" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
+      <h2 class="slide-title">Receptive Field가 커지면 더 넓은 문맥을 볼 수 있습니다</h2>
+      <p class="slide-subtitle">
+        Receptive Field는 한 Feature가 원본 이미지에서 영향을 받는 영역입니다.
+        Layer가 쌓이거나 Downsampling되면 더 넓은 범위의 정보를 함께 사용할 수 있습니다.
+      </p>
+      <div class="figure"><img src="assets/receptive_field.svg?v=visionflow-20260923-13" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">11</span>
-      <h2 class="slide-title">깊어질수록 더 넓은 문맥을 봅니다</h2>
-      <div class="figure"><img src="assets/receptive_field.svg?v=introflow-20260923-12" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
+      <h2 class="slide-title">Kernel Weight도 Loss가 줄어드는 방향으로 학습됩니다</h2>
+      <p class="slide-subtitle">
+        사람이 Edge Filter를 모두 직접 지정하는 것이 아니라,
+        Prediction → Loss → Backpropagation을 통해 Task에 유용한 Kernel Weight가 업데이트됩니다.
+      </p>
+      <div class="figure"><img src="assets/cnn_training.svg?v=visionflow-20260923-13" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">12</span>
-      <h2 class="slide-title">CNN도 Dataset으로 “볼 특징”을 학습합니다</h2>
-      <div class="figure"><img src="assets/cnn_training.svg?v=introflow-20260923-12" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
+      <h2 class="slide-title">많은 Vision Model은 Feature 추출부와 Task별 Head로 나눠 볼 수 있습니다</h2>
+      <p class="slide-subtitle">
+        입문적으로는 <strong>Backbone</strong>을 공통 Feature 추출부,
+        <strong>Head</strong>를 Task에 맞는 Output을 만드는 부분으로 이해하면 좋습니다.
+      </p>
+
+      <div class="backbone-head-flow">
+        <article class="backbone-input-card">
+          <span>Input</span>
+          <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="CNN 입력 사과 이미지">
+          <strong>Image Tensor</strong>
+        </article>
+
+        <div class="backbone-head-arrow" aria-hidden="true">→</div>
+
+        <article class="backbone-core-card">
+          <span>Backbone</span>
+          <strong>공통 Feature 추출</strong>
+          <div class="backbone-feature-stack" aria-hidden="true">
+            <i>Edge</i>
+            <i>Texture</i>
+            <i>Shape</i>
+            <i>Part</i>
+          </div>
+          <small>Convolution Layer가 반복되며 Feature를 생성</small>
+        </article>
+
+        <div class="backbone-head-arrow" aria-hidden="true">→</div>
+
+        <div class="task-head-stack">
+          <article>
+            <span>Classification Head</span>
+            <strong>Class Probability</strong>
+            <small>Apple 0.98</small>
+          </article>
+          <article>
+            <span>Detection Head</span>
+            <strong>Class + Box</strong>
+            <small>Apple + (x, y, w, h)</small>
+          </article>
+          <article>
+            <span>Segmentation Head</span>
+            <strong>Pixel Mask</strong>
+            <small>H × W class map</small>
+          </article>
+        </div>
+      </div>
+
+      <p class="vision-model-note">
+        실제 Architecture는 모델마다 다르지만, “공통 Feature를 만들고 Task에 맞는 Output으로 변환한다”는 관점은 구조를 이해하는 데 유용합니다.
+      </p>
     </div>
   </section>
 
@@ -137,7 +253,7 @@
     <div class="slide-inner">
       <span class="slide-number">13</span>
       <h2 class="slide-title">Vision AI를 한 흐름으로 정리하면</h2>
-      <div class="figure"><img src="assets/vision_project_pipeline.svg?v=introflow-20260923-12" alt="Vision AI 프로젝트 전체 흐름"></div>
+      <div class="figure"><img src="assets/vision_project_pipeline.svg?v=visionflow-20260923-13" alt="Vision AI 프로젝트 전체 흐름"></div>
     </div>
   </section>
 </main>
