@@ -60,8 +60,8 @@
 
 - Intro 9 / 10의 사진형 장면은 이 프로젝트에서 AI로 생성한 교육용 이미지입니다.
 - 실제 제품 사진, 실제 LiDAR scan, 실제 열화상 측정 데이터가 아닙니다.
-- 원본 생성 이미지를 강의 화면 비율에 맞춰 합성·축소한 뒤 WebP로 변환했습니다.
-- 외부 이미지 서버에 의존하지 않도록 WebP의 base64 데이터를 `docs/assets/generated/*.b64`에 저장하고, `docs/intro.html`에서 로컬 조각을 합쳐 렌더링합니다.
+- Intro 9 / 10은 2172 × 724 해상도의 AI 생성 원본 PNG를 Repository에 직접 저장해 사용합니다.
+- 외부 이미지 서버나 runtime base64 조립에 의존하지 않고 `docs/assets/generated/*_hd.png`를 HTML에서 직접 참조합니다.
 - Intro 9 비교 이미지: RGB 거리 장면 / LiDAR 실내 공간 scan / IR 전기 설비 열화상.
 - Intro 10 활용 이미지: 스마트폰·CCTV·블랙박스 / 로봇청소기·자율주행 / 열화상 검사·비접촉 온도 측정.
 
