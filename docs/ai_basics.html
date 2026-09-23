@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>02. AI 기초</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=sensorhd-20260923-20">
-  <script src="slide.js?v=sensorhd-20260923-20" defer></script>
+  <link rel="stylesheet" href="slide.css?v=aibasicsvisual-20260924-21">
+  <script src="slide.js?v=aibasicsvisual-20260924-21" defer></script>
 </head>
 <body class="deck-page" data-prev-page="intro.html" data-next-page="vision_ai.html">
 <header class="site-header">
@@ -36,7 +36,7 @@
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">AI, Machine Learning, Deep Learning은 어떻게 다를까?</h2>
-      <div class="figure"><img src="assets/ai_ml_dl.svg?v=sensorhd-20260923-20" alt="AI Machine Learning Deep Learning 관계"></div>
+      <div class="figure"><img src="assets/ai_ml_dl.svg?v=aibasicsvisual-20260924-21" alt="AI Machine Learning Deep Learning 관계"></div>
       <div class="callout"><strong>Computer Vision은 이미지·영상 문제를 다루는 분야</strong>이고, 그 문제를 해결하기 위해 전통적 영상처리, Machine Learning, Deep Learning을 모두 사용할 수 있습니다.</div>
     </div>
   </section>
@@ -45,7 +45,7 @@
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">규칙을 사람이 직접 쓰는 것 vs 데이터에서 배우는 것</h2>
-      <div class="figure"><img src="assets/rule_vs_ml.svg?v=sensorhd-20260923-20" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
+      <div class="figure"><img src="assets/rule_vs_ml.svg?v=aibasicsvisual-20260924-21" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
     </div>
   </section>
 
@@ -59,7 +59,7 @@
       </p>
       <div class="figure">
         <img
-          src="assets/supervised_unsupervised_industry.svg?v=sensorhd-20260923-20"
+          src="assets/supervised_unsupervised_industry.svg?v=aibasicsvisual-20260924-21"
           alt="산업 데이터에서 지도학습과 비지도학습을 사용하는 예시"
         >
       </div>
@@ -76,61 +76,58 @@
       <span class="slide-number">4</span>
       <h2 class="slide-title">분류와 회귀</h2>
       <p class="slide-subtitle">Classification은 범주를, Regression은 연속적인 숫자 값을 예측합니다.</p>
-      <div class="figure"><img src="assets/classification_regression.svg?v=sensorhd-20260923-20" alt="분류와 회귀의 출력 차이"></div>
+      <div class="figure"><img src="assets/classification_regression.svg?v=aibasicsvisual-20260924-21" alt="분류와 회귀의 출력 차이"></div>
     </div>
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">5</span>
-      <h2 class="slide-title">이진 분류와 다중 클래스 분류</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="term"><strong>Binary Classification</strong>두 선택지 중 하나를 고릅니다.</div>
-          <div class="flow">raw score
-   ↓
-Sigmoid
-   ↓
-Abnormal = 0.87</div>
-        </div>
-        <div>
-          <div class="term"><strong>Multi-class Classification</strong>세 개 이상의 Class 중 하나를 고릅니다.</div>
-          <div class="flow">raw scores
-   ↓
-Softmax
-   ↓
-Normal 0.10
-CaseA  0.75
-CaseB  0.15</div>
-        </div>
-      </div>
-      <p class="slide-subtitle">Sigmoid와 Softmax는 모델의 출력 점수를 해석하기 쉬운 값으로 바꾸는 데 자주 사용됩니다.</p>
+  <div class="slide-inner">
+    <span class="slide-number">5</span>
+    <h2 class="slide-title">이진 분류와 다중 클래스 분류는 “선택지 수”가 다릅니다</h2>
+    <p class="slide-subtitle">모델은 먼저 Score를 만들고, Sigmoid나 Softmax를 이용해 비교하기 쉬운 값으로 바꿀 수 있습니다.</p>
+    <div class="classification-output-grid">
+      <article class="classification-output-card">
+        <div class="classification-output-head"><strong>Binary Classification</strong><span>두 선택지</span></div>
+        <div class="score-pipeline"><b>Raw score</b><i>→</i><b>Sigmoid</b><i>→</i><b>0 ~ 1</b></div>
+        <div class="prob-row"><span>Abnormal</span><div><i style="width:87%"></i></div><strong>0.87</strong></div>
+        <p>예: Normal / Abnormal처럼 두 Class 중 하나를 판단</p>
+      </article>
+      <article class="classification-output-card">
+        <div class="classification-output-head"><strong>Multi-class Classification</strong><span>3개 이상 선택지</span></div>
+        <div class="score-pipeline"><b>Raw scores</b><i>→</i><b>Softmax</b><i>→</i><b>합 = 1</b></div>
+        <div class="prob-row"><span>Normal</span><div><i style="width:10%"></i></div><strong>0.10</strong></div>
+        <div class="prob-row is-main"><span>Case A</span><div><i style="width:75%"></i></div><strong>0.75</strong></div>
+        <div class="prob-row"><span>Case B</span><div><i style="width:15%"></i></div><strong>0.15</strong></div>
+      </article>
     </div>
-  </section>
+    <div class="callout"><strong>주의:</strong> 출력값을 Probability처럼 해석할 수 있어도, 실제 신뢰도는 Calibration과 데이터 분포의 영향을 받습니다.</div>
+  </div>
+</section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">6</span>
-      <h2 class="slide-title">Model, Parameter, Hyperparameter</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="math-flow">
-            <span>Input <math><mi>x</mi></math></span>
-            <b>↓</b>
-            <span>Model <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>;</mo><mi>θ</mi><mo>)</mo></mrow></math></span>
-            <b>↓</b>
-            <span>Prediction <math><mover accent="true"><mi>y</mi><mo>^</mo></mover></math></span>
-          </div>
-          <div class="term"><strong>Parameter</strong>학습 과정에서 모델이 스스로 바꾸는 값입니다. Weight와 Bias가 대표적입니다.</div>
+  <div class="slide-inner">
+    <span class="slide-number">6</span>
+    <h2 class="slide-title">Parameter는 모델이 배우고, Hyperparameter는 학습 방법을 정합니다</h2>
+    <div class="parameter-map">
+      <article class="parameter-model-card">
+        <span class="parameter-kicker">MODEL 내부</span>
+        <div class="parameter-network">
+          <i></i><i></i><i></i><b>Model</b><i></i><i></i>
         </div>
-        <div>
-          <div class="term"><strong>Hyperparameter</strong>Learning Rate, Batch Size, Layer 수처럼 학습 전에 사람이 설정하는 값입니다.</div>
-          <div class="flow">Parameter      → 모델이 학습
-Hyperparameter → 사람이 설정/탐색</div>
-        </div>
-      </div>
+        <strong>Parameter</strong>
+        <p>Weight · Bias처럼 <b>Training 중 Gradient로 값이 바뀌는 요소</b></p>
+      </article>
+      <div class="parameter-divider">vs</div>
+      <article class="parameter-setting-card">
+        <span class="parameter-kicker">TRAINING 설정</span>
+        <div class="hyperparameter-chips"><b>Learning Rate</b><b>Batch Size</b><b>Epoch</b><b>Layer 수</b></div>
+        <strong>Hyperparameter</strong>
+        <p>사람이 정하거나 탐색해서 <b>학습 과정의 동작 방식을 조절</b></p>
+      </article>
     </div>
-  </section>
+    <div class="parameter-bottom-flow"><span>Input x</span><b>→</b><span>Model f(x; θ)</span><b>→</b><span>Prediction ŷ</span></div>
+  </div>
+</section>
 
 <section class="slide">
     <div class="slide-inner">
@@ -247,56 +244,21 @@ Hyperparameter → 사람이 설정/탐색</div>
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">9</span>
-      <h2 class="slide-title">Optimizer는 Loss가 줄어드는 방향으로 Parameter를 바꿉니다</h2>
-      <p class="slide-subtitle">Gradient는 “어느 방향으로 얼마나 바꾸면 Loss가 증가하는가”를 알려주고, Optimizer는 그 정보를 이용해 w와 b를 업데이트합니다.</p>
-      <div class="learning-loop">
-        <div class="loop-step">현재<br>Parameter</div><div class="loop-arrow">→</div>
-        <div class="loop-step">Prediction<br>예측값</div><div class="loop-arrow">→</div>
-        <div class="loop-step">Loss<br>MSE</div><div class="loop-arrow">→</div>
-        <div class="loop-step">Gradient<br>기울기</div><div class="loop-arrow">→</div>
-        <div class="loop-step">Optimizer<br>Update</div>
-      </div>
-      <div class="math-update-grid" aria-label="gradient descent parameter update">
-        <div class="math-block">
-          <math display="block">
-            <mrow>
-              <mi>w</mi><mo>←</mo><mi>w</mi>
-              <mo>−</mo>
-              <mi>η</mi>
-              <mfrac>
-                <mrow><mo>∂</mo><mi>L</mi></mrow>
-                <mrow><mo>∂</mo><mi>w</mi></mrow>
-              </mfrac>
-            </mrow>
-          </math>
-        </div>
-        <div class="math-block">
-          <math display="block">
-            <mrow>
-              <mi>b</mi><mo>←</mo><mi>b</mi>
-              <mo>−</mo>
-              <mi>η</mi>
-              <mfrac>
-                <mrow><mo>∂</mo><mi>L</mi></mrow>
-                <mrow><mo>∂</mo><mi>b</mi></mrow>
-              </mfrac>
-            </mrow>
-          </math>
-        </div>
-      </div>
-      <p class="math-caption"><math><mi>η</mi></math>는 Learning Rate입니다. Gradient가 가리키는 증가 방향의 반대로 이동해 Loss를 줄입니다.</p>
-      <div class="callout"><strong>반복:</strong> 예측 → Loss 계산 → Gradient 계산 → Parameter 수정. 이 루프가 AI 학습의 핵심 뼈대입니다.</div>
-    </div>
-  </section>
+  <div class="slide-inner">
+    <span class="slide-number">9</span>
+    <h2 class="slide-title">Optimizer는 Loss가 낮아지는 쪽으로 Parameter를 이동시킵니다</h2>
+    <p class="slide-subtitle">Gradient는 Loss가 증가하는 방향을 알려줍니다. Optimizer는 그 반대 방향으로 Weight와 Bias를 조금씩 수정합니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/optimizer_loss_landscape.svg?v=aibasicsvisual-20260924-21" alt="Loss landscape에서 낮은 Loss 방향으로 이동하는 Optimizer"></div>
+    <div class="optimizer-equation"><span>새 Parameter</span><b>=</b><span>현재 Parameter</span><b>−</b><span>Learning Rate × Gradient</span></div>
+  </div>
+</section>
 
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">10</span>
-      <h2 class="slide-title">신경망의 기본 단위: Perceptron</h2>
+      <h2 class="slide-title">신경망의 가장 단순한 계산을 Perceptron으로 이해해 봅시다</h2>
       <div class="perceptron-layout">
-        <div class="figure"><img src="assets/perceptron.svg?v=sensorhd-20260923-20" alt="Perceptron 구조"></div>
+        <div class="figure"><img src="assets/perceptron.svg?v=aibasicsvisual-20260924-21" alt="Perceptron 구조"></div>
         <div class="formula-card">
           <strong>Perceptron 계산</strong>
           <div class="math-block">
@@ -317,46 +279,25 @@ Hyperparameter → 사람이 설정/탐색</div>
               </mrow>
             </math>
           </div>
-          <p class="math-caption">입력의 가중합 <math><mi>z</mi></math>에 Activation Function <math><mi>f</mi></math>를 적용해 출력을 만듭니다.</p>
+          <p class="math-caption">입력의 Weight를 곱해 더한 값 <math><mi>z</mi></math>에 Activation Function <math><mi>f</mi></math>를 적용해 출력을 만듭니다.</p>
         </div>
       </div>
     </div>
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">11</span>
-      <h2 class="slide-title">AND Gate — 직선 하나로 구분할 수 있는 문제</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="flow">AND
-
-0 AND 0 → 0
-0 AND 1 → 0
-1 AND 0 → 0
-1 AND 1 → 1</div>
-          <div class="term"><strong>Linearly Separable</strong>두 Class를 하나의 직선(고차원에서는 Hyperplane)으로 나눌 수 있다는 뜻입니다.</div>
-        </div>
-        <div>
-          <p class="big-statement">AND는 Output 1인 점이 (1,1) 하나뿐이라 직선 하나로 0과 1을 나눌 수 있습니다.</p>
-        </div>
-      </div>
-      <div class="callout">즉, 단순한 Linear Model 하나로도 표현 가능한 문제입니다.</div>
-    </div>
-  </section>
+  <div class="slide-inner">
+    <span class="slide-number">11</span>
+    <h2 class="slide-title">AND는 직선으로 나뉘지만, XOR는 직선 하나로 나눌 수 없습니다</h2>
+    <p class="slide-subtitle">이 차이가 “왜 Neural Network에 비선형 Activation이 필요한가?”로 이어집니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/and_xor_linear_separability.svg?v=aibasicsvisual-20260924-21" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
+    <div class="callout"><strong>핵심:</strong> Linear Model 하나는 직선 경계만 만들 수 있습니다. XOR처럼 더 복잡한 경계를 표현하려면 비선형성이 필요합니다.</div>
+  </div>
+</section>
 
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">12</span>
-      <h2 class="slide-title">XOR Gate — 직선 하나로는 구분할 수 없는 문제</h2>
-      <div class="figure"><img src="assets/and_xor_linear_separability.svg?v=sensorhd-20260923-20" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
-      <div class="callout"><strong>XOR:</strong> (0,1), (1,0)은 1이고 (0,0), (1,1)은 0입니다. 같은 Class가 대각선으로 떨어져 있기 때문에 직선 하나로는 분리할 수 없습니다.</div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">13</span>
       <h2 class="slide-title">Linear Layer만 여러 개 쌓아도 결국 하나의 Linear 변환과 같습니다</h2>
       <p class="slide-subtitle">
         중간에 Activation이 없다면 여러 Affine Transformation은 다시 하나의 Affine Transformation으로 합쳐집니다.
@@ -378,183 +319,106 @@ Hyperparameter → 사람이 설정/탐색</div>
   </section>
 
 <section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">13</span>
+    <h2 class="slide-title">Activation Function이 비선형성을 추가합니다</h2>
+    <p class="slide-subtitle">Linear Layer 사이에 ReLU 같은 비선형 함수를 넣으면, 여러 Layer를 조합해 더 복잡한 Decision Boundary를 만들 수 있습니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/activation_relu_boundary.svg?v=aibasicsvisual-20260924-21" alt="ReLU 함수와 비선형 결정 경계"></div>
+    <div class="callout"><strong>ReLU:</strong> 음수는 0, 양수는 그대로 통과시키는 단순한 함수지만 Network 전체에는 중요한 비선형성을 제공합니다.</div>
+  </div>
+</section>
+
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">14</span>
-      <h2 class="slide-title">Activation Function이 비선형성을 추가합니다</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="term"><strong>Activation Function</strong>Linear / Convolution Layer 사이에 비선형 변환을 넣어 복잡한 함수를 표현할 수 있게 합니다.</div>
-          <div class="math-derivation">
-            <math display="block">
-              <mrow>
-                <mi mathvariant="normal">ReLU</mi><mo>(</mo><mi>x</mi><mo>)</mo>
-                <mo>=</mo>
-                <mi mathvariant="normal">max</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo>)</mo>
-              </mrow>
-            </math>
-            <div class="math-vector-example">
-              <span>[−2, −0.5, 0, 1, 3]</span>
-              <b>↓</b>
-              <span>[0, 0, 0, 1, 3]</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="flow">Linear
-   ↓
-ReLU
-   ↓
-Linear
-   ↓
-ReLU
-   ↓
-복잡한 Decision Boundary</div>
-          <div class="callout">비선형성이 들어가면서 단순한 직선 하나가 아니라 여러 영역을 조합한 복잡한 판단 경계를 만들 수 있습니다.</div>
-        </div>
-      </div>
+      <h2 class="slide-title">Feature와 Representation</h2>
+      <div class="figure"><img src="assets/feature_representation.svg?v=aibasicsvisual-20260924-21" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
     </div>
   </section>
 
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">15</span>
-      <h2 class="slide-title">Feature와 Representation</h2>
-      <div class="figure"><img src="assets/feature_representation.svg?v=sensorhd-20260923-20" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">16</span>
       <h2 class="slide-title">Linear Regression에서 본 학습 원리는 신경망에서도 같습니다</h2>
       <p class="slide-subtitle">모델이 복잡해져도 핵심은 Prediction을 만들고, Loss를 계산하고, Parameter를 수정하는 반복입니다.</p>
-      <div class="figure"><img src="assets/training_loop.svg?v=sensorhd-20260923-20" alt="예측 손실 계산 파라미터 업데이트로 이어지는 학습 루프"></div>
+      <div class="figure"><img src="assets/training_loop.svg?v=aibasicsvisual-20260924-21" alt="예측 손실 계산 파라미터 업데이트로 이어지는 학습 루프"></div>
     </div>
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">17</span>
-      <h2 class="slide-title">신경망에서는 Backpropagation으로 각 Weight의 Gradient를 계산합니다</h2>
-      <p class="slide-subtitle">Loss에서 시작해 뒤쪽 Layer부터 Gradient를 전달하고, Optimizer가 각 Weight를 업데이트합니다.</p>
-      <div class="backprop-layout">
-        <div class="backprop-flow">
-          <div class="backprop-node">Input</div><b>→</b>
-          <div class="backprop-node">Layer 1</div><b>→</b>
-          <div class="backprop-node">Layer 2</div><b>→</b>
-          <div class="backprop-node">Loss</div>
-          <div class="backprop-return">← Gradient가 뒤에서 앞으로 전달됨 ←</div>
+  <div class="slide-inner">
+    <span class="slide-number">16</span>
+    <h2 class="slide-title">Backpropagation은 Loss의 영향을 뒤에서 앞으로 전달합니다</h2>
+    <p class="slide-subtitle">Forward에서 Prediction과 Loss를 계산한 뒤, Backward에서 각 Weight가 Loss에 얼마나 영향을 주었는지 Gradient를 계산합니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/backpropagation_visual.svg?v=aibasicsvisual-20260924-21" alt="Forward와 Backward 흐름으로 설명한 Backpropagation"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">17</span>
+    <h2 class="slide-title">Training은 Weight를 바꾸고, Inference는 학습된 Weight를 사용합니다</h2>
+    <p class="slide-subtitle">같은 Model을 사용해도 목적과 데이터 흐름이 다릅니다.</p>
+    <div class="train-infer-lanes">
+      <article class="train-infer-lane train-infer-lane--train">
+        <div class="train-infer-lane-title"><strong>Training</strong><span>정답을 보며 학습</span></div>
+        <div class="train-infer-lane-flow">
+          <div>Image + Label</div><b>→</b><div>Model</div><b>→</b><div>Prediction</div><b>→</b><div>Loss</div><b>→</b><div>Backward</div><b>→</b><div>Weight Update</div>
         </div>
-        <div class="formula-card">
-          <strong>Chain Rule 예시</strong>
-          <div class="math-block math-block--wide">
-            <math display="block">
-              <mrow>
-                <mfrac>
-                  <mrow><mo>∂</mo><mi>L</mi></mrow>
-                  <mrow><mo>∂</mo><msub><mi>w</mi><mn>1</mn></msub></mrow>
-                </mfrac>
-                <mo>=</mo>
-                <mfrac>
-                  <mrow><mo>∂</mo><mi>L</mi></mrow>
-                  <mrow><mo>∂</mo><msub><mi>h</mi><mn>1</mn></msub></mrow>
-                </mfrac>
-                <mo>·</mo>
-                <mfrac>
-                  <mrow><mo>∂</mo><msub><mi>h</mi><mn>1</mn></msub></mrow>
-                  <mrow><mo>∂</mo><msub><mi>w</mi><mn>1</mn></msub></mrow>
-                </mfrac>
-              </mrow>
-            </math>
-          </div>
-          <p class="math-caption">뒤쪽 Loss가 앞쪽 Weight에 얼마나 영향을 받는지 Chain Rule로 계산합니다.</p>
+        <p><strong>반복:</strong> 여러 Batch를 보며 Parameter를 계속 수정</p>
+      </article>
+      <article class="train-infer-lane train-infer-lane--infer">
+        <div class="train-infer-lane-title"><strong>Inference</strong><span>새로운 입력을 예측</span></div>
+        <div class="train-infer-lane-flow train-infer-lane-flow--short">
+          <img src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="새로운 사과 이미지"><b>→</b><div>Trained Model</div><b>→</b><div class="train-infer-result">Apple <strong>0.98</strong></div>
         </div>
-      </div>
+        <p><strong>없음:</strong> Label · Backward · Weight Update</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">18</span>
-      <h2 class="slide-title">Training과 Inference는 같은 모델을 다르게 사용합니다</h2>
-      <p class="slide-subtitle">
-        Training은 Label을 이용해 Weight를 바꾸는 과정이고, Inference(추론)는 학습이 끝난 Weight로 새로운 입력의 결과만 계산합니다.
-      </p>
-      <div class="train-infer-grid">
-        <article class="train-infer-card train-infer-card--train">
-          <div class="train-infer-head"><span>Training</span><strong>Weight를 학습</strong></div>
-          <div class="train-infer-flow">
-            <div>Image + Label</div><b>→</b><div>Model</div><b>→</b><div>Prediction</div>
-            <b>→</b><div>Loss</div><b>→</b><div>Backprop</div><b>→</b><div>Weight Update</div>
-          </div>
-          <small>정답을 알고 있으며 여러 Batch를 반복해서 학습</small>
-        </article>
-        <article class="train-infer-card train-infer-card--infer">
-          <div class="train-infer-head"><span>Inference</span><strong>학습된 Weight를 사용</strong></div>
-          <div class="inference-visual">
-            <img src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="추론에 입력되는 새로운 사과 이미지">
-            <b>→</b>
-            <div class="inference-model">Trained<br>Model</div>
-            <b>→</b>
-            <div class="inference-result">Apple<br><strong>0.98</strong></div>
-          </div>
-          <small>Label · Backpropagation · Weight Update 없음</small>
-        </article>
-      </div>
-      <div class="callout"><strong>운영 환경에서 하는 일은 대부분 Inference:</strong> 새로운 Image → 학습된 Model → Prediction</div>
+      <h2 class="slide-title">Batch, Iteration, Epoch</h2>
+      <div class="figure"><img src="assets/batch_epoch.svg?v=aibasicsvisual-20260924-21" alt="Dataset Batch Iteration Epoch 관계"></div>
     </div>
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">19</span>
-      <h2 class="slide-title">Batch, Iteration, Epoch</h2>
-      <div class="figure"><img src="assets/batch_epoch.svg?v=sensorhd-20260923-20" alt="Dataset Batch Iteration Epoch 관계"></div>
+  <div class="slide-inner">
+    <span class="slide-number">19</span>
+    <h2 class="slide-title">Dataset은 모델이 배우는 “세상”입니다</h2>
+    <p class="slide-subtitle">모델은 Dataset에 없는 현실을 직접 알 수 없습니다. 양보다 먼저 “실제 운영 환경을 제대로 대표하는가?”를 봐야 합니다.</p>
+    <div class="dataset-quality-grid dataset-quality-grid--large">
+      <article>
+        <div class="dataset-mini-images">
+          <img src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="기준 이미지">
+          <img class="dq-dark" src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="어두운 조건">
+          <img class="dq-small" src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="작게 보이는 조건">
+        </div>
+        <div><span>Coverage</span><strong>운영 조건을 다양하게 포함</strong><small>조명 · 크기 · 배경 · 설비 · 시간대</small></div>
+      </article>
+      <article>
+        <div class="label-quality-demo"><b>Image</b><i>+</i><b class="good-label">일관된 Label</b></div>
+        <div><span>Label Quality</span><strong>정답 기준이 정확하고 일관적</strong><small>사람마다 기준이 다르면 모델도 혼란스러움</small></div>
+      </article>
+      <article>
+        <div class="class-balance-demo"><i></i><i></i><i></i><i></i><i></i><b></b><b></b></div>
+        <div><span>Class Balance</span><strong>희귀 Class도 충분히 포함</strong><small>중요한 패턴을 배울 최소 사례가 필요</small></div>
+      </article>
+      <article>
+        <div class="bias-demo"><div>Train</div><b>≠</b><div>Real World</div></div>
+        <div><span>Bias Check</span><strong>특정 조건에만 치우치지 않기</strong><small>운영 분포와 크게 다르면 성능이 떨어짐</small></div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">20</span>
-      <h2 class="slide-title">Dataset은 모델이 배우는 세상</h2>
-      <p class="slide-subtitle">모델은 Dataset 밖의 현실을 직접 알지 못합니다. 무엇을 얼마나, 어떤 기준으로 보여주는지가 학습 결과를 크게 좌우합니다.</p>
-      <div class="dataset-quality-grid">
-        <article>
-          <span>Coverage</span>
-          <div class="dataset-mini-images">
-            <img src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="기준 이미지">
-            <img class="dq-dark" src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="어두운 조건">
-            <img class="dq-small" src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="작게 보이는 조건">
-          </div>
-          <strong>운영 조건을 다양하게 포함</strong>
-          <small>조명 · 크기 · 배경 · 설비 · 시간대 등</small>
-        </article>
-        <article>
-          <span>Label Quality</span>
-          <div class="label-quality-demo"><b>Image</b><i>+</i><b class="good-label">정확한 Label</b></div>
-          <strong>정답 기준이 정확하고 일관적</strong>
-          <small>같은 상황을 사람마다 다르게 표시하면 모델도 혼란스러움</small>
-        </article>
-        <article>
-          <span>Class Balance</span>
-          <div class="class-balance-demo"><i></i><i></i><i></i><i></i><i></i><b></b><b></b></div>
-          <strong>희귀 Class도 충분히 포함</strong>
-          <small>샘플이 너무 적으면 중요한 패턴을 배우기 어려움</small>
-        </article>
-        <article>
-          <span>Bias Check</span>
-          <div class="bias-demo"><div>Train</div><b>≠</b><div>Real World</div></div>
-          <strong>특정 조건에만 치우치지 않기</strong>
-          <small>Dataset 분포가 운영 환경과 크게 다르면 성능이 무너질 수 있음</small>
-        </article>
-      </div>
-      <div class="callout"><strong>핵심:</strong> 좋은 Architecture보다 먼저, 모델이 배울 Dataset이 실제 문제를 제대로 대표하는지 확인해야 합니다.</div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">21</span>
       <h2 class="slide-title">이미지는 모델이 기대하는 입력 형태로 바꿔서 넣습니다</h2>
       <p class="slide-subtitle">
         Camera Image를 그대로 넣는 것이 아니라 Resize, 값 범위 변환, Channel 정렬 등을 거쳐 일정한 Tensor 형태로 만듭니다.
@@ -562,7 +426,7 @@ ReLU
       <div class="preprocess-pipeline">
         <article class="preprocess-stage">
           <span>01 Camera</span>
-          <img src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="원본 사과 이미지">
+          <img src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="원본 사과 이미지">
           <strong>예: 1920 × 1080 RGB</strong>
         </article>
         <div class="preprocess-arrow">→</div>
@@ -581,80 +445,112 @@ ReLU
         <article class="preprocess-stage">
           <span>04 Tensor</span>
           <div class="tensor-shape-demo"><b>B</b><b>C</b><b>H</b><b>W</b></div>
-          <strong>예: [B, C, H, W]</strong>
+          <strong>PyTorch 예: [B, C, H, W]</strong>
         </article>
       </div>
-      <div class="callout">Train과 Inference에서 <strong>같은 기본 전처리 규칙</strong>을 적용해야 모델이 기대하는 데이터 분포가 유지됩니다.</div>
+      <div class="callout">Train과 Inference에서 <strong>같은 기본 전처리 규칙</strong>을 적용해야 합니다. Tensor 축 순서는 Framework에 따라 다를 수 있습니다.</div>
     </div>
   </section>
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">22</span>
+      <span class="slide-number">21</span>
       <h2 class="slide-title">Data Augmentation은 “달라도 같은 의미”인 변화를 학습에 보여줍니다</h2>
       <p class="slide-subtitle">
         실제 현장에서 생길 수 있는 변화 범위 안에서 이미지를 변형해, 모델이 특정 Pixel 조건만 외우는 것을 줄일 수 있습니다.
       </p>
       <div class="augmentation-grid">
-        <article><span>Original</span><img src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="원본 사과"></article>
-        <article><span>Brightness</span><img class="aug-bright" src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="밝기 변화 사과"></article>
-        <article><span>Rotation</span><img class="aug-rotate" src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="회전된 사과"></article>
-        <article><span>Scale / Crop</span><img class="aug-scale" src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="확대된 사과"></article>
-        <article><span>Blur</span><img class="aug-blur" src="assets/vision_task_apple_reference.jpg?v=sensorhd-20260923-20" alt="흐려진 사과"></article>
+        <article><span>Original</span><img src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="원본 사과"></article>
+        <article><span>Brightness</span><img class="aug-bright" src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="밝기 변화 사과"></article>
+        <article><span>Rotation</span><img class="aug-rotate" src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="회전된 사과"></article>
+        <article><span>Scale / Crop</span><img class="aug-scale" src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="확대된 사과"></article>
+        <article><span>Blur</span><img class="aug-blur" src="assets/vision_task_apple_reference.jpg?v=aibasicsvisual-20260924-21" alt="흐려진 사과"></article>
       </div>
       <div class="augmentation-message">
         <strong>목적</strong><span>데이터 수를 단순히 늘리는 것보다, 운영 환경에서 중요하지 않은 변화에 덜 민감하도록 학습</span>
       </div>
-      <div class="callout"><strong>주의:</strong> 현실에 존재하지 않는 과한 변형은 오히려 학습을 방해할 수 있습니다.</div>
+      <div class="callout"><strong>주의:</strong> 현실에 존재하지 않는 과한 변형은 오히려 학습을 방해할 수 있습니다. Detection/Segmentation에서는 Image와 함께 Box·Mask Label도 같은 변환을 적용해야 합니다.</div>
     </div>
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">23</span>
-      <h2 class="slide-title">Train / Validation / Test의 역할은 다릅니다</h2>
-      <div class="grid">
-        <div class="card"><span class="number">TRAIN</span><h3>문제집</h3><p>정답을 보며 Weight를 실제로 학습합니다.</p></div>
-        <div class="card"><span class="number">VALIDATION</span><h3>모의고사</h3><p>모델 선택, Hyperparameter 조정, Overfitting 확인에 사용합니다.</p></div>
-        <div class="card"><span class="number">TEST</span><h3>최종 시험</h3><p>가능한 한 마지막까지 보지 않고 일반화 성능을 평가합니다.</p></div>
-      </div>
-      <div class="callout"><strong>Validation을 계속 보며 선택하면 Validation에도 맞춰집니다.</strong> 그래서 최종 Test는 별도로 유지하는 것이 중요합니다.</div>
+  <div class="slide-inner">
+    <span class="slide-number">22</span>
+    <h2 class="slide-title">Train / Validation / Test는 서로 다른 역할을 맡습니다</h2>
+    <p class="slide-subtitle">Train은 Weight 학습, Validation은 모델·설정 선택, Test는 마지막 일반화 평가에 사용합니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/dataset_split.svg?v=aibasicsvisual-20260924-21" alt="Train Validation Test 역할과 데이터 분리 원칙"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">23</span>
+    <h2 class="slide-title">Model Score에 Threshold를 적용하면 실제 판정이 됩니다</h2>
+    <p class="slide-subtitle">같은 Score라도 Threshold를 어디에 두느냐에 따라 Normal / Abnormal 판정과 False Positive · False Negative가 달라집니다.</p>
+    <div class="threshold-confusion-layout">
+      <article class="threshold-visual-card">
+        <strong>Prediction Score → Decision</strong>
+        <div class="threshold-track"><span>0.0</span><i></i><em>Threshold 0.5</em><i></i><span>1.0</span></div>
+        <div class="threshold-case is-positive"><b>0.82</b><span>Abnormal 판정</span></div>
+        <div class="threshold-case"><b>0.31</b><span>Normal 판정</span></div>
+      </article>
+      <article class="confusion-visual-card">
+        <strong>정답과 판정을 비교 → Confusion Matrix</strong>
+        <div class="confusion-matrix-large">
+          <span></span><b>Pred Abnormal</b><b>Pred Normal</b>
+          <b>Actual Abnormal</b><strong class="cm-good">TP<br><small>찾은 불량</small></strong><strong class="cm-bad">FN<br><small>놓친 불량</small></strong>
+          <b>Actual Normal</b><strong class="cm-warn">FP<br><small>오알람</small></strong><strong class="cm-good">TN<br><small>정상 통과</small></strong>
+        </div>
+      </article>
     </div>
-  </section>
+    <div class="callout">Threshold는 “모델 자체의 성능”과 별개로 <strong>운영 판정 기준을 조절하는 값</strong>입니다.</div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">24</span>
+    <h2 class="slide-title">Accuracy, Precision, Recall, F1은 서로 다른 질문에 답합니다</h2>
+    <p class="slide-subtitle">예시: 검사 100개 중 실제 불량 20개. 모델이 불량 18개를 찾고 2개를 놓쳤으며, 정상 4개를 불량으로 잘못 알렸다고 가정합니다.</p>
+    <div class="metric-example-grid">
+      <article class="metric-count metric-count--good"><span>TP</span><strong>18</strong><small>찾은 불량</small></article>
+      <article class="metric-count metric-count--bad"><span>FN</span><strong>2</strong><small>놓친 불량</small></article>
+      <article class="metric-count metric-count--warn"><span>FP</span><strong>4</strong><small>정상 오알람</small></article>
+      <article class="metric-count metric-count--good"><span>TN</span><strong>76</strong><small>정상 통과</small></article>
+    </div>
+    <div class="metric-definition-grid">
+      <article><span>Accuracy</span><strong>94%</strong><p>전체 중 맞춘 비율</p></article>
+      <article><span>Precision</span><strong>81.8%</strong><p>불량이라 한 것 중 진짜 불량</p></article>
+      <article><span>Recall</span><strong>90%</strong><p>실제 불량 중 찾아낸 비율</p></article>
+      <article><span>F1</span><strong>85.7%</strong><p>Precision과 Recall의 균형</p></article>
+    </div>
+    <div class="loss-vs-metric"><strong>Loss</strong><span>Weight를 학습할 때 줄이는 값</span><b>≠</b><strong>Metric</strong><span>성능을 평가하고 비교하는 값</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">25</span>
+    <h2 class="slide-title">Data Leakage는 평가할 때 몰라야 하는 정보가 새어 들어간 경우입니다</h2>
+    <p class="slide-subtitle">Validation/Test 성능이 실제보다 좋아 보일 수 있기 때문에 Split 이후의 정보 흐름을 엄격히 관리해야 합니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/data_leakage_visual.svg?v=aibasicsvisual-20260924-21" alt="대표적인 Data Leakage 세 가지 예시"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">26</span>
+    <h2 class="slide-title">이미지·영상은 Random Frame Split보다 원본 단위 분리가 안전합니다</h2>
+    <p class="slide-subtitle">같은 영상·설비·대상·시간대에서 나온 Sample은 서로 강하게 연관되어 있을 수 있습니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/group_split_visual.svg?v=aibasicsvisual-20260924-21" alt="Random Frame Split과 Group Split 비교"></div>
+  </div>
+</section>
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">24</span>
-      <h2 class="slide-title">Data Leakage — 모델이 “보면 안 되는 정보”를 미리 본 경우</h2>
-      <p class="slide-subtitle">Validation/Test 성능은 좋아 보이지만 실제 새로운 데이터에서는 성능이 떨어질 수 있어, 모델 평가를 가장 크게 왜곡하는 원인 중 하나입니다.</p>
-      <div class="leakage-grid">
-        <article class="leakage-card"><h3>① 같은 원본이 양쪽 Split에 존재</h3><p>예: 한 영상에서 뽑은 인접 Frame 일부는 Train, 일부는 Validation에 들어감. 거의 같은 장면을 이미 본 상태가 됩니다.</p></article>
-        <article class="leakage-card"><h3>② 전체 데이터로 전처리 기준 계산</h3><p>Normalization, Feature Selection 등의 통계를 Train뿐 아니라 Validation/Test까지 포함해 계산하면 미래 정보가 학습에 섞입니다.</p></article>
-        <article class="leakage-card"><h3>③ Test를 보며 모델을 계속 선택</h3><p>Test 결과를 보고 Threshold나 Hyperparameter를 반복 조정하면 Test가 사실상 Validation 역할을 하게 됩니다.</p></article>
-      </div>
-      <div class="callout"><strong>원칙:</strong> Split 이후에는 각 단계가 접근할 수 있는 데이터를 명확히 제한해야 합니다.</div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">25</span>
-      <h2 class="slide-title">이미지·영상은 Random Split보다 “원본 단위 분리”가 중요할 때가 많습니다</h2>
-      <p class="slide-subtitle">서로 매우 비슷한 Frame이 다른 Split으로 섞이지 않도록 영상·설비·대상·시간 같은 Group 단위로 나누는 것이 안전합니다.</p>
-      <div class="split-groups">
-        <div class="split-group"><strong>Video A → Train</strong><span class="frame-chip train-cell">frame 001</span><span class="frame-chip train-cell">002</span><span class="frame-chip train-cell">003</span><span class="frame-chip train-cell">004</span><span class="frame-chip train-cell">005</span><span class="frame-chip train-cell">006</span></div>
-        <div class="split-group"><strong>Video B → Val</strong><span class="frame-chip val-cell">frame 001</span><span class="frame-chip val-cell">002</span><span class="frame-chip val-cell">003</span><span class="frame-chip val-cell">004</span><span class="frame-chip val-cell">005</span><span class="frame-chip val-cell">006</span></div>
-        <div class="split-group"><strong>Video C → Test</strong><span class="frame-chip test-cell">frame 001</span><span class="frame-chip test-cell">002</span><span class="frame-chip test-cell">003</span><span class="frame-chip test-cell">004</span><span class="frame-chip test-cell">005</span><span class="frame-chip test-cell">006</span></div>
-      </div>
-      <div class="callout">Frame 수가 많아 보여도 같은 원본에서 나온 데이터라면 독립적인 Sample이라고 보기 어렵습니다.</div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">26</span>
+      <span class="slide-number">27</span>
       <h2 class="slide-title">K-Fold Cross Validation — 검증 대상을 바꿔가며 반복 평가</h2>
-      <p class="slide-subtitle">데이터를 K개 Fold로 나누고, 매번 하나를 Validation으로 사용해 K번 학습합니다. 평균뿐 아니라 Fold 간 변동도 함께 봅니다.</p>
+      <p class="slide-subtitle">데이터를 K개 Fold로 나누고 매번 하나를 Validation으로 사용해 K번 학습합니다. 같은 Metric의 평균과 Fold 간 변동을 함께 봅니다.</p>
       <div class="cv-visual">
         <div class="fold-row"><strong>Fold 1</strong><span class="fold-cell is-val">VAL</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span></div>
         <div class="fold-row"><strong>Fold 2</strong><span class="fold-cell">TRAIN</span><span class="fold-cell is-val">VAL</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span><span class="fold-cell">TRAIN</span></div>
@@ -668,54 +564,22 @@ ReLU
   </section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">27</span>
-      <h2 class="slide-title">분류 성능은 Accuracy 하나만으로 판단하지 않습니다</h2>
-      <p class="slide-subtitle">
-        모델 Score에 Threshold를 적용해 판정을 만들고, 정답과 비교한 결과를 Confusion Matrix로 정리하면 Precision · Recall · F1을 이해하기 쉽습니다.
-      </p>
-      <div class="metrics-layout">
-        <article class="threshold-card">
-          <span>Prediction Score → Decision</span>
-          <div class="threshold-scale"><b>0.0</b><i></i><em>Threshold 0.5</em><i></i><b>1.0</b></div>
-          <div class="threshold-examples">
-            <div><strong>0.82</strong><span>→ Abnormal</span></div>
-            <div><strong>0.31</strong><span>→ Normal</span></div>
-          </div>
-        </article>
-        <article class="confusion-card">
-          <div class="confusion-title">Confusion Matrix</div>
-          <div class="confusion-grid">
-            <span></span><b>Pred +</b><b>Pred −</b>
-            <b>Actual +</b><strong>TP</strong><strong>FN</strong>
-            <b>Actual −</b><strong>FP</strong><strong>TN</strong>
-          </div>
-        </article>
-      </div>
-      <div class="metric-cards">
-        <div><span>Precision</span><strong>불량으로 판정한 것 중 실제 불량 비율</strong><small>False Positive가 많으면 낮아짐</small></div>
-        <div><span>Recall</span><strong>실제 불량 중 찾아낸 비율</strong><small>False Negative가 많으면 낮아짐</small></div>
-        <div><span>F1</span><strong>Precision과 Recall의 균형</strong><small>두 지표를 함께 볼 때 유용</small></div>
-      </div>
-    </div>
-  </section>
+  <div class="slide-inner">
+    <span class="slide-number">28</span>
+    <h2 class="slide-title">목표는 Train 점수가 아니라 새로운 데이터에서의 성능입니다</h2>
+    <p class="slide-subtitle">Train에 지나치게 맞는 Overfitting을 피하고, 보지 못한 데이터에서도 성능이 유지되는 Generalization을 확인해야 합니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/overfit_leakage.svg?v=aibasicsvisual-20260924-21" alt="Overfitting과 Generalization을 Train Validation Loss로 비교"></div>
+  </div>
+</section>
 
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">28</span>
-      <h2 class="slide-title">목표는 Train 점수가 아니라 “새로운 데이터에서의 성능”입니다</h2>
-      <p class="slide-subtitle">Overfitting과 Leakage를 피하고, 보지 못한 데이터에서도 성능이 유지되는 Generalization을 확인해야 합니다.</p>
-      <div class="figure"><img src="assets/overfit_leakage.svg?v=sensorhd-20260923-20" alt="Generalization과 Overfitting, Data Leakage 개념"></div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">29</span>
-      <h2 class="slide-title">실제 AI 개발은 학습 한 번으로 끝나지 않습니다</h2>
-      <div class="figure"><img src="assets/ml_workflow.svg?v=sensorhd-20260923-20" alt="머신러닝 워크플로우"></div>
-    </div>
-  </section>
+  <div class="slide-inner">
+    <span class="slide-number">29</span>
+    <h2 class="slide-title">실제 AI 개발은 운영 결과를 다시 Data로 연결하는 반복 Cycle입니다</h2>
+    <p class="slide-subtitle">Training 한 번으로 끝나는 것이 아니라, Deploy 후 실패 사례를 Monitor하고 다음 Dataset과 학습에 반영합니다.</p>
+    <div class="figure figure--ai-wide"><img src="assets/ml_workflow.svg?v=aibasicsvisual-20260924-21" alt="Data Train Evaluate Deploy Monitor가 반복되는 AI 개발 Cycle"></div>
+  </div>
+</section>
 </main>
 
 <div class="deck-controls">
