@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=introflow-20260923-12">
-  <script src="slide.js?v=introflow-20260923-12" defer></script>
+  <link rel="stylesheet" href="slide.css?v=visionflow-20260923-13">
+  <script src="slide.js?v=visionflow-20260923-13" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -37,7 +37,7 @@
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12"
+            src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -68,7 +68,7 @@
           <div class="intro-rgb-source-frame">
             <img
               id="apple-rgb-source"
-              src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12"
+              src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
               alt="RGB Tensor 값 추출에 사용한 원본 사과 이미지"
             >
           </div>
@@ -147,7 +147,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -188,16 +188,21 @@
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
-      <h2 class="slide-title">이미지에는 Signal과 Noise가 함께 들어옵니다</h2>
+      <h2 class="slide-title">Signal과 Noise는 이미지 종류가 아니라 “판단 기준”입니다</h2>
       <p class="slide-subtitle">
-        <strong>Signal</strong>은 목표 판단에 도움이 되는 반복적인 구조·패턴이고,
-        <strong>Noise</strong>는 목표와 관계없이 흔들리거나 우연히 섞이는 변화입니다.
-        컴퓨터 입력에서는 둘 다 Pixel 값으로 들어옵니다.
+        둘 다 컴퓨터에는 같은 Pixel 숫자로 들어옵니다.
+        <strong>Signal</strong>은 현재 Task의 정답 판단에 반복적으로 도움이 되는 정보이고,
+        <strong>Noise</strong>는 정답과 관계없이 우연히 섞이거나 흔들리는 변화입니다.
       </p>
+
+      <div class="signal-task-context">
+        <span>Example Task</span>
+        <strong>“이 이미지가 사과인가?”</strong>
+      </div>
 
       <div class="human-noise-compare">
         <article class="human-noise-panel">
-          <div class="human-noise-label"><span>01</span><strong>Noise only</strong></div>
+          <div class="human-noise-label"><span>01</span><strong>Random variation</strong></div>
           <div class="human-noise-image" aria-label="무작위 Noise 이미지">
             <svg viewBox="0 0 600 360" preserveAspectRatio="none" role="img" aria-label="랜덤 노이즈">
               <defs>
@@ -214,13 +219,18 @@
               <rect width="600" height="360" fill="#7f8a99" filter="url(#largeNoiseOnlyFilter)"/>
             </svg>
           </div>
-          <div class="human-view-note"><b>구조:</b> 일정한 사과 형태가 없음</div>
+          <div class="human-view-note">
+            <b>Noise에 가까움:</b> 사과 여부 판단에 도움이 되는 반복 구조가 없음
+          </div>
         </article>
 
         <article class="human-noise-panel">
           <div class="human-noise-label"><span>02</span><strong>Signal + Noise</strong></div>
           <div class="human-noise-image human-noise-image--mixed">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="노이즈가 섞인 사과 이미지">
+            <img
+              src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
+              alt="무작위 변화가 섞인 사과 이미지"
+            >
             <svg class="human-noise-overlay" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <filter id="largeAppleNoiseFilter">
@@ -236,32 +246,39 @@
               <rect width="600" height="360" fill="#fff" filter="url(#largeAppleNoiseFilter)"/>
             </svg>
           </div>
-          <div class="human-view-note"><b>혼합:</b> 사과 구조 위에 무작위 변화가 겹침</div>
+          <div class="human-view-note">
+            <b>실제 입력:</b> 판단에 유용한 구조와 무관한 변화가 한 이미지에 함께 존재
+          </div>
         </article>
 
         <article class="human-noise-panel">
-          <div class="human-noise-label"><span>03</span><strong>Signal clearer</strong></div>
+          <div class="human-noise-label"><span>03</span><strong>Task-relevant pattern</strong></div>
           <div class="human-noise-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="깨끗한 사과 이미지">
+            <img
+              src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
+              alt="사과의 형태와 윤곽이 잘 보이는 이미지"
+            >
           </div>
-          <div class="human-view-note"><b>Signal:</b> 윤곽 · 색 · 형태 Pattern이 분명함</div>
+          <div class="human-view-note">
+            <b>Signal에 가까움:</b> 사과의 윤곽 · 형태 · 질감처럼 정답 판단에 반복적으로 도움
+          </div>
         </article>
       </div>
 
       <div class="signal-noise-summary">
         <div class="signal-noise-box signal-noise-box--signal">
           <span>Signal</span>
-          <strong>정답과 관계 있는 Pattern</strong>
-          <small>예: 사과의 윤곽, 둥근 형태, 표면 질감</small>
+          <strong>Task와 관계 있는 Pattern</strong>
+          <small>정답을 바꿔도 반복적으로 도움이 되는 정보</small>
         </div>
         <div class="signal-noise-box signal-noise-box--noise">
           <span>Noise</span>
-          <strong>정답과 무관하게 변하는 값</strong>
-          <small>예: 센서 잡음, 반사, 우연한 배경 변화</small>
+          <strong>Task와 무관한 변화</strong>
+          <small>센서 잡음 · 우연한 반사 · 불필요한 배경 변화 등</small>
         </div>
         <div class="signal-noise-goal">
-          <span>Learning goal</span>
-          <strong>Noise보다 Signal에 반응하는 규칙을 찾기</strong>
+          <span>Important</span>
+          <strong>같은 정보도 Task가 달라지면 Signal / Noise의 역할이 달라질 수 있음</strong>
         </div>
       </div>
     </div>
@@ -277,14 +294,14 @@
       </p>
 
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
-        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
+        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
       </div>
 
       <div class="variation-takeaway">
@@ -309,9 +326,9 @@
           <span class="generalization-kicker">Training examples</span>
           <strong>학습에서 본 여러 조건</strong>
           <div class="generalization-thumbnails">
-            <div><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="원본 사과"><small>원본</small></div>
-            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="어두운 사과"><small>어두움</small></div>
-            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
+            <div><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="원본 사과"><small>원본</small></div>
+            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="어두운 사과"><small>어두움</small></div>
+            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
           </div>
         </article>
 
@@ -335,7 +352,7 @@
           <span class="generalization-kicker">Unseen condition</span>
           <strong>처음 보는 조건에서도 같은 의미</strong>
           <div class="generalization-result-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="처음 보는 흐린 조건의 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="처음 보는 흐린 조건의 사과">
           </div>
           <div class="generalization-prediction">Apple <b>0.97</b></div>
         </article>
@@ -359,7 +376,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
 
@@ -411,7 +428,7 @@
         <article class="intro-task-card">
           <div class="intro-task-head"><span>Classification</span><strong>무엇인가?</strong></div>
           <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="Classification 입력 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Classification 입력 사과">
             <div class="classification-result">Apple <b>98%</b></div>
           </div>
           <p>이미지 전체에 <strong>Class / Probability</strong>를 출력</p>
@@ -420,7 +437,7 @@
         <article class="intro-task-card">
           <div class="intro-task-head"><span>Object Detection</span><strong>무엇이 어디에?</strong></div>
           <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="Detection 입력 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Detection 입력 사과">
             <span class="detection-demo-box" aria-hidden="true"></span>
             <span class="detection-demo-label">Apple</span>
           </div>
@@ -430,7 +447,7 @@
         <article class="intro-task-card">
           <div class="intro-task-head"><span>Segmentation</span><strong>어느 Pixel인가?</strong></div>
           <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="Segmentation 입력 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Segmentation 입력 사과">
             <span class="segmentation-demo-mask" aria-hidden="true"></span>
           </div>
           <p>관심 대상의 <strong>Pixel 단위 Mask</strong>를 출력</p>
@@ -439,53 +456,11 @@
     </div>
   </section>
 
+  
+
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">8</span>
-      <h2 class="slide-title">현장의 질문은 “무엇을 출력해야 하는가?”로 바뀝니다</h2>
-      <p class="slide-subtitle">
-        같은 Vision AI라도 문제의 목적에 따라 Classification · Detection · Segmentation 중
-        적절한 Task를 선택합니다.
-      </p>
-
-      <div class="application-task-grid">
-        <article class="application-task-card">
-          <span class="application-task-tag">Classification</span>
-          <strong>제품 전체 정상 / 불량</strong>
-          <small>이미지 전체를 하나의 상태로 판단</small>
-        </article>
-        <article class="application-task-card">
-          <span class="application-task-tag">Detection</span>
-          <strong>결함이 어디에 있는가?</strong>
-          <small>불량 위치와 개수를 Box로 찾음</small>
-        </article>
-        <article class="application-task-card">
-          <span class="application-task-tag">Segmentation</span>
-          <strong>결함 영역이 얼마나 넓은가?</strong>
-          <small>Pixel Mask로 면적과 형상을 측정</small>
-        </article>
-        <article class="application-task-card">
-          <span class="application-task-tag">Detection</span>
-          <strong>사람 · 차량 · 장애물 위치</strong>
-          <small>장면 안의 여러 객체 위치를 찾음</small>
-        </article>
-        <article class="application-task-card">
-          <span class="application-task-tag">Segmentation</span>
-          <strong>의료 영상의 관심 영역</strong>
-          <small>병변이나 장기의 경계를 Pixel 단위로 구분</small>
-        </article>
-        <article class="application-task-card">
-          <span class="application-task-tag">Classification</span>
-          <strong>장면 · 문서 · 품목 종류</strong>
-          <small>전체 이미지가 어느 Category인지 판단</small>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">9</span>
       <h2 class="slide-title">센서가 다르면 컴퓨터가 받는 숫자의 의미도 달라집니다</h2>
       <p class="slide-subtitle">
         RGB Camera는 색·밝기, LiDAR는 거리 기반 3D Point, IR Camera는 적외선 강도 또는
@@ -499,7 +474,7 @@
             <strong>색 · 밝기 · 질감</strong>
           </div>
           <div class="sensor-preview sensor-preview--rgb">
-            <img src="assets/vision_task_apple_reference.jpg?v=introflow-20260923-12" alt="RGB 카메라 영상 예시">
+            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="RGB 카메라 영상 예시">
           </div>
           <div class="sensor-data"><b>출력 예</b><span>H × W × 3 Image</span><code>[R, G, B]</code></div>
         </article>
