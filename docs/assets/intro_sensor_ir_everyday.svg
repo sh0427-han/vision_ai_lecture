@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Everyday infrared use with thermal inspection and non contact temperature measurement">
+<defs>
+  <linearGradient id="cold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0c197d"/><stop offset="1" stop-color="#0636b1"/></linearGradient>
+  <linearGradient id="heat" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#104cff"/><stop offset=".28" stop-color="#03d6dc"/><stop offset=".52" stop-color="#f7ed3e"/><stop offset=".76" stop-color="#ff7f1d"/><stop offset="1" stop-color="#e91c3a"/></linearGradient>
+  <radialGradient id="face"><stop stop-color="#fff36e"/><stop offset=".55" stop-color="#ff922b"/><stop offset="1" stop-color="#ef3d3d"/></radialGradient>
+</defs>
+<rect width="1200" height="720" rx="36" fill="#f0f5ff"/>
+<g transform="translate(50 50)">
+  <rect width="545" height="620" rx="26" fill="url(#cold)"/>
+  <rect x="315" y="62" width="178" height="456" rx="20" fill="#17245d" stroke="#599cff" stroke-width="6"/>
+  <g fill="#273886">
+    <rect x="348" y="104" width="112" height="72" rx="10"/><rect x="348" y="214" width="112" height="72" rx="10"/><rect x="348" y="324" width="112" height="72" rx="10"/>
+  </g>
+  <rect x="363" y="119" width="82" height="42" rx="8" fill="url(#heat)"/>
+  <rect x="363" y="228" width="82" height="42" rx="8" fill="#ff7c1d"/>
+  <circle cx="404" cy="365" r="27" fill="#ffe83d"/>
+  <g transform="translate(64 120)">
+    <circle cx="108" cy="90" r="62" fill="url(#face)"/>
+    <path d="M45 160h126l64 326H0z" fill="#0c5bd1"/>
+    <path d="M167 214q65 46 118 100" stroke="#ff9d2d" stroke-width="32" stroke-linecap="round"/>
+    <circle cx="292" cy="318" r="34" fill="url(#face)"/>
+  </g>
+  <g transform="translate(224 365)">
+    <rect width="112" height="84" rx="16" fill="#11213d" stroke="#87c6ff" stroke-width="5"/>
+    <rect x="14" y="13" width="76" height="57" rx="8" fill="url(#heat)"/>
+  </g>
+</g>
+<g transform="translate(635 50)">
+  <rect width="515" height="620" rx="26" fill="#102171"/>
+  <circle cx="190" cy="205" r="92" fill="url(#face)"/>
+  <path d="M98 300h190l72 264H42z" fill="#0a55d0"/>
+  <rect x="320" y="160" width="126" height="56" rx="24" fill="#dce8f3"/>
+  <path d="M446 188h44" stroke="#b4c4d4" stroke-width="22" stroke-linecap="round"/>
+  <path d="M318 188q-58 0-80 15" stroke="#ffcc3c" stroke-width="6" stroke-dasharray="12 10"/>
+  <g transform="translate(445 92)">
+    <rect width="24" height="370" rx="12" fill="url(#heat)"/>
+    <path d="M32 0h22M32 185h22M32 370h22" stroke="#fff" stroke-width="4"/>
+  </g>
+</g>
+</svg>

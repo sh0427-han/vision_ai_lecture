@@ -101,17 +101,25 @@ Pixel input
 
 ## 7. 센서가 다르면 숫자의 물리적 의미도 달라진다
 
-현재 Intro에서는 대표적인 세 Sensor만 비교합니다.
+현재 Intro에서는 RGB Camera, LiDAR, IR Sensor / Camera를 큰 대표 장면으로 비교합니다.
 
-| Sensor | 얻는 정보 | 대표 데이터 | 친숙한 활용 예 |
-|---|---|---|---|
-| RGB Camera | 색 · 밝기 · 질감 | H × W × 3 Image | 스마트폰 카메라, CCTV·블랙박스 |
-| LiDAR | 거리 · 3D 위치 | Point Cloud | 로봇청소기 맵핑, 자율주행·ADAS |
-| IR Sensor / Camera | 적외선 강도 또는 열 정보 | Intensity / Temperature Map | 열화상 카메라, 비접촉 체온 측정 |
+| Sensor | 주로 측정하는 정보 | 컴퓨터가 받는 대표 데이터 |
+|---|---|---|
+| RGB Camera | 색 · 밝기 · 질감 | H × W × 3 Image |
+| LiDAR | 거리 · 3D 위치 | Point Cloud |
+| IR Sensor / Camera | 적외선 강도 또는 열 정보 | Intensity / Temperature Map |
 
-모두 숫자 데이터이지만 숫자가 의미하는 물리량은 서로 다릅니다.
+같은 장면을 바라보더라도 센서가 측정하는 물리량이 다르기 때문에 숫자의 의미와 데이터 구조도 달라집니다.
 
-## 8. 다음 질문: AI는 숫자에서 어떻게 Pattern을 배울까?
+## 8. 우리 주변에서 만나는 Sensor
+
+- **RGB Camera**: 스마트폰 카메라, CCTV, 블랙박스
+- **LiDAR**: 로봇청소기 공간 맵핑, 자율주행·ADAS 거리 인식
+- **IR Sensor / Camera**: 열화상 카메라, 설비 발열 검사, 비접촉 온도 측정
+
+Vision AI에서는 모델을 고르기 전에 **어떤 Sensor로 무엇을 측정할 것인지**를 먼저 이해해야 합니다.
+
+## 9. 다음 질문: AI는 숫자에서 어떻게 Pattern을 배울까?
 
 ```text
 Sensor / Image
