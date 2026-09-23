@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=realpixels-20260923-10">
-  <script src="slide.js?v=realpixels-20260923-10" defer></script>
+  <link rel="stylesheet" href="slide.css?v=rgbtensor-20260923-11">
+  <script src="slide.js?v=rgbtensor-20260923-11" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -37,7 +37,7 @@
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10"
+            src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -52,73 +52,85 @@
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">1</span>
-      <h2 class="slide-title">같은 사과도 컴퓨터에게는 Pixel 숫자 배열입니다</h2>
+      <h2 class="slide-title">사람은 “사과”를 보고, 컴퓨터는 RGB 숫자 배열을 봅니다</h2>
       <p class="slide-subtitle">
-        같은 사과 이미지를 <strong>15 × 10 Pixel</strong>로 줄여보면 구조가 더 분명해집니다.
-        오른쪽 숫자는 예시가 아니라 <strong>이 사과 이미지에서 실제로 추출한 RGB 값</strong>입니다.
+        사람은 전체 형태와 의미를 한 번에 인식하지만, 컴퓨터가 처음 받는 것은
+        위치별 R · G · B 값이 쌓인 <strong>3차원 배열</strong>입니다.
       </p>
 
-      <div class="apple-pixel-flow">
-        <article class="apple-pixel-card">
-          <div class="apple-pixel-head">
-            <span>01</span>
-            <strong>Original image</strong>
+      <div class="intro-rgb-tensor-flow">
+        <article class="intro-rgb-source-panel">
+          <div class="intro-rgb-panel-head">
+            <span>Human view</span>
+            <strong>사과라는 의미를 바로 인식</strong>
           </div>
-          <div class="apple-pixel-source-frame">
-            <img id="apple-pixel-source" src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="원본 사과 이미지">
+          <div class="intro-rgb-source-frame">
+            <img
+              id="apple-rgb-source"
+              src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11"
+              alt="RGB Tensor 값 추출에 사용한 원본 사과 이미지"
+            >
           </div>
-          <p><b>사람:</b> 픽셀 값을 계산하지 않아도 바로 “사과”라고 인식합니다.</p>
+          <div class="intro-rgb-cues" aria-label="사람이 이미지에서 직관적으로 보는 단서">
+            <span>전체 형태</span>
+            <span>색</span>
+            <span>윤곽</span>
+            <span>질감</span>
+            <span>의미</span>
+          </div>
         </article>
 
-        <div class="apple-pixel-arrow" aria-hidden="true">→</div>
+        <div class="intro-rgb-flow-arrow" aria-hidden="true">→</div>
 
-        <article class="apple-pixel-card">
-          <div class="apple-pixel-head">
-            <span>02</span>
-            <strong>Downscale · 15 × 10</strong>
+        <article class="intro-rgb-tensor-panel">
+          <div class="intro-rgb-panel-head">
+            <span>Computer input</span>
+            <strong>같은 이미지의 R · G · B Channel이 깊이 방향으로 쌓임</strong>
           </div>
-          <div class="apple-pixel-canvas-frame" aria-label="사과 이미지를 15 곱하기 10 픽셀로 축소한 결과">
-            <canvas id="apple-pixel-canvas" width="15" height="10"></canvas>
-            <div class="apple-pixel-grid-overlay" aria-hidden="true"></div>
-            <span class="apple-pixel-selected" aria-hidden="true"></span>
-          </div>
-          <div class="apple-pixel-sample">
-            <span>선택 Pixel <b>(7, 5)</b></span>
-            <strong id="apple-pixel-rgb">RGB = 계산 중…</strong>
-          </div>
-          <p>이미지를 크게 확대해 보면 각 칸은 하나의 Pixel 값입니다.</p>
-        </article>
 
-        <div class="apple-pixel-arrow" aria-hidden="true">→</div>
+          <div class="rgb-tensor intro-rgb-tensor" aria-label="실제 사과 이미지에서 추출한 12 곱하기 10 RGB 값이 3개 채널로 겹쳐진 Tensor">
+            <div class="tensor-stage">
+              <div class="tensor-front-frame">
+                <div class="tensor-plane tensor-plane--b">
+                  <span class="tensor-plane-label">B</span>
+                  <pre id="apple-b-tensor">실제 Pixel 값을 읽는 중…</pre>
+                </div>
+                <div class="tensor-plane tensor-plane--g">
+                  <span class="tensor-plane-label">G</span>
+                  <pre id="apple-g-tensor">실제 Pixel 값을 읽는 중…</pre>
+                </div>
+                <div class="tensor-plane tensor-plane--r tensor-plane--front">
+                  <span class="tensor-plane-label">R</span>
+                  <pre id="apple-r-tensor">실제 Pixel 값을 읽는 중…</pre>
+                </div>
 
-        <article class="apple-pixel-card apple-pixel-card--data">
-          <div class="apple-pixel-head">
-            <span>03</span>
-            <strong>Actual RGB arrays</strong>
+                <div class="tensor-axis tensor-axis--width" aria-hidden="true">
+                  <span class="tensor-axis-line"></span>
+                  <strong>Width = 12</strong>
+                </div>
+                <div class="tensor-axis tensor-axis--height" aria-hidden="true">
+                  <span class="tensor-axis-line"></span>
+                  <strong>Height = 10</strong>
+                </div>
+                <div class="tensor-axis tensor-axis--channel" aria-hidden="true">
+                  <span class="tensor-axis-line"></span>
+                  <strong>Channel = 3</strong>
+                  <small>R · G · B</small>
+                </div>
+              </div>
+            </div>
+            <div class="tensor-shape-note">
+              <strong>Display example = 10 × 12 × 3</strong>
+              <span>Actual input = H × W × 3</span>
+            </div>
           </div>
-          <div class="apple-rgb-stack" aria-label="15 곱하기 10으로 축소한 사과 이미지의 실제 RGB 숫자 배열">
-            <div class="apple-rgb-plane apple-rgb-plane--r">
-              <span class="apple-rgb-label">R</span>
-              <pre id="apple-r-matrix">이미지에서 값을 읽는 중…</pre>
-            </div>
-            <div class="apple-rgb-plane apple-rgb-plane--g">
-              <span class="apple-rgb-label">G</span>
-              <pre id="apple-g-matrix">이미지에서 값을 읽는 중…</pre>
-            </div>
-            <div class="apple-rgb-plane apple-rgb-plane--b">
-              <span class="apple-rgb-label">B</span>
-              <pre id="apple-b-matrix">이미지에서 값을 읽는 중…</pre>
-            </div>
-          </div>
-          <p><b>컴퓨터:</b> 의미를 보기 전에 위치마다 저장된 R · G · B 숫자를 입력으로 받습니다.</p>
         </article>
       </div>
 
-      <div class="apple-pixel-takeaway">
-        <strong>사람에게는 “사과” 한 장</strong>
-        <span>→</span>
-        <strong>컴퓨터에게는 15 × 10 × 3개의 숫자</strong>
-      </div>
+      <p class="intro-rgb-footnote">
+        표시된 숫자는 실제 사과 이미지를 작게 Downscale해 Pixel 구조를 보기 쉽게 표현한 값입니다.
+        별도의 처리 단계가 아니라, 원본 RGB 입력의 축소 예시입니다.
+      </p>
     </div>
   </section>
 
@@ -156,7 +168,7 @@
         <article class="human-noise-panel">
           <div class="human-noise-label"><span>02</span><strong>Apple + Noise</strong></div>
           <div class="human-noise-image human-noise-image--mixed">
-            <img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="노이즈가 섞인 사과 이미지">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="노이즈가 섞인 사과 이미지">
             <svg class="human-noise-overlay" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <filter id="largeAppleNoiseFilter">
@@ -178,7 +190,7 @@
         <article class="human-noise-panel">
           <div class="human-noise-label"><span>03</span><strong>Apple</strong></div>
           <div class="human-noise-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="깨끗한 사과 이미지">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="깨끗한 사과 이미지">
           </div>
           <div class="human-view-note"><b>사람:</b> “사과”</div>
         </article>
@@ -208,7 +220,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -243,14 +255,14 @@
       <h2 class="slide-title">같은 사과도 촬영 조건에 따라 전혀 다른 숫자가 됩니다</h2>
       <p class="slide-subtitle">사람에게는 같은 물체지만 조명·거리·시점·가림·초점·색 환경이 바뀌면 Pixel 분포는 크게 달라집니다.</p>
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="어두운 조명"></div><p>밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>시점 변화</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="시점이 달라진 사과"></div><p>윤곽과 보이는 면이 변화</p></article>
-        <article class="variation-card"><h3>작은 크기</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 보이지 않음</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 / 화이트밸런스</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="조명 색과 화이트밸런스 변화로 초록빛이 강해진 사과"></div><p>같은 물체도 RGB 균형이 크게 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="어두운 조명"></div><p>밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>시점 변화</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="시점이 달라진 사과"></div><p>윤곽과 보이는 면이 변화</p></article>
+        <article class="variation-card"><h3>작은 크기</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 보이지 않음</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 / 화이트밸런스</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="조명 색과 화이트밸런스 변화로 초록빛이 강해진 사과"></div><p>같은 물체도 RGB 균형이 크게 변화</p></article>
       </div>
     </div>
   </section>
@@ -260,7 +272,7 @@
       <span class="slide-number">5</span>
       <h2 class="slide-title">AI가 배워야 하는 것은 “변하는 Pixel”이 아니라 “유지되는 의미”</h2>
       <p class="slide-subtitle">학습에서 보지 못한 조건에서도 중요한 특징을 찾아 같은 의미로 판단해야 합니다.</p>
-      <div class="figure"><img src="assets/visual_generalization.svg?v=realpixels-20260923-10" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
+      <div class="figure"><img src="assets/visual_generalization.svg?v=rgbtensor-20260923-11" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
     </div>
   </section>
 
@@ -273,7 +285,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
         <div class="pipeline-arrow" aria-hidden="true">→</div>
@@ -328,7 +340,7 @@
       <div class="sensor-example-grid">
         <article class="sensor-example-card">
           <div class="sensor-card-head"><span>RGB</span><strong>색 · 밝기 · 질감</strong></div>
-          <div class="sensor-preview sensor-preview--rgb"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="RGB 카메라 영상 예시"></div>
+          <div class="sensor-preview sensor-preview--rgb"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="RGB 카메라 영상 예시"></div>
           <div class="sensor-data"><b>출력 예</b><span>H × W × 3 이미지</span><code>[R, G, B]</code></div>
         </article>
         <article class="sensor-example-card">
@@ -354,7 +366,7 @@
         </article>
         <article class="sensor-example-card">
           <div class="sensor-card-head"><span>IR</span><strong>적외선 · 열 분포</strong></div>
-          <div class="sensor-preview sensor-preview--thermal"><img src="assets/vision_task_apple_reference.jpg?v=realpixels-20260923-10" alt="적외선 데이터의 의사색상 시각화 예시"><span>pseudo-color</span></div>
+          <div class="sensor-preview sensor-preview--thermal"><img src="assets/vision_task_apple_reference.jpg?v=rgbtensor-20260923-11" alt="적외선 데이터의 의사색상 시각화 예시"><span>pseudo-color</span></div>
           <div class="sensor-data"><b>출력 예</b><span>IR intensity / temperature map</span><code>1 channel → colorized view</code></div>
         </article>
       </div>
@@ -377,64 +389,54 @@
   </div>
 </div>
 
-<!-- Intro real pixel extraction -->
+<!-- Intro RGB tensor: values sampled from the displayed apple image -->
 <script>
 (() => {
-  const WIDTH = 15;
-  const HEIGHT = 10;
-  const SAMPLE_X = 7;
-  const SAMPLE_Y = 5;
-
-  const image = document.getElementById('apple-pixel-source');
-  const canvas = document.getElementById('apple-pixel-canvas');
-  if (!image || !canvas) return;
-
-  const ctx = canvas.getContext('2d', { willReadFrequently: true });
-  if (!ctx) return;
+  const width = 12;
+  const height = 10;
+  const image = document.getElementById('apple-rgb-source');
+  if (!image) return;
 
   const formatMatrix = (pixels, channel) => {
     const rows = [];
-    for (let y = 0; y < HEIGHT; y += 1) {
+    for (let y = 0; y < height; y += 1) {
       const values = [];
-      for (let x = 0; x < WIDTH; x += 1) {
-        const idx = (y * WIDTH + x) * 4 + channel;
-        values.push(String(pixels[idx]).padStart(3, ' '));
+      for (let x = 0; x < width; x += 1) {
+        const index = (y * width + x) * 4 + channel;
+        values.push(String(pixels[index]).padStart(3, ' '));
       }
       rows.push(values.join(' '));
     }
-    return rows.join('\n');
+    return rows.join('\\n');
   };
 
-  const render = () => {
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(image, 0, 0, WIDTH, HEIGHT);
+  const renderTensor = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) return;
 
-    const pixels = ctx.getImageData(0, 0, WIDTH, HEIGHT).data;
-    const r = document.getElementById('apple-r-matrix');
-    const g = document.getElementById('apple-g-matrix');
-    const b = document.getElementById('apple-b-matrix');
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = 'high';
+    context.drawImage(image, 0, 0, width, height);
+    const pixels = context.getImageData(0, 0, width, height).data;
 
-    if (r) r.textContent = formatMatrix(pixels, 0);
-    if (g) g.textContent = formatMatrix(pixels, 1);
-    if (b) b.textContent = formatMatrix(pixels, 2);
-
-    const sampleIdx = (SAMPLE_Y * WIDTH + SAMPLE_X) * 4;
-    const sample = document.getElementById('apple-pixel-rgb');
-    if (sample) {
-      sample.textContent =
-        'RGB = [' +
-        pixels[sampleIdx] + ', ' +
-        pixels[sampleIdx + 1] + ', ' +
-        pixels[sampleIdx + 2] + ']';
-    }
+    const channels = [
+      ['apple-r-tensor', 0],
+      ['apple-g-tensor', 1],
+      ['apple-b-tensor', 2]
+    ];
+    channels.forEach(([id, channel]) => {
+      const target = document.getElementById(id);
+      if (target) target.textContent = formatMatrix(pixels, channel);
+    });
   };
 
   if (image.complete && image.naturalWidth > 0) {
-    render();
+    renderTensor();
   } else {
-    image.addEventListener('load', render, { once: true });
+    image.addEventListener('load', renderTensor, { once: true });
   }
 })();
 </script>
