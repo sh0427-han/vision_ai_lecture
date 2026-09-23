@@ -553,10 +553,11 @@
           const index = (y * width + x) * 4 + channel;
           const value = pixels[index];
           const cell = document.createElement('span');
-          const alpha = 0.05 + (value / 255) * 0.18;
+          const alpha = 0.08 + (value / 255) * 0.62;
 
           cell.textContent = String(value);
           cell.style.backgroundColor = 'rgba(' + rgb + ', ' + alpha + ')';
+          cell.style.color = value >= 150 ? '#ffffff' : '#17243b';
           fragment.appendChild(cell);
         }
       }
