@@ -100,3 +100,20 @@ https://dev.intelrealsense.com/docs/multiple-depth-cameras-configuration%C2%A0
 
 ### Event-based Vision: A Survey
 https://arxiv.org/abs/1904.08405
+
+
+## AI Basics 시각자료 개편
+
+다음 자산은 이 프로젝트에서 초보자 강의용으로 직접 재구성한 SVG입니다.
+
+- `docs/assets/optimizer_loss_landscape.svg`
+- `docs/assets/activation_relu_boundary.svg`
+- `docs/assets/backpropagation_visual.svg`
+- `docs/assets/data_leakage_visual.svg`
+- `docs/assets/group_split_visual.svg`
+- `docs/assets/and_xor_linear_separability.svg`
+- `docs/assets/rule_vs_ml.svg`
+- `docs/assets/overfit_leakage.svg`
+- `docs/assets/ml_workflow.svg`
+
+개념 관계와 흐름을 전달하는 용도이므로 논문 Figure를 복제하지 않고 강의용으로 단순화했습니다.

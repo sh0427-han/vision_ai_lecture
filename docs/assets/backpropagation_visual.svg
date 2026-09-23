@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Forward와 Backward 흐름으로 설명한 Backpropagation">
+<defs>
+  <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#2563eb"/></marker>
+  <marker id="orangeArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#f97316"/></marker>
+</defs>
+<rect width="1200" height="600" rx="28" fill="#f8fafc"/>
+<text x="60" y="64" font-family="Arial, Noto Sans KR, sans-serif" font-size="30" font-weight="700" fill="#17243b">Forward는 예측을 만들고, Backward는 각 Weight의 영향을 계산합니다</text>
+<text x="60" y="100" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">Backpropagation은 Loss에서 시작해 Gradient를 뒤쪽 Layer부터 앞쪽 Layer로 전달하는 계산 과정입니다.</text>
+
+<g transform="translate(70 170)">
+  <text x="0" y="-18" font-family="Arial, Noto Sans KR, sans-serif" font-size="22" font-weight="700" fill="#2563eb">① Forward</text>
+  <g font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#17243b" text-anchor="middle">
+    <rect x="0" y="0" width="170" height="90" rx="16" fill="#fff" stroke="#bfdbfe" stroke-width="3"/><text x="85" y="55">Input</text>
+    <rect x="245" y="0" width="170" height="90" rx="16" fill="#fff" stroke="#bfdbfe" stroke-width="3"/><text x="330" y="55">Layer 1</text>
+    <rect x="490" y="0" width="170" height="90" rx="16" fill="#fff" stroke="#bfdbfe" stroke-width="3"/><text x="575" y="55">Layer 2</text>
+    <rect x="735" y="0" width="170" height="90" rx="16" fill="#fff" stroke="#bfdbfe" stroke-width="3"/><text x="820" y="55">Prediction</text>
+    <rect x="980" y="0" width="150" height="90" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="3"/><text x="1055" y="55">Loss</text>
+  </g>
+  <path d="M175 45H235M420 45H480M665 45H725M910 45H970" stroke="#2563eb" stroke-width="5" marker-end="url(#blueArrow)"/>
+</g>
+
+<g transform="translate(70 345)">
+  <text x="0" y="-18" font-family="Arial, Noto Sans KR, sans-serif" font-size="22" font-weight="700" fill="#f97316">② Backward</text>
+  <g font-family="Arial, Noto Sans KR, sans-serif" font-size="18" font-weight="700" fill="#7c2d12" text-anchor="middle">
+    <rect x="0" y="0" width="170" height="86" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="3"/><text x="85" y="52">앞쪽 Weight</text>
+    <rect x="245" y="0" width="170" height="86" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="3"/><text x="330" y="52">Gradient</text>
+    <rect x="490" y="0" width="170" height="86" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="3"/><text x="575" y="52">Gradient</text>
+    <rect x="735" y="0" width="170" height="86" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="3"/><text x="820" y="52">Gradient</text>
+    <rect x="980" y="0" width="150" height="86" rx="16" fill="#ffedd5" stroke="#fb923c" stroke-width="3"/><text x="1055" y="52">Loss</text>
+  </g>
+  <path d="M975 43H915M730 43H670M485 43H425M240 43H180" stroke="#f97316" stroke-width="5" marker-end="url(#orangeArrow)"/>
+</g>
+<rect x="250" y="485" width="700" height="70" rx="18" fill="#eef6ff"/>
+<text x="600" y="514" text-anchor="middle" font-family="Arial, Noto Sans KR, sans-serif" font-size="19" font-weight="700" fill="#17243b">Optimizer는 이 Gradient를 이용해 Weight를 Update</text>
+<text x="600" y="541" text-anchor="middle" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">Chain Rule은 이 Gradient를 계산하는 수학적 규칙 — 개념을 먼저 이해하면 충분합니다.</text>
+</svg>

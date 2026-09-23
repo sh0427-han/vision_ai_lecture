@@ -40,7 +40,8 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - Train / Validation / Test
 - Data Leakage와 Group 단위 Split
 - K-Fold / Group K-Fold
-- Threshold / Confusion Matrix / Precision / Recall / F1
+- Threshold / Confusion Matrix / Accuracy / Precision / Recall / F1
+- Loss / Metric 차이
 - Overfitting / Generalization
 
 ### 03. Vision AI

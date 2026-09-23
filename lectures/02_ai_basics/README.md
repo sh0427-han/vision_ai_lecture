@@ -1,446 +1,166 @@
-# 02. AI 기초 — 데이터에서 규칙을 배우는 방법
+# 02. AI Basics
 
-AI는 데이터에서 패턴을 학습하고 Prediction Error가 줄어들도록 Weight를 조정합니다.
+Vision AI를 이해하기 전에 필요한 AI / Machine Learning / Deep Learning의 최소 공통 개념을 다룹니다.  
+목표는 수식을 외우는 것이 아니라 **Data → Training → Evaluation → Inference** 흐름을 이해하는 것입니다.
 
-## 1. AI / Machine Learning / Deep Learning
+## 슬라이드 흐름
+
+1. AI / Machine Learning / Deep Learning / Computer Vision 관계
+2. Rule-based vs Machine Learning
+3. Supervised Learning / Unsupervised Learning
+4. Classification / Regression
+5. Binary / Multi-class Classification
+6. Model / Parameter / Hyperparameter
+7. Linear Regression
+8. Loss Function
+9. Gradient / Optimizer / Learning Rate
+10. Perceptron으로 보는 가장 단순한 Neural 계산
+11. AND / XOR와 Linear Separability
+12. Linear Layer를 여러 개 쌓아도 Activation이 없으면 하나의 Linear 변환
+13. Activation Function / ReLU / Non-linearity
+14. Feature / Representation
+15. Prediction → Loss → Gradient → Parameter Update
+16. Backpropagation
+17. Training vs Inference
+18. Batch / Iteration / Epoch
+19. Dataset Quality
+20. Image Preprocessing
+21. Data Augmentation
+22. Train / Validation / Test
+23. Threshold / Confusion Matrix
+24. Accuracy / Precision / Recall / F1
+25. Data Leakage
+26. Group Split
+27. K-Fold / Group K-Fold
+28. Generalization / Overfitting
+29. AI Development Cycle
+
+## 핵심 개념
+
+### Parameter와 Hyperparameter
+
+- **Parameter**: Weight, Bias처럼 Training 과정에서 Gradient에 의해 수정되는 값
+- **Hyperparameter**: Learning Rate, Batch Size, Epoch, Layer 수처럼 학습 동작을 정하는 설정값
+
+### Loss와 Optimizer
+
+Loss는 Prediction이 Target과 얼마나 다른지를 학습에 사용할 수 있는 숫자로 만듭니다.  
+Gradient는 Parameter를 바꿨을 때 Loss가 어떻게 변하는지 알려주고, Optimizer는 Gradient의 반대 방향으로 Parameter를 업데이트합니다.
 
 ```text
-Artificial Intelligence
-└─ Machine Learning
-   └─ Deep Learning
-      └─ CNN
+Prediction → Loss → Gradient → Parameter Update → 다음 Prediction
 ```
 
-- **AI**: 사람이 하던 판단·추론·인식 등을 컴퓨터가 수행하도록 만드는 넓은 개념
-- **Machine Learning**: 규칙을 모두 직접 작성하기보다 데이터에서 패턴을 학습
-- **Deep Learning**: 여러 Layer의 신경망을 사용해 Feature까지 학습
+### 왜 Activation Function이 필요한가
 
-![AI ML DL](../../assets/diagrams/ai_ml_dl.svg)
+AND는 직선 하나로 Class를 나눌 수 있지만 XOR는 그렇지 않습니다.  
+Activation이 없는 Linear Layer 여러 개는 결국 하나의 Linear 변환으로 합쳐집니다.  
+ReLU 같은 비선형 Activation이 들어가야 더 복잡한 Decision Boundary를 표현할 수 있습니다.
 
-## 2. Rule-based와 Machine Learning
-
-Rule-based:
+### Training과 Inference
 
 ```text
-사람이 규칙 작성
-if 밝기 > 100 and 면적 > 50:
-    abnormal
-```
-
-Machine Learning:
-
-```text
-Data + Label
-    ↓
 Training
-    ↓
-Weight 학습
-    ↓
-Prediction
+Image + Label → Model → Prediction → Loss → Backward → Weight Update
+
+Inference
+New Image → Trained Model → Prediction
 ```
 
-조건이 단순하고 명확하면 Rule-based 방식도 매우 강력합니다. 하지만 이미지처럼 조건이 복잡해지면 사람이 모든 규칙을 직접 작성하기 어려워집니다.
+Inference에는 Label, Backward, Weight Update가 없습니다.
 
-## 3. 학습 방식
+### Dataset Quality
 
-### 지도학습 Supervised Learning
-입력 X와 정답 y를 함께 보며 입력과 정답의 관계를 학습합니다.
+Dataset은 실제 운영 환경을 대표해야 합니다.
 
-### 비지도학습 Unsupervised Learning
-정답 Label 없이 데이터의 구조나 군집, 표현을 찾습니다.
+- **Coverage**: 조명, 크기, 배경, 설비, 시간대 등 다양한 운영 조건
+- **Label Quality**: 정확하고 일관된 정답 기준
+- **Class Balance**: 희귀 Class도 학습·평가 가능한 수량 확보
+- **Bias Check**: Train 분포와 실제 운영 분포 차이 확인
 
-### 산업에서는 어떻게 사용할까?
+### Image Preprocessing
 
-현재 강의 범위에서는 강화학습을 제외하고 지도학습과 비지도학습을 중심으로 봅니다.
-
-
-![Supervised vs Unsupervised Industry](../../assets/diagrams/supervised_unsupervised_industry.svg)
-
-지도학습 예:
-- 정상 / 불량 분류
-- 결함 Bounding Box Detection
-- Pixel Mask Segmentation
-- OCR / 품종 판정
-
-비지도학습 예:
-- 유사 패턴 군집화
-- 라벨 기준을 만들기 전 데이터 탐색
-- 미라벨 데이터의 Representation 학습
-- 정상 분포와 다른 이상 후보 탐색
-
-단, **Anomaly Detection이 항상 비지도학습인 것은 아닙니다.** 지도학습, One-class, Self-supervised 등 여러 접근이 사용됩니다.
-
-## 4. 분류와 회귀
-
-![Supervised Learning](../../assets/diagrams/supervised_tasks.svg)
-
-### Classification
-정해진 범주 중 하나를 예측합니다.
+카메라 이미지는 Model이 기대하는 입력 형식으로 변환합니다.
 
 ```text
-Normal / Abnormal
-Cat / Dog
-Scratch / Particle / Normal
+Camera Image → Resize → Scale / Normalize → Tensor → Model
 ```
 
-### Regression
-연속적인 값을 예측합니다.
+Tensor 축 순서는 Framework마다 다를 수 있습니다. 예를 들어 PyTorch에서는 `[B, C, H, W]` 형태가 흔합니다.  
+Train과 Inference에는 같은 기본 전처리 규칙을 적용해야 합니다.
 
-```text
-거리 = 12.4 mm
-온도 = 37.1 °C
-offset = 2.8 px
-```
+### Data Augmentation
 
-### Binary / Multi-class Classification
+밝기, 회전, 크기, Crop, Blur 등 현실에서 의미가 유지되는 변화를 학습 데이터에 적용합니다.  
+목적은 단순히 이미지 수를 늘리는 것이 아니라 중요하지 않은 변화에 덜 민감한 모델을 만드는 것입니다.
 
-- Binary: 두 Class 중 하나
-- Multi-class: 세 개 이상의 Class 중 하나
+Detection / Segmentation에서는 Image를 변환할 때 Box / Mask Label에도 같은 기하 변환을 적용해야 합니다.
 
-분류 모델에서는 raw score를 Sigmoid 또는 Softmax 등을 통해 해석 가능한 값으로 바꾸는 경우가 많습니다.
+### Train / Validation / Test
 
-## 5. Model, Parameter, Hyperparameter
+- **Train**: Weight 학습
+- **Validation**: Model / Hyperparameter / Threshold 선택
+- **Test**: 가능한 마지막까지 보지 않고 최종 Generalization 평가
 
-```text
-Input x
-  ↓
-Model f(x; θ)
-  ↓
-Prediction y_hat
-```
+### Threshold와 Confusion Matrix
 
-- **Parameter**: 모델이 학습하면서 바꾸는 값. Weight, Bias 등
-- **Hyperparameter**: 사람이 정하거나 탐색하는 값. Learning Rate, Batch Size, Layer 수 등
+Score를 실제 판정으로 바꾸려면 Threshold가 필요할 수 있습니다.
 
-## 6. Perceptron
+- **TP**: 실제 Positive를 Positive로 판정
+- **FN**: 실제 Positive를 놓침
+- **FP**: 실제 Negative를 Positive로 잘못 판정
+- **TN**: 실제 Negative를 Negative로 판정
 
-Perceptron은 여러 입력에 Weight를 곱하고 합한 뒤 출력으로 보내는 초기 형태의 인공 신경망입니다.
+### Classification Metric
 
-![Perceptron](../../assets/diagrams/perceptron.svg)
+- **Accuracy**: 전체 Sample 중 맞춘 비율
+- **Precision**: Positive라고 판정한 것 중 실제 Positive 비율
+- **Recall**: 실제 Positive 중 찾아낸 비율
+- **F1**: Precision과 Recall의 조화 평균
 
-```text
-x1 × w1
-x2 × w2
-x3 × w3
-   ↓
-모두 더함 + bias
-   ↓
-Activation
-   ↓
-Prediction
-```
-
-Weight가 크다는 것은 해당 입력을 더 강하게 반영한다는 뜻으로 이해할 수 있습니다.
-
-## 7. 왜 Layer와 비선형성이 필요한가?
-
-**AND Gate와 XOR Gate**는 선형 분리 가능성의 차이를 보여주는 대표적인 예입니다.
-
-### AND Gate — 직선 하나로 구분 가능
-
-```text
-0 AND 0 → 0
-0 AND 1 → 0
-1 AND 0 → 0
-1 AND 1 → 1
-```
-
-입력을 좌표 `(x1, x2)`로 그리면 Output 1은 `(1,1)` 한 점뿐입니다.
-
-따라서 0과 1을 **직선 하나로 분리할 수 있습니다.**
-
-이를 **Linearly Separable**하다고 합니다.
-
-### XOR Gate — 직선 하나로 구분 불가
-
-```text
-0 XOR 0 → 0
-0 XOR 1 → 1
-1 XOR 0 → 1
-1 XOR 1 → 0
-```
-
-XOR는 Output 1인 점 `(0,1)`, `(1,0)`과 Output 0인 점 `(0,0)`, `(1,1)`이 대각선으로 배치됩니다.
-
-![AND vs XOR](../../assets/diagrams/and_xor_linear_separability.svg)
-
-어떤 직선 하나를 그어도 두 Class를 완전히 분리할 수 없습니다.
-
-즉 XOR는 **Non-linearly Separable**한 문제입니다.
-
-### Linear Layer를 여러 개 쌓으면 해결될까?
-
-Activation이 없는 Linear/Affine Layer를 합성하면:
-
-```text
-h1 = W1x + b1
-h2 = W2h1 + b2
-```
-
-두 번째 식에 첫 번째 식을 넣으면:
-
-```text
-h2
-= W2(W1x + b1) + b2
-= (W2W1)x + (W2b1 + b2)
-= W*x + b*
-```
-
-결국 다시 하나의 Affine Transformation과 같은 형태가 됩니다.
-
-![Linear Layers Collapse](../../assets/diagrams/linear_layers_collapse.svg)
-
-따라서 **Linear Layer를 2개, 10개, 100개 쌓아도 중간에 비선형성이 없다면 표현력은 본질적으로 하나의 Linear/Affine Layer와 같습니다.**
-
-XOR처럼 복잡한 결정 경계가 필요한 문제를 표현하려면 Layer 사이에 **Activation Function**이 필요합니다.
-
-### Activation Function
-
-```text
-Linear
-   ↓
-ReLU
-   ↓
-Linear
-   ↓
-ReLU
-   ↓
-복잡한 Decision Boundary
-```
-
-대표적인 예가 ReLU입니다.
-
-```text
-ReLU(x) = max(0, x)
-
-[-2, -0.5, 0, 1, 3]
-        ↓
-[ 0,  0,   0, 1, 3]
-```
-
-Activation이 들어가면 Layer 조합이 더 이상 하나의 Linear Transformation으로 합쳐지지 않으며, 신경망이 비선형 관계를 표현할 수 있게 됩니다.
-
-## 8. Feature와 Representation
-
-- **Feature**: 문제를 푸는 데 유용한 특징
-- **Representation**: 입력을 모델 내부에서 다시 표현한 숫자 형태
-
-```text
-Raw Input
-   ↓
-Simple Feature
-   ↓
-Combined Feature
-   ↓
-Task에 유용한 Representation
-```
-
-CNN에서는 이 개념이 Pixel → Edge/Texture → Shape → Object-level Feature 같은 직관으로 이어집니다.
-
-## 9. 학습 Training
-
-학습은 정답에 더 가까운 Prediction을 만들도록 Weight를 반복해서 수정하는 과정입니다.
-
-![Training Loop](../../assets/diagrams/training_loop.svg)
-
-```text
-Input + Label
-      ↓
-Forward
-      ↓
-Prediction
-      ↓
-Loss
-      ↓
-Backpropagation
-      ↓
-Gradient
-      ↓
-Optimizer
-      ↓
-Weight Update
-```
-
-### Loss
-Prediction과 정답의 차이를 숫자로 표현합니다.
-
-### Gradient
-Weight를 조금 바꿀 때 Loss가 어느 방향으로 얼마나 변하는지를 나타냅니다.
-
-### Backpropagation
-출력의 Loss에서 시작해 각 Parameter의 Gradient를 계산합니다.
-
-### Optimizer
-Gradient를 이용해 Weight를 업데이트합니다.
-
-기본 형태:
-
-```text
-new_weight
-=
-old_weight - learning_rate × gradient
-```
-
-## 10. Learning Rate
-
-한 번 Update할 때 Weight를 얼마나 크게 움직일지 결정합니다.
-
-너무 크면 학습이 불안정해질 수 있고, 너무 작으면 학습이 지나치게 느릴 수 있습니다.
-
-## 11. Batch / Iteration / Epoch
-
-- **Batch**: 한 Step에서 함께 사용하는 샘플 묶음
-- **Iteration / Step**: 한 Batch로 Weight를 한 번 업데이트
-- **Epoch**: 전체 Train Dataset을 한 번 모두 사용
-
-예:
-
-```text
-10,000 images
-batch_size = 32
-
-약 313 iterations
-≈ 1 epoch
-```
-
-전체 Dataset을 한 번에 계산하기 어렵기 때문에 보통 Mini-batch 단위로 학습합니다.
-
-## 12. Dataset은 모델이 배우는 세상
-
-좋은 모델만으로는 충분하지 않습니다.
-
-```text
-좋은 Architecture
-+
-나쁜 Label
-+
-편향된 Dataset
-=
-신뢰하기 어려운 Model
-```
-
-Dataset에는 다음이 중요합니다.
-
-- 실제 운영 조건을 대표하는가?
-- Label 기준이 정확하고 일관적인가?
-- 희귀 Class가 충분히 포함되는가?
-- 특정 장비·배경·날짜에 치우치지 않았는가?
-- Train/Test 사이 Leakage가 없는가?
-
-## 13. Train / Validation / Test
-
-![Dataset Split](../../assets/diagrams/dataset_split.svg)
-
-### Train
-Weight를 실제로 학습합니다.
-
-### Validation
-모델 선택, Hyperparameter 조정, Early Stopping, Overfitting 확인 등에 사용합니다.
-
-### Test
-가능한 한 마지막까지 독립적으로 유지하고 최종 일반화 성능을 평가합니다.
-
-역할을 간단히 정리하면:
-
-```text
-Train      = 문제집
-Validation = 모의고사
-Test       = 최종 시험
-```
-
-## 14. Underfitting / Overfitting / Generalization
-
-### Underfitting
-Train 데이터조차 충분히 설명하지 못합니다.
-
-### Overfitting
-Train에는 매우 잘 맞지만 새로운 데이터에서는 성능이 떨어집니다.
-
-### Generalization
-학습에서 보지 못한 새로운 데이터에서도 잘 동작하는 능력입니다.
-
-과적합 완화에는 더 다양한 데이터, 적절한 Data Augmentation, 모델 복잡도 조절, Regularization, Early Stopping 등이 사용될 수 있습니다.
+**Loss는 Weight를 학습할 때 최적화하는 값**, **Metric은 성능을 평가·비교하는 값**이라는 차이를 구분합니다.
 
 ### Data Leakage
 
-예를 들어 같은 영상에서 나온 거의 동일한 Frame을 Train과 Test에 나누면 평가가 실제보다 좋아 보일 수 있습니다.
+대표적인 Leakage:
+
+- 같은 원본 영상의 인접 Frame이 Train과 Validation/Test에 나뉨
+- 전체 Dataset을 이용해 Normalization / Feature 통계를 계산
+- Test 결과를 보며 Model / Threshold / Hyperparameter를 반복 선택
+
+### Group Split
+
+Frame 수가 많아도 같은 원본에서 나온 Sample은 독립적이지 않을 수 있습니다.  
+영상·설비·대상·환자·제품·날짜처럼 상관관계가 강한 단위를 **Group 전체로 Train / Val / Test 중 하나에만 배정**하는 것이 안전합니다.
+
+### K-Fold Cross Validation
+
+K개 Fold를 만들고 Validation Fold를 바꿔가며 K번 Training합니다.  
+같은 Metric의 평균뿐 아니라 Fold 간 변동도 확인합니다.
+
+Group 상관관계가 강하면 일반 K-Fold보다 Group K-Fold가 적절할 수 있습니다.  
+최종 Test Set은 Cross Validation 바깥에 별도로 유지하는 것이 일반적입니다.
+
+### Generalization / Overfitting
+
+목표는 Train Dataset을 잘 외우는 것이 아니라 **보지 못한 새로운 데이터에서도 성능이 유지되는 것**입니다.  
+Train Loss는 계속 낮아지는데 Validation Loss가 다시 증가하면 Overfitting을 의심할 수 있습니다.
+
+## 최종 흐름
 
 ```text
-same video
-├─ Train: frame_001
-└─ Test : frame_002
+Data
+ ↓
+Train
+ ↓
+Evaluate
+ ↓
+Deploy / Inference
+ ↓
+Monitor
+ ↓
+실패 사례 수집
+ └────────→ 다음 Data / Retraining
 ```
 
-Vision 문제에서는 실제 독립 단위가 무엇인지 생각하고 Split해야 합니다.
-
-## 15. 머신러닝 Workflow
-
-![Machine Learning Workflow](../../assets/diagrams/ml_workflow.svg)
-
-```text
-1. Data Acquisition
-        ↓
-2. Inspection / EDA
-        ↓
-3. Preprocessing / Cleaning
-        ↓
-4. Modeling / Training
-        ↓
-5. Evaluation
-        ↓
-6. Deployment
-```
-
-실제 Vision AI 개발에서는 배포 후에도 모니터링, 실패 사례 수집, 재학습이 이어지므로 반복 Cycle에 가깝습니다.
-
-## 16. Vision AI로 연결
-
-```text
-Image Tensor
-    ↓
-Convolution
-    ↓
-Activation
-    ↓
-Feature
-    ↓
-Convolution
-    ↓
-Higher-level Feature
-    ↓
-Prediction
-```
-
-Vision AI에서 자주 쓰는 CNN의 Kernel도 고정된 규칙이 아니라 Dataset에서 학습되는 Weight입니다.
-
-→ [03. Vision AI](../03_vision_ai/README.md)
-
-## 참고
-
-기초 구성은 WikiDocs의 「딥 러닝 파이토치 교과서」 중 머신러닝 Workflow, 데이터 분리, 선형 회귀/경사하강법, Mini-batch, Perceptron, XOR, Overfitting 파트를 참고하여 Vision AI 입문 강의에 맞게 재구성했습니다.
-
-- https://wikidocs.net/book/2788
-
-
-## 보강: Training과 Inference
-
-- **Training**: Label을 이용해 Loss를 계산하고 Backpropagation으로 Weight를 업데이트합니다.
-- **Inference**: 학습된 Weight를 고정한 채 새로운 입력의 Prediction만 계산합니다.
-
-Training: Image + Label → Model → Prediction → Loss → Backprop → Weight Update
-
-Inference: New Image → Trained Model → Prediction
-
-## 보강: Image Preprocessing
-
-실제 Vision Model은 입력 크기와 Tensor 형식을 정해 두는 경우가 많습니다. Camera Image → Resize → Scale/Normalize → Channel/Tensor 변환 → Model Input 순서로 생각할 수 있습니다. Train과 Inference에는 같은 기본 전처리 규칙을 적용해야 합니다.
-
-## 보강: Data Augmentation
-
-현실에서 의미가 유지되는 범위의 밝기, 회전, 크기, Crop, Blur 등의 변화를 학습 데이터에 적용할 수 있습니다. 목적은 단순한 데이터 수 증가보다 **중요하지 않은 변화에 덜 민감한 모델**을 만드는 데 있습니다. 현실과 동떨어진 과도한 Augmentation은 오히려 성능을 낮출 수 있습니다.
-
-## 보강: Threshold와 Classification Metric
-
-모델의 Score에 Threshold를 적용해 실제 판정을 만들 수 있습니다. Confusion Matrix의 TP / FP / FN / TN에서 Precision, Recall, F1 Score 등을 계산합니다. Accuracy 하나만으로는 Class 불균형이나 False Negative 비용을 충분히 설명하지 못할 수 있습니다.
-
-> Leave-One-Out(LOO)은 Cross Validation의 극단적인 형태로, 데이터가 매우 적을 때 검토할 수 있지만 Vision 입문 슬라이드에서는 우선순위를 낮추고 학습노트 수준으로 유지합니다.
+운영에서 발생한 실패 사례를 다음 Dataset과 Training에 반영하는 반복 Cycle이 실제 AI 개발의 핵심입니다.
