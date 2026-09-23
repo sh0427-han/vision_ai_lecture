@@ -203,3 +203,24 @@ Evaluation
    ↓
 Deployment
 ```
+
+
+## 보강: Stride / Padding / Downsampling
+
+- **Stride**: Kernel을 이동시키는 간격
+- **Padding**: 입력 가장자리 주변에 값을 채우는 방법
+- **Downsampling**: Feature Map의 공간 해상도를 줄이는 과정
+
+이 값들은 Feature Map 크기와 계산량, Receptive Field가 커지는 방식에 영향을 줍니다.
+
+## 보강: Task별 대표 평가 지표
+
+- Classification: Accuracy / Precision / Recall / F1
+- Detection: Precision / Recall / IoU / mAP
+- Segmentation: IoU / Dice / Boundary 품질
+
+Metric은 Task와 실제 실패 비용에 맞춰 선택해야 합니다.
+
+## 보강: Transfer Learning / Fine-tuning
+
+큰 Dataset으로 미리 학습된 Backbone의 Feature를 새 Task에서 재사용하는 방법입니다. Pretrained Backbone + My Dataset/Label → Fine-tuning → My Task Model로 이해할 수 있습니다. 데이터가 적을 때 유용한 출발점이 될 수 있지만, Pretraining Dataset과 실제 현장 데이터의 차이가 크면 별도 검증이 필요합니다.

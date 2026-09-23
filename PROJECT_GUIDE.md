@@ -32,10 +32,14 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - AND / XOR
 - 비선형성과 Activation Function
 - Backpropagation
+- Training / Inference
 - Batch / Iteration / Epoch
+- Image Preprocessing
+- Data Augmentation
 - Train / Validation / Test
 - Data Leakage와 Group 단위 Split
-- K-Fold / Group K-Fold / Leave-One-Out
+- K-Fold / Group K-Fold
+- Threshold / Confusion Matrix / Precision / Recall / F1
 - Overfitting / Generalization
 
 ### 03. Vision AI
@@ -47,11 +51,13 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - Task별 Label 구조
 - CNN
 - Kernel / Convolution
+- Stride / Padding / Downsampling
 - Feature Map / Channel
 - Feature Hierarchy
 - Receptive Field
 - CNN Training
 - Backbone / Task Head
+- Transfer Learning / Fine-tuning
 
 현재 강의 범위에서는 Tracking, Depth/3D, Vision Transformer를 제외합니다.
 
