@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>03. Vision AI</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=applepixels-20260923-15">
-  <script src="slide.js?v=applepixels-20260923-15" defer></script>
+  <link rel="stylesheet" href="slide.css?v=fundamentals-20260923-16">
+  <script src="slide.js?v=fundamentals-20260923-16" defer></script>
 </head>
 <body class="deck-page" data-prev-page="ai_basics.html">
 <header class="site-header">
@@ -21,7 +21,7 @@
 </header>
 
 <main class="deck" aria-live="polite">
-  <section class="slide active">
+<section class="slide active">
     <div class="slide-inner slide-hero">
       <span class="chapter-chip">Lecture 03 · Vision AI</span>
       <h1 class="slide-title">Vision AI의 대표 Task와 CNN을 연결해 봅니다</h1>
@@ -29,47 +29,50 @@
         Classification · Detection · Segmentation의 Output과 Label 차이를 먼저 확인하고,
         CNN이 Pixel에서 Feature를 만드는 과정을 순서대로 살펴봅니다.
       </p>
-      <div class="figure"><img src="assets/vision_tasks_comparison.svg?v=applepixels-20260923-15" alt="Vision AI 대표 Task 비교"></div>
+      <div class="figure"><img src="assets/vision_tasks_comparison.svg?v=fundamentals-20260923-16" alt="Vision AI 대표 Task 비교"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">Vision AI는 모델보다 “원하는 Output”을 먼저 정합니다</h2>
       <p class="slide-subtitle">현장 질문을 Output 형태로 바꾸면 Task와 Label 형태가 결정되고, 그 다음에 적절한 모델 구조를 선택할 수 있습니다.</p>
-      <div class="figure"><img src="assets/vision_task_selection.svg?v=applepixels-20260923-15" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
+      <div class="figure"><img src="assets/vision_task_selection.svg?v=fundamentals-20260923-16" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">Classification — 이 이미지가 무엇인가?</h2>
       <p class="slide-subtitle">이미지 전체에 하나의 Class 또는 Probability를 출력합니다.</p>
-      <div class="figure"><img src="assets/task_classification.svg?v=applepixels-20260923-15" alt="이미지 전체에 대한 Classification 결과"></div>
+      <div class="figure"><img src="assets/task_classification.svg?v=fundamentals-20260923-16" alt="이미지 전체에 대한 Classification 결과"></div>
+      <div class="task-metric-strip"><span>Metric</span><strong>Accuracy · Precision · Recall · F1</strong></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
       <h2 class="slide-title">Object Detection — 무엇이 어디에 있는가?</h2>
       <p class="slide-subtitle">여러 객체의 Class, 위치, Confidence를 함께 출력합니다.</p>
-      <div class="figure"><img src="assets/task_detection.svg?v=applepixels-20260923-15" alt="Bounding Box를 이용한 Object Detection 결과"></div>
+      <div class="figure"><img src="assets/task_detection.svg?v=fundamentals-20260923-16" alt="Bounding Box를 이용한 Object Detection 결과"></div>
+      <div class="task-metric-strip"><span>Metric</span><strong>Precision · Recall · IoU · mAP</strong></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">4</span>
       <h2 class="slide-title">Segmentation — 정확히 어느 Pixel인가?</h2>
       <p class="slide-subtitle">관심 물체나 결함의 정확한 영역과 형상을 Pixel 단위로 구분합니다.</p>
-      <div class="figure"><img src="assets/task_segmentation.svg?v=applepixels-20260923-15" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
+      <div class="figure"><img src="assets/task_segmentation.svg?v=fundamentals-20260923-16" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
+      <div class="task-metric-strip"><span>Metric</span><strong>IoU · Dice · Boundary 품질</strong></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">5</span>
       <h2 class="slide-title">Task가 달라지면 정답 Label의 형태도 달라집니다</h2>
@@ -85,7 +88,7 @@
             <strong>Class Label</strong>
           </div>
           <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=applepixels-20260923-15" alt="Classification label 예시">
+            <img src="assets/vision_task_apple_reference.jpg?v=fundamentals-20260923-16" alt="Classification label 예시">
             <div class="classification-result">Apple</div>
           </div>
           <code>label = "apple"</code>
@@ -98,7 +101,7 @@
             <strong>Box Label</strong>
           </div>
           <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=applepixels-20260923-15" alt="Detection label 예시">
+            <img src="assets/vision_task_apple_reference.jpg?v=fundamentals-20260923-16" alt="Detection label 예시">
             <span class="detection-demo-box" aria-hidden="true"></span>
             <span class="detection-demo-label">Apple</span>
           </div>
@@ -112,7 +115,7 @@
             <strong>Pixel Mask</strong>
           </div>
           <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=applepixels-20260923-15" alt="Segmentation label 예시">
+            <img src="assets/vision_task_apple_reference.jpg?v=fundamentals-20260923-16" alt="Segmentation label 예시">
             <span class="segmentation-demo-mask" aria-hidden="true"></span>
           </div>
           <code>mask[y, x] = class_id</code>
@@ -122,7 +125,7 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">6</span>
       <h2 class="slide-title">CNN은 작은 영역의 Pattern을 조합해 Feature를 만듭니다</h2>
@@ -130,11 +133,11 @@
         Convolutional Neural Network(CNN)는 이미지의 작은 지역에서 반복되는 반응을 찾고,
         Layer를 거치며 이를 더 복잡한 Feature로 조합합니다.
       </p>
-      <div class="figure"><img src="assets/human_feature_to_cnn.svg?v=applepixels-20260923-15" alt="사람의 특징 기반 인식과 CNN 직관"></div>
+      <div class="figure"><img src="assets/human_feature_to_cnn.svg?v=fundamentals-20260923-16" alt="사람의 특징 기반 인식과 CNN 직관"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">7</span>
       <h2 class="slide-title">Kernel이 작은 영역을 훑으며 Convolution을 수행합니다</h2>
@@ -142,60 +145,94 @@
         작은 Weight 배열인 Kernel(Filter)을 여러 위치에 같은 방식으로 적용해
         특정 Local Pattern에 얼마나 반응하는지 계산합니다.
       </p>
-      <div class="figure"><img src="assets/convolution_visual.svg?v=applepixels-20260923-15" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
+      <div class="figure"><img src="assets/convolution_visual.svg?v=fundamentals-20260923-16" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">8</span>
+      <h2 class="slide-title">Stride와 Padding은 Feature Map의 크기와 정보 흐름을 바꿉니다</h2>
+      <p class="slide-subtitle">
+        Stride는 Kernel이 이동하는 간격, Padding은 가장자리 주변을 채우는 방법입니다. 공간 크기를 줄이는 Downsampling은 계산량과 넓은 문맥 사용에 영향을 줍니다.
+      </p>
+      <div class="spatial-op-grid">
+        <article class="spatial-op-card">
+          <span>Stride</span>
+          <div class="stride-demo">
+            <div class="grid5"><i></i><i></i><i class="hit"></i><i class="hit"></i><i class="hit"></i><i></i><i></i><i class="hit"></i><i class="hit"></i><i class="hit"></i><i></i><i></i><i class="hit"></i><i class="hit"></i><i class="hit"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <b>Kernel 이동 간격</b>
+          </div>
+          <small>Stride가 커지면 출력의 가로·세로 크기가 더 빨리 줄어듭니다.</small>
+        </article>
+        <article class="spatial-op-card">
+          <span>Padding</span>
+          <div class="padding-demo">
+            <div class="pad-frame"><div class="pad-core">Input</div></div>
+            <b>가장자리 주변을 채움</b>
+          </div>
+          <small>가장자리 정보도 계산에 포함하고 출력 크기를 조절할 수 있습니다.</small>
+        </article>
+        <article class="spatial-op-card">
+          <span>Downsampling</span>
+          <div class="downsample-demo"><div class="large-map">8×8</div><b>→</b><div class="small-map">4×4</div></div>
+          <small>공간 해상도를 줄이면서 더 넓은 범위의 Feature를 효율적으로 다룹니다.</small>
+        </article>
+      </div>
+      <div class="callout">초보 단계에서는 <strong>“Kernel 크기 + Stride + Padding이 Feature Map 크기를 결정한다”</strong> 정도를 기억하면 충분합니다.</div>
+    </div>
+  </section>
+
+<section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">9</span>
       <h2 class="slide-title">한 Kernel의 반응 결과가 Feature Map 하나가 됩니다</h2>
       <p class="slide-subtitle">
         여러 Kernel을 사용하면 서로 다른 Pattern 반응이 여러 Feature Map으로 만들어지고,
         이 Map들이 Channel 축으로 쌓입니다.
       </p>
-      <div class="figure"><img src="assets/feature_maps.svg?v=applepixels-20260923-15" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
+      <div class="figure"><img src="assets/feature_maps.svg?v=fundamentals-20260923-16" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">9</span>
+      <span class="slide-number">10</span>
       <h2 class="slide-title">Layer가 깊어질수록 여러 Local Feature가 조합됩니다</h2>
       <p class="slide-subtitle">
         초기 Layer의 단순한 반응이 뒤쪽 Layer에서 조합되며 더 복잡한 형태와 부분 구조를 표현할 수 있습니다.
       </p>
-      <div class="figure"><img src="assets/cnn_hierarchy.svg?v=applepixels-20260923-15" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
+      <div class="figure"><img src="assets/cnn_hierarchy.svg?v=fundamentals-20260923-16" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">10</span>
+      <span class="slide-number">11</span>
       <h2 class="slide-title">Receptive Field가 커지면 더 넓은 문맥을 볼 수 있습니다</h2>
       <p class="slide-subtitle">
         Receptive Field는 한 Feature가 원본 이미지에서 영향을 받는 영역입니다.
         Layer가 쌓이거나 Downsampling되면 더 넓은 범위의 정보를 함께 사용할 수 있습니다.
       </p>
-      <div class="figure"><img src="assets/receptive_field.svg?v=applepixels-20260923-15" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
+      <div class="figure"><img src="assets/receptive_field.svg?v=fundamentals-20260923-16" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">11</span>
+      <span class="slide-number">12</span>
       <h2 class="slide-title">Kernel Weight도 Loss가 줄어드는 방향으로 학습됩니다</h2>
       <p class="slide-subtitle">
         사람이 Edge Filter를 모두 직접 지정하는 것이 아니라,
         Prediction → Loss → Backpropagation을 통해 Task에 유용한 Kernel Weight가 업데이트됩니다.
       </p>
-      <div class="figure"><img src="assets/cnn_training.svg?v=applepixels-20260923-15" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
+      <div class="figure"><img src="assets/cnn_training.svg?v=fundamentals-20260923-16" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">12</span>
+      <span class="slide-number">13</span>
       <h2 class="slide-title">많은 Vision Model은 Feature 추출부와 Task별 Head로 나눠 볼 수 있습니다</h2>
       <p class="slide-subtitle">
         입문적으로는 <strong>Backbone</strong>을 공통 Feature 추출부,
@@ -205,7 +242,7 @@
       <div class="backbone-head-flow">
         <article class="backbone-input-card">
           <span>Input</span>
-          <img src="assets/vision_task_apple_reference.jpg?v=applepixels-20260923-15" alt="CNN 입력 사과 이미지">
+          <img src="assets/vision_task_apple_reference.jpg?v=fundamentals-20260923-16" alt="CNN 입력 사과 이미지">
           <strong>Image Tensor</strong>
         </article>
 
@@ -250,11 +287,47 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">13</span>
+      <span class="slide-number">14</span>
+      <h2 class="slide-title">Transfer Learning은 이미 배운 Feature를 새 Task에 재사용합니다</h2>
+      <p class="slide-subtitle">
+        처음부터 모든 Weight를 랜덤하게 학습하는 대신, 큰 Dataset에서 미리 학습된 Backbone을 가져와 내 데이터에 맞게 Fine-tuning할 수 있습니다.
+      </p>
+      <div class="transfer-flow">
+        <article class="transfer-card">
+          <span>Pretrained</span>
+          <div class="pretrain-stack"><i>Edge</i><i>Texture</i><i>Shape</i><i>Part</i></div>
+          <strong>큰 Dataset에서 학습된 Backbone</strong>
+        </article>
+        <div class="transfer-arrow">→</div>
+        <article class="transfer-card transfer-card--domain">
+          <span>My Dataset</span>
+          <div class="transfer-images">
+            <img src="assets/vision_task_apple_reference.jpg?v=fundamentals-20260923-16" alt="새로운 도메인의 학습 이미지 예시">
+            <div><b>Label</b><small>Class / Box / Mask</small></div>
+          </div>
+          <strong>내 Task의 데이터</strong>
+        </article>
+        <div class="transfer-arrow">→</div>
+        <article class="transfer-card transfer-card--fine">
+          <span>Fine-tuning</span>
+          <div class="fine-tune-layers"><i>Reuse</i><i>Reuse</i><i>Update</i><i>Head</i></div>
+          <strong>필요한 Weight를 추가 학습</strong>
+        </article>
+      </div>
+      <div class="transfer-takeaway">
+        <div><span>장점</span><strong>적은 데이터에서도 빠르게 시작 가능</strong></div>
+        <div><span>주의</span><strong>Pretraining 데이터와 현장 데이터 차이가 크면 충분한 검증 필요</strong></div>
+      </div>
+    </div>
+  </section>
+
+<section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">15</span>
       <h2 class="slide-title">Vision AI를 한 흐름으로 정리하면</h2>
-      <div class="figure"><img src="assets/vision_project_pipeline.svg?v=applepixels-20260923-15" alt="Vision AI 프로젝트 전체 흐름"></div>
+      <div class="figure"><img src="assets/vision_project_pipeline.svg?v=fundamentals-20260923-16" alt="Vision AI 프로젝트 전체 흐름"></div>
     </div>
   </section>
 </main>
