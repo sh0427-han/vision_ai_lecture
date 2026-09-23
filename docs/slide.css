@@ -3848,8 +3848,14 @@ body.deck-page {
     padding: 7px;
   }
 
-  .rgb-stack-plane--r { transform: translateY(38px) rotateY(-7deg); }
-  .rgb-stack-plane--g { transform: translateY(19px) rotateY(-7deg); }
+  .rgb-stack-plane--r {
+    margin-left: 0;
+    transform: translateY(38px) rotateY(-7deg);
+  }
+
+  .rgb-stack-plane--g {
+    transform: translateY(19px) rotateY(-7deg);
+  }
 
   .rgb-value-grid span {
     height: 20px;
