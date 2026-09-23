@@ -3921,3 +3921,149 @@ body.deck-page {
     gap: 2px;
   }
 }
+
+
+/* Intro footer page 3: 15x10 actual-pixel RGB tensor */
+.intro-rgb-tensor-flow--exploded {
+  grid-template-columns: minmax(245px, .56fr) 34px minmax(790px, 1.74fr);
+  gap: 10px;
+  width: min(1220px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-rgb-tensor-flow--exploded .intro-rgb-source-panel {
+  padding: 12px;
+}
+
+.intro-rgb-tensor-flow--exploded .intro-rgb-source-frame {
+  width: min(300px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rgb-exploded-stack {
+  justify-content: center;
+  width: min(800px, 100%);
+  min-height: 286px;
+  padding: 34px 4px 4px;
+}
+
+.rgb-stack-plane {
+  flex: 0 0 270px;
+  width: 270px;
+  margin-left: -18px;
+  padding: 8px;
+  transform-origin: center center;
+}
+
+.rgb-stack-plane--r {
+  margin-left: 0;
+  transform: translateY(34px) rotateY(-5deg);
+}
+
+.rgb-stack-plane--g {
+  transform: translateY(17px) rotateY(-5deg);
+}
+
+.rgb-stack-plane--b {
+  transform: rotateY(-5deg);
+}
+
+.rgb-value-grid {
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  gap: 1px;
+}
+
+.rgb-value-grid span {
+  height: 18px;
+  border-radius: 2px;
+  font-size: 6.8px;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-shadow: 0 1px 1px rgb(15 23 42 / 16%);
+}
+
+.rgb-stack-plane-head {
+  margin-bottom: 6px;
+}
+
+.rgb-stack-plane-head strong {
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+}
+
+.rgb-stack-plane-head span {
+  font-size: 9px;
+}
+
+.rgb-stack-shape {
+  margin-top: 2px;
+}
+
+@media (max-height: 760px) and (min-width: 901px) {
+  .intro-rgb-tensor-flow--exploded {
+    grid-template-columns: minmax(220px, .52fr) 28px minmax(730px, 1.78fr);
+  }
+
+  .rgb-exploded-stack {
+    min-height: 244px;
+    padding-top: 28px;
+  }
+
+  .rgb-stack-plane {
+    flex-basis: 246px;
+    width: 246px;
+    margin-left: -16px;
+    padding: 6px;
+  }
+
+  .rgb-stack-plane--r {
+    margin-left: 0;
+    transform: translateY(28px) rotateY(-4deg);
+  }
+
+  .rgb-stack-plane--g {
+    transform: translateY(14px) rotateY(-4deg);
+  }
+
+  .rgb-stack-plane--b {
+    transform: rotateY(-4deg);
+  }
+
+  .rgb-value-grid span {
+    height: 15px;
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro-rgb-tensor-flow--exploded {
+    grid-template-columns: 1fr;
+    width: min(790px, 100%);
+  }
+
+  .rgb-exploded-stack {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .rgb-stack-plane {
+    flex-basis: 235px;
+    width: 235px;
+    margin-left: -12px;
+  }
+
+  .rgb-stack-plane--r {
+    margin-left: 0;
+  }
+
+  .rgb-value-grid span {
+    height: 14px;
+    font-size: 5.6px;
+  }
+}
