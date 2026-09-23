@@ -23,7 +23,9 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 ### 02. AI Basics
 
 - AI / Machine Learning / Deep Learning / Computer Vision의 관계
+- Supervised Learning / Unsupervised Learning
 - Classification / Regression
+- Binary / Multi-class Classification
 - Linear Regression
 - Loss Function / Gradient / Optimizer
 - Parameter / Hyperparameter
