@@ -99,19 +99,7 @@ Pixel input
 
 **Generalization**은 학습에서 보지 못한 새로운 조건에서도 필요한 Pattern을 이용해 올바르게 판단하는 능력입니다.
 
-## 7. 같은 이미지도 원하는 Output에 따라 Vision Task가 달라진다
-
-대표적인 세 가지 Task는 다음과 같습니다.
-
-| Task | 질문 | 대표 Output |
-|---|---|---|
-| Classification | 이미지 전체가 무엇인가? | Class / Probability |
-| Object Detection | 무엇이 어디에 있는가? | Class + Bounding Box |
-| Segmentation | 정확히 어느 Pixel인가? | Pixel Mask |
-
-Intro에서는 세 Task의 차이를 직관적으로 보고, 세부적인 Label 구조와 Model 구성은 03. Vision AI에서 다룹니다.
-
-## 8. 센서가 다르면 숫자의 물리적 의미도 달라진다
+## 7. 센서가 다르면 숫자의 물리적 의미도 달라진다
 
 현재 Intro에서는 대표적인 세 Sensor만 비교합니다.
 
@@ -123,7 +111,7 @@ Intro에서는 세 Task의 차이를 직관적으로 보고, 세부적인 Label 
 
 모두 숫자 데이터이지만 숫자가 의미하는 물리량은 서로 다릅니다.
 
-## 9. 다음 질문: AI는 숫자에서 어떻게 Pattern을 배울까?
+## 8. 다음 질문: AI는 숫자에서 어떻게 Pattern을 배울까?
 
 ```text
 Sensor / Image
