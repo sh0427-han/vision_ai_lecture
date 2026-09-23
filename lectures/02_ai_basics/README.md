@@ -420,3 +420,27 @@ Vision AI에서 자주 쓰는 CNN의 Kernel도 고정된 규칙이 아니라 Dat
 기초 구성은 WikiDocs의 「딥 러닝 파이토치 교과서」 중 머신러닝 Workflow, 데이터 분리, 선형 회귀/경사하강법, Mini-batch, Perceptron, XOR, Overfitting 파트를 참고하여 Vision AI 입문 강의에 맞게 재구성했습니다.
 
 - https://wikidocs.net/book/2788
+
+
+## 보강: Training과 Inference
+
+- **Training**: Label을 이용해 Loss를 계산하고 Backpropagation으로 Weight를 업데이트합니다.
+- **Inference**: 학습된 Weight를 고정한 채 새로운 입력의 Prediction만 계산합니다.
+
+Training: Image + Label → Model → Prediction → Loss → Backprop → Weight Update
+
+Inference: New Image → Trained Model → Prediction
+
+## 보강: Image Preprocessing
+
+실제 Vision Model은 입력 크기와 Tensor 형식을 정해 두는 경우가 많습니다. Camera Image → Resize → Scale/Normalize → Channel/Tensor 변환 → Model Input 순서로 생각할 수 있습니다. Train과 Inference에는 같은 기본 전처리 규칙을 적용해야 합니다.
+
+## 보강: Data Augmentation
+
+현실에서 의미가 유지되는 범위의 밝기, 회전, 크기, Crop, Blur 등의 변화를 학습 데이터에 적용할 수 있습니다. 목적은 단순한 데이터 수 증가보다 **중요하지 않은 변화에 덜 민감한 모델**을 만드는 데 있습니다. 현실과 동떨어진 과도한 Augmentation은 오히려 성능을 낮출 수 있습니다.
+
+## 보강: Threshold와 Classification Metric
+
+모델의 Score에 Threshold를 적용해 실제 판정을 만들 수 있습니다. Confusion Matrix의 TP / FP / FN / TN에서 Precision, Recall, F1 Score 등을 계산합니다. Accuracy 하나만으로는 Class 불균형이나 False Negative 비용을 충분히 설명하지 못할 수 있습니다.
+
+> Leave-One-Out(LOO)은 Cross Validation의 극단적인 형태로, 데이터가 매우 적을 때 검토할 수 있지만 Vision 입문 슬라이드에서는 우선순위를 낮추고 학습노트 수준으로 유지합니다.
