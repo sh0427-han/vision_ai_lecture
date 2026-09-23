@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="LiDAR point cloud view of a robot vacuum mapping a living room">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#081526"/><stop offset="1" stop-color="#172b46"/></linearGradient>
+  <radialGradient id="scan"><stop stop-color="#26c6ff" stop-opacity=".5"/><stop offset="1" stop-color="#26c6ff" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2.4" fill="#59d8ff" opacity=".78"/></pattern>
+</defs>
+<rect width="1200" height="720" rx="36" fill="url(#bg)"/>
+<path d="M80 110h1040v485H80z" fill="#0b1d31" stroke="#284965" stroke-width="6"/>
+<path d="M80 110l320-70h720v555l-275-95H80z" fill="none" stroke="#2a5674" stroke-width="5"/>
+<rect x="95" y="124" width="1010" height="452" fill="url(#dots)" opacity=".32"/>
+<g fill="none" stroke="#58dfff" stroke-width="4" opacity=".8">
+  <path d="M162 390h286v145H162z"/><path d="M165 390l64-62h274l-55 62"/>
+  <path d="M675 300h306v208H675z"/><path d="M675 300l64-50h288l-46 50"/>
+  <path d="M520 180h126v178H520z"/><path d="M540 215h86v108H540z"/>
+</g>
+<g fill="#5ce0ff">
+  <circle cx="170" cy="390" r="4"/><circle cx="205" cy="378" r="4"/><circle cx="241" cy="365" r="4"/><circle cx="278" cy="354" r="4"/>
+  <circle cx="317" cy="348" r="4"/><circle cx="357" cy="345" r="4"/><circle cx="398" cy="350" r="4"/><circle cx="442" cy="364" r="4"/>
+  <circle cx="690" cy="316" r="4"/><circle cx="737" cy="309" r="4"/><circle cx="784" cy="306" r="4"/><circle cx="832" cy="308" r="4"/>
+  <circle cx="882" cy="315" r="4"/><circle cx="932" cy="325" r="4"/><circle cx="975" cy="344" r="4"/>
+  <circle cx="532" cy="194" r="4"/><circle cx="557" cy="198" r="4"/><circle cx="584" cy="198" r="4"/><circle cx="612" cy="200" r="4"/>
+</g>
+<g transform="translate(585 520)">
+  <ellipse cx="0" cy="80" rx="172" ry="46" fill="#03111e" opacity=".75"/>
+  <circle cx="0" cy="0" r="118" fill="url(#scan)"/>
+  <ellipse cx="0" cy="28" rx="126" ry="58" fill="#c8d2dc"/>
+  <ellipse cx="0" cy="8" rx="126" ry="58" fill="#eef4f7"/>
+  <ellipse cx="0" cy="2" rx="42" ry="18" fill="#20354a"/>
+  <circle cx="0" cy="-8" r="24" fill="#16283a" stroke="#54d8ff" stroke-width="5"/>
+  <path d="M-125 8h250" stroke="#91a5b7" stroke-width="4" opacity=".8"/>
+</g>
+<g stroke="#54d8ff" fill="none" opacity=".72">
+  <circle cx="585" cy="512" r="180" stroke-width="3"/><circle cx="585" cy="512" r="240" stroke-width="3"/><circle cx="585" cy="512" r="310" stroke-width="3"/>
+  <path d="M585 512L138 174M585 512L246 96M585 512L468 82M585 512L720 74M585 512L1016 172" stroke-width="3"/>
+</g>
+<g fill="#9cedff" opacity=".95">
+  <circle cx="150" cy="172" r="5"/><circle cx="190" cy="206" r="4"/><circle cx="240" cy="245" r="5"/><circle cx="292" cy="286" r="4"/>
+  <circle cx="1005" cy="178" r="5"/><circle cx="962" cy="214" r="4"/><circle cx="919" cy="253" r="5"/><circle cx="871" cy="292" r="4"/>
+</g>
+<rect x="18" y="18" width="1164" height="684" rx="30" fill="none" stroke="#5ad9ff" stroke-width="4" opacity=".45"/>
+</svg>
