@@ -4280,3 +4280,190 @@ body.deck-page {
 @media (max-width:900px){
   .sensor-use-grid{grid-template-columns:1fr}
 }
+
+
+/* Intro footer pages 9-10: large sensor story visuals */
+.sensor-hero-grid,
+.sensor-life-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  width:min(1200px,100%);
+  margin:14px auto 0;
+}
+.sensor-hero-card,
+.sensor-life-card{
+  min-width:0;
+  overflow:hidden;
+  border:1px solid #d8e1ed;
+  border-radius:18px;
+  background:#f8fafc;
+}
+.sensor-hero-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 14px 10px;
+}
+.sensor-hero-head>div{
+  display:grid;
+  gap:2px;
+}
+.sensor-hero-head strong{
+  color:#17243b;
+  font-size:18px;
+  line-height:1.2;
+}
+.sensor-hero-head small{
+  color:#64748b;
+  font-size:9.5px;
+}
+.sensor-hero-head>span{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#edf3fc;
+  color:#2563eb;
+  font-size:10px;
+  font-weight:850;
+  white-space:nowrap;
+}
+.sensor-hero-card--lidar .sensor-hero-head>span{color:#0284c7;background:#e8f7fd}
+.sensor-hero-card--ir .sensor-hero-head>span{color:#e11d48;background:#fff1f2}
+.sensor-hero-image{
+  display:block;
+  width:100%;
+  aspect-ratio:5/3;
+  object-fit:cover;
+  background:#eef3f8;
+}
+.sensor-hero-data{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:3px 9px;
+  padding:10px 14px 12px;
+  border-top:1px solid #e2e8f0;
+}
+.sensor-hero-data b{
+  grid-row:1/3;
+  align-self:center;
+  color:#64748b;
+  font-size:9.5px;
+}
+.sensor-hero-data strong{
+  color:#17243b;
+  font-size:12.5px;
+}
+.sensor-hero-data code{
+  color:#475569;
+  font-size:10px;
+  background:transparent;
+  padding:0;
+}
+.sensor-big-takeaway{
+  width:min(980px,100%);
+  margin:11px auto 0;
+  padding:9px 14px;
+  border-radius:12px;
+  background:#edf5ff;
+  color:#475569;
+  font-size:12px;
+  line-height:1.45;
+  text-align:center;
+}
+.sensor-big-takeaway strong{color:#17243b}
+
+.sensor-life-card{
+  display:grid;
+  grid-template-rows:auto 1fr;
+  background:#fff;
+}
+.sensor-life-card>img{
+  display:block;
+  width:100%;
+  aspect-ratio:5/3;
+  object-fit:cover;
+  background:#eef4fa;
+}
+.sensor-life-body{
+  display:grid;
+  gap:8px;
+  padding:12px 14px 14px;
+}
+.sensor-life-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px;
+}
+.sensor-life-title strong{
+  color:#17243b;
+  font-size:17px;
+}
+.sensor-life-title span{
+  color:#64748b;
+  font-size:9.5px;
+  text-align:right;
+}
+.sensor-life-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+.sensor-life-tags b{
+  padding:5px 7px;
+  border-radius:999px;
+  background:#edf3fc;
+  color:#2563eb;
+  font-size:9px;
+  font-weight:850;
+}
+.sensor-life-card:nth-child(2) .sensor-life-tags b{background:#e8f7fd;color:#0284c7}
+.sensor-life-card:nth-child(3) .sensor-life-tags b{background:#fff1f2;color:#e11d48}
+.sensor-life-body p{
+  margin:0;
+  color:#475569;
+  font-size:11px;
+  line-height:1.45;
+}
+.sensor-life-message{
+  display:grid;
+  grid-template-columns:1.25fr 1fr;
+  gap:16px;
+  align-items:center;
+  width:min(1060px,100%);
+  margin:11px auto 0;
+  padding:10px 15px;
+  border-radius:13px;
+  background:#edf5ff;
+}
+.sensor-life-message strong{
+  color:#17243b;
+  font-size:12px;
+}
+.sensor-life-message span{
+  color:#64748b;
+  font-size:11px;
+  text-align:right;
+}
+
+@media (max-height:760px) and (min-width:901px){
+  .sensor-hero-grid,.sensor-life-grid{gap:10px;margin-top:8px}
+  .sensor-hero-head{padding:8px 10px 7px}
+  .sensor-hero-head strong{font-size:15px}
+  .sensor-hero-image,.sensor-life-card>img{aspect-ratio:2/1}
+  .sensor-hero-data{padding:7px 10px 8px}
+  .sensor-hero-data strong{font-size:11px}
+  .sensor-big-takeaway{margin-top:6px;padding:6px 10px;font-size:10px}
+  .sensor-life-body{gap:5px;padding:8px 10px 9px}
+  .sensor-life-title strong{font-size:14px}
+  .sensor-life-tags b{padding:3px 6px;font-size:8px}
+  .sensor-life-body p{font-size:9.5px}
+  .sensor-life-message{margin-top:6px;padding:7px 10px}
+  .sensor-life-message strong,.sensor-life-message span{font-size:9.5px}
+}
+@media (max-width:900px){
+  .sensor-hero-grid,.sensor-life-grid{grid-template-columns:1fr}
+  .sensor-life-message{grid-template-columns:1fr}
+  .sensor-life-message span{text-align:left}
+}
