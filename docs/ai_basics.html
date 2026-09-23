@@ -28,7 +28,7 @@
       <p class="slide-subtitle">
         가장 단순한 Linear Regression부터 시작해, Prediction Error가 줄어들도록 Parameter를 반복 수정하는 과정을 이해합니다.
       </p>
-      <div class="flow">Data → Model → Prediction → Loss → Optimizer → Parameter Update → Generalization</div>
+      <div class="flow">Data → Learning Type → Task → Model → Loss → Optimizer → Generalization</div>
     </div>
   </section>
 
@@ -49,17 +49,31 @@
     </div>
   </section>
 
-  
-
-  
-
-  
-
-  
-
   <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
+      <h2 class="slide-title">정답 Label이 있느냐에 따라 학습 방식이 달라집니다</h2>
+      <p class="slide-subtitle">
+        <strong>Supervised Learning(지도학습)</strong>은 입력과 정답을 함께 보며 관계를 배우고,
+        <strong>Unsupervised Learning(비지도학습)</strong>은 정답 Label 없이 데이터의 구조와 패턴을 찾습니다.
+      </p>
+      <div class="figure">
+        <img
+          src="assets/supervised_unsupervised_industry.svg?v=introflow-20260923-12"
+          alt="산업 데이터에서 지도학습과 비지도학습을 사용하는 예시"
+        >
+      </div>
+      <div class="callout">
+        <strong>Vision AI에서 가장 흔한 출발점:</strong>
+        정상/불량 Classification, Bounding Box Detection, Pixel Mask Segmentation처럼 정답 Label을 이용하는 문제는 지도학습입니다.
+        비지도학습은 Label이 부족할 때 데이터 구조 탐색, 군집화, Representation 학습 등에 활용할 수 있습니다.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">4</span>
       <h2 class="slide-title">분류와 회귀</h2>
       <p class="slide-subtitle">Classification은 범주를, Regression은 연속적인 숫자 값을 예측합니다.</p>
       <div class="figure"><img src="assets/classification_regression.svg?v=introflow-20260923-12" alt="분류와 회귀의 출력 차이"></div>
@@ -68,7 +82,59 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">4</span>
+      <span class="slide-number">5</span>
+      <h2 class="slide-title">이진 분류와 다중 클래스 분류</h2>
+      <div class="slide-columns">
+        <div>
+          <div class="term"><strong>Binary Classification</strong>두 선택지 중 하나를 고릅니다.</div>
+          <div class="flow">raw score
+   ↓
+Sigmoid
+   ↓
+Abnormal = 0.87</div>
+        </div>
+        <div>
+          <div class="term"><strong>Multi-class Classification</strong>세 개 이상의 Class 중 하나를 고릅니다.</div>
+          <div class="flow">raw scores
+   ↓
+Softmax
+   ↓
+Normal 0.10
+CaseA  0.75
+CaseB  0.15</div>
+        </div>
+      </div>
+      <p class="slide-subtitle">Sigmoid와 Softmax는 모델의 출력 점수를 해석하기 쉬운 값으로 바꾸는 데 자주 사용됩니다.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">6</span>
+      <h2 class="slide-title">Model, Parameter, Hyperparameter</h2>
+      <div class="slide-columns top">
+        <div>
+          <div class="math-flow">
+            <span>Input <math><mi>x</mi></math></span>
+            <b>↓</b>
+            <span>Model <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>;</mo><mi>θ</mi><mo>)</mo></mrow></math></span>
+            <b>↓</b>
+            <span>Prediction <math><mover accent="true"><mi>y</mi><mo>^</mo></mover></math></span>
+          </div>
+          <div class="term"><strong>Parameter</strong>학습 과정에서 모델이 스스로 바꾸는 값입니다. Weight와 Bias가 대표적입니다.</div>
+        </div>
+        <div>
+          <div class="term"><strong>Hyperparameter</strong>Learning Rate, Batch Size, Layer 수처럼 학습 전에 사람이 설정하는 값입니다.</div>
+          <div class="flow">Parameter      → 모델이 학습
+Hyperparameter → 사람이 설정/탐색</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">7</span>
       <h2 class="slide-title">Linear Regression으로 “학습”을 가장 단순하게 보자</h2>
       <p class="slide-subtitle">입력과 정답의 관계를 가장 잘 설명하는 직선을 찾는 문제입니다. 모델이 학습하는 값은 기울기와 절편입니다.</p>
       <div class="regression-layout">
@@ -114,7 +180,7 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">5</span>
+      <span class="slide-number">8</span>
       <h2 class="slide-title">Loss Function은 “얼마나 틀렸는지”를 하나의 숫자로 만듭니다</h2>
       <p class="slide-subtitle">Regression에서는 예측값과 정답의 차이를 제곱해 평균낸 MSE를 대표적인 Loss Function으로 사용할 수 있습니다.</p>
       <div class="regression-layout">
@@ -182,7 +248,7 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">6</span>
+      <span class="slide-number">9</span>
       <h2 class="slide-title">Optimizer는 Loss가 줄어드는 방향으로 Parameter를 바꿉니다</h2>
       <p class="slide-subtitle">Gradient는 “어느 방향으로 얼마나 바꾸면 Loss가 증가하는가”를 알려주고, Optimizer는 그 정보를 이용해 w와 b를 업데이트합니다.</p>
       <div class="learning-loop">
@@ -227,59 +293,7 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">7</span>
-      <h2 class="slide-title">이진 분류와 다중 클래스 분류</h2>
-      <div class="slide-columns">
-        <div>
-          <div class="term"><strong>Binary Classification</strong>두 선택지 중 하나를 고릅니다.</div>
-          <div class="flow">raw score
-   ↓
-Sigmoid
-   ↓
-Abnormal = 0.87</div>
-        </div>
-        <div>
-          <div class="term"><strong>Multi-class Classification</strong>세 개 이상의 Class 중 하나를 고릅니다.</div>
-          <div class="flow">raw scores
-   ↓
-Softmax
-   ↓
-Normal 0.10
-CaseA  0.75
-CaseB  0.15</div>
-        </div>
-      </div>
-      <p class="slide-subtitle">Sigmoid와 Softmax는 모델의 출력 점수를 해석하기 쉬운 값으로 바꾸는 데 자주 사용됩니다.</p>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">8</span>
-      <h2 class="slide-title">Model, Parameter, Hyperparameter</h2>
-      <div class="slide-columns top">
-        <div>
-          <div class="math-flow">
-            <span>Input <math><mi>x</mi></math></span>
-            <b>↓</b>
-            <span>Model <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>;</mo><mi>θ</mi><mo>)</mo></mrow></math></span>
-            <b>↓</b>
-            <span>Prediction <math><mover accent="true"><mi>y</mi><mo>^</mo></mover></math></span>
-          </div>
-          <div class="term"><strong>Parameter</strong>학습 과정에서 모델이 스스로 바꾸는 값입니다. Weight와 Bias가 대표적입니다.</div>
-        </div>
-        <div>
-          <div class="term"><strong>Hyperparameter</strong>Learning Rate, Batch Size, Layer 수처럼 학습 전에 사람이 설정하는 값입니다.</div>
-          <div class="flow">Parameter      → 모델이 학습
-Hyperparameter → 사람이 설정/탐색</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">9</span>
+      <span class="slide-number">10</span>
       <h2 class="slide-title">신경망의 기본 단위: Perceptron</h2>
       <div class="perceptron-layout">
         <div class="figure"><img src="assets/perceptron.svg?v=introflow-20260923-12" alt="Perceptron 구조"></div>
@@ -311,7 +325,7 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">10</span>
+      <span class="slide-number">11</span>
       <h2 class="slide-title">AND Gate — 직선 하나로 구분할 수 있는 문제</h2>
       <div class="slide-columns top">
         <div>
@@ -333,7 +347,7 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">11</span>
+      <span class="slide-number">12</span>
       <h2 class="slide-title">XOR Gate — 직선 하나로는 구분할 수 없는 문제</h2>
       <div class="figure"><img src="assets/and_xor_linear_separability.svg?v=introflow-20260923-12" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
       <div class="callout"><strong>XOR:</strong> (0,1), (1,0)은 1이고 (0,0), (1,1)은 0입니다. 같은 Class가 대각선으로 떨어져 있기 때문에 직선 하나로는 분리할 수 없습니다.</div>
@@ -342,7 +356,7 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">12</span>
+      <span class="slide-number">13</span>
       <h2 class="slide-title">그럼 Linear Layer를 여러 개 쌓으면 XOR를 풀 수 있을까?</h2>
       <div class="linear-collapse-flow" aria-label="여러 Linear Layer를 합성해도 하나의 Affine Transformation과 같다는 개념">
         <div class="collapse-box"><span>Linear 1</span><small>Affine Transformation</small></div>
@@ -359,7 +373,7 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">13</span>
+      <span class="slide-number">14</span>
       <h2 class="slide-title">Activation이 없으면 깊어져도 표현력은 늘어나지 않습니다</h2>
       <div class="slide-columns">
         <div>
@@ -385,7 +399,7 @@ Hyperparameter → 사람이 설정/탐색</div>
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">14</span>
+      <span class="slide-number">15</span>
       <h2 class="slide-title">Activation Function이 비선형성을 추가합니다</h2>
       <div class="slide-columns">
         <div>
@@ -423,26 +437,24 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">15</span>
+      <span class="slide-number">16</span>
       <h2 class="slide-title">Feature와 Representation</h2>
       <div class="figure"><img src="assets/feature_representation.svg?v=introflow-20260923-12" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
     </div>
   </section>
 
-  
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">16</span>
+      <span class="slide-number">17</span>
       <h2 class="slide-title">Linear Regression에서 본 학습 원리는 신경망에서도 같습니다</h2>
       <p class="slide-subtitle">모델이 복잡해져도 핵심은 Prediction을 만들고, Loss를 계산하고, Parameter를 수정하는 반복입니다.</p>
       <div class="figure"><img src="assets/training_loop.svg?v=introflow-20260923-12" alt="예측 손실 계산 파라미터 업데이트로 이어지는 학습 루프"></div>
     </div>
   </section>
 
-  
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">17</span>
+      <span class="slide-number">18</span>
       <h2 class="slide-title">신경망에서는 Backpropagation으로 각 Weight의 Gradient를 계산합니다</h2>
       <p class="slide-subtitle">Loss에서 시작해 뒤쪽 Layer부터 Gradient를 전달하고, Optimizer가 각 Weight를 업데이트합니다.</p>
       <div class="backprop-layout">
@@ -483,7 +495,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">18</span>
+      <span class="slide-number">19</span>
       <h2 class="slide-title">Batch, Iteration, Epoch</h2>
       <div class="figure"><img src="assets/batch_epoch.svg?v=introflow-20260923-12" alt="Dataset Batch Iteration Epoch 관계"></div>
     </div>
@@ -491,7 +503,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">19</span>
+      <span class="slide-number">20</span>
       <h2 class="slide-title">Dataset은 모델이 배우는 세상</h2>
       <div class="figure"><img src="assets/dataset_split.svg?v=introflow-20260923-12" alt="Train Validation Test 데이터 분리"></div>
     </div>
@@ -499,7 +511,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">20</span>
+      <span class="slide-number">21</span>
       <h2 class="slide-title">Train / Validation / Test의 역할은 다릅니다</h2>
       <div class="grid">
         <div class="card"><span class="number">TRAIN</span><h3>문제집</h3><p>정답을 보며 Weight를 실제로 학습합니다.</p></div>
@@ -510,10 +522,9 @@ ReLU
     </div>
   </section>
 
-  
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">21</span>
+      <span class="slide-number">22</span>
       <h2 class="slide-title">Data Leakage — 모델이 “보면 안 되는 정보”를 미리 본 경우</h2>
       <p class="slide-subtitle">Validation/Test 성능은 좋아 보이지만 실제 새로운 데이터에서는 성능이 떨어질 수 있어, 모델 평가를 가장 크게 왜곡하는 원인 중 하나입니다.</p>
       <div class="leakage-grid">
@@ -527,7 +538,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">22</span>
+      <span class="slide-number">23</span>
       <h2 class="slide-title">이미지·영상은 Random Split보다 “원본 단위 분리”가 중요할 때가 많습니다</h2>
       <p class="slide-subtitle">서로 매우 비슷한 Frame이 다른 Split으로 섞이지 않도록 영상·설비·대상·시간 같은 Group 단위로 나누는 것이 안전합니다.</p>
       <div class="split-groups">
@@ -541,7 +552,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">23</span>
+      <span class="slide-number">24</span>
       <h2 class="slide-title">K-Fold Cross Validation — 검증 대상을 바꿔가며 반복 평가</h2>
       <p class="slide-subtitle">데이터를 K개 Fold로 나누고, 매번 하나를 Validation으로 사용해 K번 학습합니다. 평균뿐 아니라 Fold 간 변동도 함께 봅니다.</p>
       <div class="cv-visual">
@@ -558,7 +569,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">24</span>
+      <span class="slide-number">25</span>
       <h2 class="slide-title">LOO — 하나만 남기고 나머지 전부로 학습</h2>
       <p class="slide-subtitle">Leave-One-Out은 N개 Sample이 있다면 매번 1개만 Validation으로 두고 N번 반복하는 Cross Validation의 극단적인 형태입니다.</p>
       <div class="loo-visual">
@@ -575,7 +586,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">25</span>
+      <span class="slide-number">26</span>
       <h2 class="slide-title">목표는 Train 점수가 아니라 “새로운 데이터에서의 성능”입니다</h2>
       <p class="slide-subtitle">Overfitting과 Leakage를 피하고, 보지 못한 데이터에서도 성능이 유지되는 Generalization을 확인해야 합니다.</p>
       <div class="figure"><img src="assets/overfit_leakage.svg?v=introflow-20260923-12" alt="Generalization과 Overfitting, Data Leakage 개념"></div>
@@ -584,7 +595,7 @@ ReLU
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">26</span>
+      <span class="slide-number">27</span>
       <h2 class="slide-title">실제 AI 개발은 학습 한 번으로 끝나지 않습니다</h2>
       <div class="figure"><img src="assets/ml_workflow.svg?v=introflow-20260923-12" alt="머신러닝 워크플로우"></div>
     </div>
