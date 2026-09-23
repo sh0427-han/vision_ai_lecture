@@ -49,10 +49,10 @@ Prediction
 ### 비지도학습 Unsupervised Learning
 정답 Label 없이 데이터의 구조나 군집, 표현을 찾습니다.
 
-### 강화학습 Reinforcement Learning
-행동에 따른 보상을 이용해 더 좋은 행동 전략을 학습합니다.
-
 ### 산업에서는 어떻게 사용할까?
+
+현재 강의 범위에서는 강화학습을 제외하고 지도학습과 비지도학습을 중심으로 봅니다.
+
 
 ![Supervised vs Unsupervised Industry](../../assets/diagrams/supervised_unsupervised_industry.svg)
 
