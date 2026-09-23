@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=visionflow-20260923-13">
-  <script src="slide.js?v=visionflow-20260923-13" defer></script>
+  <link rel="stylesheet" href="slide.css?v=tensorstack-20260923-14">
+  <script src="slide.js?v=tensorstack-20260923-14" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -37,7 +37,7 @@
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
+            src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -55,82 +55,80 @@
       <span class="slide-number">1</span>
       <h2 class="slide-title">사람은 “사과”를 보고, 컴퓨터는 RGB 숫자 배열을 봅니다</h2>
       <p class="slide-subtitle">
-        사람은 전체 형태와 의미를 한 번에 인식하지만, 컴퓨터가 처음 받는 것은
-        위치별 R · G · B 값이 쌓인 <strong>3차원 배열</strong>입니다.
+        왼쪽은 사람이 보는 하나의 이미지입니다. 컴퓨터 입력에서는 같은 이미지가
+        위치별 숫자를 가진 <strong>R · G · B 세 Channel Plane</strong>으로 쌓여 있습니다.
       </p>
 
-      <div class="intro-rgb-tensor-flow">
+      <div class="intro-rgb-tensor-flow intro-rgb-tensor-flow--exploded">
         <article class="intro-rgb-source-panel">
           <div class="intro-rgb-panel-head">
             <span>Human view</span>
-            <strong>사과라는 의미를 바로 인식</strong>
+            <strong>하나의 이미지 → “사과”</strong>
           </div>
           <div class="intro-rgb-source-frame">
             <img
               id="apple-rgb-source"
-              src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
-              alt="RGB Tensor 값 추출에 사용한 원본 사과 이미지"
+              src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14"
+              alt="RGB Channel 값을 추출한 원본 사과 이미지"
             >
           </div>
-          <div class="intro-rgb-cues" aria-label="사람이 이미지에서 직관적으로 보는 단서">
-            <span>전체 형태</span>
-            <span>색</span>
-            <span>윤곽</span>
-            <span>질감</span>
-            <span>의미</span>
+          <div class="intro-rgb-source-caption">
+            전체 형태 · 색 · 윤곽을 한 번에 보고 의미를 이해
           </div>
         </article>
 
         <div class="intro-rgb-flow-arrow" aria-hidden="true">→</div>
 
-        <article class="intro-rgb-tensor-panel">
+        <article class="intro-rgb-tensor-panel intro-rgb-tensor-panel--exploded">
           <div class="intro-rgb-panel-head">
             <span>Computer input</span>
-            <strong>같은 이미지의 R · G · B Channel이 깊이 방향으로 쌓임</strong>
+            <strong>같은 위치의 R · G · B 값이 Channel 축으로 쌓임</strong>
           </div>
 
-          <div class="rgb-tensor intro-rgb-tensor" aria-label="실제 사과 이미지에서 추출한 12 곱하기 10 RGB 값이 3개 채널로 겹쳐진 Tensor">
-            <div class="tensor-stage">
-              <div class="tensor-front-frame">
-                <div class="tensor-plane tensor-plane--b">
-                  <span class="tensor-plane-label">B</span>
-                  <pre id="apple-b-tensor">실제 Pixel 값을 읽는 중…</pre>
-                </div>
-                <div class="tensor-plane tensor-plane--g">
-                  <span class="tensor-plane-label">G</span>
-                  <pre id="apple-g-tensor">실제 Pixel 값을 읽는 중…</pre>
-                </div>
-                <div class="tensor-plane tensor-plane--r tensor-plane--front">
-                  <span class="tensor-plane-label">R</span>
-                  <pre id="apple-r-tensor">실제 Pixel 값을 읽는 중…</pre>
-                </div>
+          <div
+            class="rgb-exploded-stack"
+            aria-label="실제 사과 이미지에서 추출한 RGB Pixel 값을 세 Channel Plane으로 쌓아 표현한 3차원 Tensor"
+          >
+            <div class="rgb-depth-guide" aria-hidden="true">
+              <span>Channel = 3</span>
+              <b>R</b><i>→</i><b>G</b><i>→</i><b>B</b>
+            </div>
 
-                <div class="tensor-axis tensor-axis--width" aria-hidden="true">
-                  <span class="tensor-axis-line"></span>
-                  <strong>Width = 12</strong>
-                </div>
-                <div class="tensor-axis tensor-axis--height" aria-hidden="true">
-                  <span class="tensor-axis-line"></span>
-                  <strong>Height = 10</strong>
-                </div>
-                <div class="tensor-axis tensor-axis--channel" aria-hidden="true">
-                  <span class="tensor-axis-line"></span>
-                  <strong>Channel = 3</strong>
-                  <small>R · G · B</small>
-                </div>
+            <div class="rgb-stack-plane rgb-stack-plane--r">
+              <div class="rgb-stack-plane-head">
+                <strong>R</strong>
+                <span>Red Channel</span>
               </div>
+              <div class="rgb-value-grid" id="apple-r-grid"></div>
             </div>
-            <div class="tensor-shape-note">
-              <strong>Display example = 10 × 12 × 3</strong>
-              <span>Actual input = H × W × 3</span>
+
+            <div class="rgb-stack-plane rgb-stack-plane--g">
+              <div class="rgb-stack-plane-head">
+                <strong>G</strong>
+                <span>Green Channel</span>
+              </div>
+              <div class="rgb-value-grid" id="apple-g-grid"></div>
             </div>
+
+            <div class="rgb-stack-plane rgb-stack-plane--b">
+              <div class="rgb-stack-plane-head">
+                <strong>B</strong>
+                <span>Blue Channel</span>
+              </div>
+              <div class="rgb-value-grid" id="apple-b-grid"></div>
+            </div>
+          </div>
+
+          <div class="rgb-stack-shape">
+            <strong>표시 예시: 6 × 8 × 3</strong>
+            <span>실제 입력: H × W × 3</span>
           </div>
         </article>
       </div>
 
       <p class="intro-rgb-footnote">
-        표시된 숫자는 실제 사과 이미지를 작게 Downscale해 Pixel 구조를 보기 쉽게 표현한 값입니다.
-        별도의 처리 단계가 아니라, 원본 RGB 입력의 축소 예시입니다.
+        숫자를 읽기 쉽도록 실제 사과 이미지를 작은 격자로 축약해 표시했습니다.
+        핵심은 <strong>한 이미지가 R · G · B 세 숫자 Plane으로 쌓인다는 것</strong>입니다.
       </p>
     </div>
   </section>
@@ -147,7 +145,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -228,7 +226,7 @@
           <div class="human-noise-label"><span>02</span><strong>Signal + Noise</strong></div>
           <div class="human-noise-image human-noise-image--mixed">
             <img
-              src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
+              src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14"
               alt="무작위 변화가 섞인 사과 이미지"
             >
             <svg class="human-noise-overlay" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
@@ -255,7 +253,7 @@
           <div class="human-noise-label"><span>03</span><strong>Task-relevant pattern</strong></div>
           <div class="human-noise-image">
             <img
-              src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13"
+              src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14"
               alt="사과의 형태와 윤곽이 잘 보이는 이미지"
             >
           </div>
@@ -294,14 +292,14 @@
       </p>
 
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
-        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
+        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
       </div>
 
       <div class="variation-takeaway">
@@ -326,9 +324,9 @@
           <span class="generalization-kicker">Training examples</span>
           <strong>학습에서 본 여러 조건</strong>
           <div class="generalization-thumbnails">
-            <div><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="원본 사과"><small>원본</small></div>
-            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="어두운 사과"><small>어두움</small></div>
-            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
+            <div><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="원본 사과"><small>원본</small></div>
+            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="어두운 사과"><small>어두움</small></div>
+            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
           </div>
         </article>
 
@@ -352,7 +350,7 @@
           <span class="generalization-kicker">Unseen condition</span>
           <strong>처음 보는 조건에서도 같은 의미</strong>
           <div class="generalization-result-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="처음 보는 흐린 조건의 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="처음 보는 흐린 조건의 사과">
           </div>
           <div class="generalization-prediction">Apple <b>0.97</b></div>
         </article>
@@ -376,7 +374,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
 
@@ -415,52 +413,13 @@
     </div>
   </section>
 
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">7</span>
-      <h2 class="slide-title">같은 이미지라도 질문에 따라 Vision AI Task가 달라집니다</h2>
-      <p class="slide-subtitle">
-        입력 이미지는 같아도 원하는 Output이 Class인지, 위치인지, Pixel 영역인지에 따라
-        Classification · Object Detection · Segmentation으로 문제 정의가 달라집니다.
-      </p>
-
-      <div class="intro-task-grid">
-        <article class="intro-task-card">
-          <div class="intro-task-head"><span>Classification</span><strong>무엇인가?</strong></div>
-          <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Classification 입력 사과">
-            <div class="classification-result">Apple <b>98%</b></div>
-          </div>
-          <p>이미지 전체에 <strong>Class / Probability</strong>를 출력</p>
-        </article>
-
-        <article class="intro-task-card">
-          <div class="intro-task-head"><span>Object Detection</span><strong>무엇이 어디에?</strong></div>
-          <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Detection 입력 사과">
-            <span class="detection-demo-box" aria-hidden="true"></span>
-            <span class="detection-demo-label">Apple</span>
-          </div>
-          <p>객체의 <strong>Class + Bounding Box</strong>를 출력</p>
-        </article>
-
-        <article class="intro-task-card">
-          <div class="intro-task-head"><span>Segmentation</span><strong>어느 Pixel인가?</strong></div>
-          <div class="intro-task-preview">
-            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="Segmentation 입력 사과">
-            <span class="segmentation-demo-mask" aria-hidden="true"></span>
-          </div>
-          <p>관심 대상의 <strong>Pixel 단위 Mask</strong>를 출력</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  
 
   
 
   <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">8</span>
+      <span class="slide-number">7</span>
       <h2 class="slide-title">센서가 다르면 컴퓨터가 받는 숫자의 의미도 달라집니다</h2>
       <p class="slide-subtitle">
         RGB Camera는 색·밝기, LiDAR는 거리 기반 3D Point, IR Camera는 적외선 강도 또는
@@ -474,7 +433,7 @@
             <strong>색 · 밝기 · 질감</strong>
           </div>
           <div class="sensor-preview sensor-preview--rgb">
-            <img src="assets/vision_task_apple_reference.jpg?v=visionflow-20260923-13" alt="RGB 카메라 영상 예시">
+            <img src="assets/vision_task_apple_reference.jpg?v=tensorstack-20260923-14" alt="RGB 카메라 영상 예시">
           </div>
           <div class="sensor-data"><b>출력 예</b><span>H × W × 3 Image</span><code>[R, G, B]</code></div>
         </article>
@@ -560,28 +519,22 @@
 <!-- Intro RGB tensor: values sampled from the displayed apple image -->
 <script>
 (() => {
-  const width = 12;
-  const height = 10;
+  const width = 8;
+  const height = 6;
   const image = document.getElementById('apple-rgb-source');
   if (!image) return;
 
-  const formatMatrix = (pixels, channel) => {
-    const rows = [];
-    for (let y = 0; y < height; y += 1) {
-      const values = [];
-      for (let x = 0; x < width; x += 1) {
-        const index = (y * width + x) * 4 + channel;
-        values.push(String(pixels[index]).padStart(3, ' '));
-      }
-      rows.push(values.join(' '));
-    }
-    return rows.join('\\n');
-  };
+  const channelMeta = [
+    { id: 'apple-r-grid', channel: 0, rgb: '225, 29, 72' },
+    { id: 'apple-g-grid', channel: 1, rgb: '5, 150, 105' },
+    { id: 'apple-b-grid', channel: 2, rgb: '37, 99, 235' }
+  ];
 
   const renderTensor = () => {
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
+
     const context = canvas.getContext('2d', { willReadFrequently: true });
     if (!context) return;
 
@@ -590,14 +543,26 @@
     context.drawImage(image, 0, 0, width, height);
     const pixels = context.getImageData(0, 0, width, height).data;
 
-    const channels = [
-      ['apple-r-tensor', 0],
-      ['apple-g-tensor', 1],
-      ['apple-b-tensor', 2]
-    ];
-    channels.forEach(([id, channel]) => {
+    channelMeta.forEach(({ id, channel, rgb }) => {
       const target = document.getElementById(id);
-      if (target) target.textContent = formatMatrix(pixels, channel);
+      if (!target) return;
+
+      const fragment = document.createDocumentFragment();
+      for (let y = 0; y < height; y += 1) {
+        for (let x = 0; x < width; x += 1) {
+          const index = (y * width + x) * 4 + channel;
+          const value = pixels[index];
+          const cell = document.createElement('span');
+          const alpha = 0.08 + (value / 255) * 0.62;
+
+          cell.textContent = String(value);
+          cell.style.backgroundColor = 'rgba(' + rgb + ', ' + alpha + ')';
+          cell.style.color = value >= 150 ? '#ffffff' : '#17243b';
+          fragment.appendChild(cell);
+        }
+      }
+
+      target.replaceChildren(fragment);
     });
   };
 
