@@ -17,7 +17,6 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - 조명, 방향, 크기, 가림, 초점, 색온도 등에 따른 Pixel 변화
 - Generalization: 조건이 달라도 반복되는 공통 Pattern 학습
 - RGB 입력 → Feature → Classification / Detection / Segmentation Output
-- 실제 현장 질문과 Vision AI Task 연결
 - 대표 Vision Sensor: RGB / LiDAR / IR과 각 센서의 출력 데이터
 
 ### 02. AI Basics
@@ -41,15 +40,18 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 ### 03. Vision AI
 
+- 현장 문제 → 원하는 Output → Task → Label → Model
 - Classification
 - Object Detection
 - Segmentation
+- Task별 Label 구조
 - CNN
 - Kernel / Convolution
 - Feature Map / Channel
 - Feature Hierarchy
 - Receptive Field
 - CNN Training
+- Backbone / Task Head
 
 현재 강의 범위에서는 Tracking, Depth/3D, Vision Transformer를 제외합니다.
 
