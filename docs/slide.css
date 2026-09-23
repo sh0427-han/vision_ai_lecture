@@ -3409,3 +3409,254 @@ body.deck-page {
     display: grid;
   }
 }
+
+
+/* Vision AI flow refinement 2026-09-23 */
+.signal-task-context {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: max-content;
+  max-width: 100%;
+  margin: 8px auto 10px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.signal-task-context span {
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.signal-task-context strong {
+  color: #17243b;
+  font-size: 13px;
+}
+
+.vision-label-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1160px, 100%);
+  margin: 18px auto 0;
+}
+
+.vision-label-card {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #d8e1ed;
+  border-radius: 17px;
+  background: #f8fafc;
+}
+
+.vision-label-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.vision-label-head span {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.vision-label-head strong {
+  color: #475569;
+  font-size: 12px;
+}
+
+.vision-label-card code {
+  padding: 9px 10px;
+  border-radius: 9px;
+  background: #17243b;
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 12px;
+  text-align: center;
+}
+
+.vision-label-card > small {
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.backbone-head-flow {
+  display: grid;
+  grid-template-columns: minmax(180px, .72fr) 38px minmax(280px, 1fr) 38px minmax(300px, 1.05fr);
+  gap: 12px;
+  align-items: center;
+  width: min(1180px, 100%);
+  margin: 18px auto 0;
+}
+
+.backbone-input-card,
+.backbone-core-card,
+.task-head-stack > article {
+  min-width: 0;
+  border: 1px solid #d8e1ed;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.backbone-input-card,
+.backbone-core-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  text-align: center;
+}
+
+.backbone-input-card > span,
+.backbone-core-card > span,
+.task-head-stack span {
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.backbone-input-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+.backbone-input-card strong,
+.backbone-core-card strong,
+.task-head-stack strong {
+  color: #17243b;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.backbone-core-card {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.backbone-feature-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.backbone-feature-stack i {
+  padding: 10px 7px;
+  border-radius: 9px;
+  background: #fff;
+  color: #334155;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.backbone-core-card small,
+.task-head-stack small {
+  color: #64748b;
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+
+.backbone-head-arrow {
+  display: grid;
+  place-items: center;
+  color: #94a3b8;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.task-head-stack {
+  display: grid;
+  gap: 9px;
+}
+
+.task-head-stack > article {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+  padding: 11px 13px;
+  background: #fff;
+}
+
+.vision-model-note {
+  width: min(980px, 100%);
+  margin: 12px auto 0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-height: 760px) and (min-width: 901px) {
+  .signal-task-context {
+    margin: 4px auto 6px;
+    padding: 5px 10px;
+  }
+
+  .vision-label-grid,
+  .backbone-head-flow {
+    gap: 9px;
+    margin-top: 9px;
+  }
+
+  .vision-label-card {
+    gap: 5px;
+    padding: 9px;
+  }
+
+  .vision-label-card code {
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  .backbone-input-card,
+  .backbone-core-card {
+    gap: 5px;
+    padding: 9px;
+  }
+
+  .backbone-feature-stack i {
+    padding: 7px 5px;
+    font-size: 10px;
+  }
+
+  .task-head-stack {
+    gap: 5px;
+  }
+
+  .task-head-stack > article {
+    padding: 7px 9px;
+  }
+
+  .vision-model-note {
+    margin-top: 6px;
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .vision-label-grid,
+  .backbone-head-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .backbone-head-arrow {
+    height: 24px;
+    transform: rotate(90deg);
+  }
+}
