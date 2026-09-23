@@ -2,86 +2,85 @@
 
 ## 1. 첫 질문
 
-![Intro Question](../../assets/diagrams/intro_question_apple.svg)
-
 > 이 이미지는 무엇으로 보이나요?
 
-대부분의 사람은 곧바로 “사과”라고 답합니다.
+사람은 사과 이미지를 보자마자 전체 형태와 의미를 빠르게 인식합니다.
 
-하지만 컴퓨터가 처음 받는 것은 “사과”라는 의미가 아니라 **Pixel과 Channel의 숫자**입니다.
+컴퓨터가 처음 받는 것은 “사과”라는 의미가 아니라 **Pixel과 Channel로 이루어진 숫자 배열**입니다.
 
-![Human vs Computer](../../assets/diagrams/intro_human_vs_computer.svg)
+## 2. 사람은 의미를 보고, 컴퓨터는 RGB 숫자를 받는다
 
-## 2. 사람은 의미를 보고, 컴퓨터는 숫자를 받는다
-
-```text
-사람
-이미지
- ↓
-색 / 윤곽 / 질감 / 부분 구조
- ↓
-“사과”
-
-컴퓨터
-이미지
- ↓
-Pixel / Channel 값
- ↓
-숫자 배열
-```
-
-**Vision AI의 핵심 질문**
-
-> 이 숫자에서 어떻게 물체와 상태의 의미를 찾을까?
-
-## 3. 이미지는 Pixel과 Channel로 이루어진 숫자 배열이다
-
-![Image as Numbers](../../assets/diagrams/image_as_numbers.svg)
-
-예:
+RGB 이미지는 Height × Width 위치마다 Red, Green, Blue 세 값이 쌓인 3차원 배열로 볼 수 있습니다.
 
 ```text
-224 × 224 RGB
-= 224 × 224 × 3
-= 150,528 channel values
+Image
+  ↓
+H × W × 3
+
+Channel 0 = Red
+Channel 1 = Green
+Channel 2 = Blue
 ```
 
-### Pixel
-이미지의 한 위치입니다.
+일반적인 8-bit RGB 이미지에서 각 Channel 값은 보통 0~255 범위입니다.
 
-### Channel
-한 Pixel이 가지는 정보 축입니다.
-
-RGB:
+표시용 예시를 10 × 12로 줄이면:
 
 ```text
-R
-G
-B
-→ 3 Channels
+10 × 12 × 3
+= 360 channel values
 ```
 
-### Tensor
-딥러닝에서 이미지와 Feature를 표현하는 다차원 숫자 배열입니다.
+실제 이미지는 훨씬 더 많은 Pixel 값을 가집니다.
 
-## 4. 그런데 같은 사과도 전혀 다르게 보일 수 있다
+## 3. Pixel 하나는 위치와 RGB 값을 가진다
 
-![Apple Visual Variations](../../assets/diagrams/apple_visual_variations.svg)
+Pixel은 이미지의 한 위치입니다.
 
-같은 사과라도 다음 조건에 따라 입력 데이터는 크게 바뀝니다.
+예를 들어:
 
-- **조명**: 밝기, 그림자, 반사
-- **시점**: 카메라 각도와 회전
-- **크기**: 거리와 해상도
-- **가림**: 일부 특징이 보이지 않음
-- **배경**: 물체와 배경의 대비와 경계가 달라짐
-- **흐림**: Motion Blur, 초점 변화
-- **색온도**: Warm / Cool 조명
-- **노이즈**: 저조도, Sensor Noise
+```text
+image[y=225, x=590]
+= [R, G, B]
+= [98, 67, 38]
+```
 
-사람은 여전히 같은 사과라고 이해하지만 컴퓨터가 받는 Pixel은 서로 다릅니다.
+한 Pixel만 보면 “사과”라는 의미가 직접 들어 있는 것이 아니라 세 개의 숫자가 있을 뿐입니다.
 
-## 5. AI가 배워야 하는 것은 변하는 Pixel이 아니라 유지되는 의미
+## 4. Signal과 Noise는 Task 기준으로 구분한다
+
+Signal과 Noise는 서로 다른 종류의 이미지가 아닙니다.
+
+둘 다 컴퓨터에는 Pixel 숫자로 입력됩니다.
+
+예를 들어 Task가 **“이 이미지가 사과인가?”** 라면:
+
+- **Signal**: 사과 여부 판단에 반복적으로 도움이 되는 윤곽, 형태, 질감 등의 Pattern
+- **Noise**: 정답과 관계없이 우연히 변하는 Sensor Noise, 반사, 불필요한 배경 변화 등
+
+```text
+Pixel input
+   ├─ Task 판단에 도움 → Signal에 가까움
+   └─ Task와 무관한 변화 → Noise에 가까움
+```
+
+중요한 점은 **Signal / Noise의 구분이 Task에 따라 달라질 수 있다**는 것입니다.
+
+## 5. 같은 사과도 촬영 조건에 따라 Pixel이 달라진다
+
+같은 물체라도 다음 조건에 따라 입력 숫자는 크게 달라집니다.
+
+- 조명
+- 방향과 시점
+- 거리와 크기
+- 가림
+- 초점
+- 색 환경과 White Balance
+- Sensor Noise
+
+사람은 여전히 같은 사과라고 이해할 수 있지만, 컴퓨터가 받는 H × W × 3 배열은 달라집니다.
+
+## 6. AI는 변하는 Pixel을 외우기보다 반복되는 Pattern을 배워야 한다
 
 ```text
 밝은 사과
@@ -89,80 +88,42 @@ B
 기울어진 사과
 작게 보이는 사과
 가려진 사과
-흐릿한 사과
       ↓
 서로 다른 Pixel
       ↓
-중요한 Feature 학습
+반복되는 Pattern 학습
       ↓
-공통된 의미
-      ↓
+새로운 조건에서도
 “사과”
 ```
 
-**Generalization**은 입력 조건이 달라져도 중요한 특징을 유지해 올바르게 판단하는 능력입니다.
+**Generalization**은 학습에서 보지 못한 새로운 조건에서도 필요한 Pattern을 이용해 올바르게 판단하는 능력입니다.
 
-학습에서 본 이미지와 완전히 같은 이미지만 맞히는 것이 아니라,
-새로운 조명·각도·배경에서도 중요한 특징을 찾아야 합니다.
+## 7. 같은 이미지도 원하는 Output에 따라 Vision Task가 달라진다
 
-## 6. 그래서 Vision AI가 필요하다
+대표적인 세 가지 Task는 다음과 같습니다.
 
-```text
-Real World
-    ↓
-Sensor
-    ↓
-Numeric Data
-    ↓
-Vision AI
-    ↓
-Meaning
-    ↓
-판단 / 측정 / 제어
-```
+| Task | 질문 | 대표 Output |
+|---|---|---|
+| Classification | 이미지 전체가 무엇인가? | Class / Probability |
+| Object Detection | 무엇이 어디에 있는가? | Class + Bounding Box |
+| Segmentation | 정확히 어느 Pixel인가? | Pixel Mask |
 
-Vision AI는 시각 Sensor Data에서 의미 있는 정보를 추출해 실제 판단과 측정으로 연결합니다.
+Intro에서는 세 Task의 차이를 직관적으로 보고, 세부적인 Label 구조와 Model 구성은 03. Vision AI에서 다룹니다.
 
-## 7. 어디에 쓰일까?
+## 8. 센서가 다르면 숫자의 물리적 의미도 달라진다
 
-대표 예:
-
-- Smartphone Camera
-- OCR / QR
-- 차량 / 로봇
-- 제조 품질 검사
-- 의료 영상
-- 영상 Monitoring
-- Visual Search
-- 3D / 공간 인식
-
-## 8. 컴퓨터의 눈은 RGB Camera 하나가 아니다
-
-Vision AI에서 입력은 일반적인 RGB 사진만이 아닙니다.
+현재 Intro에서는 대표적인 세 Sensor만 비교합니다.
 
 | Sensor | 얻는 정보 | 대표 데이터 |
 |---|---|---|
-| RGB Camera | 색과 밝기 | H×W×3 Image |
-| Mono Camera | 밝기 | H×W Image |
-| IR / NIR | 적외선 반사 | Intensity Image |
-| Thermal | 열 분포 | Temperature Map |
-| Depth Camera | 거리 | Depth Map |
-| LiDAR | 3차원 거리 | Point Cloud |
-| Event Camera | 밝기 변화 | Event Stream |
+| RGB Camera | 색 · 밝기 · 질감 | H × W × 3 Image |
+| LiDAR | 거리 · 3D 위치 | Point Cloud |
+| IR Camera | 적외선 강도 또는 열 정보 | Intensity / Temperature Map |
 
-![Sensor Overview](../../assets/diagrams/sensor_overview.svg)
+모두 숫자 데이터이지만 숫자가 의미하는 물리량은 서로 다릅니다.
 
-센서 선택에서 중요한 질문:
-
-> 어떤 모델을 쓸까?
-
-보다
-
-> **어떤 정보를 Sensor로 얻을 수 있을까?**
-
-에 가깝습니다.
-
-## 9. AI는 숫자에서 규칙과 Feature를 학습한다
+## 9. 다음 질문: AI는 숫자에서 어떻게 Pattern을 배울까?
 
 ```text
 Sensor / Image
@@ -173,9 +134,7 @@ AI Learning
       ↓
 Feature / Representation
       ↓
-Meaning / Prediction
+Prediction
 ```
-
-> AI는 이 숫자에서 어떻게 규칙과 Feature를 배울까?
 
 → [02. AI 기초](../02_ai_basics/README.md)
