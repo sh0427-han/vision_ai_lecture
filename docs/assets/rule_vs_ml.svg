@@ -9,24 +9,24 @@
   <text x="28" y="48" font-size="25" font-weight="700" fill="#17243b">Rule-based</text>
   <text x="28" y="80" font-size="18" fill="#64748b">사람이 판단 규칙을 직접 작성</text>
   <rect x="35" y="120" width="125" height="70" rx="12" fill="#eef2ff"/><text x="98" y="162" text-anchor="middle" font-size="19" font-weight="700" fill="#4338ca">Input</text>
-  <rect x="190" y="120" width="125" height="70" rx="12" fill="#fff7ed"/><text x="252" y="151" text-anchor="middle" font-size="17" font-weight="700" fill="#9a3412">if 밝기 &lt; 100</text><text x="252" y="174" text-anchor="middle" font-size="16" fill="#9a3412">→ 후보</text>
+  <rect x="190" y="120" width="125" height="70" rx="12" fill="#fff7ed"/><text x="252" y="151" text-anchor="middle" font-size="18" font-weight="700" fill="#9a3412">if 밝기 &lt; 100</text><text x="252" y="174" text-anchor="middle" font-size="18" fill="#9a3412">→ 후보</text>
   <rect x="345" y="120" width="120" height="70" rx="12" fill="#ecfdf5"/><text x="405" y="162" text-anchor="middle" font-size="19" font-weight="700" fill="#15803d">Result</text>
   <path d="M164 155H181M319 155H336" stroke="#64748b" stroke-width="4" marker-end="url(#a)"/>
   <text x="35" y="245" font-size="18" font-weight="700" fill="#334155">잘 맞는 경우</text>
-  <text x="35" y="278" font-size="17" fill="#64748b">조건이 명확하고 설명 가능한 문제</text>
-  <text x="35" y="314" font-size="17" fill="#64748b">예: 임계값, 안전 규칙, 간단한 Filtering</text>
+  <text x="35" y="278" font-size="18" fill="#64748b">조건이 명확하고 설명 가능한 문제</text>
+  <text x="35" y="314" font-size="18" fill="#64748b">예: 임계값, 안전 규칙, 간단한 Filtering</text>
 </g>
 
 <g transform="translate(635 155)" font-family="Arial, Noto Sans KR, sans-serif">
   <rect width="500" height="350" rx="22" fill="#fff" stroke="#d8e1ed" stroke-width="2"/>
   <text x="28" y="48" font-size="25" font-weight="700" fill="#17243b">Machine Learning</text>
   <text x="28" y="80" font-size="18" fill="#64748b">데이터에서 Weight를 학습</text>
-  <rect x="35" y="120" width="125" height="70" rx="12" fill="#eef2ff"/><text x="98" y="151" text-anchor="middle" font-size="17" font-weight="700" fill="#4338ca">Image</text><text x="98" y="175" text-anchor="middle" font-size="16" fill="#64748b">+ Label</text>
+  <rect x="35" y="120" width="125" height="70" rx="12" fill="#eef2ff"/><text x="98" y="151" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">Image</text><text x="98" y="175" text-anchor="middle" font-size="18" fill="#64748b">+ Label</text>
   <rect x="190" y="120" width="125" height="70" rx="12" fill="#eff6ff"/><text x="252" y="162" text-anchor="middle" font-size="19" font-weight="700" fill="#1d4ed8">Model</text>
-  <rect x="345" y="120" width="120" height="70" rx="12" fill="#ecfdf5"/><text x="405" y="151" text-anchor="middle" font-size="17" font-weight="700" fill="#15803d">Normal /</text><text x="405" y="175" text-anchor="middle" font-size="17" font-weight="700" fill="#15803d">Abnormal</text>
+  <rect x="345" y="120" width="120" height="70" rx="12" fill="#ecfdf5"/><text x="405" y="151" text-anchor="middle" font-size="18" font-weight="700" fill="#15803d">Normal /</text><text x="405" y="175" text-anchor="middle" font-size="18" font-weight="700" fill="#15803d">Abnormal</text>
   <path d="M164 155H181M319 155H336" stroke="#64748b" stroke-width="4" marker-end="url(#a)"/>
   <text x="35" y="245" font-size="18" font-weight="700" fill="#334155">잘 맞는 경우</text>
-  <text x="35" y="278" font-size="17" fill="#64748b">규칙을 사람이 직접 쓰기 어려운 패턴</text>
-  <text x="35" y="314" font-size="17" fill="#64748b">예: 복잡한 이미지 분류, 검출, 분할</text>
+  <text x="35" y="278" font-size="18" fill="#64748b">규칙을 사람이 직접 쓰기 어려운 패턴</text>
+  <text x="35" y="314" font-size="18" fill="#64748b">예: 복잡한 이미지 분류, 검출, 분할</text>
 </g>
 </svg>
