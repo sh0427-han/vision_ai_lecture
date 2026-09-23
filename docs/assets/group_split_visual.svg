@@ -6,9 +6,9 @@
 <g transform="translate(60 150)" font-family="Arial, Noto Sans KR, sans-serif">
   <rect width="510" height="360" rx="22" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
   <text x="28" y="42" font-size="24" font-weight="700" fill="#be123c">✕ Random Frame Split</text>
-  <text x="28" y="74" font-size="17" fill="#64748b">Video A의 비슷한 Frame이 서로 다른 Split에 섞임</text>
+  <text x="28" y="74" font-size="18" fill="#64748b">Video A의 비슷한 Frame이 서로 다른 Split에 섞임</text>
   <text x="36" y="123" font-size="18" font-weight="700" fill="#334155">Video A</text>
-  <g font-size="16" font-weight="700" text-anchor="middle">
+  <g font-size="18" font-weight="700" text-anchor="middle">
     <rect x="36" y="145" width="92" height="54" rx="9" fill="#dbeafe"/><text x="82" y="178" fill="#1d4ed8">Train 001</text>
     <rect x="142" y="145" width="92" height="54" rx="9" fill="#dcfce7"/><text x="188" y="178" fill="#15803d">Val 002</text>
     <rect x="248" y="145" width="92" height="54" rx="9" fill="#fef3c7"/><text x="294" y="178" fill="#92400e">Test 003</text>
@@ -16,19 +16,19 @@
   </g>
   <path d="M70 225H435" stroke="#e11d48" stroke-width="5" stroke-dasharray="10 8"/>
   <text x="36" y="270" font-size="18" font-weight="700" fill="#be123c">문제</text>
-  <text x="94" y="270" font-size="17" fill="#64748b">Val/Test가 Train과 너무 비슷해짐</text>
-  <text x="36" y="306" font-size="17" fill="#64748b">→ 실제 새로운 영상보다 성능이 높게 보일 수 있음</text>
+  <text x="94" y="270" font-size="18" fill="#64748b">Val/Test가 Train과 너무 비슷해짐</text>
+  <text x="36" y="306" font-size="18" fill="#64748b">→ 실제 새로운 영상보다 성능이 높게 보일 수 있음</text>
 </g>
 
 <g transform="translate(630 150)" font-family="Arial, Noto Sans KR, sans-serif">
   <rect width="510" height="360" rx="22" fill="#fff" stroke="#bbf7d0" stroke-width="3"/>
   <text x="28" y="42" font-size="24" font-weight="700" fill="#15803d">✓ Group Split</text>
-  <text x="28" y="74" font-size="17" fill="#64748b">원본 단위로 통째로 Train / Val / Test에 배정</text>
+  <text x="28" y="74" font-size="18" fill="#64748b">원본 단위로 통째로 Train / Val / Test에 배정</text>
   <g font-size="18" font-weight="700">
     <rect x="36" y="118" width="438" height="58" rx="11" fill="#dbeafe"/><text x="58" y="154" fill="#1d4ed8">Video A 전체 → Train</text>
     <rect x="36" y="190" width="438" height="58" rx="11" fill="#dcfce7"/><text x="58" y="226" fill="#15803d">Video B 전체 → Validation</text>
     <rect x="36" y="262" width="438" height="58" rx="11" fill="#fef3c7"/><text x="58" y="298" fill="#92400e">Video C 전체 → Test</text>
   </g>
-  <text x="36" y="345" font-size="17" fill="#64748b">설비·환자·제품·날짜 등도 Group 기준이 될 수 있음</text>
+  <text x="36" y="345" font-size="18" fill="#64748b">설비·환자·제품·날짜 등도 Group 기준이 될 수 있음</text>
 </g>
 </svg>
