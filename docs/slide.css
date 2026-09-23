@@ -297,7 +297,7 @@ body.deck-page {
   font-size: clamp(26px, 3.5vw, 46px);
   font-weight: 800;
   line-height: 1.25;
-  letter-spacing: -0.035em;
+  letter-spacing: 0.02em;
 }
 
 @media (max-height: 760px) {
@@ -1734,7 +1734,7 @@ body.deck-page {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 28px 8px 8px;
+  padding: 38px 12px 12px;
   overflow: hidden;
   border: 2px solid;
   border-radius: 12px;
@@ -1760,8 +1760,8 @@ body.deck-page {
 
 .tensor-front-frame .tensor-plane--b pre {
   color: #64748b;
-  font-size: 6.2px;
-  line-height: 1.18;
+  font-size: 13.8px;
+  line-height: 1.45;
 }
 
 .tensor-front-frame .tensor-plane--g {
@@ -1774,8 +1774,8 @@ body.deck-page {
 
 .tensor-front-frame .tensor-plane--g pre {
   color: #475569;
-  font-size: 6.8px;
-  line-height: 1.18;
+  font-size: 14.6px;
+  line-height: 1.45;
 }
 
 .tensor-front-frame .tensor-plane--r {
@@ -1786,8 +1786,8 @@ body.deck-page {
 
 .tensor-front-frame .tensor-plane--front pre {
   color: #17243b;
-  font-size: clamp(7.4px, .68vw, 9.6px);
-  line-height: 1.18;
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.45;
   font-weight: 750;
 }
 
@@ -2039,22 +2039,22 @@ body.deck-page {
   }
 
   .tensor-front-frame .tensor-plane {
-    padding: 24px 6px 6px;
+    padding: 34px 8px 8px;
   }
 
   .tensor-front-frame .tensor-plane--front pre {
-    font-size: 7.2px;
-    line-height: 1.14;
+    font-size: 14px;
+    line-height: 1.38;
   }
 
   .tensor-front-frame .tensor-plane--g pre {
-    font-size: 5.8px;
-    line-height: 1.12;
+    font-size: 13px;
+    line-height: 1.38;
   }
 
   .tensor-front-frame .tensor-plane--b pre {
-    font-size: 5.3px;
-    line-height: 1.12;
+    font-size: 12.2px;
+    line-height: 1.38;
   }
 
   .math-block,
@@ -2086,7 +2086,7 @@ body.deck-page {
   }
 
   .tensor-front-frame .tensor-plane {
-    padding: 21px 3px 5px;
+    padding: 28px 4px 6px;
   }
 
   .tensor-front-frame .tensor-plane--b {
@@ -2098,14 +2098,14 @@ body.deck-page {
   }
 
   .tensor-front-frame .tensor-plane--front pre {
-    font-size: 4.8px;
-    line-height: 1.08;
+    font-size: 8.2px;
+    line-height: 1.28;
   }
 
   .tensor-front-frame .tensor-plane--g pre,
   .tensor-front-frame .tensor-plane--b pre {
-    font-size: 4.1px;
-    line-height: 1.08;
+    font-size: 7.4px;
+    line-height: 1.26;
   }
 
   .tensor-axis--height { left: -30px; }

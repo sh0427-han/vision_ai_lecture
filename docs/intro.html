@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=strong-noise-20260923-8">
-  <script src="slide.js?v=strong-noise-20260923-8" defer></script>
+  <link rel="stylesheet" href="slide.css?v=rgbfill-20260923-9">
+  <script src="slide.js?v=rgbfill-20260923-9" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -37,7 +37,7 @@
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8"
+            src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -64,7 +64,7 @@
             <h3>“사과”라는 의미</h3>
           </div>
           <div class="apple-photo-frame apple-photo-frame--comparison">
-            <img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="사람이 보는 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="사람이 보는 사과 사진">
           </div>
           <p class="visual-panel-note">색 · 윤곽 · 꼭지 · 표면 질감을 함께 보고 의미를 판단</p>
         </article>
@@ -179,7 +179,7 @@
         <article class="human-noise-panel">
           <div class="human-noise-label"><span>02</span><strong>Apple + Noise</strong></div>
           <div class="human-noise-image human-noise-image--mixed">
-            <img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="노이즈가 섞인 사과 이미지">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="노이즈가 섞인 사과 이미지">
             <svg class="human-noise-overlay" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <filter id="largeAppleNoiseFilter">
@@ -201,7 +201,7 @@
         <article class="human-noise-panel">
           <div class="human-noise-label"><span>03</span><strong>Apple</strong></div>
           <div class="human-noise-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="깨끗한 사과 이미지">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="깨끗한 사과 이미지">
           </div>
           <div class="human-view-note"><b>사람:</b> “사과”</div>
         </article>
@@ -231,7 +231,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -266,14 +266,14 @@
       <h2 class="slide-title">같은 사과도 촬영 조건에 따라 전혀 다른 숫자가 됩니다</h2>
       <p class="slide-subtitle">사람에게는 같은 물체지만 조명·거리·시점·가림·초점·색 환경이 바뀌면 Pixel 분포는 크게 달라집니다.</p>
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="어두운 조명"></div><p>밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>시점 변화</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="시점이 달라진 사과"></div><p>윤곽과 보이는 면이 변화</p></article>
-        <article class="variation-card"><h3>작은 크기</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 보이지 않음</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 / 화이트밸런스</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="조명 색과 화이트밸런스 변화로 초록빛이 강해진 사과"></div><p>같은 물체도 RGB 균형이 크게 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="어두운 조명"></div><p>밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>시점 변화</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="시점이 달라진 사과"></div><p>윤곽과 보이는 면이 변화</p></article>
+        <article class="variation-card"><h3>작은 크기</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 보이지 않음</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 / 화이트밸런스</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="조명 색과 화이트밸런스 변화로 초록빛이 강해진 사과"></div><p>같은 물체도 RGB 균형이 크게 변화</p></article>
       </div>
     </div>
   </section>
@@ -283,7 +283,7 @@
       <span class="slide-number">5</span>
       <h2 class="slide-title">AI가 배워야 하는 것은 “변하는 Pixel”이 아니라 “유지되는 의미”</h2>
       <p class="slide-subtitle">학습에서 보지 못한 조건에서도 중요한 특징을 찾아 같은 의미로 판단해야 합니다.</p>
-      <div class="figure"><img src="assets/visual_generalization.svg?v=strong-noise-20260923-8" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
+      <div class="figure"><img src="assets/visual_generalization.svg?v=rgbfill-20260923-9" alt="다양한 입력에서 공통 의미를 학습하는 Generalization 도식"></div>
     </div>
   </section>
 
@@ -296,7 +296,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
         <div class="pipeline-arrow" aria-hidden="true">→</div>
@@ -351,7 +351,7 @@
       <div class="sensor-example-grid">
         <article class="sensor-example-card">
           <div class="sensor-card-head"><span>RGB</span><strong>색 · 밝기 · 질감</strong></div>
-          <div class="sensor-preview sensor-preview--rgb"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="RGB 카메라 영상 예시"></div>
+          <div class="sensor-preview sensor-preview--rgb"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="RGB 카메라 영상 예시"></div>
           <div class="sensor-data"><b>출력 예</b><span>H × W × 3 이미지</span><code>[R, G, B]</code></div>
         </article>
         <article class="sensor-example-card">
@@ -377,7 +377,7 @@
         </article>
         <article class="sensor-example-card">
           <div class="sensor-card-head"><span>IR</span><strong>적외선 · 열 분포</strong></div>
-          <div class="sensor-preview sensor-preview--thermal"><img src="assets/vision_task_apple_reference.jpg?v=strong-noise-20260923-8" alt="적외선 데이터의 의사색상 시각화 예시"><span>pseudo-color</span></div>
+          <div class="sensor-preview sensor-preview--thermal"><img src="assets/vision_task_apple_reference.jpg?v=rgbfill-20260923-9" alt="적외선 데이터의 의사색상 시각화 예시"><span>pseudo-color</span></div>
           <div class="sensor-data"><b>출력 예</b><span>IR intensity / temperature map</span><code>1 channel → colorized view</code></div>
         </article>
       </div>
