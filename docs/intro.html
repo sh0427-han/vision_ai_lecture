@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=sensoruses-20260923-17">
-  <script src="slide.js?v=sensoruses-20260923-17" defer></script>
+  <link rel="stylesheet" href="slide.css?v=sensorstories-20260923-18">
+  <script src="slide.js?v=sensorstories-20260923-18" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -21,7 +21,7 @@
 </header>
 
 <main class="deck" aria-live="polite">
-  <section class="slide active">
+<section class="slide active">
     <div class="slide-inner slide-hero">
       <span class="chapter-chip">Lecture 01 · Vision AI Introduction</span>
       <h1 class="slide-title">AI는 세상을 어떻게 볼까?</h1>
@@ -31,13 +31,13 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <h2 class="slide-title intro-question-title">이 이미지는 무엇으로 보이나요?</h2>
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17"
+            src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -48,9 +48,7 @@
     </div>
   </section>
 
-  
-  
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">사람은 “사과”를 보고, 컴퓨터는 RGB 숫자 배열을 봅니다</h2>
@@ -68,7 +66,7 @@
           <div class="intro-rgb-source-frame">
             <img
               id="apple-rgb-source"
-              src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17"
+              src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18"
               alt="RGB Channel 값을 추출한 원본 사과 이미지"
             >
           </div>
@@ -132,7 +130,7 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">Pixel 하나는 “위치 + R · G · B 값”입니다</h2>
@@ -144,7 +142,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -182,7 +180,7 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
       <h2 class="slide-title">Signal과 Noise는 이미지 종류가 아니라 “판단 기준”입니다</h2>
@@ -225,7 +223,7 @@
           <div class="human-noise-label"><span>02</span><strong>Signal + Noise</strong></div>
           <div class="human-noise-image human-noise-image--mixed">
             <img
-              src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17"
+              src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18"
               alt="무작위 변화가 섞인 사과 이미지"
             >
             <svg class="human-noise-overlay" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
@@ -252,7 +250,7 @@
           <div class="human-noise-label"><span>03</span><strong>Task-relevant pattern</strong></div>
           <div class="human-noise-image">
             <img
-              src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17"
+              src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18"
               alt="사과의 형태와 윤곽이 잘 보이는 이미지"
             >
           </div>
@@ -281,7 +279,7 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">4</span>
       <h2 class="slide-title">같은 사과도 촬영 조건이 바뀌면 Pixel 값과 위치가 달라집니다</h2>
@@ -291,14 +289,14 @@
       </p>
 
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
-        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
+        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
       </div>
 
       <div class="variation-takeaway">
@@ -309,7 +307,7 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">5</span>
       <h2 class="slide-title">AI는 Pixel을 외우는 대신, 여러 조건에서 반복되는 Pattern을 배워야 합니다</h2>
@@ -323,9 +321,9 @@
           <span class="generalization-kicker">Training examples</span>
           <strong>학습에서 본 여러 조건</strong>
           <div class="generalization-thumbnails">
-            <div><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="원본 사과"><small>원본</small></div>
-            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="어두운 사과"><small>어두움</small></div>
-            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
+            <div><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="원본 사과"><small>원본</small></div>
+            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="어두운 사과"><small>어두움</small></div>
+            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
           </div>
         </article>
 
@@ -349,7 +347,7 @@
           <span class="generalization-kicker">Unseen condition</span>
           <strong>처음 보는 조건에서도 같은 의미</strong>
           <div class="generalization-result-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="처음 보는 흐린 조건의 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="처음 보는 흐린 조건의 사과">
           </div>
           <div class="generalization-prediction">Apple <b>0.97</b></div>
         </article>
@@ -361,7 +359,7 @@
     </div>
   </section>
 
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">6</span>
       <h2 class="slide-title">Vision AI는 숫자 배열에서 필요한 Pattern을 찾아 결과로 바꿉니다</h2>
@@ -373,7 +371,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=sensorstories-20260923-18" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
 
@@ -412,153 +410,106 @@
     </div>
   </section>
 
-  
-
-  
-
-  <section class="slide">
+<section class="slide">
     <div class="slide-inner">
       <span class="slide-number">7</span>
-      <h2 class="slide-title">우리 주변의 Vision Sensor는 서로 다른 숫자로 세상을 봅니다</h2>
+      <h2 class="slide-title">같은 세상도 Sensor에 따라 전혀 다른 데이터가 됩니다</h2>
       <p class="slide-subtitle">
-        스마트폰 카메라, 로봇청소기, 열화상 카메라처럼 익숙한 기기들도 센서가 읽은 숫자를 이용합니다.
-        센서마다 측정하는 물리량과 컴퓨터에 전달되는 데이터 형태가 다릅니다.
+        RGB Camera는 색과 밝기를, LiDAR는 거리를, IR Sensor는 적외선 에너지를 측정합니다.
+        아래 그림처럼 컴퓨터가 받는 “숫자의 모습” 자체가 달라집니다.
       </p>
 
-      <div class="sensor-example-grid">
-        <article class="sensor-example-card">
-          <div class="sensor-card-head">
-            <div class="sensor-card-name"><span>RGB Camera</span><small>Red · Green · Blue</small></div>
-            <strong>색 · 밝기 · 질감</strong>
+      <div class="sensor-hero-grid">
+        <article class="sensor-hero-card sensor-hero-card--rgb">
+          <div class="sensor-hero-head">
+            <div><strong>RGB Camera</strong><small>Red · Green · Blue</small></div>
+            <span>색 · 밝기 · 질감</span>
           </div>
-          <div class="sensor-preview sensor-preview--rgb">
-            <img src="assets/vision_task_apple_reference.jpg?v=sensoruses-20260923-17" alt="RGB 카메라 영상 예시">
+          <img class="sensor-hero-image" src="assets/intro_sensor_rgb_scene.svg?v=sensorstories-20260923-18" alt="RGB 카메라가 보는 컬러 거리 장면">
+          <div class="sensor-hero-data">
+            <b>컴퓨터가 받는 값</b>
+            <strong>H × W × 3 Image</strong>
+            <code>[R, G, B]</code>
           </div>
-          <div class="sensor-data"><b>컴퓨터가 받는 값</b><span>H × W × 3 Image</span><code>[R, G, B]</code></div>
-        <div class="sensor-use-strip">
-          <span class="sensor-use-kicker">우리 주변에서는?</span>
-          <div class="sensor-use-grid">
-            <div class="sensor-use-item">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <rect x="18" y="7" width="28" height="50" rx="6"/><circle cx="32" cy="50" r="2.5"/>
-                <circle cx="26" cy="15" r="3"/><circle cx="35" cy="15" r="3"/>
-              </svg>
-              <div><strong>스마트폰 카메라</strong><small>사진 · 영상 · QR 인식</small></div>
-            </div>
-            <div class="sensor-use-item">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M12 23h31l9 8-9 8H12z"/><circle cx="34" cy="31" r="7"/>
-                <path d="M20 39v10h20"/>
-              </svg>
-              <div><strong>CCTV · 블랙박스</strong><small>사람 · 차량 · 상황 기록</small></div>
-            </div>
-          </div>
-        </div>
         </article>
 
-        <article class="sensor-example-card">
-          <div class="sensor-card-head">
-            <div class="sensor-card-name"><span>LiDAR</span><small>Light Detection and Ranging</small></div>
-            <strong>거리 · 3D 위치</strong>
+        <article class="sensor-hero-card sensor-hero-card--lidar">
+          <div class="sensor-hero-head">
+            <div><strong>LiDAR</strong><small>Light Detection and Ranging</small></div>
+            <span>거리 · 3D 위치</span>
           </div>
-          <div class="sensor-preview sensor-preview--lidar" aria-label="LiDAR point cloud 예시">
-            <svg viewBox="0 0 320 190" role="img" aria-label="점군 형태의 LiDAR 데이터 예시">
-              <rect width="320" height="190" fill="#101827"/>
-              <g fill="#7dd3fc">
-                <circle cx="35" cy="150" r="2"/><circle cx="52" cy="143" r="2"/><circle cx="70" cy="136" r="2"/><circle cx="91" cy="129" r="2"/>
-                <circle cx="112" cy="123" r="2"/><circle cx="135" cy="116" r="2"/><circle cx="160" cy="110" r="2"/><circle cx="186" cy="105" r="2"/>
-                <circle cx="213" cy="101" r="2"/><circle cx="241" cy="98" r="2"/><circle cx="270" cy="96" r="2"/><circle cx="294" cy="95" r="2"/>
-              </g>
-              <g fill="#fbbf24">
-                <circle cx="118" cy="92" r="3"/><circle cx="128" cy="78" r="3"/><circle cx="141" cy="67" r="3"/><circle cx="156" cy="60" r="3"/>
-                <circle cx="173" cy="59" r="3"/><circle cx="190" cy="64" r="3"/><circle cx="204" cy="75" r="3"/><circle cx="214" cy="90" r="3"/>
-                <circle cx="121" cy="104" r="3"/><circle cx="139" cy="98" r="3"/><circle cx="158" cy="95" r="3"/><circle cx="178" cy="95" r="3"/><circle cx="198" cy="101" r="3"/>
-                <circle cx="145" cy="112" r="3"/><circle cx="164" cy="110" r="3"/><circle cx="184" cy="113" r="3"/>
-              </g>
-              <g stroke="#334155" stroke-width="1"><path d="M20 160H305"/><path d="M20 160L75 110"/><path d="M20 160L20 55"/></g>
-            </svg>
+          <img class="sensor-hero-image" src="assets/intro_sensor_lidar_scene.svg?v=sensorstories-20260923-18" alt="LiDAR 점군으로 표현된 실내 공간과 로봇청소기">
+          <div class="sensor-hero-data">
+            <b>컴퓨터가 받는 값</b>
+            <strong>Point Cloud</strong>
+            <code>(x, y, z, intensity)</code>
           </div>
-          <div class="sensor-data"><b>컴퓨터가 받는 값</b><span>Point Cloud</span><code>(x, y, z, intensity)</code></div>
-        <div class="sensor-use-strip">
-          <span class="sensor-use-kicker">우리 주변에서는?</span>
-          <div class="sensor-use-grid">
-            <div class="sensor-use-item">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <ellipse cx="31" cy="39" rx="21" ry="12"/><ellipse cx="31" cy="34" rx="21" ry="12"/>
-                <circle cx="31" cy="31" r="5"/><path d="M31 26V15M24 19l7-4 7 4"/>
-              </svg>
-              <div><strong>로봇청소기</strong><small>방 구조 맵핑 · 장애물 거리</small></div>
-            </div>
-            <div class="sensor-use-item">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M10 39l6-13h31l7 13v8H10z"/><circle cx="20" cy="47" r="5"/><circle cx="45" cy="47" r="5"/>
-                <path d="M32 20c8 0 15 3 21 8M32 15c11 0 21 4 29 11"/>
-              </svg>
-              <div><strong>자율주행 · ADAS</strong><small>주변 물체와 거리 · 3D 위치</small></div>
-            </div>
-          </div>
-        </div>
         </article>
 
-        <article class="sensor-example-card">
-          <div class="sensor-card-head">
-            <div class="sensor-card-name"><span>IR Sensor / Camera</span><small>Infrared</small></div>
-            <strong>적외선 강도 · 열 정보</strong>
+        <article class="sensor-hero-card sensor-hero-card--ir">
+          <div class="sensor-hero-head">
+            <div><strong>IR Sensor / Camera</strong><small>Infrared</small></div>
+            <span>적외선 강도 · 열 정보</span>
           </div>
-          <div class="sensor-preview sensor-preview--ir-concept" aria-label="IR 또는 Thermal sensor 데이터의 개념도">
-            <svg viewBox="0 0 320 190" role="img" aria-label="온도 분포를 나타낸 개념적 열 영상">
-              <defs>
-                <radialGradient id="irHot" cx="50%" cy="55%" r="48%">
-                  <stop offset="0%" stop-color="#fff7ae"/>
-                  <stop offset="36%" stop-color="#fb923c"/>
-                  <stop offset="70%" stop-color="#dc2626"/>
-                  <stop offset="100%" stop-color="#312e81"/>
-                </radialGradient>
-                <linearGradient id="irBg" x1="0" x2="1">
-                  <stop offset="0%" stop-color="#0f172a"/>
-                  <stop offset="100%" stop-color="#312e81"/>
-                </linearGradient>
-              </defs>
-              <rect width="320" height="190" fill="url(#irBg)"/>
-              <ellipse cx="165" cy="105" rx="72" ry="62" fill="url(#irHot)"/>
-              <rect x="160" y="36" width="12" height="34" rx="5" fill="#f59e0b" transform="rotate(18 166 53)"/>
-              <text x="12" y="22" fill="#fff" font-size="11">conceptual thermal map</text>
-              <g transform="translate(260 25)">
-                <rect width="12" height="120" rx="6" fill="url(#irHot)"/>
-                <text x="20" y="11" fill="#fff" font-size="9">high</text>
-                <text x="20" y="119" fill="#fff" font-size="9">low</text>
-              </g>
-            </svg>
+          <img class="sensor-hero-image" src="assets/intro_sensor_ir_scene.svg?v=sensorstories-20260923-18" alt="사람과 전기 패널의 열 분포를 보여주는 적외선 열화상">
+          <div class="sensor-hero-data">
+            <b>컴퓨터가 받는 값</b>
+            <strong>Intensity / Temperature Map</strong>
+            <code>sensor에 따라 H × W × 1</code>
           </div>
-          <div class="sensor-data"><b>컴퓨터가 받는 값</b><span>IR intensity / temperature map</span><code>sensor에 따라 H × W × 1</code></div>
-        <div class="sensor-use-strip">
-          <span class="sensor-use-kicker">우리 주변에서는?</span>
-          <div class="sensor-use-grid">
-            <div class="sensor-use-item">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <rect x="9" y="13" width="40" height="34" rx="5"/><rect x="15" y="19" width="28" height="22" rx="3"/>
-                <circle cx="26" cy="30" r="7"/><path d="M50 24h5v12h-5"/>
-              </svg>
-              <div><strong>열화상 카메라</strong><small>설비 발열 · 사람의 온도 분포</small></div>
-            </div>
-            <div class="sensor-use-item">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M25 13v28a9 9 0 1 0 14 0V13a7 7 0 0 0-14 0z"/>
-                <path d="M32 22v23"/><path d="M43 17c5 3 8 7 9 12M46 11c8 5 13 11 15 19"/>
-              </svg>
-              <div><strong>비접촉 체온 측정</strong><small>적외선으로 표면 온도 추정</small></div>
-            </div>
-          </div>
-        </div>
         </article>
       </div>
 
-      <p class="sensor-caveat">
-        핵심은 “이미지를 본다”가 모두 같은 뜻이 아니라는 점입니다. RGB는 색, LiDAR는 거리, IR은 적외선 에너지처럼 서로 다른 정보를 숫자로 바꿉니다.
+      <p class="sensor-big-takeaway">
+        같은 “보기”라도 <strong>Sensor가 달라지면 컴퓨터가 이해해야 하는 숫자의 의미도 달라집니다.</strong>
       </p>
     </div>
   </section>
 
+<section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">8</span>
+      <h2 class="slide-title">우리는 이미 매일 Vision Sensor를 사용하고 있습니다</h2>
+      <p class="slide-subtitle">
+        낯선 연구 장비만의 이야기가 아닙니다. 스마트폰, 로봇청소기, 자동차, 열화상 검사처럼
+        주변의 익숙한 제품과 서비스에도 같은 원리가 들어 있습니다.
+      </p>
+
+      <div class="sensor-life-grid">
+        <article class="sensor-life-card">
+          <img src="assets/intro_sensor_rgb_everyday.svg?v=sensorstories-20260923-18" alt="스마트폰 카메라 CCTV 블랙박스의 RGB Camera 활용 예">
+          <div class="sensor-life-body">
+            <div class="sensor-life-title"><strong>RGB Camera</strong><span>우리 눈에 가장 익숙한 영상</span></div>
+            <div class="sensor-life-tags"><b>스마트폰 카메라</b><b>CCTV</b><b>블랙박스</b></div>
+            <p>사진·영상에서 색, 밝기, 형태를 기록하고 객체나 상황을 인식합니다.</p>
+          </div>
+        </article>
+
+        <article class="sensor-life-card">
+          <img src="assets/intro_sensor_lidar_everyday.svg?v=sensorstories-20260923-18" alt="로봇청소기와 자동차의 LiDAR 거리 측정 활용 예">
+          <div class="sensor-life-body">
+            <div class="sensor-life-title"><strong>LiDAR</strong><span>공간과 거리를 숫자로 측정</span></div>
+            <div class="sensor-life-tags"><b>로봇청소기</b><b>공간 맵핑</b><b>자율주행 · ADAS</b></div>
+            <p>벽·가구·차량·보행자까지의 거리를 측정해 주변 공간을 파악합니다.</p>
+          </div>
+        </article>
+
+        <article class="sensor-life-card">
+          <img src="assets/intro_sensor_ir_everyday.svg?v=sensorstories-20260923-18" alt="열화상 검사와 비접촉 온도 측정의 IR Sensor 활용 예">
+          <div class="sensor-life-body">
+            <div class="sensor-life-title"><strong>IR Sensor / Camera</strong><span>눈에 보이지 않는 적외선 활용</span></div>
+            <div class="sensor-life-tags"><b>열화상 카메라</b><b>설비 발열 검사</b><b>비접촉 온도 측정</b></div>
+            <p>사람이나 설비가 내는 적외선 에너지로 온도 분포와 이상 발열을 확인합니다.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="sensor-life-message">
+        <strong>Vision AI의 시작은 “어떤 Sensor로 무엇을 측정할 것인가?”를 정하는 것</strong>
+        <span>모델보다 먼저 입력 데이터의 의미를 이해해야 합니다.</span>
+      </div>
+    </div>
+  </section>
 </main>
 
 <div class="deck-controls">
