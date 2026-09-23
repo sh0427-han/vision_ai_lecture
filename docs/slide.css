@@ -2570,7 +2570,9 @@ body.deck-page {
 .apple-tensor-data-card .rgb-tensor {
   width: 100%;
   max-width: 650px;
+  height: auto;
   margin: 0 auto;
+  padding: 0;
 }
 
 .apple-tensor-data-card .tensor-stage {
@@ -2586,7 +2588,10 @@ body.deck-page {
 }
 
 .apple-tensor-data-card .tensor-front-frame .tensor-plane {
-  padding: 27px 9px 8px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25px 9px 6px;
   border-width: 2px;
   border-radius: 11px;
   box-shadow: 0 8px 16px rgb(15 23 42 / 10%);
@@ -2617,9 +2622,9 @@ body.deck-page {
 .apple-tensor-data-card .tensor-front-frame .tensor-plane--front pre {
   margin: 0;
   color: #17243b;
-  font-size: clamp(8.3px, .73vw, 10px);
+  font-size: clamp(8px, .66vw, 9px);
   font-weight: 700;
-  line-height: 1.14;
+  line-height: 1.1;
   letter-spacing: -0.045em;
 }
 
@@ -2740,6 +2745,12 @@ body.deck-page {
 
   .apple-tensor-data-card .tensor-front-frame .tensor-plane--g {
     transform: translate(20px, -90px);
+  }
+
+  .apple-tensor-data-card .tensor-front-frame .tensor-plane pre,
+  .apple-tensor-data-card .tensor-front-frame .tensor-plane--front pre {
+    font-size: 7.6px;
+    line-height: 1.08;
   }
 
   .apple-tensor-data-card .tensor-axis--channel {
