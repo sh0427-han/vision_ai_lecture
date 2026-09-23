@@ -4467,3 +4467,109 @@ body.deck-page {
   .sensor-life-message{grid-template-columns:1fr}
   .sensor-life-message span{text-align:left}
 }
+
+
+/* Generated raster visuals stored locally in Git: Intro sensor slides */
+.sensor-generated-visual{
+  position:relative;
+  overflow:hidden;
+  width:min(1200px,100%);
+  margin:12px auto 0;
+  aspect-ratio:908 / 300;
+  border:1px solid #d8e1ed;
+  border-radius:18px;
+  background:
+    linear-gradient(90deg,#f1f5f9 0 33.1%,#fff 33.1% 33.6%,#eef8fd 33.6% 66.4%,#fff 66.4% 66.9%,#eef2ff 66.9% 100%);
+}
+.sensor-generated-visual img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity .18s ease;
+}
+.sensor-generated-visual img.is-loaded{opacity:1}
+.sensor-generated-labels{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  width:min(1200px,100%);
+  margin:8px auto 0;
+}
+.sensor-generated-label{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+  align-items:center;
+  min-width:0;
+  padding:9px 12px;
+  border:1px solid #d8e1ed;
+  border-radius:12px;
+  background:#fff;
+}
+.sensor-generated-label>div:first-child{
+  display:grid;
+  gap:2px;
+}
+.sensor-generated-label strong{
+  color:#17243b;
+  font-size:14px;
+}
+.sensor-generated-label span{
+  color:#64748b;
+  font-size:9.5px;
+}
+.sensor-generated-label p{
+  display:grid;
+  gap:1px;
+  margin:0;
+  text-align:right;
+}
+.sensor-generated-label p b{
+  color:#334155;
+  font-size:10px;
+}
+.sensor-generated-label code{
+  padding:0;
+  background:transparent;
+  color:#64748b;
+  font-size:8.5px;
+}
+.sensor-generated-label--rgb{border-top:3px solid #2563eb}
+.sensor-generated-label--lidar{border-top:3px solid #0ea5e9}
+.sensor-generated-label--ir{border-top:3px solid #e11d48}
+.sensor-generated-tags{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:4px;
+}
+.sensor-generated-tags b{
+  padding:4px 6px;
+  border-radius:999px;
+  background:#edf3fc;
+  color:#2563eb;
+  font-size:8.5px;
+  font-weight:850;
+}
+.sensor-generated-label--lidar .sensor-generated-tags b{background:#e8f7fd;color:#0284c7}
+.sensor-generated-label--ir .sensor-generated-tags b{background:#fff1f2;color:#e11d48}
+@media (max-height:760px) and (min-width:901px){
+  .sensor-generated-visual{margin-top:6px;aspect-ratio:3.35 / 1}
+  .sensor-generated-labels{margin-top:5px;gap:6px}
+  .sensor-generated-label{padding:6px 8px}
+  .sensor-generated-label strong{font-size:11.5px}
+  .sensor-generated-label span{font-size:8px}
+  .sensor-generated-label p b{font-size:8.5px}
+  .sensor-generated-label code{font-size:7.5px}
+  .sensor-generated-tags b{font-size:7.5px;padding:3px 5px}
+}
+@media (max-width:900px){
+  .sensor-generated-visual{aspect-ratio:1.35 / 1}
+  .sensor-generated-visual img{object-fit:cover}
+  .sensor-generated-labels{grid-template-columns:1fr}
+  .sensor-generated-label{grid-template-columns:1fr}
+  .sensor-generated-label p{text-align:left}
+  .sensor-generated-tags{justify-content:flex-start}
+}
