@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Optimizer가 Loss가 낮은 방향으로 Parameter를 이동시키는 그림">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#eef4fb"/></linearGradient>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+</defs>
+<rect width="1200" height="600" rx="28" fill="url(#bg)"/>
+<text x="60" y="64" font-family="Arial, Noto Sans KR, sans-serif" font-size="30" font-weight="700" fill="#17243b">Loss가 낮아지는 방향으로 Parameter를 조금씩 이동</text>
+<text x="60" y="100" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">Gradient는 경사 방향을 알려주고, Learning Rate는 한 번에 얼마나 움직일지를 정합니다.</text>
+
+<g transform="translate(70 145)">
+  <rect width="760" height="380" rx="22" fill="#fff" stroke="#d8e1ed" stroke-width="2"/>
+  <ellipse cx="390" cy="215" rx="300" ry="135" fill="none" stroke="#dbeafe" stroke-width="26"/>
+  <ellipse cx="430" cy="235" rx="225" ry="100" fill="none" stroke="#bfdbfe" stroke-width="23"/>
+  <ellipse cx="470" cy="255" rx="150" ry="67" fill="none" stroke="#93c5fd" stroke-width="20"/>
+  <ellipse cx="500" cy="270" rx="76" ry="34" fill="none" stroke="#60a5fa" stroke-width="17"/>
+  <circle cx="515" cy="274" r="15" fill="#16a34a"/>
+  <text x="548" y="282" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#15803d">낮은 Loss</text>
+
+  <circle cx="165" cy="108" r="16" fill="#e11d48"/>
+  <circle cx="240" cy="148" r="14" fill="#f97316"/>
+  <circle cx="310" cy="185" r="13" fill="#f59e0b"/>
+  <circle cx="374" cy="218" r="12" fill="#3b82f6"/>
+  <circle cx="432" cy="245" r="11" fill="#2563eb"/>
+  <path d="M181 116 C204 127 216 138 229 145" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M255 157 C275 168 291 177 299 182" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M325 193 C344 202 356 210 364 214" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M389 225 C405 233 414 238 422 241" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M445 250 C465 259 486 268 500 271" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <text x="78" y="78" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#be123c">현재 Parameter</text>
+  <text x="72" y="330" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">등고선 = 같은 Loss 값을 갖는 지점</text>
+</g>
+
+<g transform="translate(870 165)">
+  <rect width="270" height="150" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="24" y="42" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#1d4ed8">Gradient</text>
+  <text x="24" y="78" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">Loss가 증가하는 방향</text>
+  <text x="24" y="108" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">→ 반대로 이동</text>
+</g>
+<g transform="translate(870 340)">
+  <rect width="270" height="150" rx="18" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+  <text x="24" y="42" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#15803d">Learning Rate</text>
+  <text x="24" y="78" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">한 번에 이동하는 크기</text>
+  <text x="24" y="108" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">너무 크거나 작으면 문제</text>
+</g>
+</svg>
