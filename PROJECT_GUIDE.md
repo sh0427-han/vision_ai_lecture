@@ -17,7 +17,8 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - 조명, 방향, 크기, 가림, 초점, 색온도 등에 따른 Pixel 변화
 - Generalization: 조건이 달라도 반복되는 공통 Pattern 학습
 - RGB 입력 → Feature → Classification / Detection / Segmentation Output
-- 대표 Vision Sensor: RGB / LiDAR / IR의 출력 데이터와 스마트폰·로봇청소기·열화상 등 친숙한 활용 예
+- 대표 Vision Sensor: RGB / LiDAR / IR의 출력 데이터 비교
+- 스마트폰·CCTV·로봇청소기·자율주행·열화상 등 친숙한 Sensor 활용 사례
 
 ### 02. AI Basics
 
