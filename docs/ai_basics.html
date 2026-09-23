@@ -100,7 +100,7 @@
         <div class="prob-row"><span>Case B</span><div><i style="width:15%"></i></div><strong>0.15</strong></div>
       </article>
     </div>
-    <div class="callout"><strong>주의:</strong> 출력값을 Probability처럼 해석할 수 있어도, 실제 신뢰도는 Calibration과 데이터 분포의 영향을 받습니다.</div>
+    <div class="callout"><strong>주의:</strong> 모델이 0.87을 출력했다고 해서 현실에서 항상 “정확히 87% 확률”이라는 뜻은 아닙니다. 출력 Score는 데이터와 학습 방식의 영향을 받습니다.</div>
   </div>
 </section>
 
@@ -125,7 +125,7 @@
         <p>사람이 정하거나 탐색해서 <b>학습 과정의 동작 방식을 조절</b></p>
       </article>
     </div>
-    <div class="parameter-bottom-flow"><span>Input x</span><b>→</b><span>Model f(x; θ)</span><b>→</b><span>Prediction ŷ</span></div>
+    <div class="parameter-bottom-flow"><span>Input x</span><b>→</b><span>Model + learned Parameter</span><b>→</b><span>Prediction ŷ</span></div>
   </div>
 </section>
 
