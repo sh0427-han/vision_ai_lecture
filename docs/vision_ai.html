@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>03. Vision AI</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=rgbtensor-20260923-11">
-  <script src="slide.js?v=rgbtensor-20260923-11" defer></script>
+  <link rel="stylesheet" href="slide.css?v=introflow-20260923-12">
+  <script src="slide.js?v=introflow-20260923-12" defer></script>
 </head>
 <body class="deck-page" data-prev-page="ai_basics.html">
 <header class="site-header">
@@ -28,7 +28,7 @@
       <p class="slide-subtitle">
         같은 이미지라도 “무엇을 알고 싶은가?”에 따라 Classification, Detection, Segmentation처럼 문제 정의가 달라집니다.
       </p>
-      <div class="figure"><img src="assets/vision_tasks_comparison.svg?v=rgbtensor-20260923-11" alt="Vision AI 대표 Task 비교"></div>
+      <div class="figure"><img src="assets/vision_tasks_comparison.svg?v=introflow-20260923-12" alt="Vision AI 대표 Task 비교"></div>
     </div>
   </section>
 
@@ -37,7 +37,7 @@
       <span class="slide-number">1</span>
       <h2 class="slide-title">먼저 Task를 정하고, 그 다음 모델을 고릅니다</h2>
       <p class="slide-subtitle">“무슨 모델을 쓸까?”보다 “무엇을 출력해야 할까?”가 먼저입니다.</p>
-      <div class="figure"><img src="assets/vision_task_selection.svg?v=rgbtensor-20260923-11" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
+      <div class="figure"><img src="assets/vision_task_selection.svg?v=introflow-20260923-12" alt="현장 문제부터 Task Label Model까지의 선택 흐름"></div>
     </div>
   </section>
 
@@ -46,7 +46,7 @@
       <span class="slide-number">2</span>
       <h2 class="slide-title">Classification — 이 이미지가 무엇인가?</h2>
       <p class="slide-subtitle">이미지 전체에 하나의 Class 또는 Probability를 출력합니다.</p>
-      <div class="figure"><img src="assets/task_classification.svg?v=rgbtensor-20260923-11" alt="이미지 전체에 대한 Classification 결과"></div>
+      <div class="figure"><img src="assets/task_classification.svg?v=introflow-20260923-12" alt="이미지 전체에 대한 Classification 결과"></div>
     </div>
   </section>
 
@@ -55,7 +55,7 @@
       <span class="slide-number">3</span>
       <h2 class="slide-title">Object Detection — 무엇이 어디에 있는가?</h2>
       <p class="slide-subtitle">여러 객체의 Class, 위치, Confidence를 함께 출력합니다.</p>
-      <div class="figure"><img src="assets/task_detection.svg?v=rgbtensor-20260923-11" alt="Bounding Box를 이용한 Object Detection 결과"></div>
+      <div class="figure"><img src="assets/task_detection.svg?v=introflow-20260923-12" alt="Bounding Box를 이용한 Object Detection 결과"></div>
     </div>
   </section>
 
@@ -64,7 +64,7 @@
       <span class="slide-number">4</span>
       <h2 class="slide-title">Segmentation — 정확히 어느 Pixel인가?</h2>
       <p class="slide-subtitle">관심 물체나 결함의 정확한 영역과 형상을 Pixel 단위로 구분합니다.</p>
-      <div class="figure"><img src="assets/task_segmentation.svg?v=rgbtensor-20260923-11" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
+      <div class="figure"><img src="assets/task_segmentation.svg?v=introflow-20260923-12" alt="Pixel Mask를 이용한 Segmentation 결과"></div>
     </div>
   </section>
 
@@ -72,7 +72,7 @@
     <div class="slide-inner">
       <span class="slide-number">5</span>
       <h2 class="slide-title">산업 문제를 Vision Task로 바꿔보면</h2>
-      <div class="figure"><img src="assets/problem_to_task.svg?v=rgbtensor-20260923-11" alt="현장 질문과 Vision Task의 매핑"></div>
+      <div class="figure"><img src="assets/problem_to_task.svg?v=introflow-20260923-12" alt="현장 질문과 Vision Task의 매핑"></div>
     </div>
   </section>
 
@@ -81,7 +81,7 @@
       <span class="slide-number">6</span>
       <h2 class="slide-title">그럼 모델은 이미지에서 무엇을 보고 판단할까?</h2>
       <p class="slide-subtitle">사람은 색, 윤곽, 질감, 부분 구조 같은 여러 시각적 단서를 종합합니다.</p>
-      <div class="figure"><img src="assets/human_visual_cues.svg?v=rgbtensor-20260923-11" alt="사람이 색 윤곽 부분 구조를 조합하는 직관"></div>
+      <div class="figure"><img src="assets/human_visual_cues.svg?v=introflow-20260923-12" alt="사람이 색 윤곽 부분 구조를 조합하는 직관"></div>
     </div>
   </section>
 
@@ -89,7 +89,7 @@
     <div class="slide-inner">
       <span class="slide-number">7</span>
       <h2 class="slide-title">CNN — 작은 특징을 조합해 더 큰 의미를 만든다</h2>
-      <div class="figure"><img src="assets/human_feature_to_cnn.svg?v=rgbtensor-20260923-11" alt="사람의 특징 기반 인식과 CNN 직관"></div>
+      <div class="figure"><img src="assets/human_feature_to_cnn.svg?v=introflow-20260923-12" alt="사람의 특징 기반 인식과 CNN 직관"></div>
     </div>
   </section>
 
@@ -97,7 +97,7 @@
     <div class="slide-inner">
       <span class="slide-number">8</span>
       <h2 class="slide-title">CNN의 Feature Hierarchy</h2>
-      <div class="figure"><img src="assets/cnn_hierarchy.svg?v=rgbtensor-20260923-11" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
+      <div class="figure"><img src="assets/cnn_hierarchy.svg?v=introflow-20260923-12" alt="Pixel에서 Object Feature까지 CNN 특징 계층"></div>
     </div>
   </section>
 
@@ -105,7 +105,7 @@
     <div class="slide-inner">
       <span class="slide-number">9</span>
       <h2 class="slide-title">Kernel과 Convolution</h2>
-      <div class="figure"><img src="assets/convolution_visual.svg?v=rgbtensor-20260923-11" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
+      <div class="figure"><img src="assets/convolution_visual.svg?v=introflow-20260923-12" alt="Image Patch Kernel Feature Map의 Convolution 과정"></div>
     </div>
   </section>
 
@@ -113,7 +113,7 @@
     <div class="slide-inner">
       <span class="slide-number">10</span>
       <h2 class="slide-title">Feature Map과 Channel</h2>
-      <div class="figure"><img src="assets/feature_maps.svg?v=rgbtensor-20260923-11" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
+      <div class="figure"><img src="assets/feature_maps.svg?v=introflow-20260923-12" alt="여러 Feature Map이 Channel 축으로 쌓이는 구조"></div>
     </div>
   </section>
 
@@ -121,7 +121,7 @@
     <div class="slide-inner">
       <span class="slide-number">11</span>
       <h2 class="slide-title">깊어질수록 더 넓은 문맥을 봅니다</h2>
-      <div class="figure"><img src="assets/receptive_field.svg?v=rgbtensor-20260923-11" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
+      <div class="figure"><img src="assets/receptive_field.svg?v=introflow-20260923-12" alt="Layer 깊이에 따른 Receptive Field 확대"></div>
     </div>
   </section>
 
@@ -129,7 +129,7 @@
     <div class="slide-inner">
       <span class="slide-number">12</span>
       <h2 class="slide-title">CNN도 Dataset으로 “볼 특징”을 학습합니다</h2>
-      <div class="figure"><img src="assets/cnn_training.svg?v=rgbtensor-20260923-11" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
+      <div class="figure"><img src="assets/cnn_training.svg?v=introflow-20260923-12" alt="Image Label부터 Backpropagation까지의 CNN 학습 과정"></div>
     </div>
   </section>
 
@@ -137,7 +137,7 @@
     <div class="slide-inner">
       <span class="slide-number">13</span>
       <h2 class="slide-title">Vision AI를 한 흐름으로 정리하면</h2>
-      <div class="figure"><img src="assets/vision_project_pipeline.svg?v=rgbtensor-20260923-11" alt="Vision AI 프로젝트 전체 흐름"></div>
+      <div class="figure"><img src="assets/vision_project_pipeline.svg?v=introflow-20260923-12" alt="Vision AI 프로젝트 전체 흐름"></div>
     </div>
   </section>
 </main>
