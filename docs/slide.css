@@ -3741,11 +3741,8 @@ body.deck-page {
   transform-origin: center;
 }
 
-.rgb-stack-plane:first-of-type {
-  margin-left: 0;
-}
-
 .rgb-stack-plane--r {
+  margin-left: 0;
   z-index: 3;
   transform: translateY(48px) rotateY(-7deg);
   border-color: #fb7185;
@@ -3904,7 +3901,7 @@ body.deck-page {
     margin-left: -38px;
   }
 
-  .rgb-stack-plane:first-of-type {
+  .rgb-stack-plane--r {
     margin-left: 0;
   }
 
