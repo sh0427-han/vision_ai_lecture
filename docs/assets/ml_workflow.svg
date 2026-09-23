@@ -10,27 +10,27 @@
   <g transform="translate(95 205)">
     <rect width="155" height="105" rx="18" fill="#dbeafe" stroke="#93c5fd" stroke-width="2"/>
     <text x="78" y="44" font-size="21" font-weight="700" fill="#1d4ed8">Data</text>
-    <text x="78" y="75" font-size="17" fill="#475569">수집 · Label</text>
+    <text x="78" y="75" font-size="18" fill="#475569">수집 · Label</text>
   </g>
   <g transform="translate(295 205)">
     <rect width="155" height="105" rx="18" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
     <text x="78" y="44" font-size="21" font-weight="700" fill="#4338ca">Train</text>
-    <text x="78" y="75" font-size="17" fill="#475569">Weight 학습</text>
+    <text x="78" y="75" font-size="18" fill="#475569">Weight 학습</text>
   </g>
   <g transform="translate(495 205)">
     <rect width="155" height="105" rx="18" fill="#ecfdf5" stroke="#bbf7d0" stroke-width="2"/>
     <text x="78" y="44" font-size="21" font-weight="700" fill="#15803d">Evaluate</text>
-    <text x="78" y="75" font-size="17" fill="#475569">Val · Test</text>
+    <text x="78" y="75" font-size="18" fill="#475569">Val · Test</text>
   </g>
   <g transform="translate(695 205)">
     <rect width="155" height="105" rx="18" fill="#fef3c7" stroke="#fde68a" stroke-width="2"/>
     <text x="78" y="44" font-size="21" font-weight="700" fill="#92400e">Deploy</text>
-    <text x="78" y="75" font-size="17" fill="#475569">Inference</text>
+    <text x="78" y="75" font-size="18" fill="#475569">Inference</text>
   </g>
   <g transform="translate(895 205)">
     <rect width="155" height="105" rx="18" fill="#fff1f2" stroke="#fecdd3" stroke-width="2"/>
     <text x="78" y="44" font-size="21" font-weight="700" fill="#be123c">Monitor</text>
-    <text x="78" y="75" font-size="17" fill="#475569">실패 사례 확인</text>
+    <text x="78" y="75" font-size="18" fill="#475569">실패 사례 확인</text>
   </g>
 </g>
 
