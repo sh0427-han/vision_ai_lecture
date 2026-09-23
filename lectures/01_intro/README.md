@@ -105,9 +105,11 @@ Pixel input
 
 | Sensor | 얻는 정보 | 대표 데이터 |
 |---|---|---|
-| RGB Camera | 색 · 밝기 · 질감 | H × W × 3 Image |
-| LiDAR | 거리 · 3D 위치 | Point Cloud |
-| IR Camera | 적외선 강도 또는 열 정보 | Intensity / Temperature Map |
+| Sensor | 얻는 정보 | 대표 데이터 | 친숙한 활용 예 |
+|---|---|---|---|
+| RGB Camera | 색 · 밝기 · 질감 | H × W × 3 Image | 스마트폰 카메라, CCTV·블랙박스 |
+| LiDAR | 거리 · 3D 위치 | Point Cloud | 로봇청소기 맵핑, 자율주행·ADAS |
+| IR Sensor / Camera | 적외선 강도 또는 열 정보 | Intensity / Temperature Map | 열화상 카메라, 비접촉 체온 측정 |
 
 모두 숫자 데이터이지만 숫자가 의미하는 물리량은 서로 다릅니다.
 
