@@ -1,167 +1,143 @@
 # 02. AI Basics
 
-Vision AI를 이해하기 전에 필요한 AI / Machine Learning / Deep Learning의 최소 공통 개념을 다룹니다.  
-목표는 수식을 외우는 것이 아니라 **Data → Training → Evaluation → Inference** 흐름을 이해하는 것입니다.
+Vision AI를 처음 배우는 사람이 **Model이 어떻게 계산하고, 어떻게 학습하고, 어떻게 평가되는지** 하나의 흐름으로 이해하도록 구성합니다.
 
-## 슬라이드 흐름
+## 강의 흐름
 
+### A. AI가 무엇을 해결하는가
 1. AI / Machine Learning / Deep Learning / Computer Vision 관계
 2. Rule-based vs Machine Learning
 3. Supervised Learning / Unsupervised Learning
 4. Classification / Regression
 5. Binary / Multi-class Classification
-6. Model / Parameter / Hyperparameter
-7. Linear Regression
-8. Loss Function
-9. Gradient / Optimizer / Learning Rate
-10. Perceptron으로 보는 가장 단순한 Neural 계산
-11. AND / XOR와 Linear Separability
-12. Linear Layer를 여러 개 쌓아도 Activation이 없으면 하나의 Linear 변환
-13. Activation Function / ReLU / Non-linearity
-14. Feature / Representation
-15. Prediction → Loss → Gradient → Parameter Update
-16. Backpropagation
-17. Training vs Inference
-18. Batch / Iteration / Epoch
-19. Dataset Quality
-20. Image Preprocessing
-21. Data Augmentation
-22. Train / Validation / Test
-23. Threshold / Confusion Matrix
-24. Accuracy / Precision / Recall / F1
-25. Data Leakage
-26. Group Split
-27. K-Fold / Group K-Fold
-28. Generalization / Overfitting
-29. AI Development Cycle
 
-## 핵심 개념
+### B. Model은 어떻게 계산하는가
+6. Perceptron: 가장 단순한 Neural 계산
+7. Weight / Bias 직관
+8. Parameter / Hyperparameter
+9. AND / XOR와 Linear Separability
+10. Perceptron → Layer → Neural Network
+11. Linear Layer만 쌓았을 때의 한계
+12. Activation Function / ReLU
+13. Feature / Representation
 
-## 지도학습과 비지도학습
+### C. Model은 어떻게 학습하는가
+14. Linear Regression으로 보는 Parameter 학습
+15. Loss Function
+16. Gradient
+17. Optimizer / Learning Rate
+18. Training Loop: Forward → Loss → Backward → Update
+19. Backpropagation
+20. Training vs Inference
+21. Batch / Iteration / Epoch
 
-- **Supervised Learning**: Input과 Target Label의 관계를 학습해 새로운 Input의 Target을 예측
-- **Unsupervised Learning**: Target Label 없이 데이터의 Cluster, Structure, Representation을 탐색
+### D. 좋은 학습 데이터를 어떻게 준비하는가
+22. Dataset Quality
+23. Image Preprocessing
+24. Data Augmentation
+25. Train / Validation / Test
 
-강의 Figure는 논문에서 자주 사용하는 **Feature Space scatter plot** 형태로 두 학습 방식을 비교합니다.
+### E. 진짜 잘하는 Model인지 어떻게 평가하는가
+26. Threshold / Confusion Matrix
+27. Accuracy / Precision / Recall / F1
+28. Data Leakage
+29. Group Split
+30. K-Fold / Group K-Fold
+31. Generalization / Overfitting
+32. AI Development Cycle
 
-## Classification과 Regression
+## 꼭 이해해야 할 연결
 
-- **Classification**: 유한한 Class 중 하나를 예측하는 문제
-- **Regression**: 연속적인 실수 값을 예측하는 문제
+### Perceptron → Weight / Bias
 
-강의 Figure는 Classification의 **Decision Boundary**와 Regression의 **Fitted Function**을 같은 좌표계 스타일로 비교합니다.
+Perceptron은 입력 Feature에 Weight를 곱해 더하고 Bias와 Activation을 적용해 Output을 만듭니다.
 
+- **Weight**: 각 입력을 얼마나 중요하게 볼지 결정
+- **Bias**: 판단 기준의 위치를 조절
+- **Parameter**: Training이 데이터에서 찾는 Weight와 Bias 같은 값
 
-### Parameter와 Hyperparameter
+여기서 Bias Parameter는 Dataset이 한쪽으로 치우쳤다는 의미의 Data Bias와 다른 개념입니다.
 
-- **Parameter**: Weight, Bias처럼 Training 과정에서 Gradient에 의해 수정되는 값
-- **Hyperparameter**: Learning Rate, Batch Size, Epoch, Layer 수처럼 학습 동작을 정하는 설정값
+### Perceptron → Neural Network
 
-### Loss와 Optimizer
+Perceptron 여러 개를 같은 단계에 모으면 Layer가 되고, Layer를 여러 단계 연결하면 Neural Network가 됩니다.
 
-Loss는 Prediction이 Target과 얼마나 다른지를 학습에 사용할 수 있는 숫자로 만듭니다.  
-Gradient는 Parameter를 바꿨을 때 Loss가 어떻게 변하는지 알려주고, Optimizer는 Gradient의 반대 방향으로 Parameter를 업데이트합니다.
+Activation이 없는 Linear Layer 여러 개는 결국 하나의 Linear Transformation으로 합쳐질 수 있습니다. ReLU 같은 비선형 Activation이 있어야 XOR처럼 단순한 직선으로 나눌 수 없는 Pattern을 표현할 수 있습니다.
 
-```text
-Prediction → Loss → Gradient → Parameter Update → 다음 Prediction
-```
+### Feature / Representation
 
-### 왜 Activation Function이 필요한가
-
-AND는 직선 하나로 Class를 나눌 수 있지만 XOR는 그렇지 않습니다.  
-Activation이 없는 Linear Layer 여러 개는 결국 하나의 Linear 변환으로 합쳐집니다.  
-ReLU 같은 비선형 Activation이 들어가야 더 복잡한 Decision Boundary를 표현할 수 있습니다.
-
-### Training과 Inference
+Network는 Pixel을 그대로 외우는 것이 아니라 학습을 통해 판단에 유용한 내부 숫자 표현을 만듭니다.
 
 ```text
-Training
-Image + Label → Model → Prediction → Loss → Backward → Weight Update
-
-Inference
-New Image → Trained Model → Prediction
+Pixel
+ → Edge / Color Change
+ → Part / Shape
+ → Internal Representation
+ → Prediction
 ```
 
-Inference에는 Label, Backward, Weight Update가 없습니다.
+### Loss → Gradient → Optimizer
 
-### Dataset Quality
-
-Dataset은 실제 운영 환경을 대표해야 합니다.
-
-- **Coverage**: 조명, 크기, 배경, 설비, 시간대 등 다양한 운영 조건
-- **Label Quality**: 정확하고 일관된 정답 기준
-- **Class Balance**: 희귀 Class도 학습·평가 가능한 수량 확보
-- **Bias Check**: Train 분포와 실제 운영 분포 차이 확인
-
-### Image Preprocessing
-
-카메라 이미지는 Model이 기대하는 입력 형식으로 변환합니다.
+- **Loss**: 현재 Prediction이 Target에서 얼마나 벗어났는지 나타내는 학습용 숫자
+- **Gradient**: Parameter를 움직였을 때 Loss가 어느 방향으로 변하는지 알려주는 정보
+- **Optimizer**: Gradient를 이용해 Parameter를 실제로 Update
+- **Learning Rate**: 한 번에 얼마나 크게 Update할지 정하는 값
 
 ```text
-Camera Image → Resize → Scale / Normalize → Tensor → Model
+Prediction
+   ↓
+Loss
+   ↓
+Gradient
+   ↓
+Optimizer
+   ↓
+Parameter Update
 ```
 
-Tensor 축 순서는 Framework마다 다를 수 있습니다. 예를 들어 PyTorch에서는 `[B, C, H, W]` 형태가 흔합니다.  
-Train과 Inference에는 같은 기본 전처리 규칙을 적용해야 합니다.
+### Training Loop
 
-### Data Augmentation
+한 Batch마다 다음 과정이 반복됩니다.
 
-밝기, 회전, 크기, Crop, Blur 등 현실에서 의미가 유지되는 변화를 학습 데이터에 적용합니다.  
-목적은 단순히 이미지 수를 늘리는 것이 아니라 중요하지 않은 변화에 덜 민감한 모델을 만드는 것입니다.
+```text
+① Forward
+Image → Model → Prediction
+        ↓
+② Loss
+Prediction ↔ Target
+        ↓
+③ Backward
+Gradient 계산
+        ↓
+④ Update
+Weight 수정
+        ↺ 다음 Batch
+```
 
-Detection / Segmentation에서는 Image를 변환할 때 Box / Mask Label에도 같은 기하 변환을 적용해야 합니다.
+### Backpropagation
 
-### Train / Validation / Test
+Backpropagation은 최종 Loss에 각 Weight가 얼마나 영향을 주었는지를 뒤쪽 Layer부터 앞쪽 Layer 방향으로 계산하는 과정입니다. 수학적으로는 Chain Rule을 사용하지만 입문 단계에서는 **“Loss의 책임을 뒤에서부터 나누어 계산한다”**고 이해하면 충분합니다.
 
-- **Train**: Weight 학습
-- **Validation**: Model / Hyperparameter / Threshold 선택
-- **Test**: 가능한 마지막까지 보지 않고 최종 Generalization 평가
+### Training vs Inference
 
-### Threshold와 Confusion Matrix
+Training은 Label과 Loss를 이용해 Weight를 바꾸지만, Inference는 학습된 Weight를 고정하고 Prediction만 계산합니다.
 
-Score를 실제 판정으로 바꾸려면 Threshold가 필요할 수 있습니다.
+### Dataset / Evaluation
 
-- **TP**: 실제 Positive를 Positive로 판정
-- **FN**: 실제 Positive를 놓침
-- **FP**: 실제 Negative를 Positive로 잘못 판정
-- **TN**: 실제 Negative를 Negative로 판정
+- Train: Weight 학습
+- Validation: Model / Hyperparameter / Threshold 선택
+- Test: 마지막 Generalization 평가
+- 같은 원본 영상이나 강하게 연관된 Sample은 Group 단위로 Split
+- Test 결과를 보면서 반복해서 Model을 고르면 Test가 더 이상 공정한 최종 평가셋이 아니게 됨
 
-### Classification Metric
+### Loss와 Metric
 
-- **Accuracy**: 전체 Sample 중 맞춘 비율
-- **Precision**: Positive라고 판정한 것 중 실제 Positive 비율
-- **Recall**: 실제 Positive 중 찾아낸 비율
-- **F1**: Precision과 Recall의 조화 평균
+- **Loss**: Training 중 Weight를 Update하기 위해 최적화하는 값
+- **Metric**: Model 성능을 사람이 해석하고 비교하기 위한 값
 
-**Loss는 Weight를 학습할 때 최적화하는 값**, **Metric은 성능을 평가·비교하는 값**이라는 차이를 구분합니다.
+### 최종 목표
 
-### Data Leakage
-
-대표적인 Leakage:
-
-- 같은 원본 영상의 인접 Frame이 Train과 Validation/Test에 나뉨
-- 전체 Dataset을 이용해 Normalization / Feature 통계를 계산
-- Test 결과를 보며 Model / Threshold / Hyperparameter를 반복 선택
-
-### Group Split
-
-Frame 수가 많아도 같은 원본에서 나온 Sample은 독립적이지 않을 수 있습니다.  
-영상·설비·대상·환자·제품·날짜처럼 상관관계가 강한 단위를 **Group 전체로 Train / Val / Test 중 하나에만 배정**하는 것이 안전합니다.
-
-### K-Fold Cross Validation
-
-K개 Fold를 만들고 Validation Fold를 바꿔가며 K번 Training합니다.  
-같은 Metric의 평균뿐 아니라 Fold 간 변동도 확인합니다.
-
-Group 상관관계가 강하면 일반 K-Fold보다 Group K-Fold가 적절할 수 있습니다.  
-최종 Test Set은 Cross Validation 바깥에 별도로 유지하는 것이 일반적입니다.
-
-### Generalization / Overfitting
-
-목표는 Train Dataset을 잘 외우는 것이 아니라 **보지 못한 새로운 데이터에서도 성능이 유지되는 것**입니다.  
-Train Loss는 계속 낮아지는데 Validation Loss가 다시 증가하면 Overfitting을 의심할 수 있습니다.
-
-## 최종 흐름
+좋은 AI Model은 Train Dataset을 잘 외우는 Model이 아니라, **보지 못한 새로운 조건에서도 필요한 Pattern을 이용해 올바르게 판단하는 Model**입니다.
 
 ```text
 Data
@@ -177,5 +153,3 @@ Monitor
 실패 사례 수집
  └────────→ 다음 Data / Retraining
 ```
-
-운영에서 발생한 실패 사례를 다음 Dataset과 Training에 반영하는 반복 Cycle이 실제 AI 개발의 핵심입니다.

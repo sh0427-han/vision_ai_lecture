@@ -1,37 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="AND와 XOR의 선형 분리 가능성 비교">
-<rect width="1200" height="600" rx="28" fill="#f8fafc"/>
-<text x="60" y="64" font-family="Arial, Noto Sans KR, sans-serif" font-size="30" font-weight="700" fill="#17243b">AND는 직선 하나로 나뉘고, XOR는 비선형 경계가 필요합니다</text>
-<text x="60" y="100" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">파란 점 = Output 1, 흰 점 = Output 0</text>
-
-<g transform="translate(85 150)" font-family="Arial, Noto Sans KR, sans-serif">
-  <rect width="455" height="360" rx="22" fill="#fff" stroke="#d8e1ed" stroke-width="2"/>
-  <text x="28" y="42" font-size="24" font-weight="700" fill="#17243b">AND</text>
-  <text x="28" y="72" font-size="18" fill="#15803d">직선 하나로 분리 가능</text>
-  <line x1="100" y1="290" x2="365" y2="290" stroke="#94a3b8" stroke-width="3"/>
-  <line x1="100" y1="290" x2="100" y2="95" stroke="#94a3b8" stroke-width="3"/>
-  <circle cx="145" cy="248" r="17" fill="#fff" stroke="#334155" stroke-width="4"/>
-  <circle cx="145" cy="140" r="17" fill="#fff" stroke="#334155" stroke-width="4"/>
-  <circle cx="300" cy="248" r="17" fill="#fff" stroke="#334155" stroke-width="4"/>
-  <circle cx="300" cy="140" r="17" fill="#2563eb"/>
-  <line x1="205" y1="285" x2="355" y2="115" stroke="#16a34a" stroke-width="6"/>
-  <text x="135" y="325" font-size="18" fill="#64748b">x₁</text>
-  <text x="68" y="115" font-size="18" fill="#64748b">x₂</text>
-  <text x="235" y="340" font-size="18" font-weight="700" fill="#15803d">Linear separable</text>
-</g>
-
-<g transform="translate(660 150)" font-family="Arial, Noto Sans KR, sans-serif">
-  <rect width="455" height="360" rx="22" fill="#fff" stroke="#d8e1ed" stroke-width="2"/>
-  <text x="28" y="42" font-size="24" font-weight="700" fill="#17243b">XOR</text>
-  <text x="28" y="72" font-size="18" fill="#be123c">직선 하나로는 분리 불가</text>
-  <line x1="100" y1="290" x2="365" y2="290" stroke="#94a3b8" stroke-width="3"/>
-  <line x1="100" y1="290" x2="100" y2="95" stroke="#94a3b8" stroke-width="3"/>
-  <circle cx="145" cy="248" r="17" fill="#fff" stroke="#334155" stroke-width="4"/>
-  <circle cx="145" cy="140" r="17" fill="#2563eb"/>
-  <circle cx="300" cy="248" r="17" fill="#2563eb"/>
-  <circle cx="300" cy="140" r="17" fill="#fff" stroke="#334155" stroke-width="4"/>
-  <path d="M120 190 C160 95 280 95 325 190 C280 285 165 285 120 190Z" fill="none" stroke="#e11d48" stroke-width="6" stroke-dasharray="12 9"/>
-  <text x="135" y="325" font-size="18" fill="#64748b">x₁</text>
-  <text x="68" y="115" font-size="18" fill="#64748b">x₂</text>
-  <text x="205" y="340" font-size="18" font-weight="700" fill="#be123c">Non-linear boundary</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Perceptron 하나는 직선 경계를 만들 수 있지만 XOR는 더 복잡합니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">표의 네 가지 경우를 좌표에 옮겨 보면 차이가 바로 보입니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(55 135)">
+  <rect width="520" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#15803d">AND</text>
+  <g transform="translate(25 70)" font-size="18">
+   <text x="0" y="0" font-weight="700" fill="#475569">x₁ x₂ → y</text>
+   <text x="0" y="32" fill="#475569">0  0 → 0</text><text x="0" y="62" fill="#475569">0  1 → 0</text><text x="0" y="92" fill="#475569">1  0 → 0</text><text x="0" y="122" fill="#15803d">1  1 → 1</text>
+  </g>
+  <g transform="translate(190 75)">
+   <rect width="285" height="230" rx="10" fill="#fff" stroke="#d8e1ed"/>
+   <line x1="55" y1="185" x2="245" y2="185" stroke="#94a3b8" stroke-width="2"/><line x1="55" y1="185" x2="55" y2="35" stroke="#94a3b8" stroke-width="2"/>
+   <circle cx="75" cy="165" r="11" fill="#fff" stroke="#334155" stroke-width="3"/><circle cx="75" cy="60" r="11" fill="#fff" stroke="#334155" stroke-width="3"/><circle cx="205" cy="165" r="11" fill="#fff" stroke="#334155" stroke-width="3"/><circle cx="205" cy="60" r="11" fill="#2563eb"/>
+   <line x1="125" y1="180" x2="240" y2="55" stroke="#16a34a" stroke-width="5"/>
+   <text x="95" y="215" font-size="18" font-weight="700" fill="#15803d">직선 하나로 분리 가능</text>
+  </g>
+  <text x="260" y="360" text-anchor="middle" font-size="18" fill="#475569">→ Perceptron 하나로 표현 가능</text>
+ </g>
+ <g transform="translate(625 135)">
+  <rect width="520" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#be123c">XOR</text>
+  <g transform="translate(25 70)" font-size="18">
+   <text x="0" y="0" font-weight="700" fill="#475569">x₁ x₂ → y</text>
+   <text x="0" y="32" fill="#475569">0  0 → 0</text><text x="0" y="62" fill="#2563eb">0  1 → 1</text><text x="0" y="92" fill="#2563eb">1  0 → 1</text><text x="0" y="122" fill="#475569">1  1 → 0</text>
+  </g>
+  <g transform="translate(190 75)">
+   <rect width="285" height="230" rx="10" fill="#fff" stroke="#d8e1ed"/>
+   <line x1="55" y1="185" x2="245" y2="185" stroke="#94a3b8" stroke-width="2"/><line x1="55" y1="185" x2="55" y2="35" stroke="#94a3b8" stroke-width="2"/>
+   <circle cx="75" cy="165" r="11" fill="#fff" stroke="#334155" stroke-width="3"/><circle cx="75" cy="60" r="11" fill="#2563eb"/><circle cx="205" cy="165" r="11" fill="#2563eb"/><circle cx="205" cy="60" r="11" fill="#fff" stroke="#334155" stroke-width="3"/>
+   <path d="M50 120 C85 35 210 35 245 120 C210 205 85 205 50 120Z" fill="none" stroke="#e11d48" stroke-width="5" stroke-dasharray="10 8"/>
+   <text x="70" y="215" font-size="18" font-weight="700" fill="#be123c">직선 하나로는 불가능</text>
+  </g>
+  <text x="260" y="360" text-anchor="middle" font-size="18" fill="#475569">→ 여러 계산 + 비선형성이 필요</text>
+ </g>
 </g>
 </svg>

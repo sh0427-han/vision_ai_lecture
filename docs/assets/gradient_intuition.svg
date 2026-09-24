@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<defs><marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#2563eb"/></marker><marker id="o" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#f97316"/></marker></defs>
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Gradient는 Parameter를 움직였을 때 Loss가 어느 방향으로 변하는지 알려줍니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">“현재 위치에서 어느 쪽으로 가면 더 나빠지는가?”를 알면, 반대쪽으로 움직여 Loss를 줄일 수 있습니다.</text>
+<g font-family="Arial,sans-serif">
+ <path d="M110 420 C270 130 430 160 590 420 C750 680 910 330 1090 130" fill="none" stroke="#cbd5e1" stroke-width="10"/>
+ <circle cx="450" cy="270" r="18" fill="#e11d48"/>
+ <text x="450" y="235" text-anchor="middle" font-size="20" font-weight="700" fill="#be123c">현재 Parameter</text>
+ <path d="M465 270 C520 285 555 320 585 365" fill="none" stroke="#f97316" stroke-width="6" marker-end="url(#o)"/>
+ <text x="610" y="350" font-size="19" font-weight="700" fill="#ea580c">Gradient 방향</text>
+ <text x="610" y="377" font-size="18" fill="#475569">Loss가 증가하는 쪽</text>
+ <path d="M435 270 C390 255 350 240 310 250" fill="none" stroke="#2563eb" stroke-width="6" marker-end="url(#b)"/>
+ <text x="130" y="235" font-size="19" font-weight="700" fill="#1d4ed8">반대 방향으로 이동</text>
+ <text x="130" y="262" font-size="18" fill="#475569">Loss를 줄이는 쪽</text>
+ <text x="90" y="500" font-size="18" fill="#64748b">Parameter</text><text x="60" y="155" font-size="18" fill="#64748b">Loss</text>
+ <rect x="335" y="485" width="530" height="65" rx="14" fill="#eef6ff"/><text x="600" y="525" text-anchor="middle" font-size="20" font-weight="700" fill="#17243b">Gradient = “현재 위치의 경사 정보”</text>
+</g>
+</svg>

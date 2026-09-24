@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Loss는 “현재 Prediction이 Target에서 얼마나 벗어났는가?”를 학습용 숫자로 만듭니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">먼저 작은 오차와 큰 오차를 눈으로 이해한 뒤, 수식은 그 차이를 계산하는 규칙으로 봅니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(70 145)">
+  <rect width="500" height="370" rx="20" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#15803d">Prediction A · 잘 맞음</text>
+  <text x="55" y="110" font-size="20" fill="#475569">Target</text><text x="180" y="110" font-size="28" font-weight="700" fill="#17243b">10.0</text>
+  <text x="55" y="165" font-size="20" fill="#475569">Prediction</text><text x="180" y="165" font-size="28" font-weight="700" fill="#2563eb">9.7</text>
+  <line x1="70" y1="245" x2="420" y2="245" stroke="#cbd5e1" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="360" cy="245" r="13" fill="#17243b"/><circle cx="350" cy="245" r="13" fill="#2563eb"/>
+  <text x="355" y="220" text-anchor="middle" font-size="18" fill="#475569">차이 0.3</text>
+  <rect x="135" y="290" width="230" height="52" rx="12" fill="#dcfce7"/><text x="250" y="323" text-anchor="middle" font-size="21" font-weight="700" fill="#15803d">Small Loss</text>
+ </g>
+ <g transform="translate(630 145)">
+  <rect width="500" height="370" rx="20" fill="#fff1f2" stroke="#fecdd3" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#be123c">Prediction B · 많이 틀림</text>
+  <text x="55" y="110" font-size="20" fill="#475569">Target</text><text x="180" y="110" font-size="28" font-weight="700" fill="#17243b">10.0</text>
+  <text x="55" y="165" font-size="20" fill="#475569">Prediction</text><text x="180" y="165" font-size="28" font-weight="700" fill="#e11d48">4.2</text>
+  <line x1="70" y1="245" x2="420" y2="245" stroke="#cbd5e1" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="360" cy="245" r="13" fill="#17243b"/><circle cx="155" cy="245" r="13" fill="#e11d48"/>
+  <text x="255" y="220" text-anchor="middle" font-size="18" fill="#475569">차이 5.8</text>
+  <rect x="135" y="290" width="230" height="52" rx="12" fill="#ffe4e6"/><text x="250" y="323" text-anchor="middle" font-size="21" font-weight="700" fill="#be123c">Large Loss</text>
+ </g>
+</g>
+</svg>

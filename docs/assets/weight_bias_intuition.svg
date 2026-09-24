@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Weight는 입력의 중요도, Bias는 판단 기준의 위치를 조절합니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">둘 다 Model이 Training을 통해 배우는 Parameter입니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(60 140)">
+  <rect width="520" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#1d4ed8">Weight · 어떤 입력을 더 중요하게 볼까?</text>
+  <rect x="35" y="90" width="145" height="65" rx="12" fill="#eef2ff"/><text x="107" y="130" text-anchor="middle" font-size="18" fill="#4338ca">밝기 x₁</text>
+  <rect x="35" y="185" width="145" height="65" rx="12" fill="#eef2ff"/><text x="107" y="225" text-anchor="middle" font-size="18" fill="#4338ca">모양 x₂</text>
+  <text x="220" y="130" font-size="24" font-weight="700" fill="#2563eb">× 0.2</text>
+  <text x="220" y="225" font-size="24" font-weight="700" fill="#2563eb">× 1.8</text>
+  <path d="M315 122H430M315 217H430" stroke="#64748b" stroke-width="4"/>
+  <rect x="355" y="275" width="130" height="65" rx="12" fill="#dcfce7"/><text x="420" y="302" text-anchor="middle" font-size="18" font-weight="700" fill="#15803d">모양을</text><text x="420" y="326" text-anchor="middle" font-size="18" font-weight="700" fill="#15803d">더 중요하게</text>
+  <text x="35" y="365" font-size="18" fill="#475569">Weight가 크면 그 입력이 Output에 더 크게 영향을 줍니다.</text>
+ </g>
+ <g transform="translate(620 140)">
+  <rect width="520" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#9a3412">Bias · 판단 기준을 어디에 둘까?</text>
+  <line x1="60" y1="260" x2="455" y2="260" stroke="#94a3b8" stroke-width="3"/>
+  <rect x="95" y="120" width="90" height="70" rx="12" fill="#dbeafe"/><text x="140" y="163" text-anchor="middle" font-size="18" fill="#1d4ed8">Score</text>
+  <path d="M200 155H315" stroke="#64748b" stroke-width="4"/>
+  <line x1="330" y1="95" x2="330" y2="300" stroke="#f97316" stroke-width="5"/>
+  <text x="330" y="80" text-anchor="middle" font-size="18" font-weight="700" fill="#ea580c">Bias가 바꾸는 기준 위치</text>
+  <circle cx="260" cy="235" r="10" fill="#2563eb"/><circle cx="385" cy="235" r="10" fill="#16a34a"/>
+  <text x="260" y="335" text-anchor="middle" font-size="18" fill="#1d4ed8">0 쪽</text><text x="385" y="335" text-anchor="middle" font-size="18" fill="#15803d">1 쪽</text>
+  <text x="35" y="365" font-size="18" fill="#475569">Bias는 입력이 0이어도 전체 판단 기준을 이동시킬 수 있습니다.</text>
+ </g>
+</g>
+</svg>

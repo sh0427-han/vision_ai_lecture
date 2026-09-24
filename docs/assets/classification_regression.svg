@@ -1,48 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Classification and regression comparison using paper-style plots">
-<rect width="1200" height="600" fill="#ffffff"/>
-<text x="60" y="58" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#17243b">Discrete class prediction vs continuous value prediction</text>
-<text x="60" y="91" font-family="Arial, sans-serif" font-size="17" fill="#64748b">Two common supervised-learning task types</text>
-
-<g transform="translate(55,130)" font-family="Arial, sans-serif">
-  <text x="0" y="0" font-size="20" font-weight="700" fill="#17243b">(a) Classification</text>
-  <text x="0" y="28" font-size="17" fill="#64748b">Output: one of a finite set of categories</text>
-  <rect x="0" y="52" width="510" height="350" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="470" y2="350" stroke="#94a3b8" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="56" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="435" y="382" font-size="16" fill="#64748b">Feature 1</text>
-  <text x="15" y="100" font-size="16" fill="#64748b" transform="rotate(-90 15 100)">Feature 2</text>
-
-  <path d="M100 315 C170 270 240 235 300 190 C350 150 400 125 455 115" fill="none" stroke="#334155" stroke-width="3"/>
-  <text x="315" y="110" font-size="16" fill="#334155">decision boundary</text>
-  <g fill="#2563eb" stroke="#fff" stroke-width="1.5">
-    <circle cx="110" cy="300" r="9"/><circle cx="145" cy="278" r="9"/><circle cx="180" cy="295" r="9"/><circle cx="205" cy="255" r="9"/><circle cx="240" cy="270" r="9"/><circle cx="270" cy="225" r="9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Classification은 이름을, Regression은 숫자를 예측합니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">둘 다 지도학습이지만 Model이 만들어야 하는 Output 형태가 다릅니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(55 135)">
+  <rect width="520" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#1d4ed8">Classification · 분류</text>
+  <rect x="35" y="70" width="130" height="76" rx="12" fill="#eef2ff"/><text x="100" y="103" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">Image</text><text x="100" y="129" text-anchor="middle" font-size="18" fill="#64748b">사과 사진</text>
+  <path d="M180 108H250" stroke="#64748b" stroke-width="4"/><path d="M250 108l-12-8v16z" fill="#64748b"/>
+  <rect x="265" y="70" width="110" height="76" rx="12" fill="#eff6ff"/><text x="320" y="115" text-anchor="middle" font-size="18" font-weight="700" fill="#1d4ed8">Model</text>
+  <path d="M390 108H450" stroke="#64748b" stroke-width="4"/><path d="M450 108l-12-8v16z" fill="#64748b"/>
+  <rect x="365" y="165" width="120" height="52" rx="12" fill="#dcfce7"/><text x="425" y="198" text-anchor="middle" font-size="20" font-weight="700" fill="#15803d">Apple</text>
+  <g transform="translate(35 235)">
+   <rect width="450" height="120" rx="10" fill="#fff" stroke="#d8e1ed"/>
+   <line x1="40" y1="95" x2="415" y2="95" stroke="#94a3b8"/><line x1="40" y1="95" x2="40" y2="18" stroke="#94a3b8"/>
+   <path d="M85 95 C160 78 245 56 370 18" fill="none" stroke="#334155" stroke-width="3"/>
+   <g fill="#2563eb"><circle cx="90" cy="84" r="7"/><circle cx="125" cy="76" r="7"/><circle cx="170" cy="82" r="7"/></g>
+   <g fill="#f59e0b"><circle cx="265" cy="38" r="7"/><circle cx="315" cy="32" r="7"/><circle cx="365" cy="45" r="7"/></g>
   </g>
-  <g fill="#d97706" stroke="#fff" stroke-width="1.5">
-    <circle cx="245" cy="160" r="9"/><circle cx="285" cy="142" r="9"/><circle cx="320" cy="120" r="9"/><circle cx="355" cy="148" r="9"/><circle cx="395" cy="126" r="9"/><circle cx="425" cy="170" r="9"/>
+ </g>
+ <g transform="translate(625 135)">
+  <rect width="520" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="24" font-weight="700" fill="#7c3aed">Regression · 회귀</text>
+  <rect x="35" y="70" width="130" height="76" rx="12" fill="#eef2ff"/><text x="100" y="103" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">Image</text><text x="100" y="129" text-anchor="middle" font-size="18" fill="#64748b">제품 사진</text>
+  <path d="M180 108H250" stroke="#64748b" stroke-width="4"/><path d="M250 108l-12-8v16z" fill="#64748b"/>
+  <rect x="265" y="70" width="110" height="76" rx="12" fill="#f5f3ff"/><text x="320" y="115" text-anchor="middle" font-size="18" font-weight="700" fill="#6d28d9">Model</text>
+  <path d="M390 108H450" stroke="#64748b" stroke-width="4"/><path d="M450 108l-12-8v16z" fill="#64748b"/>
+  <rect x="355" y="165" width="140" height="52" rx="12" fill="#ede9fe"/><text x="425" y="198" text-anchor="middle" font-size="20" font-weight="700" fill="#6d28d9">12.4 mm</text>
+  <g transform="translate(35 235)">
+   <rect width="450" height="120" rx="10" fill="#fff" stroke="#d8e1ed"/>
+   <line x1="40" y1="95" x2="415" y2="95" stroke="#94a3b8"/><line x1="40" y1="95" x2="40" y2="18" stroke="#94a3b8"/>
+   <g fill="#475569"><circle cx="80" cy="82" r="7"/><circle cx="120" cy="73" r="7"/><circle cx="165" cy="64" r="7"/><circle cx="220" cy="53" r="7"/><circle cx="275" cy="43" r="7"/><circle cx="335" cy="31" r="7"/></g>
+   <path d="M65 88 C155 70 255 51 385 24" fill="none" stroke="#7c3aed" stroke-width="4"/>
   </g>
-  <text x="95" y="382" font-size="16" fill="#2563eb">Class A</text>
-  <text x="180" y="382" font-size="16" fill="#d97706">Class B</text>
-  <rect x="312" y="360" width="150" height="32" rx="5" fill="#eff6ff"/>
-  <text x="387" y="381" text-anchor="middle" font-size="16" fill="#1e3a8a">ŷ ∈ {A, B, ...}</text>
-</g>
-
-<g transform="translate(635,130)" font-family="Arial, sans-serif">
-  <text x="0" y="0" font-size="20" font-weight="700" fill="#17243b">(b) Regression</text>
-  <text x="0" y="28" font-size="17" fill="#64748b">Output: a continuous numerical value</text>
-  <rect x="0" y="52" width="510" height="350" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="470" y2="350" stroke="#94a3b8" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="56" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="435" y="382" font-size="16" fill="#64748b">Input x</text>
-  <text x="15" y="100" font-size="16" fill="#64748b" transform="rotate(-90 15 100)">Target y</text>
-
-  <g fill="#475569" opacity="0.9">
-    <circle cx="95" cy="305" r="7"/><circle cx="125" cy="285" r="7"/><circle cx="158" cy="270" r="7"/><circle cx="190" cy="245" r="7"/>
-    <circle cx="222" cy="235" r="7"/><circle cx="252" cy="205" r="7"/><circle cx="285" cy="198" r="7"/><circle cx="318" cy="165" r="7"/>
-    <circle cx="350" cy="158" r="7"/><circle cx="385" cy="130" r="7"/><circle cx="420" cy="118" r="7"/>
-  </g>
-  <path d="M82 315 C150 285 205 250 260 210 C315 172 365 140 445 105" fill="none" stroke="#2563eb" stroke-width="4"/>
-  <text x="305" y="115" font-size="16" fill="#2563eb">fitted function</text>
-  <rect x="300" y="360" width="162" height="32" rx="5" fill="#eff6ff"/>
-  <text x="381" y="381" text-anchor="middle" font-size="16" fill="#1e3a8a">ŷ ∈ ℝ</text>
+ </g>
 </g>
 </svg>

@@ -1,56 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Supervised learning and unsupervised learning comparison in paper-style feature space plots">
-<rect width="1200" height="600" fill="#ffffff"/>
-<text x="60" y="58" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#17243b">Learning from labeled targets vs discovering structure without labels</text>
-<text x="60" y="91" font-family="Arial, sans-serif" font-size="17" fill="#64748b">Schematic feature-space view</text>
-
-<g transform="translate(55,130)" font-family="Arial, sans-serif">
-  <text x="0" y="0" font-size="20" font-weight="700" fill="#17243b">(a) Supervised Learning</text>
-  <text x="0" y="28" font-size="17" fill="#64748b">Each sample is paired with a target label.</text>
-  <rect x="0" y="52" width="510" height="350" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="470" y2="350" stroke="#94a3b8" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="56" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="435" y="382" font-size="16" fill="#64748b">Feature 1</text>
-  <text x="15" y="100" font-size="16" fill="#64748b" transform="rotate(-90 15 100)">Feature 2</text>
-  <path d="M105 310 C180 270 240 230 300 180 C350 140 405 120 455 110" fill="none" stroke="#334155" stroke-width="3"/>
-  <text x="295" y="118" font-size="16" fill="#334155">decision boundary</text>
-
-  <g fill="#2563eb" stroke="#ffffff" stroke-width="1.5">
-    <circle cx="110" cy="300" r="9"/><circle cx="145" cy="275" r="9"/><circle cx="176" cy="296" r="9"/><circle cx="195" cy="250" r="9"/>
-    <circle cx="225" cy="265" r="9"/><circle cx="245" cy="220" r="9"/><circle cx="275" cy="235" r="9"/><circle cx="305" cy="195" r="9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">정답 Label이 있으면 관계를 배우고, 없으면 데이터 구조를 찾습니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">위: 실제 입력 예시 · 아래: 학습된 Feature Space를 단순화한 모습</text>
+<g font-family="Arial,sans-serif">
+  <g transform="translate(55 130)">
+    <rect width="520" height="405" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="25" y="40" font-size="23" font-weight="700" fill="#1d4ed8">Supervised Learning · 지도학습</text>
+    <g transform="translate(35 70)">
+      <rect width="110" height="74" rx="12" fill="#dbeafe"/><text x="55" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">Image A</text><text x="55" y="58" text-anchor="middle" font-size="18" fill="#1e3a8a">Label: Apple</text>
+      <rect x="135" width="110" height="74" rx="12" fill="#ffedd5"/><text x="190" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#9a3412">Image B</text><text x="190" y="58" text-anchor="middle" font-size="18" fill="#9a3412">Label: Orange</text>
+      <path d="M270 36H335" stroke="#64748b" stroke-width="4"/><path d="M335 36l-12-8v16z" fill="#64748b"/>
+      <rect x="350" width="115" height="74" rx="12" fill="#ecfdf5"/><text x="408" y="45" text-anchor="middle" font-size="19" font-weight="700" fill="#15803d">Model learns</text>
+    </g>
+    <g transform="translate(35 185)">
+      <rect width="450" height="170" rx="12" fill="#fff" stroke="#d8e1ed"/>
+      <line x1="45" y1="135" x2="420" y2="135" stroke="#94a3b8" stroke-width="2"/><line x1="45" y1="135" x2="45" y2="25" stroke="#94a3b8" stroke-width="2"/>
+      <path d="M95 120 C165 102 225 82 300 45 C340 27 380 20 410 18" fill="none" stroke="#334155" stroke-width="3"/>
+      <g fill="#2563eb"><circle cx="90" cy="115" r="8"/><circle cx="125" cy="100" r="8"/><circle cx="160" cy="110" r="8"/><circle cx="205" cy="82" r="8"/></g>
+      <g fill="#f59e0b"><circle cx="250" cy="55" r="8"/><circle cx="295" cy="42" r="8"/><circle cx="345" cy="55" r="8"/><circle cx="382" cy="35" r="8"/></g>
+      <text x="278" y="104" font-size="18" fill="#334155">Decision boundary</text>
+    </g>
+    <text x="260" y="385" text-anchor="middle" font-size="18" fill="#475569">Label을 이용해 “어떤 입력이 어떤 정답인가?”를 학습</text>
   </g>
-  <g fill="#d97706" stroke="#ffffff" stroke-width="1.5">
-    <circle cx="225" cy="160" r="9"/><circle cx="265" cy="145" r="9"/><circle cx="300" cy="120" r="9"/><circle cx="335" cy="145" r="9"/>
-    <circle cx="365" cy="118" r="9"/><circle cx="390" cy="155" r="9"/><circle cx="420" cy="130" r="9"/><circle cx="440" cy="175" r="9"/>
+  <g transform="translate(625 130)">
+    <rect width="520" height="405" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="25" y="40" font-size="23" font-weight="700" fill="#7c3aed">Unsupervised Learning · 비지도학습</text>
+    <g transform="translate(35 70)">
+      <rect width="110" height="74" rx="12" fill="#f1f5f9"/><text x="55" y="45" text-anchor="middle" font-size="18" font-weight="700" fill="#475569">Image 1</text>
+      <rect x="135" width="110" height="74" rx="12" fill="#f1f5f9"/><text x="190" y="45" text-anchor="middle" font-size="18" font-weight="700" fill="#475569">Image 2</text>
+      <path d="M270 36H335" stroke="#64748b" stroke-width="4"/><path d="M335 36l-12-8v16z" fill="#64748b"/>
+      <rect x="350" width="115" height="74" rx="12" fill="#f5f3ff"/><text x="408" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#6d28d9">No Label</text><text x="408" y="58" text-anchor="middle" font-size="18" fill="#6d28d9">find structure</text>
+    </g>
+    <g transform="translate(35 185)">
+      <rect width="450" height="170" rx="12" fill="#fff" stroke="#d8e1ed"/>
+      <ellipse cx="120" cy="95" rx="70" ry="48" fill="#dbeafe" stroke="#93c5fd" stroke-width="2"/>
+      <ellipse cx="300" cy="55" rx="72" ry="45" fill="#ffedd5" stroke="#fdba74" stroke-width="2"/>
+      <ellipse cx="330" cy="125" rx="60" ry="35" fill="#ede9fe" stroke="#c4b5fd" stroke-width="2"/>
+      <g fill="#475569"><circle cx="85" cy="93" r="8"/><circle cx="118" cy="70" r="8"/><circle cx="145" cy="105" r="8"/><circle cx="282" cy="52" r="8"/><circle cx="315" cy="39" r="8"/><circle cx="342" cy="68" r="8"/><circle cx="305" cy="126" r="8"/><circle cx="344" cy="118" r="8"/><circle cx="365" cy="137" r="8"/></g>
+      <text x="115" y="30" font-size="18" fill="#2563eb">Cluster</text><text x="290" y="25" font-size="18" fill="#d97706">Cluster</text><text x="345" y="165" font-size="18" fill="#7c3aed">Cluster</text>
+    </g>
+    <text x="260" y="385" text-anchor="middle" font-size="18" fill="#475569">정답 없이 “어떤 데이터가 서로 비슷한가?”를 탐색</text>
   </g>
-  <g font-size="16" fill="#334155">
-    <circle cx="90" cy="26" r="7" fill="#2563eb"/><text x="104" y="31">Class A</text>
-    <circle cx="180" cy="26" r="7" fill="#d97706"/><text x="194" y="31">Class B</text>
-  </g>
-  <rect x="82" y="365" width="350" height="28" rx="5" fill="#eff6ff"/>
-  <text x="257" y="384" text-anchor="middle" font-size="16" fill="#1e3a8a">Known label → learn mapping from x to y</text>
-</g>
-
-<g transform="translate(635,130)" font-family="Arial, sans-serif">
-  <text x="0" y="0" font-size="20" font-weight="700" fill="#17243b">(b) Unsupervised Learning</text>
-  <text x="0" y="28" font-size="17" fill="#64748b">Only input samples are given; structure is inferred from the data.</text>
-  <rect x="0" y="52" width="510" height="350" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="470" y2="350" stroke="#94a3b8" stroke-width="1.5"/>
-  <line x1="56" y1="350" x2="56" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="435" y="382" font-size="16" fill="#64748b">Feature 1</text>
-  <text x="15" y="100" font-size="16" fill="#64748b" transform="rotate(-90 15 100)">Feature 2</text>
-
-  <ellipse cx="160" cy="250" rx="78" ry="58" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-  <ellipse cx="340" cy="160" rx="84" ry="60" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
-  <ellipse cx="355" cy="290" rx="72" ry="48" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
-  <g fill="#475569">
-    <circle cx="115" cy="235" r="8"/><circle cx="138" cy="270" r="8"/><circle cx="165" cy="225" r="8"/><circle cx="188" cy="252" r="8"/><circle cx="205" cy="278" r="8"/>
-    <circle cx="295" cy="150" r="8"/><circle cx="320" cy="125" r="8"/><circle cx="345" cy="170" r="8"/><circle cx="372" cy="140" r="8"/><circle cx="397" cy="180" r="8"/>
-    <circle cx="315" cy="282" r="8"/><circle cx="345" cy="305" r="8"/><circle cx="372" cy="280" r="8"/><circle cx="397" cy="305" r="8"/>
-  </g>
-  <text x="158" y="185" text-anchor="middle" font-size="16" fill="#2563eb">cluster 1</text>
-  <text x="340" y="92" text-anchor="middle" font-size="16" fill="#d97706">cluster 2</text>
-  <text x="355" y="352" text-anchor="middle" font-size="16" fill="#475569">cluster 3</text>
-  <rect x="82" y="365" width="350" height="28" rx="5" fill="#f8fafc"/>
-  <text x="257" y="384" text-anchor="middle" font-size="16" fill="#334155">No target label → discover groups / representation</text>
 </g>
 </svg>
