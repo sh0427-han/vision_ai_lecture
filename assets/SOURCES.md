@@ -63,7 +63,7 @@
 - Intro 9 / 10은 2172 × 724 해상도의 AI 생성 원본 PNG를 Repository에 직접 저장해 사용합니다.
 - 외부 이미지 서버나 runtime base64 조립에 의존하지 않고 `docs/assets/generated/*_hd.png`를 HTML에서 직접 참조합니다.
 - Intro 9 비교 이미지: RGB 거리 장면 / LiDAR 실내 공간 scan / IR 전기 설비 열화상.
-- Intro 10 활용 이미지: 스마트폰·CCTV·블랙박스 / 로봇청소기·자율주행 / 열화상 검사·비접촉 온도 측정.
+- 기존 Intro 10 합성 이미지는 RGB / IR 영역의 시각 예시로만 재사용하며, LiDAR 생활 예시는 별도 로봇청소기 생성 이미지를 사용합니다.
 
 ## AI 기초 참고 자료 (기존)
 
@@ -117,3 +117,16 @@ https://arxiv.org/abs/1904.08405
 - `docs/assets/ml_workflow.svg`
 
 개념 관계와 흐름을 전달하는 용도이므로 논문 Figure를 복제하지 않고 강의용으로 단순화했습니다.
+
+
+## Intro 원근감 / LiDAR 생활 예시 생성 이미지
+
+- `docs/assets/generated/intro_perspective_cat_generated.svg`
+  - AI로 생성한 교육용 이미지의 사진 영역을 Crop해 사용.
+  - Camera 가까이의 고양이가 크게, 멀리 있는 사람이 작게 보이는 원근감 예시.
+  - 실제 촬영 사진이나 측정 데이터가 아님.
+- `docs/assets/generated/intro_lidar_robot_vacuum_generated.svg`
+  - AI로 생성한 로봇청소기 LiDAR 공간 스캔 장면.
+  - 자동차 이미지는 포함하지 않으며, 로봇청소기의 공간 맵핑 예시에만 사용.
+  - 실제 LiDAR Point Cloud 측정 결과가 아니라 교육용 시각화임.
+- 두 SVG는 생성 이미지 WebP를 내부에 그대로 포함하며 외부 이미지 서버에 의존하지 않습니다.
