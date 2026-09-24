@@ -12,8 +12,9 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 ### 01. Vision AI Intro
 
 - 사람과 컴퓨터가 이미지를 보는 방식의 차이
-- 원근감: 가까운 물체는 크게, 먼 물체는 작게 보이지만 사진 속 크기와 실제 크기는 다를 수 있음
-- RGB 3D Tensor → Pixel / Channel의 의미와 8-bit 0~255 값
+- RGB 3D Tensor: 컴퓨터 입력은 R / G / B 숫자 배열
+- 원근감: 단일 RGB 숫자 배열에는 실제 거리·실제 크기가 직접 들어 있지 않아 가까워서 큰 것과 실제로 큰 것을 해석해야 함
+- Pixel / Channel의 의미와 8-bit 0~255 값
 - Signal / Noise: 판단에 유용한 Pattern과 무관한 변화의 차이
 - 조명, 방향, 크기, 가림, 초점, 색온도 등에 따른 Pixel 변화
 - Generalization: 조건이 달라도 반복되는 공통 Pattern 학습
