@@ -21,6 +21,6 @@
   <rect x="990" y="375" width="150" height="72" rx="14" fill="#ffedd5"/><text x="1065" y="418">Loss</text>
  </g>
  <g stroke="#f97316" stroke-width="5" marker-end="url(#o)"><path d="M985 411H930"/><path d="M755 411H700"/><path d="M525 411H470"/></g>
- <rect x="290" y="490" width="620" height="62" rx="14" fill="#eef6ff"/><text x="600" y="517" text-anchor="middle" font-size="19" font-weight="700" fill="#17243b">각 Weight의 Gradient를 얻으면 Optimizer가 Update할 수 있습니다.</text><text x="600" y="541" text-anchor="middle" font-size="17" fill="#64748b">수학적으로는 Chain Rule을 이용하지만, 처음에는 “영향도를 뒤에서 계산한다”로 이해하면 충분합니다.</text>
+ <rect x="290" y="490" width="620" height="62" rx="14" fill="#eef6ff"/><text x="600" y="517" text-anchor="middle" font-size="19" font-weight="700" fill="#17243b">각 Weight의 Gradient를 얻으면 Optimizer가 Update할 수 있습니다.</text><text x="600" y="541" text-anchor="middle" font-size="18" fill="#64748b">수학적으로는 Chain Rule을 이용하지만, 처음에는 “영향도를 뒤에서 계산한다”로 이해하면 충분합니다.</text>
 </g>
 </svg>
