@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01. Vision AI 입문</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=introperspective-20260924-22">
-  <script src="slide.js?v=introperspective-20260924-22" defer></script>
+  <link rel="stylesheet" href="slide.css?v=perspectivepaper-20260924-23">
+  <script src="slide.js?v=perspectivepaper-20260924-23" defer></script>
 </head>
 <body class="deck-page" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -33,60 +33,11 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <h2 class="slide-title">사진에서 크게 보인다고 실제로 큰 것은 아닙니다</h2>
-      <p class="slide-subtitle">
-        카메라 가까이에 있는 고양이는 화면을 크게 차지하고, 멀리 있는 사람은 작게 보입니다.
-        사람은 원근감과 상식으로 실제 크기를 자연스럽게 추론하지만, 단일 RGB 이미지의 Pixel에는 실제 거리와 크기가 명시되어 있지 않습니다.
-      </p>
-
-      <div class="perspective-example-layout">
-        <figure class="perspective-photo-card">
-          <img
-            src="assets/generated/intro_perspective_cat_generated.svg?v=introperspective-20260924-22"
-            alt="카메라 바로 앞의 고양이가 크게 보이고 멀리 있는 사람이 작게 보이는 원근감 예시"
-          >
-          <figcaption>같은 사진 안에서도 Camera와의 거리에 따라 화면에서 차지하는 크기가 크게 달라집니다.</figcaption>
-        </figure>
-
-        <div class="perspective-explain-stack">
-          <article>
-            <span>사진 속 Pixel 크기</span>
-            <div class="perspective-size-compare">
-              <div class="perspective-size-object perspective-size-object--cat">고양이</div>
-              <b>&gt;</b>
-              <div class="perspective-size-object perspective-size-object--person">사람</div>
-            </div>
-            <p>2D Image에서는 가까운 고양이가 훨씬 크게 보입니다.</p>
-          </article>
-
-          <article>
-            <span>사람의 이해</span>
-            <strong>거리 · 원근감 · 상식을 함께 사용</strong>
-            <p>“고양이가 사람보다 거대한 것이 아니라, Camera에 훨씬 가깝다”고 바로 이해합니다.</p>
-          </article>
-
-          <article class="perspective-explain-stack--key">
-            <span>Computer input</span>
-            <strong>먼저 보이는 것은 2D Pixel Pattern</strong>
-            <p>AI는 많은 데이터에서 원근감과 물체의 Pattern을 학습해야 이런 차이를 다룰 수 있습니다.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="perspective-takeaway">
-        <strong>사진 속 크기 ≠ 실제 크기</strong>
-        <span>이미지를 이해하려면 Pixel 값뿐 아니라 거리·원근감·맥락까지 추론해야 합니다.</span>
-      </div>
-    </div>
-  </section>
-
-<section class="slide">
-    <div class="slide-inner">
       <h2 class="slide-title intro-question-title">이 이미지는 무엇으로 보이나요?</h2>
       <div class="intro-visual intro-question-visual">
         <div class="apple-photo-frame apple-photo-frame--hero">
           <img
-            src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22"
+            src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23"
             alt="붉은 사과 예시 이미지"
           >
         </div>
@@ -115,7 +66,7 @@
           <div class="intro-rgb-source-frame">
             <img
               id="apple-rgb-source"
-              src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22"
+              src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23"
               alt="RGB Channel 값을 추출한 원본 사과 이미지"
             >
           </div>
@@ -175,6 +126,7 @@
       <p class="intro-rgb-footnote">
         실제 사과 이미지를 15 × 10 격자로 축약해 각 위치의 실제 R · G · B 값을 표시했습니다.
         핵심은 <strong>한 이미지가 R · G · B 세 숫자 Plane으로 쌓인다는 것</strong>입니다.
+        이 배열에는 색과 위치는 있지만 <strong>실제 거리와 실제 크기가 직접 들어 있지는 않습니다.</strong>
       </p>
     </div>
   </section>
@@ -182,6 +134,56 @@
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">2</span>
+      <h2 class="slide-title">컴퓨터는 숫자만 보고 “가까워서 큰 것”과 “실제로 큰 것”을 바로 구분하지 못합니다</h2>
+      <p class="slide-subtitle">
+        RGB Image에는 각 Pixel의 색과 위치가 들어 있지만, <strong>실제 거리(m)나 물체의 실제 크기</strong>가 직접 기록되지는 않습니다.
+        그래서 카메라 가까이의 고양이가 크게, 멀리 있는 사람이 작게 보여도 그 이유를 Pixel 숫자만으로 즉시 알 수 없습니다.
+      </p>
+
+      <div class="perspective-example-layout">
+        <figure class="perspective-photo-card">
+          <img
+            src="assets/generated/intro_perspective_cat_generated.svg?v=perspectivepaper-20260924-23"
+            alt="카메라 바로 앞의 고양이가 크게 보이고 멀리 있는 사람이 작게 보이는 원근감 예시"
+          >
+          <figcaption>같은 장면에서도 Camera와의 거리에 따라 물체가 차지하는 Pixel 영역은 크게 달라집니다.</figcaption>
+        </figure>
+
+        <div class="perspective-explain-stack">
+          <article>
+            <span>Computer input</span>
+            <div class="perspective-size-compare">
+              <div class="perspective-size-object perspective-size-object--cat">고양이<br><small>많은 Pixel</small></div>
+              <b>&gt;</b>
+              <div class="perspective-size-object perspective-size-object--person">사람<br><small>적은 Pixel</small></div>
+            </div>
+            <p>숫자 배열만 보면 화면에서 고양이가 훨씬 큰 영역을 차지합니다.</p>
+          </article>
+
+          <article>
+            <span>Human understanding</span>
+            <strong>“고양이가 더 큰 게 아니라 Camera에 더 가깝다”</strong>
+            <p>사람은 원근감, 장면의 맥락, 물체의 일반적인 크기를 함께 이용합니다.</p>
+          </article>
+
+          <article class="perspective-explain-stack--key">
+            <span>Why Vision is hard</span>
+            <strong>2D Pixel 크기 ≠ 실제 크기</strong>
+            <p>AI는 여러 장면을 학습하면서 거리·원근감과 물체 Pattern의 관계를 익혀야 합니다.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="perspective-takeaway">
+        <strong>RGB 숫자 배열에는 “왜 크게 보이는지”가 직접 적혀 있지 않습니다.</strong>
+        <span>가까워서 큰 것인지, 실제로 큰 것인지 이해하려면 Pixel 외의 관계와 맥락을 학습해야 합니다.</span>
+      </div>
+    </div>
+  </section>
+
+<section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">3</span>
       <h2 class="slide-title">Pixel 하나는 “위치 + R · G · B 값”입니다</h2>
       <p class="slide-subtitle">
         Pixel은 이미지의 한 위치입니다. 일반적인 8-bit RGB 이미지에서는 각 위치에
@@ -191,7 +193,7 @@
       <div class="intro-visual pixel-structure-visual">
         <article class="visual-panel pixel-photo-panel">
           <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="픽셀 위치가 표시된 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="픽셀 위치가 표시된 사과 사진">
             <span class="pixel-target" aria-hidden="true"></span>
             <span class="pixel-target-label">Pixel (x=590, y=225)</span>
           </div>
@@ -231,7 +233,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">3</span>
+      <span class="slide-number">4</span>
       <h2 class="slide-title">Signal과 Noise는 이미지 종류가 아니라 “판단 기준”입니다</h2>
       <p class="slide-subtitle">
         둘 다 컴퓨터에는 같은 Pixel 숫자로 들어옵니다.
@@ -272,7 +274,7 @@
           <div class="human-noise-label"><span>02</span><strong>Signal + Noise</strong></div>
           <div class="human-noise-image human-noise-image--mixed">
             <img
-              src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22"
+              src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23"
               alt="무작위 변화가 섞인 사과 이미지"
             >
             <svg class="human-noise-overlay" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
@@ -299,7 +301,7 @@
           <div class="human-noise-label"><span>03</span><strong>Task-relevant pattern</strong></div>
           <div class="human-noise-image">
             <img
-              src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22"
+              src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23"
               alt="사과의 형태와 윤곽이 잘 보이는 이미지"
             >
           </div>
@@ -330,7 +332,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">4</span>
+      <span class="slide-number">5</span>
       <h2 class="slide-title">같은 사과도 촬영 조건이 바뀌면 Pixel 값과 위치가 달라집니다</h2>
       <p class="slide-subtitle">
         사람에게는 같은 물체지만 조명·거리·방향·가림·초점·색 환경이 바뀌면
@@ -338,14 +340,14 @@
       </p>
 
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
-        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="원본 사과"></div><p>기준 입력</p></article>
-        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
-        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
-        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
-        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
+        <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="원본 사과"></div><p>기준 입력</p></article>
+        <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
+        <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
+        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
+        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+        <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
       </div>
 
       <div class="variation-takeaway">
@@ -358,7 +360,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">5</span>
+      <span class="slide-number">6</span>
       <h2 class="slide-title">AI는 Pixel을 외우는 대신, 여러 조건에서 반복되는 Pattern을 배워야 합니다</h2>
       <p class="slide-subtitle">
         <strong>Generalization(일반화)</strong>은 학습에서 직접 보지 못한 조명·가림·초점 조건에서도
@@ -370,9 +372,9 @@
           <span class="generalization-kicker">Training examples</span>
           <strong>학습에서 본 여러 조건</strong>
           <div class="generalization-thumbnails">
-            <div><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="원본 사과"><small>원본</small></div>
-            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="어두운 사과"><small>어두움</small></div>
-            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
+            <div><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="원본 사과"><small>원본</small></div>
+            <div><img class="is-dark" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="어두운 사과"><small>어두움</small></div>
+            <div class="is-occluded"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="일부 가려진 사과"><span aria-hidden="true"></span><small>가림</small></div>
           </div>
         </article>
 
@@ -396,7 +398,7 @@
           <span class="generalization-kicker">Unseen condition</span>
           <strong>처음 보는 조건에서도 같은 의미</strong>
           <div class="generalization-result-image">
-            <img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="처음 보는 흐린 조건의 사과">
+            <img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="처음 보는 흐린 조건의 사과">
           </div>
           <div class="generalization-prediction">Apple <b>0.97</b></div>
         </article>
@@ -410,7 +412,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">6</span>
+      <span class="slide-number">7</span>
       <h2 class="slide-title">Vision AI는 숫자 배열에서 필요한 Pattern을 찾아 결과로 바꿉니다</h2>
       <p class="slide-subtitle">
         입력은 Pixel 숫자이지만, 모델은 학습을 통해 경계·색·질감·형태 같은 Feature를 이용하고
@@ -420,7 +422,7 @@
       <div class="camera-input-pipeline">
         <article class="pipeline-stage">
           <span class="pipeline-kicker">Camera</span>
-          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="카메라 RGB 입력 예시"></div>
+          <div class="apple-photo-frame pipeline-photo"><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="카메라 RGB 입력 예시"></div>
           <strong>RGB 이미지</strong>
         </article>
 
@@ -461,7 +463,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">7</span>
+      <span class="slide-number">8</span>
       <h2 class="slide-title">같은 세상도 Sensor에 따라 전혀 다른 데이터가 됩니다</h2>
       <p class="slide-subtitle">
         RGB Camera는 색과 밝기를, LiDAR는 거리를, IR Sensor는 적외선 에너지를 측정합니다.
@@ -469,7 +471,7 @@
       </p>
 
       <div class="sensor-generated-visual">
-        <img src="assets/generated/intro_sensor_comparison_hd.png?v=introperspective-20260924-22" alt="RGB 컬러 장면, LiDAR 실내 Point Cloud, IR 열화상을 나란히 비교한 생성 이미지" loading="lazy" decoding="async">
+        <img src="assets/generated/intro_sensor_comparison_hd.png?v=perspectivepaper-20260924-23" alt="RGB 컬러 장면, LiDAR 실내 Point Cloud, IR 열화상을 나란히 비교한 생성 이미지" loading="lazy" decoding="async">
 </div>
 
       <div class="sensor-generated-labels">
@@ -495,7 +497,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">8</span>
+      <span class="slide-number">9</span>
       <h2 class="slide-title">우리는 이미 매일 Vision Sensor를 사용하고 있습니다</h2>
       <p class="slide-subtitle">
         스마트폰과 CCTV, 로봇청소기, 열화상 검사처럼 익숙한 제품에서도
@@ -505,7 +507,7 @@
       <div class="sensor-life-trio">
         <article class="sensor-life-visual-card">
           <div class="sensor-life-crop sensor-life-crop--rgb">
-            <img src="assets/generated/intro_sensor_everyday_hd.png?v=introperspective-20260924-22" alt="스마트폰과 CCTV 등 RGB Camera 활용 장면">
+            <img src="assets/generated/intro_sensor_everyday_hd.png?v=perspectivepaper-20260924-23" alt="스마트폰과 CCTV 등 RGB Camera 활용 장면">
           </div>
           <div class="sensor-life-visual-body">
             <div><strong>RGB Camera</strong><span>색 · 밝기 · 형태</span></div>
@@ -516,7 +518,7 @@
 
         <article class="sensor-life-visual-card sensor-life-visual-card--lidar">
           <div class="sensor-life-image">
-            <img src="assets/generated/intro_lidar_robot_vacuum_generated.svg?v=introperspective-20260924-22" alt="로봇청소기가 LiDAR로 거실의 벽과 가구까지 거리를 스캔하는 장면">
+            <img src="assets/generated/intro_lidar_robot_vacuum_generated.svg?v=perspectivepaper-20260924-23" alt="로봇청소기가 LiDAR로 거실의 벽과 가구까지 거리를 스캔하는 장면">
           </div>
           <div class="sensor-life-visual-body">
             <div><strong>LiDAR</strong><span>거리 · 공간 구조</span></div>
@@ -527,7 +529,7 @@
 
         <article class="sensor-life-visual-card">
           <div class="sensor-life-crop sensor-life-crop--ir">
-            <img src="assets/generated/intro_sensor_everyday_hd.png?v=introperspective-20260924-22" alt="열화상 검사와 비접촉 온도 측정 등 IR Sensor 활용 장면">
+            <img src="assets/generated/intro_sensor_everyday_hd.png?v=perspectivepaper-20260924-23" alt="열화상 검사와 비접촉 온도 측정 등 IR Sensor 활용 장면">
           </div>
           <div class="sensor-life-visual-body">
             <div><strong>IR Sensor / Camera</strong><span>적외선 · 열 정보</span></div>

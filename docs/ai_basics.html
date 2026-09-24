@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>02. AI 기초</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="slide.css?v=introperspective-20260924-22">
-  <script src="slide.js?v=introperspective-20260924-22" defer></script>
+  <link rel="stylesheet" href="slide.css?v=perspectivepaper-20260924-23">
+  <script src="slide.js?v=perspectivepaper-20260924-23" defer></script>
 </head>
 <body class="deck-page" data-prev-page="intro.html" data-next-page="vision_ai.html">
 <header class="site-header">
@@ -36,7 +36,7 @@
     <div class="slide-inner">
       <span class="slide-number">1</span>
       <h2 class="slide-title">AI, Machine Learning, Deep Learning은 어떻게 다를까?</h2>
-      <div class="figure"><img src="assets/ai_ml_dl.svg?v=introperspective-20260924-22" alt="AI Machine Learning Deep Learning 관계"></div>
+      <div class="figure"><img src="assets/ai_ml_dl.svg?v=perspectivepaper-20260924-23" alt="AI Machine Learning Deep Learning 관계"></div>
       <div class="callout"><strong>Computer Vision은 이미지·영상 문제를 다루는 분야</strong>이고, 그 문제를 해결하기 위해 전통적 영상처리, Machine Learning, Deep Learning을 모두 사용할 수 있습니다.</div>
     </div>
   </section>
@@ -45,28 +45,24 @@
     <div class="slide-inner">
       <span class="slide-number">2</span>
       <h2 class="slide-title">규칙을 사람이 직접 쓰는 것 vs 데이터에서 배우는 것</h2>
-      <div class="figure"><img src="assets/rule_vs_ml.svg?v=introperspective-20260924-22" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
+      <div class="figure"><img src="assets/rule_vs_ml.svg?v=perspectivepaper-20260924-23" alt="Rule-based 방식과 Machine Learning 방식 비교"></div>
     </div>
   </section>
 
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">3</span>
-      <h2 class="slide-title">정답 Label이 있느냐에 따라 학습 방식이 달라집니다</h2>
+      <h2 class="slide-title">지도학습은 Label로 관계를 배우고, 비지도학습은 데이터 구조를 찾습니다</h2>
       <p class="slide-subtitle">
-        <strong>Supervised Learning(지도학습)</strong>은 입력과 정답을 함께 보며 관계를 배우고,
-        <strong>Unsupervised Learning(비지도학습)</strong>은 정답 Label 없이 데이터의 구조와 패턴을 찾습니다.
+        <strong>Supervised Learning(지도학습)</strong>은 입력과 Target Label의 관계를 학습하고,
+        <strong>Unsupervised Learning(비지도학습)</strong>은 Label 없이 Feature Space의 구조·군집·Representation을 찾습니다.
       </p>
-      <div class="figure">
-        <img
-          src="assets/supervised_unsupervised_industry.svg?v=introperspective-20260924-22"
-          alt="산업 데이터에서 지도학습과 비지도학습을 사용하는 예시"
-        >
+      <div class="figure figure--ai-wide">
+        <img src="assets/supervised_unsupervised_industry.svg?v=perspectivepaper-20260924-23" alt="Feature space에서 지도학습의 label 기반 decision boundary와 비지도학습의 cluster 구조를 비교한 도표">
       </div>
       <div class="callout">
-        <strong>Vision AI에서 가장 흔한 출발점:</strong>
-        정상/불량 Classification, Bounding Box Detection, Pixel Mask Segmentation처럼 정답 Label을 이용하는 문제는 지도학습입니다.
-        비지도학습은 Label이 부족할 때 데이터 구조 탐색, 군집화, Representation 학습 등에 활용할 수 있습니다.
+        <strong>Vision AI 예:</strong> Classification · Detection · Segmentation의 정답 Label로 학습하면 지도학습,
+        Label 없이 비슷한 Image를 묶거나 Representation을 찾으면 비지도학습입니다.
       </div>
     </div>
   </section>
@@ -74,9 +70,14 @@
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">4</span>
-      <h2 class="slide-title">분류와 회귀</h2>
-      <p class="slide-subtitle">Classification은 범주를, Regression은 연속적인 숫자 값을 예측합니다.</p>
-      <div class="figure"><img src="assets/classification_regression.svg?v=introperspective-20260924-22" alt="분류와 회귀의 출력 차이"></div>
+      <h2 class="slide-title">Classification은 범주, Regression은 연속값을 예측합니다</h2>
+      <p class="slide-subtitle">
+        둘 다 대표적인 지도학습 Task입니다. Classification은 유한한 Class 중 하나를 고르고,
+        Regression은 실수 범위의 연속적인 값을 예측합니다.
+      </p>
+      <div class="figure figure--ai-wide">
+        <img src="assets/classification_regression.svg?v=perspectivepaper-20260924-23" alt="Classification의 decision boundary와 Regression의 fitted function을 비교한 도표">
+      </div>
     </div>
   </section>
 
@@ -248,7 +249,7 @@
     <span class="slide-number">9</span>
     <h2 class="slide-title">Optimizer는 Loss가 낮아지는 쪽으로 Parameter를 이동시킵니다</h2>
     <p class="slide-subtitle">Gradient는 Loss가 증가하는 방향을 알려줍니다. Optimizer는 그 반대 방향으로 Weight와 Bias를 조금씩 수정합니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/optimizer_loss_landscape.svg?v=introperspective-20260924-22" alt="Loss landscape에서 낮은 Loss 방향으로 이동하는 Optimizer"></div>
+    <div class="figure figure--ai-wide"><img src="assets/optimizer_loss_landscape.svg?v=perspectivepaper-20260924-23" alt="Loss landscape에서 낮은 Loss 방향으로 이동하는 Optimizer"></div>
     <div class="optimizer-equation"><span>새 Parameter</span><b>=</b><span>현재 Parameter</span><b>−</b><span>Learning Rate × Gradient</span></div>
   </div>
 </section>
@@ -258,7 +259,7 @@
       <span class="slide-number">10</span>
       <h2 class="slide-title">신경망의 가장 단순한 계산을 Perceptron으로 이해해 봅시다</h2>
       <div class="perceptron-layout">
-        <div class="figure"><img src="assets/perceptron.svg?v=introperspective-20260924-22" alt="Perceptron 구조"></div>
+        <div class="figure"><img src="assets/perceptron.svg?v=perspectivepaper-20260924-23" alt="Perceptron 구조"></div>
         <div class="formula-card">
           <strong>Perceptron 계산</strong>
           <div class="math-block">
@@ -290,7 +291,7 @@
     <span class="slide-number">11</span>
     <h2 class="slide-title">AND는 직선으로 나뉘지만, XOR는 직선 하나로 나눌 수 없습니다</h2>
     <p class="slide-subtitle">이 차이가 “왜 Neural Network에 비선형 Activation이 필요한가?”로 이어집니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/and_xor_linear_separability.svg?v=introperspective-20260924-22" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
+    <div class="figure figure--ai-wide"><img src="assets/and_xor_linear_separability.svg?v=perspectivepaper-20260924-23" alt="AND와 XOR의 선형 분리 가능성 비교"></div>
     <div class="callout"><strong>핵심:</strong> Linear Model 하나는 직선 경계만 만들 수 있습니다. XOR처럼 더 복잡한 경계를 표현하려면 비선형성이 필요합니다.</div>
   </div>
 </section>
@@ -323,7 +324,7 @@
     <span class="slide-number">13</span>
     <h2 class="slide-title">Activation Function이 비선형성을 추가합니다</h2>
     <p class="slide-subtitle">Linear Layer 사이에 ReLU 같은 비선형 함수를 넣으면, 여러 Layer를 조합해 더 복잡한 Decision Boundary를 만들 수 있습니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/activation_relu_boundary.svg?v=introperspective-20260924-22" alt="ReLU 함수와 비선형 결정 경계"></div>
+    <div class="figure figure--ai-wide"><img src="assets/activation_relu_boundary.svg?v=perspectivepaper-20260924-23" alt="ReLU 함수와 비선형 결정 경계"></div>
     <div class="callout"><strong>ReLU:</strong> 음수는 0, 양수는 그대로 통과시키는 단순한 함수지만 Network 전체에는 중요한 비선형성을 제공합니다.</div>
   </div>
 </section>
@@ -332,7 +333,7 @@
     <div class="slide-inner">
       <span class="slide-number">14</span>
       <h2 class="slide-title">Feature와 Representation</h2>
-      <div class="figure"><img src="assets/feature_representation.svg?v=introperspective-20260924-22" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
+      <div class="figure"><img src="assets/feature_representation.svg?v=perspectivepaper-20260924-23" alt="입력 이미지가 Feature와 Representation으로 바뀌는 과정"></div>
     </div>
   </section>
 
@@ -341,7 +342,7 @@
       <span class="slide-number">15</span>
       <h2 class="slide-title">Linear Regression에서 본 학습 원리는 신경망에서도 같습니다</h2>
       <p class="slide-subtitle">모델이 복잡해져도 핵심은 Prediction을 만들고, Loss를 계산하고, Parameter를 수정하는 반복입니다.</p>
-      <div class="figure"><img src="assets/training_loop.svg?v=introperspective-20260924-22" alt="예측 손실 계산 파라미터 업데이트로 이어지는 학습 루프"></div>
+      <div class="figure"><img src="assets/training_loop.svg?v=perspectivepaper-20260924-23" alt="예측 손실 계산 파라미터 업데이트로 이어지는 학습 루프"></div>
     </div>
   </section>
 
@@ -350,7 +351,7 @@
     <span class="slide-number">16</span>
     <h2 class="slide-title">Backpropagation은 Loss의 영향을 뒤에서 앞으로 전달합니다</h2>
     <p class="slide-subtitle">Forward에서 Prediction과 Loss를 계산한 뒤, Backward에서 각 Weight가 Loss에 얼마나 영향을 주었는지 Gradient를 계산합니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/backpropagation_visual.svg?v=introperspective-20260924-22" alt="Forward와 Backward 흐름으로 설명한 Backpropagation"></div>
+    <div class="figure figure--ai-wide"><img src="assets/backpropagation_visual.svg?v=perspectivepaper-20260924-23" alt="Forward와 Backward 흐름으로 설명한 Backpropagation"></div>
   </div>
 </section>
 
@@ -370,7 +371,7 @@
       <article class="train-infer-lane train-infer-lane--infer">
         <div class="train-infer-lane-title"><strong>Inference</strong><span>새로운 입력을 예측</span></div>
         <div class="train-infer-lane-flow train-infer-lane-flow--short">
-          <img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="새로운 사과 이미지"><b>→</b><div>Trained Model</div><b>→</b><div class="train-infer-result">Apple <strong>0.98</strong></div>
+          <img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="새로운 사과 이미지"><b>→</b><div>Trained Model</div><b>→</b><div class="train-infer-result">Apple <strong>0.98</strong></div>
         </div>
         <p><strong>없음:</strong> Label · Backward · Weight Update</p>
       </article>
@@ -382,7 +383,7 @@
     <div class="slide-inner">
       <span class="slide-number">18</span>
       <h2 class="slide-title">Batch, Iteration, Epoch</h2>
-      <div class="figure"><img src="assets/batch_epoch.svg?v=introperspective-20260924-22" alt="Dataset Batch Iteration Epoch 관계"></div>
+      <div class="figure"><img src="assets/batch_epoch.svg?v=perspectivepaper-20260924-23" alt="Dataset Batch Iteration Epoch 관계"></div>
     </div>
   </section>
 
@@ -394,9 +395,9 @@
     <div class="dataset-quality-grid dataset-quality-grid--large">
       <article>
         <div class="dataset-mini-images">
-          <img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="기준 이미지">
-          <img class="dq-dark" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="어두운 조건">
-          <img class="dq-small" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="작게 보이는 조건">
+          <img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="기준 이미지">
+          <img class="dq-dark" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="어두운 조건">
+          <img class="dq-small" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="작게 보이는 조건">
         </div>
         <div><span>Coverage</span><strong>운영 조건을 다양하게 포함</strong><small>조명 · 크기 · 배경 · 설비 · 시간대</small></div>
       </article>
@@ -426,7 +427,7 @@
       <div class="preprocess-pipeline">
         <article class="preprocess-stage">
           <span>01 Camera</span>
-          <img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="원본 사과 이미지">
+          <img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="원본 사과 이미지">
           <strong>예: 1920 × 1080 RGB</strong>
         </article>
         <div class="preprocess-arrow">→</div>
@@ -460,11 +461,11 @@
         실제 현장에서 생길 수 있는 변화 범위 안에서 이미지를 변형해, 모델이 특정 Pixel 조건만 외우는 것을 줄일 수 있습니다.
       </p>
       <div class="augmentation-grid">
-        <article><span>Original</span><img src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="원본 사과"></article>
-        <article><span>Brightness</span><img class="aug-bright" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="밝기 변화 사과"></article>
-        <article><span>Rotation</span><img class="aug-rotate" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="회전된 사과"></article>
-        <article><span>Scale / Crop</span><img class="aug-scale" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="확대된 사과"></article>
-        <article><span>Blur</span><img class="aug-blur" src="assets/vision_task_apple_reference.jpg?v=introperspective-20260924-22" alt="흐려진 사과"></article>
+        <article><span>Original</span><img src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="원본 사과"></article>
+        <article><span>Brightness</span><img class="aug-bright" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="밝기 변화 사과"></article>
+        <article><span>Rotation</span><img class="aug-rotate" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="회전된 사과"></article>
+        <article><span>Scale / Crop</span><img class="aug-scale" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="확대된 사과"></article>
+        <article><span>Blur</span><img class="aug-blur" src="assets/vision_task_apple_reference.jpg?v=perspectivepaper-20260924-23" alt="흐려진 사과"></article>
       </div>
       <div class="augmentation-message">
         <strong>목적</strong><span>데이터 수를 단순히 늘리는 것보다, 운영 환경에서 중요하지 않은 변화에 덜 민감하도록 학습</span>
@@ -478,7 +479,7 @@
     <span class="slide-number">22</span>
     <h2 class="slide-title">Train / Validation / Test는 서로 다른 역할을 맡습니다</h2>
     <p class="slide-subtitle">Train은 Weight 학습, Validation은 모델·설정 선택, Test는 마지막 일반화 평가에 사용합니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/dataset_split.svg?v=introperspective-20260924-22" alt="Train Validation Test 역할과 데이터 분리 원칙"></div>
+    <div class="figure figure--ai-wide"><img src="assets/dataset_split.svg?v=perspectivepaper-20260924-23" alt="Train Validation Test 역할과 데이터 분리 원칙"></div>
   </div>
 </section>
 
@@ -533,7 +534,7 @@
     <span class="slide-number">25</span>
     <h2 class="slide-title">Data Leakage는 평가할 때 몰라야 하는 정보가 새어 들어간 경우입니다</h2>
     <p class="slide-subtitle">Validation/Test 성능이 실제보다 좋아 보일 수 있기 때문에 Split 이후의 정보 흐름을 엄격히 관리해야 합니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/data_leakage_visual.svg?v=introperspective-20260924-22" alt="대표적인 Data Leakage 세 가지 예시"></div>
+    <div class="figure figure--ai-wide"><img src="assets/data_leakage_visual.svg?v=perspectivepaper-20260924-23" alt="대표적인 Data Leakage 세 가지 예시"></div>
   </div>
 </section>
 
@@ -542,7 +543,7 @@
     <span class="slide-number">26</span>
     <h2 class="slide-title">이미지·영상은 Random Frame Split보다 원본 단위 분리가 안전합니다</h2>
     <p class="slide-subtitle">같은 영상·설비·대상·시간대에서 나온 Sample은 서로 강하게 연관되어 있을 수 있습니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/group_split_visual.svg?v=introperspective-20260924-22" alt="Random Frame Split과 Group Split 비교"></div>
+    <div class="figure figure--ai-wide"><img src="assets/group_split_visual.svg?v=perspectivepaper-20260924-23" alt="Random Frame Split과 Group Split 비교"></div>
   </div>
 </section>
 
@@ -568,7 +569,7 @@
     <span class="slide-number">28</span>
     <h2 class="slide-title">목표는 Train 점수가 아니라 새로운 데이터에서의 성능입니다</h2>
     <p class="slide-subtitle">Train에 지나치게 맞는 Overfitting을 피하고, 보지 못한 데이터에서도 성능이 유지되는 Generalization을 확인해야 합니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/overfit_leakage.svg?v=introperspective-20260924-22" alt="Overfitting과 Generalization을 Train Validation Loss로 비교"></div>
+    <div class="figure figure--ai-wide"><img src="assets/overfit_leakage.svg?v=perspectivepaper-20260924-23" alt="Overfitting과 Generalization을 Train Validation Loss로 비교"></div>
   </div>
 </section>
 
@@ -577,7 +578,7 @@
     <span class="slide-number">29</span>
     <h2 class="slide-title">실제 AI 개발은 운영 결과를 다시 Data로 연결하는 반복 Cycle입니다</h2>
     <p class="slide-subtitle">Training 한 번으로 끝나는 것이 아니라, Deploy 후 실패 사례를 Monitor하고 다음 Dataset과 학습에 반영합니다.</p>
-    <div class="figure figure--ai-wide"><img src="assets/ml_workflow.svg?v=introperspective-20260924-22" alt="Data Train Evaluate Deploy Monitor가 반복되는 AI 개발 Cycle"></div>
+    <div class="figure figure--ai-wide"><img src="assets/ml_workflow.svg?v=perspectivepaper-20260924-23" alt="Data Train Evaluate Deploy Monitor가 반복되는 AI 개발 Cycle"></div>
   </div>
 </section>
 </main>
