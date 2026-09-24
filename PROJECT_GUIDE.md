@@ -26,15 +26,15 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 - AI / Machine Learning / Deep Learning / Computer Vision의 관계
 - Supervised Learning / Unsupervised Learning
-- Classification / Regression
-- Binary / Multi-class Classification
-- Linear Regression
-- Loss Function / Gradient / Optimizer
-- Parameter / Hyperparameter
-- Perceptron
-- AND / XOR
+- Classification / Regression / Binary / Multi-class Classification
+- Perceptron → Weight / Bias → Parameter / Hyperparameter
+- AND / XOR와 Linear Separability
+- Perceptron → Layer → Neural Network
 - 비선형성과 Activation Function
-- Backpropagation
+- Feature / Representation
+- Linear Regression으로 보는 Parameter 학습
+- Loss Function → Gradient → Optimizer / Learning Rate
+- Training Loop / Backpropagation
 - Training / Inference
 - Batch / Iteration / Epoch
 - Image Preprocessing
