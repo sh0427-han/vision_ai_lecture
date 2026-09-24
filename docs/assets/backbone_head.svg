@@ -17,7 +17,7 @@
   <text x="180" y="75" text-anchor="middle" font-size="18" fill="#475569">공통 Feature 추출</text>
   <g transform="translate(35 105)">
    <rect width="65" height="110" rx="8" fill="#dbeafe"/><rect x="80" y="15" width="65" height="95" rx="8" fill="#bfdbfe"/><rect x="160" y="30" width="65" height="80" rx="8" fill="#93c5fd"/><rect x="240" y="45" width="65" height="65" rx="8" fill="#60a5fa"/>
-   <text x="32" y="140" font-size="16" fill="#475569">Edge</text><text x="112" y="140" font-size="16" fill="#475569">Texture</text><text x="192" y="140" font-size="16" fill="#475569">Part</text><text x="270" y="140" font-size="16" fill="#475569">Feature</text>
+   <text x="32" y="140" font-size="18" fill="#475569">Edge</text><text x="112" y="140" font-size="18" fill="#475569">Texture</text><text x="192" y="140" font-size="18" fill="#475569">Part</text><text x="270" y="140" font-size="18" fill="#475569">Feature</text>
   </g>
  </g>
  <path d="M715 280H770" stroke="#64748b" stroke-width="5" marker-end="url(#a)"/>
