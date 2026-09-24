@@ -5,35 +5,35 @@
 
 <g transform="translate(55,130)" font-family="Arial, sans-serif">
   <text x="0" y="0" font-size="20" font-weight="700" fill="#17243b">(a) Classification</text>
-  <text x="0" y="28" font-size="15" fill="#64748b">Output: one of a finite set of categories</text>
+  <text x="0" y="28" font-size="17" fill="#64748b">Output: one of a finite set of categories</text>
   <rect x="0" y="52" width="510" height="350" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
   <line x1="56" y1="350" x2="470" y2="350" stroke="#94a3b8" stroke-width="1.5"/>
   <line x1="56" y1="350" x2="56" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="435" y="382" font-size="14" fill="#64748b">Feature 1</text>
-  <text x="15" y="100" font-size="14" fill="#64748b" transform="rotate(-90 15 100)">Feature 2</text>
+  <text x="435" y="382" font-size="16" fill="#64748b">Feature 1</text>
+  <text x="15" y="100" font-size="16" fill="#64748b" transform="rotate(-90 15 100)">Feature 2</text>
 
   <path d="M100 315 C170 270 240 235 300 190 C350 150 400 125 455 115" fill="none" stroke="#334155" stroke-width="3"/>
-  <text x="315" y="110" font-size="14" fill="#334155">decision boundary</text>
+  <text x="315" y="110" font-size="16" fill="#334155">decision boundary</text>
   <g fill="#2563eb" stroke="#fff" stroke-width="1.5">
     <circle cx="110" cy="300" r="9"/><circle cx="145" cy="278" r="9"/><circle cx="180" cy="295" r="9"/><circle cx="205" cy="255" r="9"/><circle cx="240" cy="270" r="9"/><circle cx="270" cy="225" r="9"/>
   </g>
   <g fill="#d97706" stroke="#fff" stroke-width="1.5">
     <circle cx="245" cy="160" r="9"/><circle cx="285" cy="142" r="9"/><circle cx="320" cy="120" r="9"/><circle cx="355" cy="148" r="9"/><circle cx="395" cy="126" r="9"/><circle cx="425" cy="170" r="9"/>
   </g>
-  <text x="95" y="382" font-size="14" fill="#2563eb">Class A</text>
-  <text x="180" y="382" font-size="14" fill="#d97706">Class B</text>
+  <text x="95" y="382" font-size="16" fill="#2563eb">Class A</text>
+  <text x="180" y="382" font-size="16" fill="#d97706">Class B</text>
   <rect x="312" y="360" width="150" height="32" rx="5" fill="#eff6ff"/>
-  <text x="387" y="381" text-anchor="middle" font-size="14" fill="#1e3a8a">ŷ ∈ {A, B, ...}</text>
+  <text x="387" y="381" text-anchor="middle" font-size="16" fill="#1e3a8a">ŷ ∈ {A, B, ...}</text>
 </g>
 
 <g transform="translate(635,130)" font-family="Arial, sans-serif">
   <text x="0" y="0" font-size="20" font-weight="700" fill="#17243b">(b) Regression</text>
-  <text x="0" y="28" font-size="15" fill="#64748b">Output: a continuous numerical value</text>
+  <text x="0" y="28" font-size="17" fill="#64748b">Output: a continuous numerical value</text>
   <rect x="0" y="52" width="510" height="350" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
   <line x1="56" y1="350" x2="470" y2="350" stroke="#94a3b8" stroke-width="1.5"/>
   <line x1="56" y1="350" x2="56" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="435" y="382" font-size="14" fill="#64748b">Input x</text>
-  <text x="15" y="100" font-size="14" fill="#64748b" transform="rotate(-90 15 100)">Target y</text>
+  <text x="435" y="382" font-size="16" fill="#64748b">Input x</text>
+  <text x="15" y="100" font-size="16" fill="#64748b" transform="rotate(-90 15 100)">Target y</text>
 
   <g fill="#475569" opacity="0.9">
     <circle cx="95" cy="305" r="7"/><circle cx="125" cy="285" r="7"/><circle cx="158" cy="270" r="7"/><circle cx="190" cy="245" r="7"/>
@@ -41,8 +41,8 @@
     <circle cx="350" cy="158" r="7"/><circle cx="385" cy="130" r="7"/><circle cx="420" cy="118" r="7"/>
   </g>
   <path d="M82 315 C150 285 205 250 260 210 C315 172 365 140 445 105" fill="none" stroke="#2563eb" stroke-width="4"/>
-  <text x="305" y="115" font-size="14" fill="#2563eb">fitted function</text>
+  <text x="305" y="115" font-size="16" fill="#2563eb">fitted function</text>
   <rect x="300" y="360" width="162" height="32" rx="5" fill="#eff6ff"/>
-  <text x="381" y="381" text-anchor="middle" font-size="14" fill="#1e3a8a">ŷ ∈ ℝ</text>
+  <text x="381" y="381" text-anchor="middle" font-size="16" fill="#1e3a8a">ŷ ∈ ℝ</text>
 </g>
 </svg>
