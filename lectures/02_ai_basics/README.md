@@ -37,6 +37,21 @@ Vision AI를 이해하기 전에 필요한 AI / Machine Learning / Deep Learning
 
 ## 핵심 개념
 
+## 지도학습과 비지도학습
+
+- **Supervised Learning**: Input과 Target Label의 관계를 학습해 새로운 Input의 Target을 예측
+- **Unsupervised Learning**: Target Label 없이 데이터의 Cluster, Structure, Representation을 탐색
+
+강의 Figure는 논문에서 자주 사용하는 **Feature Space scatter plot** 형태로 두 학습 방식을 비교합니다.
+
+## Classification과 Regression
+
+- **Classification**: 유한한 Class 중 하나를 예측하는 문제
+- **Regression**: 연속적인 실수 값을 예측하는 문제
+
+강의 Figure는 Classification의 **Decision Boundary**와 Regression의 **Fitted Function**을 같은 좌표계 스타일로 비교합니다.
+
+
 ### Parameter와 Hyperparameter
 
 - **Parameter**: Weight, Bias처럼 Training 과정에서 Gradient에 의해 수정되는 값
