@@ -21,7 +21,7 @@
   <text x="25" y="38" font-size="24" font-weight="700" fill="#15803d">Inference · 실제 사용할 때</text>
   <g text-anchor="middle" font-size="19" font-weight="700" fill="#17243b">
    <rect x="150" y="70" width="180" height="72" rx="12" fill="#fff"/><text x="240" y="113">New Image</text>
-   <rect x="450" y="70" width="180" height="72" rx="12" fill="#fff"/><text x="540" y="102">Trained Model</text><text x="540" y="126" font-size="16" fill="#64748b">Weight 고정</text>
+   <rect x="450" y="70" width="180" height="72" rx="12" fill="#fff"/><text x="540" y="102">Trained Model</text><text x="540" y="126" font-size="18" fill="#64748b">Weight 고정</text>
    <rect x="750" y="70" width="180" height="72" rx="12" fill="#dcfce7"/><text x="840" y="102">Prediction</text><text x="840" y="126" fill="#15803d">Apple 0.98</text>
   </g>
   <g stroke="#64748b" stroke-width="4" marker-end="url(#a)"><path d="M340 106H440"/><path d="M640 106H740"/></g>
