@@ -140,3 +140,26 @@ https://arxiv.org/abs/1904.08405
 - `docs/assets/classification_regression.svg`
   - Classification은 discrete class와 Decision Boundary, Regression은 continuous target과 fitted function으로 표현.
 - 두 Figure 모두 특정 논문의 Figure를 복제한 것이 아니라, 학술 논문에서 흔히 사용하는 축·점·경계선 중심의 시각 문법을 강의용으로 재구성한 도표입니다.
+
+
+## Beginner-first AI Basics 재구성
+
+2026-09-25 개편에서는 처음 AI를 배우는 학생이 개념을 순서대로 연결할 수 있도록 다음 교육용 SVG를 새로 만들거나 전면 재작성했습니다.
+
+- `docs/assets/perceptron.svg`
+- `docs/assets/weight_bias_intuition.svg`
+- `docs/assets/and_xor_linear_separability.svg`
+- `docs/assets/neural_network_layers.svg`
+- `docs/assets/linear_layers_collapse.svg`
+- `docs/assets/activation_relu_boundary.svg`
+- `docs/assets/feature_representation.svg`
+- `docs/assets/loss_intuition.svg`
+- `docs/assets/gradient_intuition.svg`
+- `docs/assets/optimizer_loss_landscape.svg`
+- `docs/assets/training_loop.svg`
+- `docs/assets/backpropagation_visual.svg`
+- `docs/assets/training_inference.svg`
+- `docs/assets/batch_epoch.svg`
+- `docs/assets/kfold_visual.svg`
+
+특정 논문의 Figure를 복제하지 않았으며, Neural Network / Optimization 교과서에서 일반적으로 사용하는 Node, Layer, Loss landscape, Gradient, Decision Boundary 표현을 입문 강의용으로 단순화했습니다.
