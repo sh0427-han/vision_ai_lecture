@@ -48,20 +48,19 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 ### 03. Vision AI
 
-- 현장 문제 → 원하는 Output → Task → Label → Model
-- Classification
-- Object Detection
-- Segmentation
-- Task별 Label 구조
-- CNN
-- Kernel / Convolution
+- 현장 질문 → 원하는 Output → Vision Task → Label → Model / Metric
+- Classification / Object Detection / Segmentation
+- Task별 Label 구조와 IoU
+- CNN의 Local Connectivity / Weight Sharing
+- Kernel: Local Pattern에 반응하는 학습 Weight
+- Convolution 계산
 - Stride / Padding / Downsampling
 - Feature Map / Channel
-- Feature Hierarchy
-- Receptive Field
+- Feature Hierarchy / Receptive Field
 - CNN Training
 - Backbone / Task Head
 - Transfer Learning / Fine-tuning
+- 문제 정의 → Data/Label → Train → Evaluate → Deploy → Monitor Cycle
 
 현재 강의 범위에서는 Tracking, Depth/3D, Vision Transformer를 제외합니다.
 

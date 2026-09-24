@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Stride, Padding, Downsampling은 “어디를 계산하고 얼마나 줄일지”를 정합니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">수식보다 먼저 공간적으로 어떤 변화가 생기는지 이해하면 됩니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(45 145)">
+  <rect width="350" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="23" font-weight="700" fill="#1d4ed8">Stride · 이동 간격</text>
+  <g transform="translate(55 80)">
+   <rect width="220" height="220" fill="#fff" stroke="#d8e1ed"/>
+   <g stroke="#e2e8f0"><path d="M44 0V220M88 0V220M132 0V220M176 0V220M0 44H220M0 88H220M0 132H220M0 176H220"/></g>
+   <rect x="2" y="2" width="128" height="128" fill="none" stroke="#2563eb" stroke-width="5"/>
+   <rect x="90" y="90" width="128" height="128" fill="none" stroke="#60a5fa" stroke-width="5" stroke-dasharray="10 8"/>
+  </g>
+  <text x="175" y="330" text-anchor="middle" font-size="18" fill="#475569">Stride 2 → 두 칸씩 이동</text>
+  <text x="175" y="358" text-anchor="middle" font-size="18" fill="#475569">출력 공간 크기가 더 빨리 감소</text>
+ </g>
+ <g transform="translate(425 145)">
+  <rect width="350" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="23" font-weight="700" fill="#7c3aed">Padding · 가장자리 채우기</text>
+  <rect x="70" y="92" width="210" height="210" fill="#ede9fe" stroke="#a78bfa" stroke-width="3"/>
+  <rect x="105" y="127" width="140" height="140" fill="#fff" stroke="#64748b" stroke-width="3"/>
+  <text x="175" y="205" text-anchor="middle" font-size="20" font-weight="700" fill="#17243b">Input</text>
+  <text x="175" y="80" text-anchor="middle" font-size="18" fill="#7c3aed">Padding 영역</text>
+  <text x="175" y="330" text-anchor="middle" font-size="18" fill="#475569">가장자리도 Kernel 계산에 참여</text>
+  <text x="175" y="358" text-anchor="middle" font-size="18" fill="#475569">출력 크기 조절 가능</text>
+ </g>
+ <g transform="translate(805 145)">
+  <rect width="350" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="23" font-weight="700" fill="#15803d">Downsampling · 공간 축소</text>
+  <rect x="55" y="100" width="145" height="145" rx="8" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+  <g stroke="#93c5fd"><path d="M91 100V245M127 100V245M163 100V245M55 136H200M55 172H200M55 208H200"/></g>
+  <text x="128" y="275" text-anchor="middle" font-size="18" fill="#1d4ed8">8 × 8</text>
+  <text x="225" y="178" font-size="32" fill="#94a3b8">→</text>
+  <rect x="260" y="125" width="70" height="70" rx="8" fill="#dcfce7" stroke="#4ade80" stroke-width="2"/>
+  <g stroke="#86efac"><path d="M295 125V195M260 160H330"/></g>
+  <text x="295" y="225" text-anchor="middle" font-size="18" fill="#15803d">4 × 4</text>
+  <text x="175" y="330" text-anchor="middle" font-size="18" fill="#475569">계산량 감소 · 더 넓은 문맥 활용</text>
+  <text x="175" y="358" text-anchor="middle" font-size="18" fill="#475569">방법: Strided Conv, Pooling 등</text>
+ </g>
+</g>
+</svg>
