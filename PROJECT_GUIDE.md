@@ -12,13 +12,14 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 ### 01. Vision AI Intro
 
 - 사람과 컴퓨터가 이미지를 보는 방식의 차이
+- 원근감: 가까운 물체는 크게, 먼 물체는 작게 보이지만 사진 속 크기와 실제 크기는 다를 수 있음
 - RGB 3D Tensor → Pixel / Channel의 의미와 8-bit 0~255 값
 - Signal / Noise: 판단에 유용한 Pattern과 무관한 변화의 차이
 - 조명, 방향, 크기, 가림, 초점, 색온도 등에 따른 Pixel 변화
 - Generalization: 조건이 달라도 반복되는 공통 Pattern 학습
 - RGB 입력 → Feature → Classification / Detection / Segmentation Output
 - 대표 Vision Sensor: RGB / LiDAR / IR의 출력 데이터 비교
-- 스마트폰·CCTV·로봇청소기·자율주행·열화상 등 친숙한 Sensor 활용 사례
+- 스마트폰·CCTV·로봇청소기·열화상 등 친숙한 Sensor 활용 사례
 
 ### 02. AI Basics
 
