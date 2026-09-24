@@ -1,46 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Optimizer가 Loss가 낮은 방향으로 Parameter를 이동시키는 그림">
-<defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#eef4fb"/></linearGradient>
-  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
-</defs>
-<rect width="1200" height="600" rx="28" fill="url(#bg)"/>
-<text x="60" y="64" font-family="Arial, Noto Sans KR, sans-serif" font-size="30" font-weight="700" fill="#17243b">Loss가 낮아지는 방향으로 Parameter를 조금씩 이동</text>
-<text x="60" y="100" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">Gradient는 경사 방향을 알려주고, Learning Rate는 한 번에 얼마나 움직일지를 정합니다.</text>
-
-<g transform="translate(70 145)">
-  <rect width="760" height="380" rx="22" fill="#fff" stroke="#d8e1ed" stroke-width="2"/>
-  <ellipse cx="390" cy="215" rx="300" ry="135" fill="none" stroke="#dbeafe" stroke-width="26"/>
-  <ellipse cx="430" cy="235" rx="225" ry="100" fill="none" stroke="#bfdbfe" stroke-width="23"/>
-  <ellipse cx="470" cy="255" rx="150" ry="67" fill="none" stroke="#93c5fd" stroke-width="20"/>
-  <ellipse cx="500" cy="270" rx="76" ry="34" fill="none" stroke="#60a5fa" stroke-width="17"/>
-  <circle cx="515" cy="274" r="15" fill="#16a34a"/>
-  <text x="548" y="282" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#15803d">낮은 Loss</text>
-
-  <circle cx="165" cy="108" r="16" fill="#e11d48"/>
-  <circle cx="240" cy="148" r="14" fill="#f97316"/>
-  <circle cx="310" cy="185" r="13" fill="#f59e0b"/>
-  <circle cx="374" cy="218" r="12" fill="#3b82f6"/>
-  <circle cx="432" cy="245" r="11" fill="#2563eb"/>
-  <path d="M181 116 C204 127 216 138 229 145" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M255 157 C275 168 291 177 299 182" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M325 193 C344 202 356 210 364 214" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M389 225 C405 233 414 238 422 241" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-  <path d="M445 250 C465 259 486 268 500 271" fill="none" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
-
-  <text x="78" y="78" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#be123c">현재 Parameter</text>
-  <text x="72" y="330" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#64748b">등고선 = 같은 Loss 값을 갖는 지점</text>
-</g>
-
-<g transform="translate(870 165)">
-  <rect width="270" height="150" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
-  <text x="24" y="42" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#1d4ed8">Gradient</text>
-  <text x="24" y="78" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">Loss가 증가하는 방향</text>
-  <text x="24" y="108" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">→ 반대로 이동</text>
-</g>
-<g transform="translate(870 340)">
-  <rect width="270" height="150" rx="18" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
-  <text x="24" y="42" font-family="Arial, Noto Sans KR, sans-serif" font-size="20" font-weight="700" fill="#15803d">Learning Rate</text>
-  <text x="24" y="78" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">한 번에 이동하는 크기</text>
-  <text x="24" y="108" font-family="Arial, Noto Sans KR, sans-serif" font-size="18" fill="#334155">너무 크거나 작으면 문제</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#2563eb"/></marker></defs>
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Optimizer는 Gradient를 이용해 Parameter를 실제로 Update합니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">Learning Rate는 한 번에 얼마나 움직일지를 정합니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(60 140)">
+  <rect width="700" height="380" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <ellipse cx="360" cy="205" rx="280" ry="130" fill="none" stroke="#dbeafe" stroke-width="28"/>
+  <ellipse cx="390" cy="220" rx="200" ry="92" fill="none" stroke="#bfdbfe" stroke-width="24"/>
+  <ellipse cx="420" cy="235" rx="120" ry="55" fill="none" stroke="#93c5fd" stroke-width="20"/>
+  <circle cx="430" cy="240" r="14" fill="#16a34a"/><text x="460" y="247" font-size="18" font-weight="700" fill="#15803d">낮은 Loss</text>
+  <circle cx="135" cy="105" r="15" fill="#e11d48"/><text x="70" y="72" font-size="18" font-weight="700" fill="#be123c">Start</text>
+  <circle cx="215" cy="145" r="12" fill="#f97316"/><circle cx="285" cy="178" r="11" fill="#f59e0b"/><circle cx="345" cy="205" r="10" fill="#2563eb"/><circle cx="395" cy="227" r="10" fill="#2563eb"/>
+  <path d="M150 112L202 140M228 151L272 173M298 184L332 200M358 211L382 222M407 231L418 236" stroke="#2563eb" stroke-width="5" fill="none" marker-end="url(#a)"/>
+ </g>
+ <g transform="translate(800 150)">
+  <text x="0" y="0" font-size="22" font-weight="700" fill="#17243b">Learning Rate</text>
+  <g transform="translate(0 35)">
+   <rect width="330" height="85" rx="14" fill="#eff6ff"/><text x="18" y="31" font-size="19" font-weight="700" fill="#1d4ed8">너무 작음</text><text x="18" y="60" font-size="18" fill="#475569">안정적이지만 매우 느림</text>
+   <rect y="105" width="330" height="85" rx="14" fill="#ecfdf5"/><text x="18" y="136" font-size="19" font-weight="700" fill="#15803d">적당함</text><text x="18" y="165" font-size="18" fill="#475569">Loss가 안정적으로 감소</text>
+   <rect y="210" width="330" height="85" rx="14" fill="#fff1f2"/><text x="18" y="241" font-size="19" font-weight="700" fill="#be123c">너무 큼</text><text x="18" y="270" font-size="18" fill="#475569">최소점을 지나치거나 불안정</text>
+  </g>
+ </g>
 </g>
 </svg>
