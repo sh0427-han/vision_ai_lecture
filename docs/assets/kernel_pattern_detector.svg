@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#fff"/>
+<text x="55" y="55" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17243b">Kernel은 작은 Pattern에 반응하는 “학습되는 Weight 묶음”입니다</text>
+<text x="55" y="90" font-family="Arial,sans-serif" font-size="18" fill="#64748b">아래는 이해를 위한 Edge 예시입니다. 실제 CNN의 Kernel은 사람이 지정하지 않고 Training으로 학습됩니다.</text>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(65 150)">
+  <rect width="300" height="350" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="22" font-weight="700" fill="#1d4ed8">예시 Kernel</text>
+  <g transform="translate(70 80)" text-anchor="middle" font-size="22" font-weight="700">
+   <rect width="55" height="55" fill="#eff6ff" stroke="#93c5fd"/><rect x="55" width="55" height="55" fill="#fff" stroke="#93c5fd"/><rect x="110" width="55" height="55" fill="#dbeafe" stroke="#93c5fd"/>
+   <rect y="55" width="55" height="55" fill="#eff6ff" stroke="#93c5fd"/><rect x="55" y="55" width="55" height="55" fill="#fff" stroke="#93c5fd"/><rect x="110" y="55" width="55" height="55" fill="#dbeafe" stroke="#93c5fd"/>
+   <rect y="110" width="55" height="55" fill="#eff6ff" stroke="#93c5fd"/><rect x="55" y="110" width="55" height="55" fill="#fff" stroke="#93c5fd"/><rect x="110" y="110" width="55" height="55" fill="#dbeafe" stroke="#93c5fd"/>
+   <text x="27" y="36" fill="#1d4ed8">-1</text><text x="82" y="36" fill="#475569">0</text><text x="137" y="36" fill="#1d4ed8">1</text>
+   <text x="27" y="91" fill="#1d4ed8">-1</text><text x="82" y="91" fill="#475569">0</text><text x="137" y="91" fill="#1d4ed8">1</text>
+   <text x="27" y="146" fill="#1d4ed8">-1</text><text x="82" y="146" fill="#475569">0</text><text x="137" y="146" fill="#1d4ed8">1</text>
+  </g>
+  <text x="150" y="285" text-anchor="middle" font-size="18" fill="#475569">세로 밝기 변화에</text>
+  <text x="150" y="312" text-anchor="middle" font-size="18" fill="#475569">강하게 반응하는 예</text>
+ </g>
+ <g transform="translate(405 150)">
+  <rect width="330" height="350" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="22" font-weight="700" fill="#17243b">Patch A · 세로 경계</text>
+  <g transform="translate(72 80)">
+   <rect width="90" height="180" fill="#1e293b"/><rect x="90" width="90" height="180" fill="#e2e8f0"/>
+  </g>
+  <rect x="85" y="285" width="160" height="44" rx="10" fill="#dcfce7"/><text x="165" y="313" text-anchor="middle" font-size="20" font-weight="700" fill="#15803d">Strong response</text>
+ </g>
+ <g transform="translate(775 150)">
+  <rect width="360" height="350" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="25" y="42" font-size="22" font-weight="700" fill="#17243b">Patch B · 거의 평평함</text>
+  <rect x="90" y="80" width="180" height="180" fill="#94a3b8"/>
+  <rect x="100" y="285" width="160" height="44" rx="10" fill="#f1f5f9"/><text x="180" y="313" text-anchor="middle" font-size="20" font-weight="700" fill="#475569">Weak response</text>
+ </g>
+</g>
+</svg>
