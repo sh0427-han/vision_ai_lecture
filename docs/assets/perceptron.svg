@@ -6,8 +6,8 @@
 <g font-family="Arial,sans-serif">
  <g transform="translate(70 150)">
    <text x="0" y="-15" font-size="20" font-weight="700" fill="#17243b">입력 Feature</text>
-   <rect x="0" y="15" width="170" height="70" rx="14" fill="#eef2ff"/><text x="85" y="45" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">x₁ = 0.8</text><text x="85" y="68" text-anchor="middle" font-size="16" fill="#64748b">예: 밝기</text>
-   <rect x="0" y="115" width="170" height="70" rx="14" fill="#eef2ff"/><text x="85" y="145" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">x₂ = 0.2</text><text x="85" y="168" text-anchor="middle" font-size="16" fill="#64748b">예: 모양</text>
+   <rect x="0" y="15" width="170" height="70" rx="14" fill="#eef2ff"/><text x="85" y="45" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">x₁ = 0.8</text><text x="85" y="68" text-anchor="middle" font-size="18" fill="#64748b">예: 밝기</text>
+   <rect x="0" y="115" width="170" height="70" rx="14" fill="#eef2ff"/><text x="85" y="145" text-anchor="middle" font-size="18" font-weight="700" fill="#4338ca">x₂ = 0.2</text><text x="85" y="168" text-anchor="middle" font-size="18" fill="#64748b">예: 모양</text>
  </g>
  <g transform="translate(330 150)">
    <text x="0" y="-15" font-size="20" font-weight="700" fill="#17243b">중요도 · Weight</text>
@@ -18,13 +18,13 @@
    <rect width="180" height="140" rx="70" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
    <text x="90" y="55" text-anchor="middle" font-size="19" font-weight="700" fill="#17243b">합치기</text>
    <text x="90" y="88" text-anchor="middle" font-size="21" fill="#334155">Σ(wx) + b</text>
-   <text x="90" y="115" text-anchor="middle" font-size="16" fill="#64748b">Weighted sum</text>
+   <text x="90" y="115" text-anchor="middle" font-size="18" fill="#64748b">Weighted sum</text>
  </g>
  <g transform="translate(880 180)">
    <rect width="150" height="140" rx="20" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
    <text x="75" y="53" text-anchor="middle" font-size="19" font-weight="700" fill="#9a3412">Activation</text>
    <text x="75" y="88" text-anchor="middle" font-size="19" fill="#9a3412">f(z)</text>
-   <text x="75" y="114" text-anchor="middle" font-size="16" fill="#64748b">판단 규칙</text>
+   <text x="75" y="114" text-anchor="middle" font-size="18" fill="#64748b">판단 규칙</text>
  </g>
  <g transform="translate(1080 205)">
    <circle cx="40" cy="45" r="40" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
