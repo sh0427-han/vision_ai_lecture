@@ -9,7 +9,7 @@
    <g fill="#dbeafe" stroke="#93c5fd"><rect x="0" y="0" width="75" height="70" rx="8"/><rect x="85" y="0" width="75" height="70" rx="8"/><rect x="170" y="0" width="75" height="70" rx="8"/><rect x="255" y="0" width="75" height="70" rx="8"/></g>
    <g fill="#dcfce7" stroke="#86efac"><rect x="350" y="0" width="75" height="70" rx="8"/><rect x="435" y="0" width="75" height="70" rx="8"/><rect x="520" y="0" width="75" height="70" rx="8"/><rect x="605" y="0" width="75" height="70" rx="8"/></g>
    <g fill="#ffedd5" stroke="#fdba74"><rect x="700" y="0" width="75" height="70" rx="8"/><rect x="785" y="0" width="75" height="70" rx="8"/></g>
-   <g font-size="17" fill="#475569" text-anchor="middle"><text x="165" y="100">Batch 1 · 4장</text><text x="515" y="100">Batch 2 · 4장</text><text x="742" y="100">Batch 3 · 2장</text></g>
+   <g font-size="18" fill="#475569" text-anchor="middle"><text x="165" y="100">Batch 1 · 4장</text><text x="515" y="100">Batch 2 · 4장</text><text x="742" y="100">Batch 3 · 2장</text></g>
   </g>
  </g>
  <g transform="translate(70 330)">
