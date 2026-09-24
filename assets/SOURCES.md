@@ -163,3 +163,23 @@ https://arxiv.org/abs/1904.08405
 - `docs/assets/kfold_visual.svg`
 
 특정 논문의 Figure를 복제하지 않았으며, Neural Network / Optimization 교과서에서 일반적으로 사용하는 Node, Layer, Loss landscape, Gradient, Decision Boundary 표현을 입문 강의용으로 단순화했습니다.
+
+
+## Beginner-first Vision AI 재구성
+
+2026-09-25 개편에서는 Vision AI 입문자가 Task와 CNN 계산을 단계적으로 연결할 수 있도록 다음 교육용 SVG를 새로 만들거나 전면 재작성했습니다.
+
+- `docs/assets/iou_visual.svg`
+- `docs/assets/cnn_why_local.svg`
+- `docs/assets/kernel_pattern_detector.svg`
+- `docs/assets/convolution_visual.svg`
+- `docs/assets/stride_padding_downsampling.svg`
+- `docs/assets/feature_maps.svg`
+- `docs/assets/cnn_hierarchy.svg`
+- `docs/assets/cnn_training.svg`
+- `docs/assets/backbone_head.svg`
+- `docs/assets/transfer_learning.svg`
+- `docs/assets/vision_task_selection.svg`
+- `docs/assets/vision_project_pipeline.svg`
+
+특정 논문의 Figure를 복제하지 않았으며, Computer Vision 교재와 논문에서 일반적으로 사용하는 Convolution, Kernel, Feature Map, Receptive Field, Backbone/Head 표현을 초보자 강의용으로 단순화했습니다.
