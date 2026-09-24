@@ -4613,3 +4613,208 @@ body.deck-page {
   .classification-output-grid,.parameter-map,.threshold-confusion-layout,.metric-example-grid,.metric-definition-grid{grid-template-columns:1fr}
   .parameter-divider{display:none}.train-infer-lane{grid-template-columns:1fr}.train-infer-lane-flow{overflow-x:auto}.dataset-quality-grid--large{grid-template-columns:1fr}.dataset-quality-grid--large article{grid-template-columns:1fr}.loss-vs-metric{grid-template-columns:1fr}
 }
+
+
+/* Intro perspective challenge + robot-vacuum LiDAR example */
+.perspective-example-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(320px,.85fr);
+  gap:18px;
+  width:min(1180px,100%);
+  margin:16px auto 0;
+  align-items:stretch;
+}
+.perspective-photo-card{
+  margin:0;
+  overflow:hidden;
+  border:1px solid #d8e1ed;
+  border-radius:18px;
+  background:#f8fafc;
+}
+.perspective-photo-card img{
+  display:block;
+  width:100%;
+  height:min(49dvh,470px);
+  object-fit:cover;
+  object-position:center;
+}
+.perspective-photo-card figcaption{
+  padding:10px 14px 12px;
+  color:#53647b;
+  font-size:12px;
+  line-height:1.4;
+}
+.perspective-explain-stack{
+  display:grid;
+  gap:10px;
+}
+.perspective-explain-stack article{
+  display:grid;
+  gap:7px;
+  padding:14px 16px;
+  border:1px solid #d8e1ed;
+  border-radius:14px;
+  background:#f8fafc;
+}
+.perspective-explain-stack article>span{
+  color:#2563eb;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.perspective-explain-stack article>strong{
+  color:#17243b;
+  font-size:16px;
+  line-height:1.35;
+}
+.perspective-explain-stack article>p{
+  margin:0;
+  color:#53647b;
+  font-size:12px;
+  line-height:1.45;
+}
+.perspective-explain-stack--key{
+  background:#eef6ff!important;
+  border-color:#bfdbfe!important;
+}
+.perspective-size-compare{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:9px;
+  align-items:end;
+}
+.perspective-size-object{
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  font-weight:900;
+}
+.perspective-size-object--cat{
+  min-height:78px;
+  background:#dbeafe;
+  color:#1d4ed8;
+  font-size:20px;
+}
+.perspective-size-object--person{
+  min-height:46px;
+  background:#e2e8f0;
+  color:#475569;
+  font-size:13px;
+}
+.perspective-size-compare>b{
+  align-self:center;
+  color:#64748b;
+  font-size:20px;
+}
+.perspective-takeaway{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  width:min(980px,100%);
+  margin:10px auto 0;
+  padding:10px 14px;
+  border-radius:12px;
+  background:#fff7ed;
+}
+.perspective-takeaway strong{
+  color:#9a3412;
+  font-size:14px;
+  white-space:nowrap;
+}
+.perspective-takeaway span{
+  color:#53647b;
+  font-size:12px;
+}
+
+.sensor-life-trio{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+  width:min(1180px,100%);
+  margin:14px auto 0;
+}
+.sensor-life-visual-card{
+  overflow:hidden;
+  border:1px solid #d8e1ed;
+  border-radius:17px;
+  background:#fff;
+}
+.sensor-life-crop,
+.sensor-life-image{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  aspect-ratio:1 / 1;
+  background:#eef4fa;
+}
+.sensor-life-crop img{
+  position:absolute;
+  top:0;
+  width:300%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+}
+.sensor-life-crop--rgb img{left:0}
+.sensor-life-crop--ir img{left:-200%}
+.sensor-life-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.sensor-life-visual-body{
+  display:grid;
+  gap:7px;
+  padding:11px 13px 13px;
+}
+.sensor-life-visual-body>div:first-child{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:8px;
+}
+.sensor-life-visual-body strong{
+  color:#17243b;
+  font-size:16px;
+}
+.sensor-life-visual-body span{
+  color:#64748b;
+  font-size:9.5px;
+  text-align:right;
+}
+.sensor-life-visual-body p{
+  margin:0;
+  color:#53647b;
+  font-size:10.5px;
+  line-height:1.45;
+}
+.sensor-life-visual-card--lidar{
+  border-top:3px solid #0ea5e9;
+}
+
+@media (max-height:760px) and (min-width:901px){
+  .perspective-example-layout{gap:10px;margin-top:7px}
+  .perspective-photo-card img{height:min(42dvh,350px)}
+  .perspective-photo-card figcaption{padding:6px 10px;font-size:9.5px}
+  .perspective-explain-stack{gap:6px}
+  .perspective-explain-stack article{gap:4px;padding:8px 10px}
+  .perspective-explain-stack article>strong{font-size:13px}
+  .perspective-explain-stack article>p{font-size:9.5px}
+  .perspective-size-object--cat{min-height:54px;font-size:16px}
+  .perspective-size-object--person{min-height:34px;font-size:11px}
+  .perspective-takeaway{margin-top:5px;padding:6px 10px}
+  .sensor-life-trio{gap:9px;margin-top:7px}
+  .sensor-life-crop,.sensor-life-image{aspect-ratio:1.25 / 1}
+  .sensor-life-visual-body{gap:4px;padding:7px 9px 8px}
+  .sensor-life-visual-body strong{font-size:13px}
+  .sensor-life-visual-body p{font-size:9px}
+}
+@media (max-width:900px){
+  .perspective-example-layout{grid-template-columns:1fr}
+  .perspective-photo-card img{height:auto}
+  .perspective-takeaway{align-items:flex-start;flex-direction:column;gap:5px}
+  .sensor-life-trio{grid-template-columns:1fr}
+}
