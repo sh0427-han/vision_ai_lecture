@@ -130,3 +130,13 @@ https://arxiv.org/abs/1904.08405
   - 자동차 이미지는 포함하지 않으며, 로봇청소기의 공간 맵핑 예시에만 사용.
   - 실제 LiDAR Point Cloud 측정 결과가 아니라 교육용 시각화임.
 - 두 SVG는 생성 이미지 WebP를 내부에 그대로 포함하며 외부 이미지 서버에 의존하지 않습니다.
+
+
+## Paper-style 기본 학습 Figure
+
+- `docs/assets/supervised_unsupervised_industry.svg`
+  - Supervised / Unsupervised Learning을 Feature Space scatter plot으로 비교.
+  - 지도학습은 Label과 Decision Boundary, 비지도학습은 unlabeled sample과 Cluster structure를 표현.
+- `docs/assets/classification_regression.svg`
+  - Classification은 discrete class와 Decision Boundary, Regression은 continuous target과 fitted function으로 표현.
+- 두 Figure 모두 특정 논문의 Figure를 복제한 것이 아니라, 학술 논문에서 흔히 사용하는 축·점·경계선 중심의 시각 문법을 강의용으로 재구성한 도표입니다.
