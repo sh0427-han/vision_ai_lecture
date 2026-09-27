@@ -194,3 +194,25 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 표준 평가에서는 잘 작동하지만 더 어려운 실제 조건에서 전이되지 않는 decision rule을 Shortcut 관점으로 설명합니다.
 - 강의의 `docs/assets/shortcut_learning.svg`는 논문 Figure를 복제하지 않고, 배경색과 Class가 우연히 연관된 Toy Example로 개념을 재구성한 교육용 Diagram입니다.
 - AI Basics에서는 Shortcut Learning과 Data Leakage의 차이를 설명하고, Vision AI에서는 높은 Score가 사람이 기대한 Feature 사용을 보장하지 않는다는 운영 관점으로 연결합니다.
+
+
+## 고해상도 생성 Lecture Figure — 2026-09-27
+
+다음 자산은 ChatGPT에서 강의 목적에 맞게 생성한 뒤, 제목 중복을 줄이기 위해 Figure 영역을 Crop하고 WebP로 저장한 교육용 이미지입니다.
+
+- `docs/assets/generated/lecture/intro_human_vs_computer.webp`
+- `docs/assets/generated/lecture/intro_perspective.webp`
+- `docs/assets/generated/lecture/intro_sensor_modalities.webp`
+- `docs/assets/generated/lecture/ai_perceptron.webp`
+- `docs/assets/generated/lecture/ai_leakage_shortcut.webp`
+- `docs/assets/generated/lecture/vision_task_selection.webp`
+- `docs/assets/generated/lecture/vision_convolution.webp`
+- `docs/assets/generated/lecture/vision_backbone_head.webp`
+- `docs/assets/generated/lecture/vision_transfer_learning.webp`
+
+사용 원칙:
+- 실제 촬영·실측·실제 Model 추론 결과가 아니라 강의용 시각화입니다.
+- Convolution Figure의 숫자 계산은 교육용 예시로 산술적으로 일관되도록 검토했습니다.
+- LiDAR Figure는 자동차 예시 없이 로봇청소기와 실내 공간 Scan 예시만 사용합니다.
+- AI / Machine Learning / Deep Learning / Computer Vision의 포함관계는 생성 이미지보다 정확성이 중요한 Diagram이므로 기존 `ai_ml_dl.svg`를 유지합니다.
+- Repository 내부 WebP를 직접 참조하며 외부 이미지 Host나 Runtime base64 조립에 의존하지 않습니다.
