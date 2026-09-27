@@ -184,7 +184,10 @@
   });
 
   addEventListener("resize", scheduleFit);
-  document.fonts?.ready.then(scheduleFit).catch(() => {});
+  addEventListener("load", scheduleFit, { once: true });
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(scheduleFit).catch(() => {});
+  }
 
   addEventListener("hashchange", () => {
     currentIndex = indexFromHash();
