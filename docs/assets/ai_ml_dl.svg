@@ -6,7 +6,7 @@
     .heading{font-size:30px;font-weight:800;fill:#17243b}
     .label{font-size:26px;font-weight:800}
     .sub{font-size:18px;fill:#53647b}
-    .foot{font-size:17px;fill:#53647b}
+    .foot{font-size:18px;fill:#53647b}
   </style>
   <rect width="1200" height="600" fill="#fff"/>
   <text x="42" y="58" class="heading">AI · Machine Learning · Deep Learning · Computer Vision</text>
@@ -32,5 +32,5 @@
   <text x="815" y="410" class="sub" text-anchor="middle">Deep Learning</text>
 
   <rect x="82" y="535" width="1036" height="45" rx="12" fill="#edf3fc"/>
-  <text x="600" y="564" class="foot" text-anchor="middle">Computer Vision은 문제 영역이고, ML·DL은 그 문제를 해결하는 대표적인 방법입니다.</text>
+  <text x="600" y="564" class="foot" text-anchor="middle">Computer Vision은 이미지·영상 문제 영역이며, 전통 영상처리·ML·DL 등 여러 방법을 사용할 수 있습니다.</text>
 </svg>
