@@ -183,3 +183,14 @@ https://arxiv.org/abs/1904.08405
 - `docs/assets/vision_project_pipeline.svg`
 
 특정 논문의 Figure를 복제하지 않았으며, Computer Vision 교재와 논문에서 일반적으로 사용하는 Convolution, Kernel, Feature Map, Receptive Field, Backbone/Head 표현을 초보자 강의용으로 단순화했습니다.
+
+
+## Shortcut Learning 참고
+
+### Geirhos et al. — Shortcut Learning in Deep Neural Networks
+https://www.nature.com/articles/s42256-020-00257-z
+
+- Nature Machine Intelligence, 2020.
+- 표준 평가에서는 잘 작동하지만 더 어려운 실제 조건에서 전이되지 않는 decision rule을 Shortcut 관점으로 설명합니다.
+- 강의의 `docs/assets/shortcut_learning.svg`는 논문 Figure를 복제하지 않고, 배경색과 Class가 우연히 연관된 Toy Example로 개념을 재구성한 교육용 Diagram입니다.
+- AI Basics에서는 Shortcut Learning과 Data Leakage의 차이를 설명하고, Vision AI에서는 높은 Score가 사람이 기대한 Feature 사용을 보장하지 않는다는 운영 관점으로 연결합니다.

@@ -33,18 +33,19 @@ Vision AI를 처음 배우는 사람이 **Model이 어떻게 계산하고, 어�
 
 ### D. 좋은 학습 데이터를 어떻게 준비하는가
 22. Dataset Quality
-23. Image Preprocessing
-24. Data Augmentation
-25. Train / Validation / Test
+23. Shortcut Learning / Spurious Correlation
+24. Image Preprocessing
+25. Data Augmentation
+26. Train / Validation / Test
 
 ### E. 진짜 잘하는 Model인지 어떻게 평가하는가
-26. Threshold / Confusion Matrix
-27. Accuracy / Precision / Recall / F1
-28. Data Leakage
-29. Group Split
-30. K-Fold / Group K-Fold
-31. Generalization / Overfitting
-32. AI Development Cycle
+27. Threshold / Confusion Matrix
+28. Accuracy / Precision / Recall / F1
+29. Data Leakage
+30. Group Split
+31. K-Fold / Group K-Fold
+32. Generalization / Overfitting
+33. AI Development Cycle
 
 ## 꼭 이해해야 할 연결
 
@@ -121,6 +122,17 @@ Backpropagation은 최종 Loss에 각 Weight가 얼마나 영향을 주었는지
 ### Training vs Inference
 
 Training은 Label과 Loss를 이용해 Weight를 바꾸지만, Inference는 학습된 Weight를 고정하고 Prediction만 계산합니다.
+
+### Shortcut Learning
+
+Model은 우리가 중요하다고 생각한 Feature만 배우는 것이 아닙니다. Training Dataset에서 정답과 반복적으로 같이 나타나는 더 쉬운 단서가 있다면 그것을 사용할 수 있습니다.
+
+예를 들어 Apple 사진은 항상 파란 배경, Orange 사진은 항상 주황 배경이라면 Model은 과일 형태보다 Background Color를 이용할 수 있습니다.
+
+- **Shortcut / Spurious Correlation**: 입력 안에 존재하지만 우리가 원하지 않은 상관관계를 사용
+- **Data Leakage**: 평가 때 알면 안 되는 정보가 Train 또는 Model Selection 과정에 새어 들어감
+
+둘은 원인이 다르며 모두 실제 Generalization을 과대평가하게 만들 수 있습니다.
 
 ### Dataset / Evaluation
 

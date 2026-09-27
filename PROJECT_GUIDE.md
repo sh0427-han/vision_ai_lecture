@@ -37,6 +37,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - Training Loop / Backpropagation
 - Training / Inference
 - Batch / Iteration / Epoch
+- Dataset Quality와 Shortcut Learning / Spurious Correlation
 - Image Preprocessing
 - Data Augmentation
 - Train / Validation / Test
@@ -60,6 +61,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - CNN Training
 - Backbone / Task Head
 - Transfer Learning / Fine-tuning
+- 높은 Score ≠ 의미 이해: Shortcut Learning과 Slice / 실패 사례 점검
 - 문제 정의 → Data/Label → Train → Evaluate → Deploy → Monitor Cycle
 
 현재 강의 범위에서는 Tracking, Depth/3D, Vision Transformer를 제외합니다.
