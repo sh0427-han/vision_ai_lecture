@@ -77,11 +77,11 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - Process와 학습 과정은 실제 Flow Chart / Block Diagram으로 표현합니다.
 - 같은 원본 이미지를 반복 활용해 Classification / Detection / Segmentation의 차이를 직관적으로 보여줍니다.
 - 논문 Figure나 외부 이미지를 그대로 복사하기보다 강의용 Diagram으로 재구성합니다.
-- 사진형·현장형 예시는 가능하면 ChatGPT에서 강의 목적에 맞게 생성한 뒤 `docs/assets/generated/`에 저장하고, HTML에서는 Repository 내부 자산만 참조합니다.
+- 사진형·현장형 예시는 가능하면 ChatGPT에서 강의 목적에 맞게 생성한 뒤 `docs/assets/generated/`에 저장하고, HTML에서는 Repository 내부 자산만 참조합니다.\n- 생성 Figure도 개념적 정확성을 먼저 검토하고 사용합니다. 포함관계·수식·Tensor/Convolution 구조처럼 정밀한 관계는 생성 이미지가 부정확하면 SVG/HTML Diagram을 우선합니다.
 - 개념 관계·수식·구조 설명은 SVG/HTML Diagram을 사용하고, 실제 장면을 직관적으로 보여줘야 할 때는 생성 이미지 또는 실제 사진을 우선합니다.
 - 실제 강의 화면에는 강사용 메모, 발표 지시, 다음 챕터 안내 같은 메타 문구를 넣지 않습니다.
 - 흰색 배경, 최소한의 색상, 깔끔한 Presentation 스타일을 유지합니다.
-- 초보자가 그림만 보고도 개념의 대략적인 의미를 이해할 수 있도록 구성합니다.
+- 초보자가 그림만 보고도 개념의 대략적인 의미를 이해할 수 있도록 구성합니다.\n- 각 슬라이드는 발표 화면 한 Viewport 안에 들어오도록 구성하며, 세로 스크롤 없이 보이도록 자동 Fit을 적용합니다. 콘텐츠가 과도하게 길다면 축소에만 의존하지 말고 내용을 분리하거나 단순화합니다.
 
 ## Repository Structure
 
