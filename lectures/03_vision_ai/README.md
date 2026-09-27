@@ -20,7 +20,8 @@ Vision AI를 처음 배우는 사람이 **무엇을 출력할지 → 어떤 Labe
 14. CNN Training
 15. Backbone / Task Head
 16. Transfer Learning / Fine-tuning
-17. Vision AI Project Cycle
+17. Shortcut Learning / 현장 실패 원인
+18. Vision AI Project Cycle
 
 ## 1. Model보다 Output이 먼저
 
@@ -231,7 +232,22 @@ My Task Model
 
 데이터가 적을 때 좋은 출발점이 될 수 있지만, Pretraining Domain과 실제 운영 Domain 차이가 크면 반드시 별도 검증해야 합니다.
 
-## 17. 전체 Project Cycle
+## 17. Shortcut Learning과 Vision Model의 실패
+
+높은 Score가 곧 사람이 기대한 의미를 이해했다는 뜻은 아닙니다.
+
+Vision Model은 다음과 같은 단서를 Shortcut으로 사용할 수 있습니다.
+
+- 배경 색이나 바닥 Pattern
+- 특정 Camera / 설비에서만 생기는 영상 특성
+- Annotation과 우연히 함께 나타나는 Marker
+- Object 자체가 아니라 위치나 촬영 조건
+
+따라서 평균 Metric뿐 아니라 **실패 Image, 설비·시간대·조명별 Slice, 운영 분포 변화**를 함께 확인해야 합니다.
+
+이 관점은 Geirhos et al.의 “Shortcut Learning in Deep Neural Networks”에서 정리된 문제의식과 연결됩니다.
+
+## 18. 전체 Project Cycle
 
 ```text
 문제 정의
