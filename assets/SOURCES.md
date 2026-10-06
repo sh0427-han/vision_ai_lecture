@@ -268,3 +268,19 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 모든 숫자·곡선은 `scripts/build_loss_optimizer_figures.py`에서 직접 계산한 단일 샘플 회귀 예시입니다. x=2, y=4, b=0, 초기 w=1; L(w)=(2w−4)²; Gradient=8w−16. 실제 학습 실험 결과나 모델 Benchmark가 아닙니다.
 - Optimizer는 기본 SGD로 고정하고 학습률 0.025/0.1/0.3만 비교합니다. 업데이트 t=0~3을 표시하며, 증가 예시의 세로축은 0~34로 별도 표기합니다. Momentum·Weight Decay는 사용하지 않습니다.
 - SVG는 NumPy/Matplotlib로 생성하며 글꼴 윤곽을 포함합니다. 재생성 환경에는 Noto Sans CJK KR 글꼴이 필요합니다. 예측값을 비교하는 Loss 그림과 가중치를 비교하는 Loss 곡선의 가로축을 구분합니다.
+
+## Alzubaidi et al. (2021) 기반 보강
+
+- Alzubaidi et al., Review of deep learning: concepts, CNN architectures, challenges, applications, future directions, Journal of Big Data 8, 53 (2021). https://doi.org/10.1186/s40537-021-00444-8
+- Fig. 3의 특징 설계/학습 비교, Fig. 7의 CNN 흐름, CNN architectures의 연결 원리, Fig. 20의 Residual 연결, Loss·Regularization·Imbalanced data 절을 강의 흐름에 맞춰 재구성했습니다. 원본 Figure를 복제하지 않았습니다. `survey_*.svg`는 직접 작성한 도표이며 성능 측정 결과가 아닙니다.
+- 자동 특징 학습: LeCun, Bengio & Hinton, Deep learning (2015). https://www.nature.com/articles/nature14539
+- VGG: Simonyan & Zisserman. https://arxiv.org/abs/1409.1556
+- Inception: Szegedy et al. https://openaccess.thecvf.com/content_cvpr_2015/html/Szegedy_Going_Deeper_With_2015_CVPR_paper.html
+- ResNet: He et al. https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html
+- Dropout: Srivastava et al. https://jmlr.org/papers/v15/srivastava14a.html
+- Dropout의 매 Forward 샘플링 및 추론 동작: https://docs.pytorch.org/docs/stable/generated/torch.nn.Dropout.html
+- CE와 클래스 가중치: https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
+- Conv Shape: https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html
+- 정규화 및 Early Stopping: https://cs231n.github.io/neural-networks-2/
+- 비교 그림의 사과는 기존 `apple_studio_preview.png` 생성 사진을 재사용했습니다. CE는 정답을 고정한 단일 샘플 L=−ln(p)의 직접 계산이며, CNN Shape와 Residual 숫자도 설명용 예시입니다.
+- 생성: `scripts/build_survey_figures.py` 또는 전체 `scripts/build_lesson_revision.py`. 논문과 슬라이드의 대응·주의점은 `lectures/PAPER_REVIEW_2021.md`에 기록했습니다.

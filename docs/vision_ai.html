@@ -126,7 +126,7 @@
 <h2 class="slide-title">공간 해상도를 줄여 더 작은 특징 지도를 만듭니다</h2>
 <p class="slide-subtitle">Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></figure>
-<p class="lesson-takeaway">8×8 → 4×4는 공간 위치 수가 64개에서 16개로 줄어드는 변화입니다.</p></div></section>
+<p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
 <section class="slide" data-topic="출력 크기 계산" data-level="detail">
 <div class="slide-inner"><div class="lesson-meta"><span>17 · 출력 크기 계산</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
@@ -148,50 +148,71 @@
 <p class="slide-subtitle">Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_receptive_field.svg?v=professional-20261006-2" alt="깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다"></figure>
 <p class="lesson-takeaway">3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
+<section class="slide" data-topic="CNN 전체 흐름" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>20 · CNN 전체 흐름</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">작은 연산들을 연결하면 이미지 분류기가 됩니다</h2>
+<p class="slide-subtitle">224×224×3 입력에서 Conv·ReLU·Pooling으로 특징을 만들고, Global Average Pooling(전역 평균 풀링)과 Linear Layer로 분류 점수를 계산합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_cnn_pipeline.svg?v=survey-20261006-1" alt="작은 연산들을 연결하면 이미지 분류기가 됩니다"></figure>
+<p class="lesson-takeaway">H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 7 · CNN layers</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html" target="_blank" rel="noopener">PyTorch Conv2d</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>20 · Backbone과 Head</span>
+<div class="slide-inner"><div class="lesson-meta"><span>21 · Backbone과 Head</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다</h2>
 <p class="slide-subtitle">Backbone(백본)은 특징을 추출하고, Head(헤드)는 Task별 결과를 만듭니다. 입력과 결과는 동일한 사과 사진을 사용합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/backbone_basic.svg?v=professional-20261006-2" alt="특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다"></figure>
 <p class="lesson-takeaway">세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다.</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>21 · Backbone과 Head</span>
+<div class="slide-inner"><div class="lesson-meta"><span>22 · Backbone과 Head</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">블록을 연결하고 각 단계의 특징 크기를 표시합니다</h2>
 <p class="slide-subtitle">Architecture(모델 구조)는 어떤 연산을 어떤 순서로 연결하는지 나타냅니다. 아래 크기는 구조를 설명하는 예시입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/backbone_detail.svg?v=professional-20261006-2" alt="블록을 연결하고 각 단계의 특징 크기를 표시합니다"></figure>
 <p class="lesson-takeaway">검출·분할 모델에는 여러 해상도 특징을 결합하는 Neck·Decoder 등이 추가될 수 있습니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
+<section class="slide" data-topic="CNN 구조의 설계" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>23 · CNN 구조의 설계</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">순차·병렬·우회 연결로 서로 다른 구조를 만듭니다</h2>
+<p class="slide-subtitle">VGG는 작은 필터를 쌓고, Inception은 병렬 경로를 결합하며, ResNet은 입력을 우회시켜 변환 결과와 더합니다. 여기서는 연결 원리만 비교합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_architecture_patterns.svg?v=survey-20261006-1" alt="순차·병렬·우회 연결로 서로 다른 구조를 만듭니다"></figure>
+<p class="lesson-takeaway">깊이만 늘리는 것 외에도 연결 방식이 중요합니다. 구조의 우열은 데이터·정확도·메모리·처리시간을 함께 검증해 결정합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · CNN architectures</a> · <a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener">VGG 원 논문</a> · 강의용 재구성</p></div></section>
+<section class="slide" data-topic="Residual 연결" data-level="detail">
+<div class="slide-inner"><div class="lesson-meta"><span>24 · Residual 연결</span>
+<span class="lesson-level lesson-level--detail">상세 설명</span></div>
+<h2 class="slide-title">입력을 그대로 전달하는 경로와 변환 경로를 더합니다</h2>
+<p class="slide-subtitle">Residual(잔차) 블록은 F(x)+x를 계산합니다. 56×56×64 입력을 더하려면 두 경로의 Tensor Shape가 같아야 합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_residual_detail.svg?v=survey-20261006-1" alt="입력을 그대로 전달하는 경로와 변환 경로를 더합니다"></figure>
+<p class="lesson-takeaway">원소별 합산이며 Channel 결합과 다릅니다. ResNet v1은 합산 뒤 ReLU를 적용합니다. 우회 경로는 깊은 모델의 최적화를 돕습니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 20 · ResNet</a> · <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html" target="_blank" rel="noopener">ResNet 원 논문</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="CNN 학습" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>22 · CNN 학습</span>
+<div class="slide-inner"><div class="lesson-meta"><span>25 · CNN 학습</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">CNN의 필터도 오차를 줄이는 방향으로 학습합니다</h2>
 <p class="slide-subtitle">Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" alt="CNN의 필터도 오차를 줄이는 방향으로 학습합니다"></figure>
 <p class="lesson-takeaway">기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다.</p></div></section>
 <section class="slide" data-topic="Transfer Learning" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>23 · Transfer Learning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>26 · Transfer Learning</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">이미 배운 가중치에서 내 Task의 학습을 시작합니다</h2>
 <p class="slide-subtitle">Transfer Learning(전이학습)은 사전학습 모델의 지식을 재사용하는 방법입니다. 처음부터 모든 값을 새로 배우는 것과 비교할 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/transfer_basic.svg?v=professional-20261006-2" alt="이미 배운 가중치에서 내 Task의 학습을 시작합니다"></figure>
 <p class="lesson-takeaway">내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다.</p></div></section>
 <section class="slide" data-topic="Freeze와 Fine-tuning" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>24 · Freeze와 Fine-tuning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>27 · Freeze와 Fine-tuning</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">고정할 부분과 추가 학습할 부분을 구분합니다</h2>
 <p class="slide-subtitle">Freeze는 가중치 고정, Fine-tuning(미세조정)은 사전학습 가중치 일부 또는 전체를 새 데이터로 업데이트하는 과정입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/transfer_detail.svg?v=professional-20261006-2" alt="고정할 부분과 추가 학습할 부분을 구분합니다"></figure>
 <p class="lesson-takeaway">새 Head만 학습하는 경우와 Backbone까지 학습하는 경우를 구분해 검증합니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="평가와 실패 사례" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>25 · 평가와 실패 사례</span>
+<div class="slide-inner"><div class="lesson-meta"><span>28 · 평가와 실패 사례</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
 <p class="slide-subtitle">배경·조명·장비가 정답과 우연히 연결되면 모델은 쉬운 Shortcut을 사용할 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다"></figure>
 <p class="lesson-takeaway">평균 Metric과 함께 실패 이미지·설비별·조명별 결과를 점검합니다.</p><p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p></div></section>
 <section class="slide" data-topic="운영 Cycle" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>26 · 운영 Cycle</span>
+<div class="slide-inner"><div class="lesson-meta"><span>29 · 운영 Cycle</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">문제 정의부터 운영 관찰까지 연결해 개선합니다</h2>
 <p class="slide-subtitle">성공 기준을 정하고 데이터를 모아 학습·평가·배포합니다. 운영의 실패 사례는 다음 데이터 보강의 근거가 됩니다.</p>
