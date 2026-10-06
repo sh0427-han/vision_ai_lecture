@@ -739,7 +739,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
             )
         if Path(asset).stem in PROCESSING_SECTIONS:
             section = PROCESSING_SECTIONS[Path(asset).stem]
-            figure_version = "processing-20261006-1"
+            figure_version = "processing-20261006-2" if Path(asset).stem == "processing_pyramid" else "processing-20261006-1"
             reference = (
                 '<p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" '
                 f'target="_blank" rel="noopener">Szeliski · Ch. 3 {section}</a>'
@@ -832,7 +832,7 @@ def build_lessons():
         ("Stride","필터를 몇 칸씩 이동할지 정합니다","Stride(이동 간격)가 1이면 한 칸, 2이면 두 칸씩 이동합니다. 같은 입력과 필터에서 이동 간격이 크면 출력 크기가 작아집니다.","stride_basic","5×5 입력과 3×3 필터, Padding 0: Stride 1은 3×3, Stride 2는 2×2 출력입니다."),
         ("Padding","가장자리 주변에 값을 채워 계산 범위를 조절합니다","Padding(패딩)은 입력 주위를 채우는 방법입니다. 아래는 가장자리 한 칸에 0을 채우는 Zero Padding입니다.","padding_basic","5×5 입력, Kernel 3·Stride 1·Padding 1이면 출력의 공간 크기가 5×5로 유지됩니다."),
         ("Downsampling","공간 해상도를 줄여 더 작은 특징 지도를 만듭니다","Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.","downsampling_basic","8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다."),
-        ("이미지 피라미드", "평활화 후 축소해 여러 해상도의 영상을 만듭니다", "Gaussian Pyramid(가우시안 피라미드)는 매 단계에서 평활화한 뒤 가로·세로를 절반으로 줄입니다. 축소 전 평활화는 Aliasing(가짜 저주파 무늬)을 줄이는 데 쓰입니다.", "processing_pyramid", "사진의 Gaussian 피라미드와 CNN의 Max Pooling은 계산이 다릅니다. 가로·세로가 절반이면 Pixel 수는 1/4이 됩니다.", True),
+        ("이미지 피라미드", "평활화 후 축소해 여러 해상도의 영상을 만듭니다", "Gaussian Pyramid(가우시안 피라미드)는 평활화 후 가로·세로를 절반으로 줄입니다. 축소 전 평활화는 Aliasing(가짜 패턴)을 줄이는 데 쓰입니다.", "processing_pyramid", "사진의 Gaussian 피라미드와 CNN의 Max Pooling은 계산이 다릅니다. 가로·세로가 절반이면 Pixel 수는 1/4이 됩니다.", True),
         ("출력 크기 계산","Kernel·Stride·Padding으로 출력 크기를 계산합니다","H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.","spatial_detail","Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.",True),
         ("특징의 조합","Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다","초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.","hierarchy_professional","경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다."),
         ("Receptive Field","깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다","Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.","old:receptive_field","3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.",True),
