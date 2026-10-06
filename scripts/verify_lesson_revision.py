@@ -80,3 +80,29 @@ for name in ["ai_basics", "vision_ai"]:
             assert len(refs) >= 2
 print("SVG XML/resources, AND, convolution, gradients, IoU and metrics verified")
 print("Survey sources, cross-entropy, CNN shapes, class ratio and residual sum verified")
+
+# Check the actual filter routines against hand-calculated independent results.
+from scipy import ndimage as ndi
+from build_image_processing_figures import PATCH, SECTIONS, mask_examples
+assert PATCH.sum() == 800
+assert np.isclose(ndi.uniform_filter(PATCH.astype(float), 3)[1, 1], 800/9)
+assert ndi.median_filter(PATCH, 3)[1, 1] == 80
+constant = np.full((15, 15), 80.0)
+assert np.allclose(ndi.gaussian_filter(constant, 1), constant)
+assert np.allclose(ndi.sobel(constant, axis=1), 0)
+ramp = np.tile(np.arange(15, dtype=float), (15, 1))
+assert np.allclose(ndi.sobel(ramp, axis=1)[1:-1, 1:-1], 8)
+assert np.allclose(ndi.sobel(ramp, axis=0), 0)
+original, opened, closed = mask_examples()
+assert [int(a.sum()) for a in (original, opened, closed)] == [401, 399, 402]
+assert opened[19, 19] == 0 and closed[19, 19] == 1
+assert not opened[5, 7] and closed[5, 7]
+assert np.all(opened <= original) and np.all(closed >= original)
+assert [a[::2, ::2].shape for a in (np.zeros((224,224)), np.zeros((112,112)))] == [(112,112), (56,56)]
+vision_slides = html.parse(str(REPO_DIR / "docs/vision_ai.html")).xpath('//section[contains(concat(" ", @class, " "), " slide ")]')
+processing = [item for item in manifest["vision_ai"] if Path(item["asset"]).stem in SECTIONS]
+assert len(processing) == 7
+for item in processing:
+    refs = vision_slides[item["number"]].xpath('.//p[@class="lesson-reference"]//a/@href')
+    assert "https://szeliski.org/Book/1stEdition.htm" in refs
+print("Szeliski sources, mean/median, Gaussian DC, Sobel ramp, mask opening/closing and pyramid shapes verified")

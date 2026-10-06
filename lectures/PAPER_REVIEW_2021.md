@@ -20,9 +20,9 @@ Journal of Big Data 8, 53, 2021-03-31.
 | AI Basics 34 | 증강·Dropout·Early Stopping | Regularization, Overfitting | survey_regularization.svg |
 | AI Basics 40 | 클래스 불균형 대응과 평가 | Imbalanced data | survey_class_imbalance.svg |
 | AI Basics 42 | 분류용 Cross-entropy 계산 | CNN layers, Loss Functions | survey_classification_loss.svg |
-| Vision AI 21 | 작은 분류 CNN의 전체 흐름 | CNN layers, Fig. 7 | survey_cnn_pipeline.svg |
-| Vision AI 24 | 순차·병렬·우회 연결 | CNN architectures | survey_architecture_patterns.svg |
-| Vision AI 25 | Residual 합산과 Shape 조건 | ResNet, Fig. 20 | survey_residual_detail.svg |
+| Vision AI 28 | 작은 분류 CNN의 전체 흐름 | CNN layers, Fig. 7 | survey_cnn_pipeline.svg |
+| Vision AI 31 | 순차·병렬·우회 연결 | CNN architectures | survey_architecture_patterns.svg |
+| Vision AI 32 | Residual 합산과 Shape 조건 | ResNet, Fig. 20 | survey_residual_detail.svg |
 
 기존 Pooling 설명에도 공간 해상도 감소로 작은 결함·경계 정보가 일부 사라질
 수 있다는 점을 보강했습니다. 모델 이름을 나열하기보다 입력에서 출력으로

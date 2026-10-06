@@ -284,3 +284,21 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 정규화 및 Early Stopping: https://cs231n.github.io/neural-networks-2/
 - 비교 그림의 사과는 기존 `apple_studio_preview.png` 생성 사진을 재사용했습니다. CE는 정답을 고정한 단일 샘플 L=−ln(p)의 직접 계산이며, CNN Shape와 Residual 숫자도 설명용 예시입니다.
 - 생성: `scripts/build_survey_figures.py` 또는 전체 `scripts/build_lesson_revision.py`. 논문과 슬라이드의 대응·주의점은 `lectures/PAPER_REVIEW_2021.md`에 기록했습니다.
+
+## Szeliski 3장 Image Processing 기반 보강 (2026-10-06)
+
+- Richard Szeliski, Computer Vision: Algorithms and Applications, 1판, 3장.
+  저자 공식 안내: https://szeliski.org/Book/1stEdition.htm
+- Brown 강의용 3장 PDF: https://mesh.brown.edu/engn1610/szeliski/03-ImageProcessing.pdf
+  이 주소의 응답 실패로 2010-09-03 교재 초안 본문을 대조했습니다.
+  대학 미러: https://www.cs.ccu.edu.tw/~damon/tmp/SzeliskiBook_20100903_draft.pdf
+- `processing_*.svg` 7종은 원문 Figure를 복제한 그림이 아닙니다. 기존 AI 생성 사과
+  사진과 합성 잡음·이진 Mask를 실제로 필터링한 결과 및 직접 작성한 계산 도표입니다.
+- Pixel/이웃 연산(3.1–3.2), Gaussian·Sobel(3.2), 중앙값(3.3.1),
+  형태학(3.3.2), 축소·다중 해상도(3.5.2–3.5.3)를 강의용으로 재구성했습니다.
+- OpenCV 공식 설명으로 대조: https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html
+  https://docs.opencv.org/4.x/d5/d0f/tutorial_py_gradients.html
+  https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html
+  https://docs.opencv.org/4.x/d4/d1f/tutorial_pyramids.html
+- 생성: `scripts/build_image_processing_figures.py` (NumPy/Pillow/SciPy).
+  출처·계산 조건·현재 페이지: `lectures/SZELISKI_IMAGE_PROCESSING_REVIEW.md`.

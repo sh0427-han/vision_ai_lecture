@@ -52,6 +52,9 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - 현장 질문 → 원하는 Output → Vision Task → Label → Model / Metric
 - Classification / Object Detection / Segmentation
 - Task별 Label 구조와 IoU
+- Pixel/이웃 연산, Gaussian·평균·중앙값 필터와 잡음/세부 손실
+- 영상 기울기와 Sobel, Mask의 Opening·Closing
+- Gaussian 피라미드의 평활화·축소와 CNN Pooling의 차이
 - CNN의 Local Connectivity / Weight Sharing
 - Kernel: Local Pattern에 반응하는 학습 Weight
 - Convolution 계산
