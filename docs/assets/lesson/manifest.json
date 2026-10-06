@@ -59,29 +59,29 @@
       "number": 8,
       "topic": "Loss",
       "level": "basic",
-      "title": "정답에서 얼마나 벗어났는지를 숫자로 계산합니다",
+      "title": "Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다",
       "asset": "assets/lesson/loss_basic.svg"
     },
     {
       "number": 9,
       "topic": "Gradient",
       "level": "basic",
-      "title": "현재 위치에서 Loss가 줄어드는 쪽으로 이동합니다",
+      "title": "기울기는 가중치를 어느 방향으로 바꿀지 알려줍니다",
       "asset": "assets/lesson/gradient_basic.svg"
     },
     {
       "number": 10,
       "topic": "Gradient와 Learning Rate",
       "level": "detail",
-      "title": "같은 예제의 가중치를 실제로 한 번 수정해 봅니다",
+      "title": "기울기 계산 → 가중치 수정 → Loss 재계산을 연결합니다",
       "asset": "assets/lesson/gradient_detail.svg"
     },
     {
       "number": 11,
       "topic": "Optimizer",
       "level": "basic",
-      "title": "Optimizer는 수정 규칙, 학습률은 한 걸음의 크기입니다",
-      "asset": "assets/lesson/context_optimizer_loss_landscape.svg"
+      "title": "같은 수정 규칙도 학습률에 따라 결과가 달라집니다",
+      "asset": "assets/lesson/optimizer_learning_rates.svg"
     },
     {
       "number": 12,

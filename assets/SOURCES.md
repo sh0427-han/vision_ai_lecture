@@ -261,3 +261,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 - ChatGPT Image Generation으로 생성한 사과·오렌지 사진형 자산과 촬영 조건 비교 이미지: `docs/assets/generated/`. 교육용 합성 이미지이며 실제 관측 데이터나 모델 실험 결과가 아닙니다. 상세 용도와 생성 명세는 해당 폴더 `README.md`에 기록했습니다.
 - 사진 파일을 기반으로 지도/비지도학습, 신경망 입력, Dataset 촬영 조건, 계층적 Feature, Shortcut Learning 그림을 재구성했습니다. 수식·텐서·계산값은 기존 검증 가능한 SVG 방식으로 유지했습니다.
+
+## Loss / Gradient / Optimizer 재구성 (2026-10-06)
+
+- 개념 출처: Stanford CS231n Optimization — https://cs231n.github.io/optimization-1/ . Loss를 줄이는 가중치 탐색, Gradient와 경사하강법 설명을 참고했습니다.
+- 모든 숫자·곡선은 `scripts/build_loss_optimizer_figures.py`에서 직접 계산한 단일 샘플 회귀 예시입니다. x=2, y=4, b=0, 초기 w=1; L(w)=(2w−4)²; Gradient=8w−16. 실제 학습 실험 결과나 모델 Benchmark가 아닙니다.
+- Optimizer는 기본 SGD로 고정하고 학습률 0.025/0.1/0.3만 비교합니다. 업데이트 t=0~3을 표시하며, 증가 예시의 세로축은 0~34로 별도 표기합니다. Momentum·Weight Decay는 사용하지 않습니다.
+- SVG는 NumPy/Matplotlib로 생성하며 글꼴 윤곽을 포함합니다. 재생성 환경에는 Noto Sans CJK KR 글꼴이 필요합니다. 예측값을 비교하는 Loss 그림과 가중치를 비교하는 Loss 곡선의 가로축을 구분합니다.

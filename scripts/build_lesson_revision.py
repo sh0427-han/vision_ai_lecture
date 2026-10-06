@@ -14,6 +14,8 @@ from pathlib import Path
 import numpy as np
 from lxml import etree
 
+from build_loss_optimizer_figures import build_loss_optimizer_figures
+
 REPO_DIR = Path(__file__).resolve().parents[1]
 ASSET_DIR = REPO_DIR / "docs/assets/lesson"
 VERSION = "professional-20261006-2"
@@ -656,12 +658,16 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
             reference=f'<p class="lesson-reference">개념 참고: <a href="{url}" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p>'
         if any(name in asset for name in ["learning_basic", "network_basic", "capture_conditions", "shortcut_professional", "hierarchy_professional"]):
             reference += '<p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p>'
+        figure_version = VERSION
+        if Path(asset).stem in {"loss_basic", "gradient_basic", "gradient_detail", "optimizer_learning_rates"}:
+            figure_version = "loss-optimizer-20261006-1"
+            reference = '<p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</p>'
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "기본 개념"}</span></div>
 <h2 class="slide-title">{html.escape(heading)}</h2>
 <p class="slide-subtitle">{html.escape(description)}</p>
-<figure class="lesson-figure"><img src="{asset}?v={VERSION}" alt="{html.escape(heading)}"></figure>
+<figure class="lesson-figure"><img src="{asset}?v={figure_version}" alt="{html.escape(heading)}"></figure>
 <p class="lesson-takeaway">{html.escape(takeaway)}</p>{reference}</div></section>\n'''
         manifest.append({"number":index,"topic":topic,"level":"detail" if detailed else "basic","title":heading,"asset":asset})
     header+='''</main><div class="deck-controls"><div class="deck-controls-inner">
@@ -683,10 +689,10 @@ def build_lessons():
         ("분류와 회귀","분류는 이름을, 회귀는 연속적인 숫자를 예측합니다","Classification(분류)은 사과·오렌지 같은 범주를, Regression(회귀)은 입력 숫자에서 3.6 같은 연속적인 값을 예측합니다.","classification_basic","먼저 어떤 형태의 결과가 필요한지 정하면 학습 목표가 분명해집니다."),
         ("분류의 출력","두 종류 또는 여러 종류 중에서 점수를 비교합니다","Binary Classification(이진 분류)은 두 Class, Multi-class Classification(다중 클래스 분류)은 세 개 이상을 구분합니다.","classification_outputs","그림은 확률 형식의 점수 예시입니다. 높은 점수가 현실의 정확한 확률이나 정답을 보장하지는 않습니다."),
         ("학습의 의미","학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다","입력 x=2, 정답 y=4를 사용합니다. 모델 ŷ=w×x의 w를 바꾸면 같은 입력의 예측값이 달라집니다.","learning_update","여기서 w는 학습으로 바꾸는 가중치이고, Bias는 0으로 고정한 예시입니다."),
-        ("Loss","정답에서 얼마나 벗어났는지를 숫자로 계산합니다","Loss(손실)는 학습할 때 줄이는 값입니다. 제곱오차 예시에서 예측 2의 Loss는 4, 예측 3.6의 Loss는 0.16입니다.","loss_basic","여러 샘플의 제곱오차를 평균한 값이 MSE(Mean Squared Error, 평균제곱오차)입니다."),
-        ("Gradient","현재 위치에서 Loss가 줄어드는 쪽으로 이동합니다","Gradient(기울기)는 가중치 변화에 따른 Loss의 변화율입니다. 반대 방향으로 작은 걸음을 이동하는 것이 경사하강법의 직관입니다.","gradient_basic","곡선의 가로축은 가중치 w, 세로축은 Loss입니다. 아래쪽일수록 오차가 작습니다."),
-        ("Gradient와 Learning Rate","같은 예제의 가중치를 실제로 한 번 수정해 봅니다","x=2, y=4, b=0에서 w=1의 Gradient는 −8입니다. Learning Rate(학습률) 0.1로 수정하면 w는 1.8이 됩니다.","gradient_detail","SGD 기본식: 새 가중치 = 현재 가중치 − 학습률 × Gradient.",True),
-        ("Optimizer","Optimizer는 수정 규칙, 학습률은 한 걸음의 크기입니다","Optimizer(최적화 알고리즘)는 Gradient를 이용해 Parameter를 갱신합니다. 학습률이 너무 크면 최소점을 지나칠 수 있습니다.","old:optimizer_loss_landscape","지금 본 식은 기본 SGD 예시입니다. Momentum·Adam은 갱신에 추가 정보를 사용합니다."),
+        ("Loss","Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다","정답 y=4를 고정하고 후보 예측 2·3.6·4를 비교합니다. 회귀용 제곱오차는 차이의 부호를 없애고, 큰 오차에 더 큰 Loss를 부여합니다.","loss_basic","여러 샘플의 제곱오차를 평균하면 MSE(Mean Squared Error, 평균제곱오차)입니다. 문제에 따라 다른 Loss를 사용합니다."),
+        ("Gradient","기울기는 가중치를 어느 방향으로 바꿀지 알려줍니다","입력 x=2와 정답 y=4는 고정하고, 가중치 w만 바꿉니다. 현재 w=1에서 기울기가 음수이므로, w를 조금 늘리면 Loss가 줄어듭니다.","gradient_basic","가로축은 예측값이나 학습 시간이 아닌 가중치 w입니다. 이 곡선은 한 가중치를 사용하는 회귀 예시입니다."),
+        ("Gradient와 Learning Rate","기울기 계산 → 가중치 수정 → Loss 재계산을 연결합니다","Gradient는 −8, Learning Rate(학습률) η는 0.1입니다. SGD(Stochastic Gradient Descent, 확률적 경사하강법)의 기본 갱신식으로 w를 1에서 1.8로 바꿉니다.","gradient_detail","같은 x=2에서 예측은 2 → 3.6, Loss는 4 → 0.16입니다. Bias는 0으로 고정하고 Momentum·Weight Decay는 사용하지 않습니다.",True),
+        ("Optimizer","같은 수정 규칙도 학습률에 따라 결과가 달라집니다","Optimizer(최적화 알고리즘)는 가중치의 갱신 규칙입니다. 여기서는 SGD를 고정하고 학습률 η만 0.025·0.1·0.3으로 바꿔 Loss 변화를 실제 계산했습니다.","optimizer_learning_rates","Loss는 줄일 목표, Gradient는 변화율, Optimizer는 수정 규칙입니다. 적절한 학습률은 문제에 따라 다르며 0.1이 항상 최선인 것은 아닙니다."),
         ("Training Loop","예측 → 오차 → Gradient → 수정을 반복합니다","Training(학습)은 한 번의 계산으로 끝나지 않습니다. 바뀐 가중치로 다음 예측을 계산하고 다시 오차를 줄입니다.","training_basic","Forward는 예측 계산, Backward는 Gradient 계산, Update는 가중치 수정입니다."),
         ("Training과 Inference","배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다","Inference(추론)는 학습된 모델에 새 입력을 넣어 결과를 얻는 과정입니다. 정답 없이도 예측할 수 있습니다.","training_inference_basic","추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다."),
         ("Perceptron","입력마다 가중치를 곱하고, 더해서 하나의 판정을 만듭니다","Perceptron(퍼셉트론)은 기본적인 신경 계산입니다. 아래 숫자는 밝기와 모양을 두 입력으로 놓은 설명용 예시입니다.","perceptron_basic","Weight는 입력의 기여도를, Bias는 합계의 기준 위치를 조절합니다."),
@@ -767,6 +773,7 @@ def build_lessons():
 
 if __name__=="__main__":
     build_figures()
+    build_loss_optimizer_figures()
     build_lessons()
     for target, source in {
         "and_xor_linear_separability": "and_xor",
