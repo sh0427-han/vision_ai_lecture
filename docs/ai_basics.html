@@ -155,134 +155,162 @@
 <p class="slide-subtitle">Linear Layer 사이에 활성화 함수가 없으면 전체 계산은 하나의 Affine Transformation(선형 계산+편향)으로 표현됩니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_linear_layers_collapse.svg?v=professional-20261006-2" alt="비선형성이 없으면 여러 Layer도 하나로 합쳐집니다"></figure>
 <p class="lesson-takeaway">깊이만 늘린다고 XOR 같은 문제를 해결하는 비선형 표현력이 생기지는 않습니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
+<section class="slide" data-topic="특징 학습" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>21 · 특징 학습</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">딥러닝은 특징을 만드는 계산도 학습합니다</h2>
+<p class="slide-subtitle">전통적 ML의 한 예는 사람이 특징을 설계한 뒤 분류기를 학습합니다. 딥러닝은 특징 층과 분류 층을 함께 학습할 수 있습니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_feature_learning.svg?v=survey-20261006-1" alt="딥러닝은 특징을 만드는 계산도 학습합니다"></figure>
+<p class="lesson-takeaway">자동 특징 학습도 데이터·정답·학습 목표의 설계가 필요합니다. 모든 ML 방법을 이 비교로 나눌 수는 없습니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 3 · 특징 학습</a> · <a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">LeCun et al. (2015)</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Feature와 Representation" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>21 · Feature와 Representation</span>
+<div class="slide-inner"><div class="lesson-meta"><span>22 · Feature와 Representation</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다</h2>
 <p class="slide-subtitle">Feature는 유용한 단서, Representation(표현)은 그 단서를 담은 내부 숫자입니다. 경계·부분 형태는 직관을 위한 예시입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/hierarchy_professional.svg?v=professional-20261006-2" alt="이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다"></figure>
 <p class="lesson-takeaway">실제 Channel 하나가 항상 사람이 이름 붙인 특징 하나와 대응하는 것은 아닙니다.</p><p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p></div></section>
 <section class="slide" data-topic="Backpropagation" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>22 · Backpropagation</span>
+<div class="slide-inner"><div class="lesson-meta"><span>23 · Backpropagation</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">오차에서 각 가중치의 Gradient를 뒤로 계산합니다</h2>
 <p class="slide-subtitle">Backpropagation(역전파)은 출력의 오차가 각 가중치에 얼마나 민감한지 계산합니다. 가중치 수정은 Optimizer가 수행합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_backpropagation_visual.svg?v=professional-20261006-2" alt="오차에서 각 가중치의 Gradient를 뒤로 계산합니다"></figure>
 <p class="lesson-takeaway">오차를 뒤로 보내는 그림은 Gradient 계산 흐름을 표현합니다.</p></div></section>
 <section class="slide" data-topic="Backpropagation" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>23 · Backpropagation</span>
+<div class="slide-inner"><div class="lesson-meta"><span>24 · Backpropagation</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">Chain Rule로 각 Parameter의 변화율을 계산합니다</h2>
 <p class="slide-subtitle">같은 x=2, y=4 예제에 Bias를 추가합니다. w=1, b=0에서 가중치와 Bias의 Gradient를 계산합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/backprop_detail.svg?v=professional-20261006-2" alt="Chain Rule로 각 Parameter의 변화율을 계산합니다"></figure>
 <p class="lesson-takeaway">이 장에서는 w와 b를 모두 학습합니다. 앞의 Gradient 예제에서는 b를 0으로 고정했습니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="Batch·Iteration·Epoch" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>24 · Batch·Iteration·Epoch</span>
+<div class="slide-inner"><div class="lesson-meta"><span>25 · Batch·Iteration·Epoch</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">데이터를 작은 묶음으로 나누어 반복해서 봅니다</h2>
 <p class="slide-subtitle">Batch는 한 번에 처리하는 묶음, Iteration은 보통 한 묶음의 처리, Epoch은 학습 데이터 전체를 한 번 보는 주기입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_batch_epoch.svg?v=professional-20261006-2" alt="데이터를 작은 묶음으로 나누어 반복해서 봅니다"></figure>
 <p class="lesson-takeaway">이미지 10장, batch_size=4, 마지막 묶음을 버리지 않으면 4+4+2의 3번 처리가 1 Epoch입니다.</p></div></section>
 <section class="slide" data-topic="Dataset" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>25 · Dataset</span>
+<div class="slide-inner"><div class="lesson-meta"><span>26 · Dataset</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">데이터는 실제 사용할 조건을 대표해야 합니다</h2>
 <p class="slide-subtitle">Dataset(데이터셋)은 학습·평가에 사용하는 데이터 모음입니다. 조명·크기·배경·설비·시간대와 일관된 정답 기준을 확인합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/capture_conditions.svg?v=professional-20261006-2" alt="데이터는 실제 사용할 조건을 대표해야 합니다"></figure>
 <p class="lesson-takeaway">특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다.</p><p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p></div></section>
 <section class="slide" data-topic="데이터 분리" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>26 · 데이터 분리</span>
+<div class="slide-inner"><div class="lesson-meta"><span>27 · 데이터 분리</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">학습·모델 선택·최종 평가의 데이터를 나눕니다</h2>
 <p class="slide-subtitle">Train은 가중치 학습, Validation은 모델·설정·Threshold 선택, Test는 최종 일반화 평가에 사용합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_dataset_split.svg?v=professional-20261006-2" alt="학습·모델 선택·최종 평가의 데이터를 나눕니다"></figure>
 <p class="lesson-takeaway">예: 1,000장의 70/15/15 분리. 비율보다 서로 독립적인 평가 데이터 확보가 중요합니다.</p></div></section>
 <section class="slide" data-topic="Group Split" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>27 · Group Split</span>
+<div class="slide-inner"><div class="lesson-meta"><span>28 · Group Split</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">같은 영상의 비슷한 Frame은 통째로 분리합니다</h2>
 <p class="slide-subtitle">연관된 샘플을 묶은 단위를 Group(그룹)이라고 합니다. 평가하려는 새 조건에 맞춰 영상·설비·대상 등을 분리 기준으로 정합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_group_split_visual.svg?v=professional-20261006-2" alt="같은 영상의 비슷한 Frame은 통째로 분리합니다"></figure>
 <p class="lesson-takeaway">새 영상 성능은 영상 단위, 새 설비 성능은 설비 단위 분리가 필요할 수 있습니다.</p></div></section>
 <section class="slide" data-topic="Data Leakage" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>28 · Data Leakage</span>
+<div class="slide-inner"><div class="lesson-meta"><span>29 · Data Leakage</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">평가 데이터의 정보가 학습·선택에 새어들면 점수가 왜곡됩니다</h2>
 <p class="slide-subtitle">Data Leakage(데이터 누수)는 평가 때 몰라야 할 정보를 사용한 경우입니다. 중복 장면·전체 데이터 통계·반복적인 Test 선택을 점검합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_data_leakage_visual.svg?v=professional-20261006-2" alt="평가 데이터의 정보가 학습·선택에 새어들면 점수가 왜곡됩니다"></figure>
 <p class="lesson-takeaway">학습하는 전처리 통계는 Train에서 계산합니다. 미리 정한 255 나누기는 통계를 학습하는 과정이 아닙니다.</p></div></section>
 <section class="slide" data-topic="전처리" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>29 · 전처리</span>
+<div class="slide-inner"><div class="lesson-meta"><span>30 · 전처리</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다</h2>
 <p class="slide-subtitle">Preprocessing(전처리)은 입력 형식을 맞추는 과정입니다. 1920×1080을 640×640으로 맞출 때는 Resize·Crop·Padding의 차이를 고려합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/preprocess_basic.svg?v=professional-20261006-2" alt="모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다"></figure>
 <p class="lesson-takeaway">RGB/BGR, 0~255/정규화 값, HWC/CHW를 확인하고 Train·Inference의 기본 규칙을 맞춥니다.</p></div></section>
 <section class="slide" data-topic="Data Augmentation" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>30 · Data Augmentation</span>
+<div class="slide-inner"><div class="lesson-meta"><span>31 · Data Augmentation</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">의미를 유지하는 변화를 학습 중에 보여줍니다</h2>
 <p class="slide-subtitle">Data Augmentation(데이터 증강)은 밝기·회전·가림 같은 변화를 적용하는 방법입니다. 현실적인 변화 범위와 정답 유지 여부를 확인합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" alt="의미를 유지하는 변화를 학습 중에 보여줍니다"></figure>
 <p class="lesson-takeaway">검출·분할에서는 이미지와 Box·Mask에 같은 공간 변환을 적용해야 합니다.</p></div></section>
 <section class="slide" data-topic="Overfitting" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>31 · Overfitting</span>
+<div class="slide-inner"><div class="lesson-meta"><span>32 · Overfitting</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다</h2>
 <p class="slide-subtitle">Overfitting(과적합)은 학습 데이터에 지나치게 맞춰 새 데이터 성능이 떨어지는 현상입니다. Validation 추세와 실패 사례를 함께 봅니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2" alt="Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다"></figure>
 <p class="lesson-takeaway">Generalization(일반화)은 직접 학습하지 않은 데이터에서도 성능을 유지하는 능력입니다.</p></div></section>
+<section class="slide" data-topic="과적합 대응" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>33 · 과적합 대응</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">새 데이터에서도 잘하도록 학습을 조절합니다</h2>
+<p class="slide-subtitle">데이터 증강·Dropout·Early Stopping은 서로 다른 방식으로 일반화를 돕습니다. Dropout의 p=0.5는 학습 중 각 값을 0으로 만들 확률입니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_regularization.svg?v=survey-20261006-1" alt="새 데이터에서도 잘하도록 학습을 조절합니다"></figure>
+<p class="lesson-takeaway">Early Stopping은 Validation을 사용합니다. 증강 강도와 Dropout 확률을 높인다고 항상 성능이 좋아지는 것은 아닙니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Regularization</a> · <a href="https://jmlr.org/papers/v15/srivastava14a.html" target="_blank" rel="noopener">Dropout 원 논문</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="K-Fold" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>32 · K-Fold</span>
+<div class="slide-inner"><div class="lesson-meta"><span>34 · K-Fold</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">평가 대상을 바꾸어 성능의 변동도 확인합니다</h2>
 <p class="slide-subtitle">K-Fold Cross Validation(교차검증)은 데이터 부분집합을 번갈아 Validation으로 사용하며 모델을 각각 새로 학습합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_kfold_visual.svg?v=professional-20261006-2" alt="평가 대상을 바꾸어 성능의 변동도 확인합니다"></figure>
 <p class="lesson-takeaway">같은 원본을 공유하는 샘플은 Group K-Fold로 분리하고, 최종 Test는 별도로 유지합니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="Threshold" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>33 · Threshold</span>
+<div class="slide-inner"><div class="lesson-meta"><span>35 · Threshold</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">점수에 기준을 적용하면 실제 판정이 됩니다</h2>
 <p class="slide-subtitle">Threshold(임계값)는 불량으로 판정할 점수 기준입니다. 예: 불량 점수 0.82는 기준 0.5에서 불량으로 판정합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/threshold_basic.svg?v=professional-20261006-2" alt="점수에 기준을 적용하면 실제 판정이 됩니다"></figure>
 <p class="lesson-takeaway">기준을 바꾸면 찾는 불량과 오알람 수가 달라집니다. 기준은 Validation에서 선택합니다.</p></div></section>
 <section class="slide" data-topic="Confusion Matrix" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>34 · Confusion Matrix</span>
+<div class="slide-inner"><div class="lesson-meta"><span>36 · Confusion Matrix</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">정답과 판정을 비교해 네 가지 결과를 셉니다</h2>
 <p class="slide-subtitle">Confusion Matrix(혼동행렬)는 TP·FN·FP·TN을 구분합니다. 실제 불량 20개 중 18개를 찾고, 정상 80개 중 4개를 잘못 알린 예시입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/confusion_counts.svg?v=professional-20261006-2" alt="정답과 판정을 비교해 네 가지 결과를 셉니다"></figure>
 <p class="lesson-takeaway">TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과.</p></div></section>
 <section class="slide" data-topic="Precision과 Recall" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>35 · Precision과 Recall</span>
+<div class="slide-inner"><div class="lesson-meta"><span>37 · Precision과 Recall</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">알람의 정확성과 불량을 찾는 비율을 구분합니다</h2>
 <p class="slide-subtitle">Precision은 불량이라 알린 것 중 진짜 불량의 비율, Recall은 실제 불량 중 찾아낸 비율입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/precision_recall.svg?v=professional-20261006-2" alt="알람의 정확성과 불량을 찾는 비율을 구분합니다"></figure>
 <p class="lesson-takeaway">같은 모델도 임계값에 따라 Precision·Recall이 달라질 수 있습니다.</p></div></section>
 <section class="slide" data-topic="Accuracy와 F1" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>36 · Accuracy와 F1</span>
+<div class="slide-inner"><div class="lesson-meta"><span>38 · Accuracy와 F1</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">전체 정답률과 Precision·Recall의 균형을 함께 봅니다</h2>
 <p class="slide-subtitle">Accuracy는 전체 중 맞춘 비율입니다. F1은 Precision과 Recall의 조화평균이며 두 지표가 모두 높아야 높아집니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/accuracy_f1.svg?v=professional-20261006-2" alt="전체 정답률과 Precision·Recall의 균형을 함께 봅니다"></figure>
 <p class="lesson-takeaway">불량이 1%인 데이터에서 모두 정상으로 예측해도 Accuracy는 99%이지만 Recall은 0%입니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
+<section class="slide" data-topic="클래스 불균형" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>39 · 클래스 불균형</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">불량이 적을수록 학습과 평가를 함께 점검합니다</h2>
+<p class="slide-subtitle">정상 95장·불량 5장처럼 Class 수가 다르면, 소수 Class의 오류가 가려질 수 있습니다. 표본 조정·Loss 가중치와 클래스별 지표를 비교합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_class_imbalance.svg?v=survey-20261006-1" alt="불량이 적을수록 학습과 평가를 함께 점검합니다"></figure>
+<p class="lesson-takeaway">Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Imbalanced data</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">클래스별 Loss 가중치</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Loss와 Metric" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>37 · Loss와 Metric</span>
+<div class="slide-inner"><div class="lesson-meta"><span>40 · Loss와 Metric</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다</h2>
 <p class="slide-subtitle">Loss는 가중치를 갱신하는 목적함수입니다. Metric(평가지표)은 실제 문제에서 성능을 해석하고 비교하는 기준입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/loss_metric_basic.svg?v=professional-20261006-2" alt="학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다"></figure>
 <p class="lesson-takeaway">Loss가 줄었다고 원하는 Metric이나 운영 성능이 항상 개선되는 것은 아닙니다.</p></div></section>
+<section class="slide" data-topic="분류용 Loss" data-level="detail">
+<div class="slide-inner"><div class="lesson-meta"><span>41 · 분류용 Loss</span>
+<span class="lesson-level lesson-level--detail">상세 설명</span></div>
+<h2 class="slide-title">분류에서는 정답 클래스의 확률을 이용할 수 있습니다</h2>
+<p class="slide-subtitle">Cross-entropy(교차 엔트로피)는 정답 클래스에 낮은 확률을 주면 큰 Loss를 부여합니다. 회귀에서 사용한 제곱오차와 구분합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/survey_classification_loss.svg?v=survey-20261006-1" alt="분류에서는 정답 클래스의 확률을 이용할 수 있습니다"></figure>
+<p class="lesson-takeaway">단일 정답·단일 샘플에서 L=−ln(p정답)입니다. PyTorch CrossEntropyLoss에는 Softmax 확률 대신 원래 Logit(정규화 전 점수)을 입력합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · CNN layers · Loss</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">PyTorch CrossEntropyLoss</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Shortcut Learning" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>38 · Shortcut Learning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>42 · Shortcut Learning</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">모델이 우리가 원한 단서를 사용했는지도 확인합니다</h2>
 <p class="slide-subtitle">Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="모델이 우리가 원한 단서를 사용했는지도 확인합니다"></figure>
 <p class="lesson-takeaway">Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다.</p><p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p></div></section>
 <section class="slide" data-topic="개발과 운영" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>39 · 개발과 운영</span>
+<div class="slide-inner"><div class="lesson-meta"><span>43 · 개발과 운영</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">운영의 실패 사례를 다음 데이터와 학습에 연결합니다</h2>
 <p class="slide-subtitle">배포 후에도 조명·설비·제품 조건이 바뀔 수 있습니다. 실패 이미지를 모으고 정답 기준과 평가 조건을 다시 확인합니다.</p>

@@ -15,6 +15,7 @@ import numpy as np
 from lxml import etree
 
 from build_loss_optimizer_figures import build_loss_optimizer_figures
+from build_survey_figures import build_survey_figures
 
 REPO_DIR = Path(__file__).resolve().parents[1]
 ASSET_DIR = REPO_DIR / "docs/assets/lesson"
@@ -26,6 +27,16 @@ INK = "#17243b"
 MUTED = "#64748b"
 FONT_FAMILY = "'Noto Sans CJK KR', 'Malgun Gothic', sans-serif"
 SVG_NS = "http://www.w3.org/2000/svg"
+SURVEY_URL = "https://link.springer.com/article/10.1186/s40537-021-00444-8"
+SURVEY_REFERENCES = {
+    "survey_feature_learning": ("Fig. 3 · 특징 학습", "https://www.nature.com/articles/nature14539", "LeCun et al. (2015)"),
+    "survey_classification_loss": ("CNN layers · Loss", "https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html", "PyTorch CrossEntropyLoss"),
+    "survey_regularization": ("Regularization", "https://jmlr.org/papers/v15/srivastava14a.html", "Dropout 원 논문"),
+    "survey_class_imbalance": ("Imbalanced data", "https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html", "클래스별 Loss 가중치"),
+    "survey_cnn_pipeline": ("Fig. 7 · CNN layers", "https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html", "PyTorch Conv2d"),
+    "survey_architecture_patterns": ("CNN architectures", "https://arxiv.org/abs/1409.1556", "VGG 원 논문"),
+    "survey_residual_detail": ("Fig. 20 · ResNet", "https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html", "ResNet 원 논문"),
+}
 ASSET_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -714,6 +725,15 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
         if Path(asset).stem in {"loss_basic", "gradient_basic", "gradient_detail", "optimizer_learning_rates"}:
             figure_version = "loss-optimizer-20261006-2"
             reference = '<p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</p>'
+        if Path(asset).stem in SURVEY_REFERENCES:
+            section, primary_url, primary_label = SURVEY_REFERENCES[Path(asset).stem]
+            figure_version = "survey-20261006-1"
+            reference = (
+                f'<p class="lesson-reference">참고: <a href="{SURVEY_URL}" '
+                f'target="_blank" rel="noopener">Alzubaidi et al. (2021) · {section}</a>'
+                f' · <a href="{primary_url}" target="_blank" rel="noopener">{primary_label}</a>'
+                ' · 강의용 재구성</p>'
+            )
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "기본 개념"}</span></div>
@@ -754,6 +774,7 @@ def build_lessons():
         ("Neural Network","여러 계산을 Layer로 연결하면 신경망이 됩니다","Neural Network(신경망)의 각 Layer(층)는 앞에서 받은 숫자를 조합해 다음 층으로 전달합니다.","network_basic","그림의 노드·연결은 계산 구조를 나타내며, 실제 모델의 뉴런 수와는 다릅니다. 사진 1장을 입력하는 예시입니다."),
         ("Activation","Layer를 쌓을 때 비선형 계산도 필요합니다","Activation Function(활성화 함수)은 계산에 비선형성을 넣습니다. ReLU(Rectified Linear Unit)는 음수를 0으로, 양수를 그대로 전달합니다.","activation_basic","ReLU: f(x)=max(0,x). 여러 비선형 계산을 조합하면 더 복잡한 경계를 표현할 수 있습니다."),
         ("선형 Layer의 한계","비선형성이 없으면 여러 Layer도 하나로 합쳐집니다","Linear Layer 사이에 활성화 함수가 없으면 전체 계산은 하나의 Affine Transformation(선형 계산+편향)으로 표현됩니다.","old:linear_layers_collapse","깊이만 늘린다고 XOR 같은 문제를 해결하는 비선형 표현력이 생기지는 않습니다.",True),
+        ("특징 학습", "딥러닝은 특징을 만드는 계산도 학습합니다", "전통적 ML의 한 예는 사람이 특징을 설계한 뒤 분류기를 학습합니다. 딥러닝은 특징 층과 분류 층을 함께 학습할 수 있습니다.", "survey_feature_learning", "자동 특징 학습도 데이터·정답·학습 목표의 설계가 필요합니다. 모든 ML 방법을 이 비교로 나눌 수는 없습니다."),
         ("Feature와 Representation","이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다","Feature는 유용한 단서, Representation(표현)은 그 단서를 담은 내부 숫자입니다. 경계·부분 형태는 직관을 위한 예시입니다.","hierarchy_professional","실제 Channel 하나가 항상 사람이 이름 붙인 특징 하나와 대응하는 것은 아닙니다."),
         ("Backpropagation","오차에서 각 가중치의 Gradient를 뒤로 계산합니다","Backpropagation(역전파)은 출력의 오차가 각 가중치에 얼마나 민감한지 계산합니다. 가중치 수정은 Optimizer가 수행합니다.","old:backpropagation_visual","오차를 뒤로 보내는 그림은 Gradient 계산 흐름을 표현합니다."),
         ("Backpropagation","Chain Rule로 각 Parameter의 변화율을 계산합니다","같은 x=2, y=4 예제에 Bias를 추가합니다. w=1, b=0에서 가중치와 Bias의 Gradient를 계산합니다.","backprop_detail","이 장에서는 w와 b를 모두 학습합니다. 앞의 Gradient 예제에서는 b를 0으로 고정했습니다.",True),
@@ -765,12 +786,15 @@ def build_lessons():
         ("전처리","모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다","Preprocessing(전처리)은 입력 형식을 맞추는 과정입니다. 1920×1080을 640×640으로 맞출 때는 Resize·Crop·Padding의 차이를 고려합니다.","preprocess_basic","RGB/BGR, 0~255/정규화 값, HWC/CHW를 확인하고 Train·Inference의 기본 규칙을 맞춥니다."),
         ("Data Augmentation","의미를 유지하는 변화를 학습 중에 보여줍니다","Data Augmentation(데이터 증강)은 밝기·회전·가림 같은 변화를 적용하는 방법입니다. 현실적인 변화 범위와 정답 유지 여부를 확인합니다.","augmentation_basic","검출·분할에서는 이미지와 Box·Mask에 같은 공간 변환을 적용해야 합니다."),
         ("Overfitting","Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다","Overfitting(과적합)은 학습 데이터에 지나치게 맞춰 새 데이터 성능이 떨어지는 현상입니다. Validation 추세와 실패 사례를 함께 봅니다.","old:overfit_leakage","Generalization(일반화)은 직접 학습하지 않은 데이터에서도 성능을 유지하는 능력입니다."),
+        ("과적합 대응", "새 데이터에서도 잘하도록 학습을 조절합니다", "데이터 증강·Dropout·Early Stopping은 서로 다른 방식으로 일반화를 돕습니다. Dropout의 p=0.5는 학습 중 각 값을 0으로 만들 확률입니다.", "survey_regularization", "Early Stopping은 Validation을 사용합니다. 증강 강도와 Dropout 확률을 높인다고 항상 성능이 좋아지는 것은 아닙니다."),
         ("K-Fold","평가 대상을 바꾸어 성능의 변동도 확인합니다","K-Fold Cross Validation(교차검증)은 데이터 부분집합을 번갈아 Validation으로 사용하며 모델을 각각 새로 학습합니다.","old:kfold_visual","같은 원본을 공유하는 샘플은 Group K-Fold로 분리하고, 최종 Test는 별도로 유지합니다.",True),
         ("Threshold","점수에 기준을 적용하면 실제 판정이 됩니다","Threshold(임계값)는 불량으로 판정할 점수 기준입니다. 예: 불량 점수 0.82는 기준 0.5에서 불량으로 판정합니다.","threshold_basic","기준을 바꾸면 찾는 불량과 오알람 수가 달라집니다. 기준은 Validation에서 선택합니다."),
         ("Confusion Matrix","정답과 판정을 비교해 네 가지 결과를 셉니다","Confusion Matrix(혼동행렬)는 TP·FN·FP·TN을 구분합니다. 실제 불량 20개 중 18개를 찾고, 정상 80개 중 4개를 잘못 알린 예시입니다.","confusion_counts","TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과."),
         ("Precision과 Recall","알람의 정확성과 불량을 찾는 비율을 구분합니다","Precision은 불량이라 알린 것 중 진짜 불량의 비율, Recall은 실제 불량 중 찾아낸 비율입니다.","precision_recall","같은 모델도 임계값에 따라 Precision·Recall이 달라질 수 있습니다."),
         ("Accuracy와 F1","전체 정답률과 Precision·Recall의 균형을 함께 봅니다","Accuracy는 전체 중 맞춘 비율입니다. F1은 Precision과 Recall의 조화평균이며 두 지표가 모두 높아야 높아집니다.","accuracy_f1","불량이 1%인 데이터에서 모두 정상으로 예측해도 Accuracy는 99%이지만 Recall은 0%입니다.",True),
+        ("클래스 불균형", "불량이 적을수록 학습과 평가를 함께 점검합니다", "정상 95장·불량 5장처럼 Class 수가 다르면, 소수 Class의 오류가 가려질 수 있습니다. 표본 조정·Loss 가중치와 클래스별 지표를 비교합니다.", "survey_class_imbalance", "Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다."),
         ("Loss와 Metric","학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다","Loss는 가중치를 갱신하는 목적함수입니다. Metric(평가지표)은 실제 문제에서 성능을 해석하고 비교하는 기준입니다.","loss_metric_basic","Loss가 줄었다고 원하는 Metric이나 운영 성능이 항상 개선되는 것은 아닙니다."),
+        ("분류용 Loss", "분류에서는 정답 클래스의 확률을 이용할 수 있습니다", "Cross-entropy(교차 엔트로피)는 정답 클래스에 낮은 확률을 주면 큰 Loss를 부여합니다. 회귀에서 사용한 제곱오차와 구분합니다.", "survey_classification_loss", "단일 정답·단일 샘플에서 L=−ln(p정답)입니다. PyTorch CrossEntropyLoss에는 Softmax 확률 대신 원래 Logit(정규화 전 점수)을 입력합니다.", True),
         ("Shortcut Learning","모델이 우리가 원한 단서를 사용했는지도 확인합니다","Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.","shortcut_professional","Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다."),
         ("개발과 운영","운영의 실패 사례를 다음 데이터와 학습에 연결합니다","배포 후에도 조명·설비·제품 조건이 바뀔 수 있습니다. 실패 이미지를 모으고 정답 기준과 평가 조건을 다시 확인합니다.","workflow_basic","데이터 수집 → 학습 → 평가 → 배포 → 관찰을 반복하며 개선합니다."),
     ]
@@ -790,12 +814,15 @@ def build_lessons():
         ("Feature Map과 Channel","RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다","일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.","feature_detail","224×224×3 입력, 64개 필터, Stride 1·Padding 1이면 224×224×64가 됩니다.",True),
         ("Stride","필터를 몇 칸씩 이동할지 정합니다","Stride(이동 간격)가 1이면 한 칸, 2이면 두 칸씩 이동합니다. 같은 입력과 필터에서 이동 간격이 크면 출력 크기가 작아집니다.","stride_basic","5×5 입력과 3×3 필터, Padding 0: Stride 1은 3×3, Stride 2는 2×2 출력입니다."),
         ("Padding","가장자리 주변에 값을 채워 계산 범위를 조절합니다","Padding(패딩)은 입력 주위를 채우는 방법입니다. 아래는 가장자리 한 칸에 0을 채우는 Zero Padding입니다.","padding_basic","5×5 입력, Kernel 3·Stride 1·Padding 1이면 출력의 공간 크기가 5×5로 유지됩니다."),
-        ("Downsampling","공간 해상도를 줄여 더 작은 특징 지도를 만듭니다","Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.","downsampling_basic","8×8 → 4×4는 공간 위치 수가 64개에서 16개로 줄어드는 변화입니다."),
+        ("Downsampling","공간 해상도를 줄여 더 작은 특징 지도를 만듭니다","Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.","downsampling_basic","8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다."),
         ("출력 크기 계산","Kernel·Stride·Padding으로 출력 크기를 계산합니다","H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.","spatial_detail","Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.",True),
         ("특징의 조합","Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다","초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.","hierarchy_professional","경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다."),
         ("Receptive Field","깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다","Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.","old:receptive_field","3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.",True),
+        ("CNN 전체 흐름", "작은 연산들을 연결하면 이미지 분류기가 됩니다", "224×224×3 입력에서 Conv·ReLU·Pooling으로 특징을 만들고, Global Average Pooling(전역 평균 풀링)과 Linear Layer로 분류 점수를 계산합니다.", "survey_cnn_pipeline", "H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다."),
         ("Backbone과 Head","특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다","Backbone(백본)은 특징을 추출하고, Head(헤드)는 Task별 결과를 만듭니다. 입력과 결과는 동일한 사과 사진을 사용합니다.","backbone_basic","세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다."),
         ("Backbone과 Head","블록을 연결하고 각 단계의 특징 크기를 표시합니다","Architecture(모델 구조)는 어떤 연산을 어떤 순서로 연결하는지 나타냅니다. 아래 크기는 구조를 설명하는 예시입니다.","backbone_detail","검출·분할 모델에는 여러 해상도 특징을 결합하는 Neck·Decoder 등이 추가될 수 있습니다.",True),
+        ("CNN 구조의 설계", "순차·병렬·우회 연결로 서로 다른 구조를 만듭니다", "VGG는 작은 필터를 쌓고, Inception은 병렬 경로를 결합하며, ResNet은 입력을 우회시켜 변환 결과와 더합니다. 여기서는 연결 원리만 비교합니다.", "survey_architecture_patterns", "깊이만 늘리는 것 외에도 연결 방식이 중요합니다. 구조의 우열은 데이터·정확도·메모리·처리시간을 함께 검증해 결정합니다."),
+        ("Residual 연결", "입력을 그대로 전달하는 경로와 변환 경로를 더합니다", "Residual(잔차) 블록은 F(x)+x를 계산합니다. 56×56×64 입력을 더하려면 두 경로의 Tensor Shape가 같아야 합니다.", "survey_residual_detail", "원소별 합산이며 Channel 결합과 다릅니다. ResNet v1은 합산 뒤 ReLU를 적용합니다. 우회 경로는 깊은 모델의 최적화를 돕습니다.", True),
         ("CNN 학습","CNN의 필터도 오차를 줄이는 방향으로 학습합니다","Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.","old:cnn_training","기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다."),
         ("Transfer Learning","이미 배운 가중치에서 내 Task의 학습을 시작합니다","Transfer Learning(전이학습)은 사전학습 모델의 지식을 재사용하는 방법입니다. 처음부터 모든 값을 새로 배우는 것과 비교할 수 있습니다.","transfer_basic","내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다."),
         ("Freeze와 Fine-tuning","고정할 부분과 추가 학습할 부분을 구분합니다","Freeze는 가중치 고정, Fine-tuning(미세조정)은 사전학습 가중치 일부 또는 전체를 새 데이터로 업데이트하는 과정입니다.","transfer_detail","새 Head만 학습하는 경우와 Backbone까지 학습하는 경우를 구분해 검증합니다.",True),
@@ -827,6 +854,7 @@ if __name__=="__main__":
     build_figures()
     build_loss_optimizer_figures()
     build_opening_figures()
+    build_survey_figures()
     build_lessons()
     for target, source in {
         "and_xor_linear_separability": "and_xor",

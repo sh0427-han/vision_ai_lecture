@@ -148,132 +148,160 @@
     },
     {
       "number": 21,
+      "topic": "특징 학습",
+      "level": "basic",
+      "title": "딥러닝은 특징을 만드는 계산도 학습합니다",
+      "asset": "assets/lesson/survey_feature_learning.svg"
+    },
+    {
+      "number": 22,
       "topic": "Feature와 Representation",
       "level": "basic",
       "title": "이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다",
       "asset": "assets/lesson/hierarchy_professional.svg"
     },
     {
-      "number": 22,
+      "number": 23,
       "topic": "Backpropagation",
       "level": "basic",
       "title": "오차에서 각 가중치의 Gradient를 뒤로 계산합니다",
       "asset": "assets/lesson/context_backpropagation_visual.svg"
     },
     {
-      "number": 23,
+      "number": 24,
       "topic": "Backpropagation",
       "level": "detail",
       "title": "Chain Rule로 각 Parameter의 변화율을 계산합니다",
       "asset": "assets/lesson/backprop_detail.svg"
     },
     {
-      "number": 24,
+      "number": 25,
       "topic": "Batch·Iteration·Epoch",
       "level": "basic",
       "title": "데이터를 작은 묶음으로 나누어 반복해서 봅니다",
       "asset": "assets/lesson/context_batch_epoch.svg"
     },
     {
-      "number": 25,
+      "number": 26,
       "topic": "Dataset",
       "level": "basic",
       "title": "데이터는 실제 사용할 조건을 대표해야 합니다",
       "asset": "assets/lesson/capture_conditions.svg"
     },
     {
-      "number": 26,
+      "number": 27,
       "topic": "데이터 분리",
       "level": "basic",
       "title": "학습·모델 선택·최종 평가의 데이터를 나눕니다",
       "asset": "assets/lesson/context_dataset_split.svg"
     },
     {
-      "number": 27,
+      "number": 28,
       "topic": "Group Split",
       "level": "basic",
       "title": "같은 영상의 비슷한 Frame은 통째로 분리합니다",
       "asset": "assets/lesson/context_group_split_visual.svg"
     },
     {
-      "number": 28,
+      "number": 29,
       "topic": "Data Leakage",
       "level": "basic",
       "title": "평가 데이터의 정보가 학습·선택에 새어들면 점수가 왜곡됩니다",
       "asset": "assets/lesson/context_data_leakage_visual.svg"
     },
     {
-      "number": 29,
+      "number": 30,
       "topic": "전처리",
       "level": "basic",
       "title": "모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다",
       "asset": "assets/lesson/preprocess_basic.svg"
     },
     {
-      "number": 30,
+      "number": 31,
       "topic": "Data Augmentation",
       "level": "basic",
       "title": "의미를 유지하는 변화를 학습 중에 보여줍니다",
       "asset": "assets/lesson/augmentation_basic.svg"
     },
     {
-      "number": 31,
+      "number": 32,
       "topic": "Overfitting",
       "level": "basic",
       "title": "Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다",
       "asset": "assets/lesson/context_overfit_leakage.svg"
     },
     {
-      "number": 32,
+      "number": 33,
+      "topic": "과적합 대응",
+      "level": "basic",
+      "title": "새 데이터에서도 잘하도록 학습을 조절합니다",
+      "asset": "assets/lesson/survey_regularization.svg"
+    },
+    {
+      "number": 34,
       "topic": "K-Fold",
       "level": "detail",
       "title": "평가 대상을 바꾸어 성능의 변동도 확인합니다",
       "asset": "assets/lesson/context_kfold_visual.svg"
     },
     {
-      "number": 33,
+      "number": 35,
       "topic": "Threshold",
       "level": "basic",
       "title": "점수에 기준을 적용하면 실제 판정이 됩니다",
       "asset": "assets/lesson/threshold_basic.svg"
     },
     {
-      "number": 34,
+      "number": 36,
       "topic": "Confusion Matrix",
       "level": "basic",
       "title": "정답과 판정을 비교해 네 가지 결과를 셉니다",
       "asset": "assets/lesson/confusion_counts.svg"
     },
     {
-      "number": 35,
+      "number": 37,
       "topic": "Precision과 Recall",
       "level": "basic",
       "title": "알람의 정확성과 불량을 찾는 비율을 구분합니다",
       "asset": "assets/lesson/precision_recall.svg"
     },
     {
-      "number": 36,
+      "number": 38,
       "topic": "Accuracy와 F1",
       "level": "detail",
       "title": "전체 정답률과 Precision·Recall의 균형을 함께 봅니다",
       "asset": "assets/lesson/accuracy_f1.svg"
     },
     {
-      "number": 37,
+      "number": 39,
+      "topic": "클래스 불균형",
+      "level": "basic",
+      "title": "불량이 적을수록 학습과 평가를 함께 점검합니다",
+      "asset": "assets/lesson/survey_class_imbalance.svg"
+    },
+    {
+      "number": 40,
       "topic": "Loss와 Metric",
       "level": "basic",
       "title": "학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다",
       "asset": "assets/lesson/loss_metric_basic.svg"
     },
     {
-      "number": 38,
+      "number": 41,
+      "topic": "분류용 Loss",
+      "level": "detail",
+      "title": "분류에서는 정답 클래스의 확률을 이용할 수 있습니다",
+      "asset": "assets/lesson/survey_classification_loss.svg"
+    },
+    {
+      "number": 42,
       "topic": "Shortcut Learning",
       "level": "basic",
       "title": "모델이 우리가 원한 단서를 사용했는지도 확인합니다",
       "asset": "assets/lesson/shortcut_professional.svg"
     },
     {
-      "number": 39,
+      "number": 43,
       "topic": "개발과 운영",
       "level": "basic",
       "title": "운영의 실패 사례를 다음 데이터와 학습에 연결합니다",
@@ -416,48 +444,69 @@
     },
     {
       "number": 20,
+      "topic": "CNN 전체 흐름",
+      "level": "basic",
+      "title": "작은 연산들을 연결하면 이미지 분류기가 됩니다",
+      "asset": "assets/lesson/survey_cnn_pipeline.svg"
+    },
+    {
+      "number": 21,
       "topic": "Backbone과 Head",
       "level": "basic",
       "title": "특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다",
       "asset": "assets/lesson/backbone_basic.svg"
     },
     {
-      "number": 21,
+      "number": 22,
       "topic": "Backbone과 Head",
       "level": "detail",
       "title": "블록을 연결하고 각 단계의 특징 크기를 표시합니다",
       "asset": "assets/lesson/backbone_detail.svg"
     },
     {
-      "number": 22,
+      "number": 23,
+      "topic": "CNN 구조의 설계",
+      "level": "basic",
+      "title": "순차·병렬·우회 연결로 서로 다른 구조를 만듭니다",
+      "asset": "assets/lesson/survey_architecture_patterns.svg"
+    },
+    {
+      "number": 24,
+      "topic": "Residual 연결",
+      "level": "detail",
+      "title": "입력을 그대로 전달하는 경로와 변환 경로를 더합니다",
+      "asset": "assets/lesson/survey_residual_detail.svg"
+    },
+    {
+      "number": 25,
       "topic": "CNN 학습",
       "level": "basic",
       "title": "CNN의 필터도 오차를 줄이는 방향으로 학습합니다",
       "asset": "assets/lesson/context_cnn_training.svg"
     },
     {
-      "number": 23,
+      "number": 26,
       "topic": "Transfer Learning",
       "level": "basic",
       "title": "이미 배운 가중치에서 내 Task의 학습을 시작합니다",
       "asset": "assets/lesson/transfer_basic.svg"
     },
     {
-      "number": 24,
+      "number": 27,
       "topic": "Freeze와 Fine-tuning",
       "level": "detail",
       "title": "고정할 부분과 추가 학습할 부분을 구분합니다",
       "asset": "assets/lesson/transfer_detail.svg"
     },
     {
-      "number": 25,
+      "number": 28,
       "topic": "평가와 실패 사례",
       "level": "basic",
       "title": "높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다",
       "asset": "assets/lesson/shortcut_professional.svg"
     },
     {
-      "number": 26,
+      "number": 29,
       "topic": "운영 Cycle",
       "level": "basic",
       "title": "문제 정의부터 운영 관찰까지 연결해 개선합니다",

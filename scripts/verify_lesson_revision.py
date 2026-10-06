@@ -63,4 +63,20 @@ assert (12+12-4) == 20
 for stride, padding, expected in [(1, 0, 3), (1, 1, 5), (2, 0, 2)]:
     assert (5+2*padding-3)//stride+1 == expected
 assert 64*3*3*3 == 1728
+assert np.isclose(-np.log(0.2), 1.6094379124341003)
+assert np.isclose(-np.log(0.8), 0.2231435513142097)
+assert (224+2*1-3)//1+1 == 224
+assert (224-2)//2+1 == 112
+assert 2+(-0.5) == 1.5
+assert 1073.5/1130 == 0.95
+for name in ["ai_basics", "vision_ai"]:
+    for entry in manifest[name]:
+        if Path(entry["asset"]).stem.startswith("survey_"):
+            slide = html.parse(str(REPO_DIR / f"docs/{name}.html")).xpath(
+                '//section[contains(concat(" ", @class, " "), " slide ")]'
+            )[entry["number"]]
+            refs = slide.xpath('.//p[@class="lesson-reference"]//a/@href')
+            assert "https://link.springer.com/article/10.1186/s40537-021-00444-8" in refs
+            assert len(refs) >= 2
 print("SVG XML/resources, AND, convolution, gradients, IoU and metrics verified")
+print("Survey sources, cross-entropy, CNN shapes, class ratio and residual sum verified")
