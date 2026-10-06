@@ -593,6 +593,58 @@ def build_figures():
     svg("workflow_basic",out)
 
 
+def build_opening_figures():
+    """Give opening slides fixed text bands, generous margins and aligned rows."""
+    out = text(35, 32, "기술·방법의 포함 관계", 24, MUTED, "start", True)
+    out += rect(35, 55, 705, 390, "#f2f6fa", BLUE)
+    out += text(65, 98, "AI · Artificial Intelligence", 30, BLUE, "start", True)
+    out += text(65, 136, "판단·추론·인식 등을 수행하는 넓은 기술 영역", 25, INK, "start")
+    out += rect(85, 164, 625, 251, "#edf5f2", GREEN)
+    out += text(115, 207, "ML · Machine Learning", 30, GREEN, "start", True)
+    out += text(115, 245, "데이터에서 규칙과 패턴을 학습하는 방법", 25, INK, "start")
+    out += rect(135, 272, 545, 113, "white", BLUE)
+    out += text(165, 315, "DL · Deep Learning", 30, BLUE, "start", True)
+    out += text(165, 353, "여러 층의 신경망으로 학습하는 방법", 25, INK, "start")
+    out += text(790, 32, "이미지·영상 문제를 다루는 분야", 24, MUTED, "start", True)
+    out += rect(790, 55, 375, 390, "white", "#cbd5e1")
+    out += text(820, 98, "Computer Vision", 30, BLUE, "start", True)
+    out += text(820, 136, "분류 · 검출 · 분할 등", 25, INK, "start")
+    out += '<path d="M820 167 H1135" stroke="#cbd5e1"/>'
+    out += text(820, 206, "문제에 맞는 방법을 사용", 25, INK, "start", True)
+    for y, label in [(259, "전통적 영상처리"), (313, "Machine Learning"), (367, "Deep Learning")]:
+        out += text(820, y, label, 25, MUTED, "start")
+    svg("ai_methods_scope", out, 475)
+
+    out = ""
+    for x, color, title, subtitle in [
+        (35, BLUE, "규칙 기반 · Rule-based", "판단 조건을 사람이 직접 작성"),
+        (625, GREEN, "학습 기반 · Machine Learning", "사진과 정답으로 모델의 가중치를 학습"),
+    ]:
+        out += rect(x, 25, 540, 425, "white", "#cbd5e1")
+        out += text(x+25, 70, title, 28, color, "start", True)
+        out += text(x+25, 109, subtitle, 24, MUTED, "start")
+    out += rect(60, 145, 490, 86, "#f2f6fa", "#d8e2ea")
+    out += text(85, 180, "사람이 설정한 기준", 23, MUTED, "start")
+    out += text(85, 213, "밝기 < 100이면 후보로 판단", 26, BLUE, "start", True)
+    out += text(60, 272, "적용", 22, MUTED, "start", True)
+    for x, w, label in [(60, 200, "입력 밝기 80"), (350, 200, "결과: 후보")]:
+        out += rect(x, 290, w, 64, "#f2f6fa", "#d8e2ea")
+        out += text(x+w/2, 330, label, 25, BLUE, bold=True)
+    out += arrow(275, 322, 333, 322)
+    out += text(60, 398, "기준을 바꾸려면 조건식을 수정", 24, INK, "start")
+    out += text(650, 154, "학습", 22, MUTED, "start", True)
+    out += text(650, 272, "추론 · 학습한 모델을 적용", 22, MUTED, "start", True)
+    for y, labels in [(173, ["사진 + 정답", "학습", "가중치"]),
+                      (290, ["새 사진", "학습된 모델", "예측 결과"])]:
+        for x, label in zip([650, 830, 1010], labels):
+            out += rect(x, y, 130, 64, "#edf5f2", "#d8e5df")
+            out += text(x+65, y+40, label, 22, GREEN, bold=True)
+        out += arrow(790, y+32, 817, y+32, GREEN)
+        out += arrow(970, y+32, 997, y+32, GREEN)
+    out += text(650, 398, "기준을 바꾸려면 데이터로 다시 학습", 24, INK, "start")
+    svg("rule_learning_comparison", out, 475)
+
+
 def legacy_figure(name):
     """Copy an existing diagram without repeating the slide title inside it."""
     source=REPO_DIR / "docs/assets" / f"{name}.svg"
@@ -682,8 +734,8 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
 def build_lessons():
     # Basic illustrations are followed by selected exact diagrams, not mixed on one slide.
     ai=[
-        ("AI의 범위","AI·머신러닝·딥러닝은 어떻게 다를까요?","Artificial Intelligence는 넓은 기술 영역, Machine Learning은 데이터에서 배우는 방법, Deep Learning은 다층 신경망을 사용하는 방법입니다.","old:ai_ml_dl","Computer Vision(컴퓨터 비전)은 이미지·영상 문제를 다루는 분야입니다."),
-        ("규칙과 학습","판단 규칙을 사람이 쓰거나, 데이터에서 배울 수 있습니다","밝기가 100보다 작으면 후보로 찾는 규칙과, 다양한 사진·정답을 이용해 판단 기준을 배우는 방법을 비교합니다.","old:rule_vs_ml","실제 시스템에서는 영상처리 규칙과 학습 모델을 함께 사용하기도 합니다."),
+        ("AI의 범위","AI·머신러닝·딥러닝은 어떻게 다를까요?","AI는 넓은 기술 영역입니다. 머신러닝은 데이터에서 배우고, 딥러닝은 여러 층의 신경망으로 학습합니다.","ai_methods_scope","Computer Vision(컴퓨터 비전)은 이미지·영상 문제를 다루는 분야입니다."),
+        ("규칙과 학습","판단 기준을 사람이 쓰거나, 데이터에서 배웁니다","규칙 기반은 사람이 조건을 정합니다. 학습 기반은 사진과 정답에서 판단 기준을 학습합니다.","rule_learning_comparison","실제 시스템에서는 영상처리 규칙과 학습 모델을 함께 사용하기도 합니다."),
         ("지도학습과 비지도학습","지도학습과 비지도학습은 학습 목표가 다릅니다","지도학습은 사진과 정답을 함께 사용합니다. 비지도학습은 정답 이름표 없이 데이터의 공통 구조를 찾습니다.","learning_basic","정답 Label(라벨)은 모델이 배워야 할 목표를 알려주는 데이터입니다."),
         ("지도학습과 비지도학습","사진을 숫자로 표현하면 경계와 군집으로 설명할 수 있습니다","Feature(특징)는 판단에 유용한 단서입니다. 특징 공간은 각 데이터를 그 단서들의 숫자로 배치한 공간입니다.","learning_detail","점의 색은 지도학습의 정답, 오른쪽 원은 비슷한 데이터의 군집을 나타냅니다.",True),
         ("분류와 회귀","분류는 이름을, 회귀는 연속적인 숫자를 예측합니다","Classification(분류)은 사과·오렌지 같은 범주를, Regression(회귀)은 입력 숫자에서 3.6 같은 연속적인 값을 예측합니다.","classification_basic","먼저 어떤 형태의 결과가 필요한지 정하면 학습 목표가 분명해집니다."),
@@ -774,6 +826,7 @@ def build_lessons():
 if __name__=="__main__":
     build_figures()
     build_loss_optimizer_figures()
+    build_opening_figures()
     build_lessons()
     for target, source in {
         "and_xor_linear_separability": "and_xor",
