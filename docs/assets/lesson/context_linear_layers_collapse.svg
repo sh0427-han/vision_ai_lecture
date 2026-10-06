@@ -10,7 +10,7 @@
   <rect x="640" width="210" height="105" rx="16" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="2"/><text x="745" y="45" text-anchor="middle" font-size="21" font-weight="700" fill="#6d28d9">Linear 3</text><text x="745" y="76" text-anchor="middle" font-size="18" fill="#64748b">W₃h + b₃</text>
  </g>
  <text x="600" y="335" text-anchor="middle" font-size="34" font-weight="700" fill="#94a3b8">⇓</text>
- <rect x="330" y="375" width="540" height="105" rx="18" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+ <rect x="330" y="375" width="540" height="105" rx="4" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
  <text x="600" y="416" text-anchor="middle" font-size="22" font-weight="700" fill="#9a3412">결국 하나의 Linear Transformation</text>
  <text x="600" y="452" text-anchor="middle" font-size="20" fill="#9a3412">W*x + b*</text>
  <text x="600" y="535" text-anchor="middle" font-size="19" fill="#475569">→ XOR처럼 꺾이거나 휘어진 경계를 만들려면 중간에 Non-linear Activation이 필요합니다.</text>

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import html
 import json
+import base64
 from pathlib import Path
 
 import numpy as np
@@ -15,10 +16,10 @@ from lxml import etree
 
 REPO_DIR = Path(__file__).resolve().parents[1]
 ASSET_DIR = REPO_DIR / "docs/assets/lesson"
-VERSION = "lesson-20261006-1"
-BLUE = "#2563eb"
-GREEN = "#0f766e"
-ORANGE = "#ea580c"
+VERSION = "professional-20261006-2"
+BLUE = "#275879"
+GREEN = "#36756f"
+ORANGE = "#b2773d"
 INK = "#17243b"
 MUTED = "#64748b"
 FONT_FAMILY = "'Noto Sans CJK KR', 'Malgun Gothic', sans-serif"
@@ -35,7 +36,7 @@ def text(x, y, value, size=28, color=INK, anchor="middle", bold=False):
     )
 
 
-def rect(x, y, w, h, fill="#f8fafc", stroke="#cbd5e1", radius=14):
+def rect(x, y, w, h, fill="#f8fafc", stroke="#cbd5e1", radius=4):
     return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" '
             f'fill="{fill}" stroke="{stroke}" stroke-width="2"/>')
 
@@ -43,7 +44,7 @@ def rect(x, y, w, h, fill="#f8fafc", stroke="#cbd5e1", radius=14):
 def arrow(x1, y1, x2, y2, color=BLUE, dashed=False):
     dash = ' stroke-dasharray="8 6"' if dashed else ""
     return (f'<path d="M{x1} {y1} L{x2} {y2}" stroke="{color}" '
-            f'stroke-width="4" fill="none" marker-end="url(#arrow-{color[1:]})"{dash}/>')
+            f'stroke-width="2.5" fill="none" marker-end="url(#arrow-{color[1:]})"{dash}/>')
 
 
 def svg(name, content, height=500):
@@ -71,18 +72,18 @@ def card(x, title, lines, color=BLUE, y=70, w=330, h=350):
 
 
 def fruit(x, y, kind="apple", scale=1):
-    color = "#e34e51" if kind == "apple" else "#f59e0b"
-    shape = (f'<circle cx="{x}" cy="{y}" r="{32*scale}" fill="{color}"/>'
-             f'<path d="M{x} {y-28*scale} q0 {-18*scale} {16*scale} {-20*scale}" '
-             f'fill="none" stroke="#15803d" stroke-width="{5*scale}"/>')
-    return shape
+    """Place generated photographic examples instead of symbolic fruit drawings."""
+    size = 88 * scale
+    data = GENERATED_DATA[kind]
+    return (f'<image x="{x-size/2}" y="{y-size/2}" width="{size}" '
+            f'height="{size}" xlink:href="{data}" preserveAspectRatio="xMidYMid meet"/>')
 
 
 def grid(x, y, values, cell=48, highlights=(), pale=False):
     out = ""
     for iy, row in enumerate(values):
         for ix, value in enumerate(row):
-            fill = "#dbeafe" if (iy, ix) in highlights else "#f8fafc"
+            fill = "#e5edf3" if (iy, ix) in highlights else "#f8fafc"
             if pale:
                 shade = int(245 - float(value) * 20)
                 fill = f"rgb({shade},{shade},{shade})"
@@ -118,6 +119,13 @@ def pipeline(name, items, note=""):
 
 photo_root = etree.parse(str(REPO_DIR / "docs/assets/task_classification.svg"))
 PHOTO_DATA = photo_root.find(f".//{{{SVG_NS}}}image").get("href")
+GENERATED_DIR = REPO_DIR / "docs/assets/generated"
+GENERATED_DATA = {
+    name: "data:image/png;base64," + base64.b64encode(
+        (GENERATED_DIR / f"{name}_studio_preview.png").read_bytes()
+    ).decode("ascii")
+    for name in ["apple", "orange"]
+}
 DEFECT_PATH = "M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z"
 
 
@@ -133,21 +141,64 @@ def photo(x, y, w=240, mode="plain"):
     return out
 
 
+def build_professional_figures():
+    """Use generated photography as examples, with exact native annotations."""
+    out = text(185,65,"입력 이미지",28,BLUE,bold=True)
+    out += fruit(185,230,"apple",3.4)
+    stages = [(420,"국소 패턴",["명암 변화 · 경계","작은 수용영역"]),
+              (675,"패턴 조합",["부분 형태 · 질감","이전 층의 반응 조합"]),
+              (930,"Task 표현",["분류에 유용한 특징","더 넓은 입력 범위"]) ]
+    for x, label, lines in stages:
+        out += rect(x,95,235,255) + text(x+117.5,143,label,27,BLUE,bold=True)
+        for j,line in enumerate(lines):
+            out += text(x+117.5,218+j*52,line,22)
+    out += arrow(345,230,410,230)
+    out += arrow(660,230,670,230)+arrow(915,230,925,230)
+    out += text(600,415,"계층적 표현: 국소 연산의 반복 → 넓은 문맥의 특징 조합",27,MUTED)
+    out += text(600,460,"설명용 구조이며 실제 Feature Map을 관찰한 결과는 아닙니다",22,MUTED)
+    svg("hierarchy_professional",out)
+
+    out = text(285,55,"학습 데이터의 상관관계",29,BLUE,bold=True)
+    out += text(915,55,"촬영 환경이 바뀐 데이터",29,GREEN,bold=True)
+    for x, kind, fill, label in [(55,"apple","#e5edf3","Class: 사과"),
+                                  (315,"orange","#f2e9dc","Class: 오렌지"),
+                                  (685,"apple","#f2e9dc","Class: 사과"),
+                                  (945,"orange","#e5edf3","Class: 오렌지")]:
+        out += rect(x,105,200,235,fill,fill)
+        out += fruit(x+100,205,kind,1.9)+text(x+100,375,label,25)
+    out += arrow(530,225,660,225,MUTED)
+    out += text(285,425,"Class와 배경색이 항상 함께 반복",25,BLUE)
+    out += text(915,425,"물체는 유지, 배경색의 관계는 변경",25,GREEN)
+    out += text(600,478,"배경만으로 맞춘 모델은 새로운 조건에서 실패할 수 있습니다",25,MUTED)
+    svg("shortcut_professional",out)
+
+    plate = "data:image/jpeg;base64," + base64.b64encode(
+        (GENERATED_DIR / "capture_conditions.jpg").read_bytes()
+    ).decode("ascii")
+    out = f'<image x="35" y="85" width="1130" height="280" xlink:href="{plate}" preserveAspectRatio="xMidYMid meet"/>'
+    for x,label in [(220,"기준 촬영"),(600,"측면 조명 · 저조도"),(980,"초점 변화")]:
+        out += text(x,55,label,29,BLUE,bold=True)
+        out += text(x,410,"정답 Class: 사과",26,GREEN)
+    out += text(600,468,"촬영 조건을 다양하게 포함하고, Label 기준을 일관되게 관리",26,MUTED)
+    svg("capture_conditions",out)
+
+
 def build_figures():
+    build_professional_figures()
     # Labels precede abstract feature-space plots.
     out = rect(30, 35, 550, 430) + rect(620, 35, 550, 430)
-    out += text(305, 80, "지도학습: 정답과 함께 배우기", 29, BLUE, bold=True)
-    out += text(895, 80, "비지도학습: 비슷한 것끼리 찾기", 29, GREEN, bold=True)
+    out += text(305, 80, "지도학습: 입력–Label 관계 학습", 29, BLUE, bold=True)
+    out += text(895, 80, "비지도학습: 데이터 구조 탐색", 29, GREEN, bold=True)
     for i, kind in enumerate(["apple", "orange", "apple"]):
         x=135+i*165
         out += fruit(x, 160, kind) + text(x, 220, "사과" if kind=="apple" else "오렌지", 25)
-    out += arrow(305, 250, 305, 315) + text(305, 365, "새 과일 사진의 이름 예측", 28)
-    out += rect(675, 115, 190, 235, "#eff6ff", "#93c5fd")
+    out += arrow(305, 250, 305, 315) + text(305, 365, "새 이미지의 Class 예측", 28)
+    out += rect(675, 115, 190, 235, "#f4f7fa", "#a9bfcc")
     out += rect(930, 115, 190, 235, "#fff7ed", "#fdba74")
     for x,y,k in [(725,165,"apple"),(815,230,"apple"),(745,295,"apple"),
                   (975,170,"orange"),(1060,235,"orange"),(990,295,"orange")]:
         out += fruit(x,y,k,.75)
-    out += text(895, 405, "이름표 없이 비슷한 모양으로 묶기", 27)
+    out += text(895, 405, "Label 없이 유사한 데이터 군집 탐색", 27)
     svg("learning_basic", out)
 
     out = ""
@@ -167,11 +218,11 @@ def build_figures():
 
     out=rect(45,45,1110,185)+rect(45,270,1110,185)
     out+=text(180,95,"분류",31,BLUE,bold=True)+photo(80,115,200)
-    out+=arrow(310,145,470,145)+rect(490,100,230,100,"#eff6ff")
+    out+=arrow(310,145,470,145)+rect(490,100,230,100,"#f4f7fa")
     out+=text(605,160,"모델",30,BLUE)+arrow(730,145,850,145)
     out+=text(985,145,"사과",34,GREEN,bold=True)+text(985,195,"범주 이름",27)
     out+=text(180,320,"회귀",31,BLUE,bold=True)+text(180,395,"입력 x = 2",30)
-    out+=arrow(310,370,470,370)+rect(490,325,230,100,"#eff6ff")
+    out+=arrow(310,370,470,370)+rect(490,325,230,100,"#f4f7fa")
     out+=text(605,385,"모델",30,BLUE)+arrow(730,370,850,370)
     out+=text(985,370,"예측값 3.6",34,GREEN,bold=True)+text(985,420,"연속적인 숫자",27)
     svg("classification_basic",out)
@@ -183,7 +234,7 @@ def build_figures():
         for i,(label,score) in enumerate(rows):
             y=150+i*100
             out+=text(x+30,y+30,label,26,INK,anchor="start")
-            out+=rect(x+135,y,240,40,"#eff6ff","none",3)
+            out+=rect(x+135,y,240,40,"#f4f7fa","none",3)
             out+=rect(x+135,y,240*score,40,BLUE,"none",3)
             out+=text(x+435,y+30,f"{score:.2f}",28,BLUE,bold=True)
     svg("classification_outputs",out)
@@ -198,7 +249,7 @@ def build_figures():
     out += text(600,105,"오차를 보고 계산 기준을 바꿉니다",31,BLUE,bold=True)
     for x,v,label,color in [(245,4,"정답",INK),(510,2,"처음 예측",ORANGE),(810,3.6,"수정 후 예측",GREEN)]:
         out += text(x,165,label,27,color,bold=True)
-        out += rect(x-40,340-v*34,80,v*34,"#dbeafe" if color==INK else "#ccfbf1" if color==GREEN else "#ffedd5",color,0)
+        out += rect(x-40,340-v*34,80,v*34,"#e5edf3" if color==INK else "#e4efec" if color==GREEN else "#ffedd5",color,0)
         out += text(x,385,f"{v}",34,color,bold=True)
     out += text(600,465,"같은 입력 2 → 정답 4에 가까워지는 예측",28)
     svg("loss_basic",out)
@@ -210,14 +261,14 @@ def build_figures():
     svg("perceptron_basic",out)
     out = ""
     for y,label in [(150,"x₁ = 0.5"),(300,"x₂ = 1.0")]:
-        out += rect(45,y-40,210,80,"#eff6ff") + text(150,y+10,label,30)
+        out += rect(45,y-40,210,80,"#f4f7fa") + text(150,y+10,label,30)
     out += arrow(260,150,445,220) + arrow(260,300,445,240)
     out += text(330,145,"w₁ = 0.2",25,BLUE) + text(330,340,"w₂ = 0.8",25,BLUE)
-    out += rect(455,175,310,120,"#f0fdfa")
+    out += rect(455,175,310,120,"#f2f7f5")
     out += text(610,220,"z = Σ wᵢxᵢ + b",32,GREEN,bold=True)
     out += text(610,265,"z = 0.3",30)
     out += text(610,125,"b = −0.6",28,GREEN) + arrow(610,135,610,170,GREEN)
-    out += arrow(775,235,850,235) + rect(860,175,300,120,"#eff6ff")
+    out += arrow(775,235,850,235) + rect(860,175,300,120,"#f4f7fa")
     out += text(1010,220,"y = 1 if z ≥ 0",29,BLUE,bold=True)
     out += text(1010,265,"y = 0 if z < 0",29)
     out += text(600,430,"하나의 임계값 판정을 사용하는 퍼셉트론 예시",27,MUTED)
@@ -240,12 +291,11 @@ def build_figures():
     svg("and_xor",out)
 
     out = ""
-    for i,(x,y,k) in enumerate([(160,160,"apple"),(160,330,"orange")]):
-        out += fruit(x,y,k,1.1) + text(x,y+65,"사과" if k=="apple" else "오렌지",27)
+    out += fruit(160,245,"apple",1.8) + text(160,370,"입력 이미지",27)
     for cx in [465,750]:
         for cy in [135,245,355]:
-            out += f'<circle cx="{cx}" cy="{cy}" r="27" fill="#eff6ff" stroke="{BLUE}" stroke-width="3"/>'
-    for cy in [160,330]:
+            out += f'<circle cx="{cx}" cy="{cy}" r="27" fill="#f4f7fa" stroke="{BLUE}" stroke-width="3"/>'
+    for cy in [205,245,285]:
         for dy in [135,245,355]: out += arrow(205,cy,435,dy,MUTED)
     for sy in [135,245,355]:
         for dy in [135,245,355]:
@@ -278,7 +328,7 @@ def build_figures():
     for i,(title,line) in enumerate([("예측","ŷ = 2"),("정답과 비교","y = 4"),("오차","Loss = 4"),("가중치 수정","w: 1 → 1.8")]):
         out+=card(45+i*295,title,[line],y=100,w=230,h=230)
         if i<3:out+=arrow(280+i*295,215,330+i*295,215)
-    out+=f'<path d="M1045 345 L1045 405 L160 405 L160 345" stroke="{GREEN}" stroke-width="4" fill="none" marker-end="url(#arrow-0f766e)"/>'
+    out+=f'<path d="M1045 345 L1045 405 L160 405 L160 345" stroke="{GREEN}" stroke-width="4" fill="none" marker-end="url(#arrow-36756f)"/>'
     out+=text(600,455,"바뀐 가중치로 다음 예측을 계산",28,GREEN)
     svg("training_basic",out)
     pipeline("backprop_basic",[("입력",["x = 2"]),("모델 계산",["ŷ = wx + b"]),("오차",["정답과 비교"])],"Forward: 예측 계산 / Backward: 각 가중치의 Gradient 계산")
@@ -332,7 +382,7 @@ def build_figures():
             out+=text(x+125,365,lines[0],23)
         else:
             for yy,label in [(170,"설비 A / 설비 B"),(235,"낮 / 밤")]:
-                out+=rect(x+20,yy-30,210,60,"#eff6ff")+text(x+125,yy+10,label,25)
+                out+=rect(x+20,yy-30,210,60,"#f4f7fa")+text(x+125,yy+10,label,25)
             out+=text(x+125,365,lines[0],23)
     svg("dataset_basic",out)
 
@@ -342,12 +392,12 @@ def build_figures():
         out+=rect(x,60,250,350)+text(x+125,110,title,29,BLUE,bold=True)
         if i==0:out+=photo(x+20,150,210)
         elif i==1:
-            out+=rect(x+55,150,140,140,"#eff6ff",BLUE,0)
+            out+=rect(x+55,150,140,140,"#f4f7fa",BLUE,0)
             out+=text(x+125,225,"Resize",27,BLUE)
         elif i==2:
             out+=text(x+125,205,"128 / 255",30,BLUE)+text(x+125,260,"≈ 0.502",30,GREEN)
         else:
-            for dx,dy,c in [(20,0,"#fee2e2"),(10,10,"#dcfce7"),(0,20,"#dbeafe")]:
+            for dx,dy,c in [(20,0,"#fee2e2"),(10,10,"#dcfce7"),(0,20,"#e5edf3")]:
                 out+=rect(x+65+dx,150+dy,120,120,c,BLUE,0)
             out+=text(x+125,300,"B · C · H · W",24)
         out+=text(x+125,365,label,22)
@@ -478,13 +528,13 @@ def build_figures():
     for i,(label,shape) in enumerate([("Input","224² × 3"),("Conv 1","112² × 64"),("Conv 2","56² × 128"),("Conv 3","28² × 192"),("Conv 4","14² × 256")]):
         x=30+i*170
         out+=text(x+65,135,label,26,BLUE)
-        out+=rect(x+10,180,100,140-i*17,"#dbeafe",BLUE,0)
-        out+=f'<path d="M{x+110} 180 l20 -15 v{140-i*17} l-20 15Z" fill="#93c5fd" stroke="{BLUE}" stroke-width="2"/>'
+        out+=rect(x+10,180,100,140-i*17,"#e5edf3",BLUE,0)
+        out+=f'<path d="M{x+110} 180 l20 -15 v{140-i*17} l-20 15Z" fill="#a9bfcc" stroke="{BLUE}" stroke-width="2"/>'
         out+=text(x+65,380,shape,23)
         if i<4:out+=arrow(x+135,240,x+165,240)
     for i,(label,result) in enumerate([("분류 Head","Class logits"),("검출 Head","Box + Class"),("분할 Head","Pixel logits")]):
         y=105+i*120
-        out+=arrow(855,245,920,y+43)+rect(935,y,240,90,"#f0fdfa",GREEN)
+        out+=arrow(855,245,920,y+43)+rect(935,y,240,90,"#f2f7f5",GREEN)
         out+=text(1055,y+35,label,27,GREEN,bold=True)+text(1055,y+72,result,25)
     out+=text(600,465,"크기는 H × W × C / 예시 구조이며 Task별 Head·Decoder는 다름",26,MUTED)
     svg("backbone_detail",out)
@@ -496,8 +546,8 @@ def build_figures():
     svg("transfer_basic",out)
     out=rect(45,55,1110,365)
     out+=text(325,110,"Feature Extractor",31,BLUE,bold=True)+text(905,110,"새 Head",31,GREEN,bold=True)
-    for i in range(4):out+=rect(105+i*115,150,90,130,"#dbeafe",BLUE)
-    out+=arrow(585,215,745,215)+rect(775,150,270,130,"#ccfbf1",GREEN)
+    for i in range(4):out+=rect(105+i*115,150,90,130,"#e5edf3",BLUE)
+    out+=arrow(585,215,745,215)+rect(775,150,270,130,"#e4efec",GREEN)
     out+=text(325,345,"Freeze: Weight 고정",27,BLUE)+text(905,345,"Task Label로 학습",27,GREEN)
     out+=text(600,475,"Fine-tuning: Backbone 일부 또는 전체까지 업데이트하며 검증",27,MUTED)
     svg("transfer_detail",out)
@@ -510,7 +560,7 @@ def build_figures():
         for iy in range(4):
             for ix in range(5):
                 gt=ix<3;pred=ix>=2
-                fill="#99f6e4" if gt and pred else "#dbeafe" if gt else "#fed7aa"
+                fill="#99f6e4" if gt and pred else "#e5edf3" if gt else "#fed7aa"
                 out+=rect(x+ix*75,110+iy*75,75,75,fill,"white",0)
     out+=text(300,455,"파랑: 정답 / 주황: 예측",27)
     out+=text(800,455,"초록 4칸 / 전체 20칸",27)
@@ -522,7 +572,7 @@ def build_figures():
     out+=text(180,400,"x < 0 → 0",25)+text(360,400,"x > 0 → x",25)
     out+=rect(570,35,590,420)+text(865,80,"비선형 계산으로 XOR 경계 표현",28,GREEN,bold=True)
     # In these plot coordinates, s=x1+x2=.5 and 1.5 form a diagonal strip.
-    out+='<path d="M705 245 L825 345 L945 345 L945 245 L825 145 L705 145Z" fill="#ccfbf1" fill-opacity=".65"/>'
+    out+='<path d="M705 245 L825 345 L945 345 L945 245 L825 145 L705 145Z" fill="#e4efec" fill-opacity=".65"/>'
     out+=f'<path d="M705 245 L825 345 M825 145 L945 245" fill="none" stroke="{GREEN}" stroke-width="4"/>'
     for a,b in [(0,0),(0,1),(1,0),(1,1)]:
         px=705+a*240;py=345-b*200
@@ -536,7 +586,7 @@ def build_figures():
         x=30+i*235
         out+=card(x,title,lines,y=60,w=200,h=260)
         if i<4:out+=arrow(x+205,190,x+230,190)
-    out+=f'<path d="M1070 340 V385 H130 V340" fill="none" stroke="{GREEN}" stroke-width="4" marker-end="url(#arrow-0f766e)"/>'
+    out+=f'<path d="M1070 340 V385 H130 V340" fill="none" stroke="{GREEN}" stroke-width="4" marker-end="url(#arrow-36756f)"/>'
     out+=text(600,450,"운영 실패 사례를 데이터 보강과 재학습에 연결",29,GREEN)
     svg("workflow_basic",out)
 
@@ -561,7 +611,12 @@ def legacy_figure(name):
     # Existing content starts below the removed headings.
     root.set("viewBox","0 105 1200 495")
     path=ASSET_DIR / f"context_{name}.svg"
-    path.write_bytes(etree.tostring(root,encoding="utf-8",xml_declaration=False))
+    serialized = etree.tostring(root,encoding="unicode",xml_declaration=False)
+    for old, new in {"#2563eb":BLUE,"#0f766e":GREEN,"#ea580c":ORANGE,
+                     "#dbeafe":"#e5edf3","#93c5fd":"#a9bfcc"}.items():
+        serialized = serialized.replace(old, new)
+    serialized = serialized.replace('rx="18"', 'rx="4"').replace('rx="20"', 'rx="4"')
+    path.write_text(serialized, encoding="utf-8")
     return "assets/lesson/"+path.name
 
 
@@ -599,9 +654,11 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
         if detailed:
             url="https://cs231n.github.io/convolutional-networks/" if filename=="vision_ai.html" else "https://cs231n.github.io/"
             reference=f'<p class="lesson-reference">개념 참고: <a href="{url}" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p>'
+        if any(name in asset for name in ["learning_basic", "network_basic", "capture_conditions", "shortcut_professional", "hierarchy_professional"]):
+            reference += '<p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p>'
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
-<span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "개념 이해"}</span></div>
+<span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "기본 개념"}</span></div>
 <h2 class="slide-title">{html.escape(heading)}</h2>
 <p class="slide-subtitle">{html.escape(description)}</p>
 <figure class="lesson-figure"><img src="{asset}?v={VERSION}" alt="{html.escape(heading)}"></figure>
@@ -621,7 +678,7 @@ def build_lessons():
     ai=[
         ("AI의 범위","AI·머신러닝·딥러닝은 어떻게 다를까요?","Artificial Intelligence는 넓은 기술 영역, Machine Learning은 데이터에서 배우는 방법, Deep Learning은 다층 신경망을 사용하는 방법입니다.","old:ai_ml_dl","Computer Vision(컴퓨터 비전)은 이미지·영상 문제를 다루는 분야입니다."),
         ("규칙과 학습","판단 규칙을 사람이 쓰거나, 데이터에서 배울 수 있습니다","밝기가 100보다 작으면 후보로 찾는 규칙과, 다양한 사진·정답을 이용해 판단 기준을 배우는 방법을 비교합니다.","old:rule_vs_ml","실제 시스템에서는 영상처리 규칙과 학습 모델을 함께 사용하기도 합니다."),
-        ("지도학습과 비지도학습","정답을 알려주며 배우기와, 비슷한 것끼리 찾기는 다릅니다","지도학습은 사진과 정답을 함께 사용합니다. 비지도학습은 정답 이름표 없이 데이터의 공통 구조를 찾습니다.","learning_basic","정답 Label(라벨)은 모델이 배워야 할 목표를 알려주는 데이터입니다."),
+        ("지도학습과 비지도학습","지도학습과 비지도학습은 학습 목표가 다릅니다","지도학습은 사진과 정답을 함께 사용합니다. 비지도학습은 정답 이름표 없이 데이터의 공통 구조를 찾습니다.","learning_basic","정답 Label(라벨)은 모델이 배워야 할 목표를 알려주는 데이터입니다."),
         ("지도학습과 비지도학습","사진을 숫자로 표현하면 경계와 군집으로 설명할 수 있습니다","Feature(특징)는 판단에 유용한 단서입니다. 특징 공간은 각 데이터를 그 단서들의 숫자로 배치한 공간입니다.","learning_detail","점의 색은 지도학습의 정답, 오른쪽 원은 비슷한 데이터의 군집을 나타냅니다.",True),
         ("분류와 회귀","분류는 이름을, 회귀는 연속적인 숫자를 예측합니다","Classification(분류)은 사과·오렌지 같은 범주를, Regression(회귀)은 입력 숫자에서 3.6 같은 연속적인 값을 예측합니다.","classification_basic","먼저 어떤 형태의 결과가 필요한지 정하면 학습 목표가 분명해집니다."),
         ("분류의 출력","두 종류 또는 여러 종류 중에서 점수를 비교합니다","Binary Classification(이진 분류)은 두 Class, Multi-class Classification(다중 클래스 분류)은 세 개 이상을 구분합니다.","classification_outputs","그림은 확률 형식의 점수 예시입니다. 높은 점수가 현실의 정확한 확률이나 정답을 보장하지는 않습니다."),
@@ -636,14 +693,14 @@ def build_lessons():
         ("Perceptron","입력·가중합·판정 함수를 계산 그래프로 연결합니다","z는 가중합, b는 Bias(편향) Parameter입니다. 여기서는 z≥0이면 1을 출력하는 임계값 판정을 사용합니다.","perceptron_detail","가중치의 영향은 부호·절댓값과 입력의 크기를 함께 봐야 합니다.",True),
         ("Parameter와 Hyperparameter","모델이 배우는 값과, 학습을 설정하는 값은 다릅니다","Parameter(파라미터)는 Weight·Bias처럼 학습하는 값입니다. Hyperparameter(하이퍼파라미터)는 학습률·Batch 크기 등 설정입니다.","parameters_basic","Bias Parameter와 데이터가 한쪽으로 치우쳤다는 의미의 Data Bias는 다른 개념입니다."),
         ("AND와 XOR","하나의 직선으로 나눌 수 없는 문제도 있습니다","AND는 두 입력 모두 1일 때만 1입니다. XOR는 두 입력이 서로 다를 때 1입니다. 파란 점은 출력 1, 흰 점은 출력 0입니다.","and_xor","AND의 경계는 x₁+x₂=1.5입니다. XOR의 파란 점 두 개는 직선 하나로 분리할 수 없습니다."),
-        ("Neural Network","여러 계산을 Layer로 연결하면 신경망이 됩니다","Neural Network(신경망)의 각 Layer(층)는 앞에서 받은 숫자를 조합해 다음 층으로 전달합니다.","network_basic","그림의 노드·연결은 계산 구조를 나타내며, 실제 모델의 뉴런 수와는 다릅니다."),
+        ("Neural Network","여러 계산을 Layer로 연결하면 신경망이 됩니다","Neural Network(신경망)의 각 Layer(층)는 앞에서 받은 숫자를 조합해 다음 층으로 전달합니다.","network_basic","그림의 노드·연결은 계산 구조를 나타내며, 실제 모델의 뉴런 수와는 다릅니다. 사진 1장을 입력하는 예시입니다."),
         ("Activation","Layer를 쌓을 때 비선형 계산도 필요합니다","Activation Function(활성화 함수)은 계산에 비선형성을 넣습니다. ReLU(Rectified Linear Unit)는 음수를 0으로, 양수를 그대로 전달합니다.","activation_basic","ReLU: f(x)=max(0,x). 여러 비선형 계산을 조합하면 더 복잡한 경계를 표현할 수 있습니다."),
         ("선형 Layer의 한계","비선형성이 없으면 여러 Layer도 하나로 합쳐집니다","Linear Layer 사이에 활성화 함수가 없으면 전체 계산은 하나의 Affine Transformation(선형 계산+편향)으로 표현됩니다.","old:linear_layers_collapse","깊이만 늘린다고 XOR 같은 문제를 해결하는 비선형 표현력이 생기지는 않습니다.",True),
-        ("Feature와 Representation","이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다","Feature는 유용한 단서, Representation(표현)은 그 단서를 담은 내부 숫자입니다. 경계·부분 형태는 직관을 위한 예시입니다.","old:feature_representation","실제 Channel 하나가 항상 사람이 이름 붙인 특징 하나와 대응하는 것은 아닙니다."),
+        ("Feature와 Representation","이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다","Feature는 유용한 단서, Representation(표현)은 그 단서를 담은 내부 숫자입니다. 경계·부분 형태는 직관을 위한 예시입니다.","hierarchy_professional","실제 Channel 하나가 항상 사람이 이름 붙인 특징 하나와 대응하는 것은 아닙니다."),
         ("Backpropagation","오차에서 각 가중치의 Gradient를 뒤로 계산합니다","Backpropagation(역전파)은 출력의 오차가 각 가중치에 얼마나 민감한지 계산합니다. 가중치 수정은 Optimizer가 수행합니다.","old:backpropagation_visual","오차를 뒤로 보내는 그림은 Gradient 계산 흐름을 표현합니다."),
         ("Backpropagation","Chain Rule로 각 Parameter의 변화율을 계산합니다","같은 x=2, y=4 예제에 Bias를 추가합니다. w=1, b=0에서 가중치와 Bias의 Gradient를 계산합니다.","backprop_detail","이 장에서는 w와 b를 모두 학습합니다. 앞의 Gradient 예제에서는 b를 0으로 고정했습니다.",True),
         ("Batch·Iteration·Epoch","데이터를 작은 묶음으로 나누어 반복해서 봅니다","Batch는 한 번에 처리하는 묶음, Iteration은 보통 한 묶음의 처리, Epoch은 학습 데이터 전체를 한 번 보는 주기입니다.","old:batch_epoch","이미지 10장, batch_size=4, 마지막 묶음을 버리지 않으면 4+4+2의 3번 처리가 1 Epoch입니다."),
-        ("Dataset","데이터는 실제 사용할 조건을 대표해야 합니다","Dataset(데이터셋)은 학습·평가에 사용하는 데이터 모음입니다. 조명·크기·배경·설비·시간대와 일관된 정답 기준을 확인합니다.","dataset_basic","특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다."),
+        ("Dataset","데이터는 실제 사용할 조건을 대표해야 합니다","Dataset(데이터셋)은 학습·평가에 사용하는 데이터 모음입니다. 조명·크기·배경·설비·시간대와 일관된 정답 기준을 확인합니다.","capture_conditions","특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다."),
         ("데이터 분리","학습·모델 선택·최종 평가의 데이터를 나눕니다","Train은 가중치 학습, Validation은 모델·설정·Threshold 선택, Test는 최종 일반화 평가에 사용합니다.","old:dataset_split","예: 1,000장의 70/15/15 분리. 비율보다 서로 독립적인 평가 데이터 확보가 중요합니다."),
         ("Group Split","같은 영상의 비슷한 Frame은 통째로 분리합니다","연관된 샘플을 묶은 단위를 Group(그룹)이라고 합니다. 평가하려는 새 조건에 맞춰 영상·설비·대상 등을 분리 기준으로 정합니다.","old:group_split_visual","새 영상 성능은 영상 단위, 새 설비 성능은 설비 단위 분리가 필요할 수 있습니다."),
         ("Data Leakage","평가 데이터의 정보가 학습·선택에 새어들면 점수가 왜곡됩니다","Data Leakage(데이터 누수)는 평가 때 몰라야 할 정보를 사용한 경우입니다. 중복 장면·전체 데이터 통계·반복적인 Test 선택을 점검합니다.","old:data_leakage_visual","학습하는 전처리 통계는 Train에서 계산합니다. 미리 정한 255 나누기는 통계를 학습하는 과정이 아닙니다."),
@@ -656,7 +713,7 @@ def build_lessons():
         ("Precision과 Recall","알람의 정확성과 불량을 찾는 비율을 구분합니다","Precision은 불량이라 알린 것 중 진짜 불량의 비율, Recall은 실제 불량 중 찾아낸 비율입니다.","precision_recall","같은 모델도 임계값에 따라 Precision·Recall이 달라질 수 있습니다."),
         ("Accuracy와 F1","전체 정답률과 Precision·Recall의 균형을 함께 봅니다","Accuracy는 전체 중 맞춘 비율입니다. F1은 Precision과 Recall의 조화평균이며 두 지표가 모두 높아야 높아집니다.","accuracy_f1","불량이 1%인 데이터에서 모두 정상으로 예측해도 Accuracy는 99%이지만 Recall은 0%입니다.",True),
         ("Loss와 Metric","학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다","Loss는 가중치를 갱신하는 목적함수입니다. Metric(평가지표)은 실제 문제에서 성능을 해석하고 비교하는 기준입니다.","loss_metric_basic","Loss가 줄었다고 원하는 Metric이나 운영 성능이 항상 개선되는 것은 아닙니다."),
-        ("Shortcut Learning","모델이 우리가 원한 단서를 사용했는지도 확인합니다","Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.","old:shortcut_learning","Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다."),
+        ("Shortcut Learning","모델이 우리가 원한 단서를 사용했는지도 확인합니다","Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.","shortcut_professional","Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다."),
         ("개발과 운영","운영의 실패 사례를 다음 데이터와 학습에 연결합니다","배포 후에도 조명·설비·제품 조건이 바뀔 수 있습니다. 실패 이미지를 모으고 정답 기준과 평가 조건을 다시 확인합니다.","workflow_basic","데이터 수집 → 학습 → 평가 → 배포 → 관찰을 반복하며 개선합니다."),
     ]
     vision=[
@@ -677,19 +734,19 @@ def build_lessons():
         ("Padding","가장자리 주변에 값을 채워 계산 범위를 조절합니다","Padding(패딩)은 입력 주위를 채우는 방법입니다. 아래는 가장자리 한 칸에 0을 채우는 Zero Padding입니다.","padding_basic","5×5 입력, Kernel 3·Stride 1·Padding 1이면 출력의 공간 크기가 5×5로 유지됩니다."),
         ("Downsampling","공간 해상도를 줄여 더 작은 특징 지도를 만듭니다","Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.","downsampling_basic","8×8 → 4×4는 공간 위치 수가 64개에서 16개로 줄어드는 변화입니다."),
         ("출력 크기 계산","Kernel·Stride·Padding으로 출력 크기를 계산합니다","H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.","spatial_detail","Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.",True),
-        ("특징의 조합","Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다","초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.","old:cnn_hierarchy","경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다."),
+        ("특징의 조합","Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다","초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.","hierarchy_professional","경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다."),
         ("Receptive Field","깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다","Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.","old:receptive_field","3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.",True),
         ("Backbone과 Head","특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다","Backbone(백본)은 특징을 추출하고, Head(헤드)는 Task별 결과를 만듭니다. 입력과 결과는 동일한 사과 사진을 사용합니다.","backbone_basic","세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다."),
         ("Backbone과 Head","블록을 연결하고 각 단계의 특징 크기를 표시합니다","Architecture(모델 구조)는 어떤 연산을 어떤 순서로 연결하는지 나타냅니다. 아래 크기는 구조를 설명하는 예시입니다.","backbone_detail","검출·분할 모델에는 여러 해상도 특징을 결합하는 Neck·Decoder 등이 추가될 수 있습니다.",True),
         ("CNN 학습","CNN의 필터도 오차를 줄이는 방향으로 학습합니다","Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.","old:cnn_training","기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다."),
         ("Transfer Learning","이미 배운 가중치에서 내 Task의 학습을 시작합니다","Transfer Learning(전이학습)은 사전학습 모델의 지식을 재사용하는 방법입니다. 처음부터 모든 값을 새로 배우는 것과 비교할 수 있습니다.","transfer_basic","내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다."),
         ("Freeze와 Fine-tuning","고정할 부분과 추가 학습할 부분을 구분합니다","Freeze는 가중치 고정, Fine-tuning(미세조정)은 사전학습 가중치 일부 또는 전체를 새 데이터로 업데이트하는 과정입니다.","transfer_detail","새 Head만 학습하는 경우와 Backbone까지 학습하는 경우를 구분해 검증합니다.",True),
-        ("평가와 실패 사례","높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다","배경·조명·장비가 정답과 우연히 연결되면 모델은 쉬운 Shortcut을 사용할 수 있습니다.","old:shortcut_learning","평균 Metric과 함께 실패 이미지·설비별·조명별 결과를 점검합니다."),
+        ("평가와 실패 사례","높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다","배경·조명·장비가 정답과 우연히 연결되면 모델은 쉬운 Shortcut을 사용할 수 있습니다.","shortcut_professional","평균 Metric과 함께 실패 이미지·설비별·조명별 결과를 점검합니다."),
         ("운영 Cycle","문제 정의부터 운영 관찰까지 연결해 개선합니다","성공 기준을 정하고 데이터를 모아 학습·평가·배포합니다. 운영의 실패 사례는 다음 데이터 보강의 근거가 됩니다.","old:vision_project_pipeline","모델 구조뿐 아니라 Label 기준·데이터 분리·운영 조건까지 함께 관리합니다."),
     ]
     ai_manifest=build_deck("ai_basics.html","02. AI Basics","AI는 오차를 줄이며 판단 기준을 배웁니다",[("예측하고 배우기","입력·정답·오차·가중치 수정"),("신경망 이해하기","작은 계산을 층으로 연결"),("제대로 평가하기","데이터 분리·실패 사례·지표")],ai,"intro.html","vision_ai.html")
     vision_manifest=build_deck("vision_ai.html","03. Vision AI","이미지에서 필요한 패턴을 찾아 결과로 바꿉니다",[("결과 정하기","분류·검출·분할과 Label"),("이미지 계산하기","작은 영역·필터·특징 지도"),("학습하고 적용하기","모델 구조·전이학습·운영")],vision,"ai_basics.html")
-    manifest={"version":VERSION,"ai_basics":ai_manifest,"vision_ai":vision_manifest}
+    manifest={"generated_assets":["assets/generated/apple_studio.webp","assets/generated/orange_studio.webp","assets/generated/capture_conditions.webp"],"version":VERSION,"ai_basics":ai_manifest,"vision_ai":vision_manifest}
     used={Path(item["asset"]).name for key in ["ai_basics","vision_ai"] for item in manifest[key]}
     for asset in ASSET_DIR.glob("*.svg"):
         if asset.name not in used:
@@ -705,7 +762,7 @@ def build_lessons():
             previous+=f"{item['number']}. {item['title']} ({'상세' if item['level']=='detail' else '기본'})\n"
         previous+="\n계산·숫자·Tensor 구조 그림은 `scripts/build_lesson_revision.py`에서 생성하며, 외부 이미지 서버나 CDN을 사용하지 않습니다.\n"
         note.write_text(previous,encoding="utf-8")
-    print(json.dumps({key:len(value)+1 for key,value in manifest.items() if isinstance(value,list)}))
+    print(json.dumps({key:len(value)+1 for key,value in manifest.items() if key in ["ai_basics", "vision_ai"]}))
 
 
 if __name__=="__main__":

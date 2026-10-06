@@ -6,10 +6,10 @@
   color: #64748b; font-size: 13px; font-weight: 700;
 }
 .lesson-deck .lesson-level {
-  border-radius: 6px; padding: 4px 9px; color: #1d4ed8;
-  background: #eff6ff; font-size: 12px;
+  border-radius: 6px; padding: 4px 9px; color: #275879;
+  background: #f4f7fa; font-size: 12px;
 }
-.lesson-deck .lesson-level--detail { background: #f0fdfa; color: #0f766e; }
+.lesson-deck .lesson-level--detail { background: #f2f7f5; color: #36756f; }
 .lesson-deck .slide-title { font-size: clamp(26px, 2.65vw, 38px); margin: 0 0 9px; }
 .lesson-deck .slide-subtitle {
   max-width: 1160px; font-size: clamp(16px, 1.5vw, 21px);
@@ -18,10 +18,10 @@
 .lesson-deck .lesson-figure { margin: 0; padding: 0; width: 100%; }
 .lesson-deck .lesson-figure img {
   display: block; width: 100%; height: auto; max-height: 53dvh;
-  object-fit: contain; border-radius: 12px;
+  object-fit: contain; border-radius: 3px;
 }
 .lesson-deck .lesson-takeaway {
-  border-left: 4px solid #2563eb; background: #f8fafc;
+  border-left: 4px solid #275879; background: #f8fafc;
   color: #334155; font-size: clamp(15px, 1.35vw, 19px);
   line-height: 1.45; margin: 12px 0 0; padding: 10px 14px;
 }
@@ -32,8 +32,8 @@
   padding: 24px 0; margin: 0;
 }
 .lesson-deck .lesson-outline article {
-  border-top: 3px solid #2563eb; padding: 20px;
-  border-radius: 10px; background: #f8fafc;
+  border-top: 3px solid #275879; padding: 20px;
+  border-radius: 4px; background: #f8fafc;
 }
 .lesson-deck .lesson-outline strong { display: block; font-size: 25px; margin: 9px 0; }
 .lesson-deck .lesson-outline p { font-size: 19px; color: #64748b; line-height: 1.5; }

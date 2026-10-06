@@ -256,3 +256,8 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 검증: `python scripts/verify_lesson_revision.py`
 - HTML 슬라이드 수·연속 번호·자산 경로, SVG XML·내부 리소스 참조, 합성곱·Gradient·AND·IoU·평가지표 수치 검증.
 - 두 챕터 전용 `docs/lesson.css`로 레이아웃 적용. Intro의 공통 CSS/JS는 변경하지 않음.
+
+## 2026-10-06 전문 강의용 사진 자산
+
+- ChatGPT Image Generation으로 생성한 사과·오렌지 사진형 자산과 촬영 조건 비교 이미지: `docs/assets/generated/`. 교육용 합성 이미지이며 실제 관측 데이터나 모델 실험 결과가 아닙니다. 상세 용도와 생성 명세는 해당 폴더 `README.md`에 기록했습니다.
+- 사진 파일을 기반으로 지도/비지도학습, 신경망 입력, Dataset 촬영 조건, 계층적 Feature, Shortcut Learning 그림을 재구성했습니다. 수식·텐서·계산값은 기존 검증 가능한 SVG 방식으로 유지했습니다.

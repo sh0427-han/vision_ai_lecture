@@ -1,5 +1,10 @@
 {
-  "version": "lesson-20261006-1",
+  "generated_assets": [
+    "assets/generated/apple_studio.webp",
+    "assets/generated/orange_studio.webp",
+    "assets/generated/capture_conditions.webp"
+  ],
+  "version": "professional-20261006-2",
   "ai_basics": [
     {
       "number": 1,
@@ -19,7 +24,7 @@
       "number": 3,
       "topic": "지도학습과 비지도학습",
       "level": "basic",
-      "title": "정답을 알려주며 배우기와, 비슷한 것끼리 찾기는 다릅니다",
+      "title": "지도학습과 비지도학습은 학습 목표가 다릅니다",
       "asset": "assets/lesson/learning_basic.svg"
     },
     {
@@ -146,7 +151,7 @@
       "topic": "Feature와 Representation",
       "level": "basic",
       "title": "이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다",
-      "asset": "assets/lesson/context_feature_representation.svg"
+      "asset": "assets/lesson/hierarchy_professional.svg"
     },
     {
       "number": 22,
@@ -174,7 +179,7 @@
       "topic": "Dataset",
       "level": "basic",
       "title": "데이터는 실제 사용할 조건을 대표해야 합니다",
-      "asset": "assets/lesson/dataset_basic.svg"
+      "asset": "assets/lesson/capture_conditions.svg"
     },
     {
       "number": 26,
@@ -265,7 +270,7 @@
       "topic": "Shortcut Learning",
       "level": "basic",
       "title": "모델이 우리가 원한 단서를 사용했는지도 확인합니다",
-      "asset": "assets/lesson/context_shortcut_learning.svg"
+      "asset": "assets/lesson/shortcut_professional.svg"
     },
     {
       "number": 39,
@@ -400,7 +405,7 @@
       "topic": "특징의 조합",
       "level": "basic",
       "title": "Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다",
-      "asset": "assets/lesson/context_cnn_hierarchy.svg"
+      "asset": "assets/lesson/hierarchy_professional.svg"
     },
     {
       "number": 19,
@@ -449,7 +454,7 @@
       "topic": "평가와 실패 사례",
       "level": "basic",
       "title": "높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다",
-      "asset": "assets/lesson/context_shortcut_learning.svg"
+      "asset": "assets/lesson/shortcut_professional.svg"
     },
     {
       "number": 26,
