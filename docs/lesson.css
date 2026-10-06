@@ -1,0 +1,56 @@
+/* These rules apply only to revised AI Basics / Vision AI decks. */
+.lesson-deck .slide { padding: 20px 36px; }
+.lesson-deck .slide-inner { width: min(1200px, 100%); }
+.lesson-deck .lesson-meta {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 9px;
+  color: #64748b; font-size: 13px; font-weight: 700;
+}
+.lesson-deck .lesson-level {
+  border-radius: 6px; padding: 4px 9px; color: #1d4ed8;
+  background: #eff6ff; font-size: 12px;
+}
+.lesson-deck .lesson-level--detail { background: #f0fdfa; color: #0f766e; }
+.lesson-deck .slide-title { font-size: clamp(26px, 2.65vw, 38px); margin: 0 0 9px; }
+.lesson-deck .slide-subtitle {
+  max-width: 1160px; font-size: clamp(16px, 1.5vw, 21px);
+  line-height: 1.5; margin: 0 0 12px;
+}
+.lesson-deck .lesson-figure { margin: 0; padding: 0; width: 100%; }
+.lesson-deck .lesson-figure img {
+  display: block; width: 100%; height: auto; max-height: 53dvh;
+  object-fit: contain; border-radius: 12px;
+}
+.lesson-deck .lesson-takeaway {
+  border-left: 4px solid #2563eb; background: #f8fafc;
+  color: #334155; font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.45; margin: 12px 0 0; padding: 10px 14px;
+}
+.lesson-deck .lesson-reference { margin: 7px 0 0; color: #64748b; font-size: 12px; }
+.lesson-deck .lesson-reference a { color: #64748b; text-decoration: underline; }
+.lesson-deck .lesson-outline {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  padding: 24px 0; margin: 0;
+}
+.lesson-deck .lesson-outline article {
+  border-top: 3px solid #2563eb; padding: 20px;
+  border-radius: 10px; background: #f8fafc;
+}
+.lesson-deck .lesson-outline strong { display: block; font-size: 25px; margin: 9px 0; }
+.lesson-deck .lesson-outline p { font-size: 19px; color: #64748b; line-height: 1.5; }
+@media (max-height: 760px) {
+  .lesson-deck .slide { padding: 14px 30px; }
+  .lesson-deck .slide-title { font-size: clamp(24px, 2.4vw, 34px); }
+  .lesson-deck .slide-subtitle { margin-bottom: 8px; }
+  .lesson-deck .lesson-figure img { max-height: 48dvh; }
+  .lesson-deck .lesson-takeaway { margin-top: 8px; padding: 8px 12px; }
+}
+@media (max-width: 700px) {
+  .lesson-deck .slide { padding: 16px; }
+  .lesson-deck .lesson-meta { font-size: 11px; }
+  .lesson-deck .slide-title { font-size: 25px; }
+  .lesson-deck .slide-subtitle { font-size: 16px; }
+  .lesson-deck .lesson-outline { grid-template-columns: 1fr; gap: 8px; }
+  .lesson-deck .lesson-outline article { padding: 10px 16px; }
+  .lesson-deck .lesson-outline strong { font-size: 20px; }
+  .lesson-deck .lesson-outline p { margin: 4px 0; font-size: 16px; }
+}
