@@ -79,7 +79,9 @@ def build_feature_comparison():
     """Compare designed features and jointly learned features on one input."""
     photo_path = REPO_DIR / "docs/assets/generated/apple_studio_preview.png"
     photo_buffer = io.BytesIO()
-    Image.open(photo_path).convert("RGB").save(
+    photo_image = Image.open(photo_path).convert("RGBA")
+    white_background = Image.new("RGBA", photo_image.size, "white")
+    Image.alpha_composite(white_background, photo_image).convert("RGB").save(
         photo_buffer, format="JPEG", quality=92, optimize=True
     )
     photo_data = base64.b64encode(photo_buffer.getvalue()).decode("ascii")

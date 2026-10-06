@@ -728,6 +728,8 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
         if Path(asset).stem in SURVEY_REFERENCES:
             section, primary_url, primary_label = SURVEY_REFERENCES[Path(asset).stem]
             figure_version = "survey-20261006-1"
+            if Path(asset).stem == "survey_feature_learning":
+                figure_version = "survey-20261006-2"
             reference = (
                 f'<p class="lesson-reference">참고: <a href="{SURVEY_URL}" '
                 f'target="_blank" rel="noopener">Alzubaidi et al. (2021) · {section}</a>'
@@ -786,13 +788,13 @@ def build_lessons():
         ("전처리","모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다","Preprocessing(전처리)은 입력 형식을 맞추는 과정입니다. 1920×1080을 640×640으로 맞출 때는 Resize·Crop·Padding의 차이를 고려합니다.","preprocess_basic","RGB/BGR, 0~255/정규화 값, HWC/CHW를 확인하고 Train·Inference의 기본 규칙을 맞춥니다."),
         ("Data Augmentation","의미를 유지하는 변화를 학습 중에 보여줍니다","Data Augmentation(데이터 증강)은 밝기·회전·가림 같은 변화를 적용하는 방법입니다. 현실적인 변화 범위와 정답 유지 여부를 확인합니다.","augmentation_basic","검출·분할에서는 이미지와 Box·Mask에 같은 공간 변환을 적용해야 합니다."),
         ("Overfitting","Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다","Overfitting(과적합)은 학습 데이터에 지나치게 맞춰 새 데이터 성능이 떨어지는 현상입니다. Validation 추세와 실패 사례를 함께 봅니다.","old:overfit_leakage","Generalization(일반화)은 직접 학습하지 않은 데이터에서도 성능을 유지하는 능력입니다."),
-        ("과적합 대응", "새 데이터에서도 잘하도록 학습을 조절합니다", "데이터 증강·Dropout·Early Stopping은 서로 다른 방식으로 일반화를 돕습니다. Dropout의 p=0.5는 학습 중 각 값을 0으로 만들 확률입니다.", "survey_regularization", "Early Stopping은 Validation을 사용합니다. 증강 강도와 Dropout 확률을 높인다고 항상 성능이 좋아지는 것은 아닙니다."),
+        ("과적합 대응", "새 데이터에서도 잘하도록 학습을 조절합니다", "증강·Dropout·Early Stopping은 서로 다른 방식으로 과적합을 줄입니다. 각 방법의 효과는 Validation에서 비교합니다.", "survey_regularization", "Early Stopping은 Validation을 사용합니다. 증강 강도와 Dropout 확률을 높인다고 항상 성능이 좋아지는 것은 아닙니다."),
         ("K-Fold","평가 대상을 바꾸어 성능의 변동도 확인합니다","K-Fold Cross Validation(교차검증)은 데이터 부분집합을 번갈아 Validation으로 사용하며 모델을 각각 새로 학습합니다.","old:kfold_visual","같은 원본을 공유하는 샘플은 Group K-Fold로 분리하고, 최종 Test는 별도로 유지합니다.",True),
         ("Threshold","점수에 기준을 적용하면 실제 판정이 됩니다","Threshold(임계값)는 불량으로 판정할 점수 기준입니다. 예: 불량 점수 0.82는 기준 0.5에서 불량으로 판정합니다.","threshold_basic","기준을 바꾸면 찾는 불량과 오알람 수가 달라집니다. 기준은 Validation에서 선택합니다."),
         ("Confusion Matrix","정답과 판정을 비교해 네 가지 결과를 셉니다","Confusion Matrix(혼동행렬)는 TP·FN·FP·TN을 구분합니다. 실제 불량 20개 중 18개를 찾고, 정상 80개 중 4개를 잘못 알린 예시입니다.","confusion_counts","TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과."),
         ("Precision과 Recall","알람의 정확성과 불량을 찾는 비율을 구분합니다","Precision은 불량이라 알린 것 중 진짜 불량의 비율, Recall은 실제 불량 중 찾아낸 비율입니다.","precision_recall","같은 모델도 임계값에 따라 Precision·Recall이 달라질 수 있습니다."),
         ("Accuracy와 F1","전체 정답률과 Precision·Recall의 균형을 함께 봅니다","Accuracy는 전체 중 맞춘 비율입니다. F1은 Precision과 Recall의 조화평균이며 두 지표가 모두 높아야 높아집니다.","accuracy_f1","불량이 1%인 데이터에서 모두 정상으로 예측해도 Accuracy는 99%이지만 Recall은 0%입니다.",True),
-        ("클래스 불균형", "불량이 적을수록 학습과 평가를 함께 점검합니다", "정상 95장·불량 5장처럼 Class 수가 다르면, 소수 Class의 오류가 가려질 수 있습니다. 표본 조정·Loss 가중치와 클래스별 지표를 비교합니다.", "survey_class_imbalance", "Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다."),
+        ("클래스 불균형", "불량이 적을수록 학습과 평가를 함께 점검합니다", "정상 95장·불량 5장처럼 Class 수가 다르면 소수 Class의 오류가 가려질 수 있습니다.", "survey_class_imbalance", "Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다."),
         ("Loss와 Metric","학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다","Loss는 가중치를 갱신하는 목적함수입니다. Metric(평가지표)은 실제 문제에서 성능을 해석하고 비교하는 기준입니다.","loss_metric_basic","Loss가 줄었다고 원하는 Metric이나 운영 성능이 항상 개선되는 것은 아닙니다."),
         ("분류용 Loss", "분류에서는 정답 클래스의 확률을 이용할 수 있습니다", "Cross-entropy(교차 엔트로피)는 정답 클래스에 낮은 확률을 주면 큰 Loss를 부여합니다. 회귀에서 사용한 제곱오차와 구분합니다.", "survey_classification_loss", "단일 정답·단일 샘플에서 L=−ln(p정답)입니다. PyTorch CrossEntropyLoss에는 Softmax 확률 대신 원래 Logit(정규화 전 점수)을 입력합니다.", True),
         ("Shortcut Learning","모델이 우리가 원한 단서를 사용했는지도 확인합니다","Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.","shortcut_professional","Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다."),
@@ -818,10 +820,10 @@ def build_lessons():
         ("출력 크기 계산","Kernel·Stride·Padding으로 출력 크기를 계산합니다","H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.","spatial_detail","Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.",True),
         ("특징의 조합","Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다","초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.","hierarchy_professional","경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다."),
         ("Receptive Field","깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다","Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.","old:receptive_field","3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.",True),
-        ("CNN 전체 흐름", "작은 연산들을 연결하면 이미지 분류기가 됩니다", "224×224×3 입력에서 Conv·ReLU·Pooling으로 특징을 만들고, Global Average Pooling(전역 평균 풀링)과 Linear Layer로 분류 점수를 계산합니다.", "survey_cnn_pipeline", "H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다."),
+        ("CNN 전체 흐름", "작은 연산들을 연결하면 이미지 분류기가 됩니다", "224×224×3 입력을 특징 지도로 바꾸고, 전역 평균 풀링으로 요약한 뒤 분류 점수를 계산합니다.", "survey_cnn_pipeline", "H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다."),
         ("Backbone과 Head","특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다","Backbone(백본)은 특징을 추출하고, Head(헤드)는 Task별 결과를 만듭니다. 입력과 결과는 동일한 사과 사진을 사용합니다.","backbone_basic","세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다."),
         ("Backbone과 Head","블록을 연결하고 각 단계의 특징 크기를 표시합니다","Architecture(모델 구조)는 어떤 연산을 어떤 순서로 연결하는지 나타냅니다. 아래 크기는 구조를 설명하는 예시입니다.","backbone_detail","검출·분할 모델에는 여러 해상도 특징을 결합하는 Neck·Decoder 등이 추가될 수 있습니다.",True),
-        ("CNN 구조의 설계", "순차·병렬·우회 연결로 서로 다른 구조를 만듭니다", "VGG는 작은 필터를 쌓고, Inception은 병렬 경로를 결합하며, ResNet은 입력을 우회시켜 변환 결과와 더합니다. 여기서는 연결 원리만 비교합니다.", "survey_architecture_patterns", "깊이만 늘리는 것 외에도 연결 방식이 중요합니다. 구조의 우열은 데이터·정확도·메모리·처리시간을 함께 검증해 결정합니다."),
+        ("CNN 구조의 설계", "순차·병렬·우회 연결로 서로 다른 구조를 만듭니다", "VGG는 순차, Inception은 병렬, ResNet은 우회 연결을 사용합니다. 그림은 각 구조의 연결 원리입니다.", "survey_architecture_patterns", "깊이만 늘리는 것 외에도 연결 방식이 중요합니다. 구조의 우열은 데이터·정확도·메모리·처리시간을 함께 검증해 결정합니다."),
         ("Residual 연결", "입력을 그대로 전달하는 경로와 변환 경로를 더합니다", "Residual(잔차) 블록은 F(x)+x를 계산합니다. 56×56×64 입력을 더하려면 두 경로의 Tensor Shape가 같아야 합니다.", "survey_residual_detail", "원소별 합산이며 Channel 결합과 다릅니다. ResNet v1은 합산 뒤 ReLU를 적용합니다. 우회 경로는 깊은 모델의 최적화를 돕습니다.", True),
         ("CNN 학습","CNN의 필터도 오차를 줄이는 방향으로 학습합니다","Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.","old:cnn_training","기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다."),
         ("Transfer Learning","이미 배운 가중치에서 내 Task의 학습을 시작합니다","Transfer Learning(전이학습)은 사전학습 모델의 지식을 재사용하는 방법입니다. 처음부터 모든 값을 새로 배우는 것과 비교할 수 있습니다.","transfer_basic","내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다."),
