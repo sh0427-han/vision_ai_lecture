@@ -660,7 +660,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
             reference += '<p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p>'
         figure_version = VERSION
         if Path(asset).stem in {"loss_basic", "gradient_basic", "gradient_detail", "optimizer_learning_rates"}:
-            figure_version = "loss-optimizer-20261006-1"
+            figure_version = "loss-optimizer-20261006-2"
             reference = '<p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</p>'
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
