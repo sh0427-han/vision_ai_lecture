@@ -160,7 +160,7 @@
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">딥러닝은 특징을 만드는 계산도 학습합니다</h2>
 <p class="slide-subtitle">전통적 ML의 한 예는 사람이 특징을 설계한 뒤 분류기를 학습합니다. 딥러닝은 특징 층과 분류 층을 함께 학습할 수 있습니다.</p>
-<figure class="lesson-figure"><img src="assets/lesson/survey_feature_learning.svg?v=survey-20261006-1" alt="딥러닝은 특징을 만드는 계산도 학습합니다"></figure>
+<figure class="lesson-figure"><img src="assets/lesson/survey_feature_learning.svg?v=survey-20261006-2" alt="딥러닝은 특징을 만드는 계산도 학습합니다"></figure>
 <p class="lesson-takeaway">자동 특징 학습도 데이터·정답·학습 목표의 설계가 필요합니다. 모든 ML 방법을 이 비교로 나눌 수는 없습니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 3 · 특징 학습</a> · <a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">LeCun et al. (2015)</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Feature와 Representation" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>22 · Feature와 Representation</span>
@@ -243,7 +243,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>33 · 과적합 대응</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">새 데이터에서도 잘하도록 학습을 조절합니다</h2>
-<p class="slide-subtitle">데이터 증강·Dropout·Early Stopping은 서로 다른 방식으로 일반화를 돕습니다. Dropout의 p=0.5는 학습 중 각 값을 0으로 만들 확률입니다.</p>
+<p class="slide-subtitle">증강·Dropout·Early Stopping은 서로 다른 방식으로 과적합을 줄입니다. 각 방법의 효과는 Validation에서 비교합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_regularization.svg?v=survey-20261006-1" alt="새 데이터에서도 잘하도록 학습을 조절합니다"></figure>
 <p class="lesson-takeaway">Early Stopping은 Validation을 사용합니다. 증강 강도와 Dropout 확률을 높인다고 항상 성능이 좋아지는 것은 아닙니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Regularization</a> · <a href="https://jmlr.org/papers/v15/srivastava14a.html" target="_blank" rel="noopener">Dropout 원 논문</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="K-Fold" data-level="detail">
@@ -285,7 +285,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>39 · 클래스 불균형</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">불량이 적을수록 학습과 평가를 함께 점검합니다</h2>
-<p class="slide-subtitle">정상 95장·불량 5장처럼 Class 수가 다르면, 소수 Class의 오류가 가려질 수 있습니다. 표본 조정·Loss 가중치와 클래스별 지표를 비교합니다.</p>
+<p class="slide-subtitle">정상 95장·불량 5장처럼 Class 수가 다르면 소수 Class의 오류가 가려질 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_class_imbalance.svg?v=survey-20261006-1" alt="불량이 적을수록 학습과 평가를 함께 점검합니다"></figure>
 <p class="lesson-takeaway">Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Imbalanced data</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">클래스별 Loss 가중치</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Loss와 Metric" data-level="basic">

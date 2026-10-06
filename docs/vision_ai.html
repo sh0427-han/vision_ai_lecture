@@ -152,7 +152,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>20 · CNN 전체 흐름</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">작은 연산들을 연결하면 이미지 분류기가 됩니다</h2>
-<p class="slide-subtitle">224×224×3 입력에서 Conv·ReLU·Pooling으로 특징을 만들고, Global Average Pooling(전역 평균 풀링)과 Linear Layer로 분류 점수를 계산합니다.</p>
+<p class="slide-subtitle">224×224×3 입력을 특징 지도로 바꾸고, 전역 평균 풀링으로 요약한 뒤 분류 점수를 계산합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_cnn_pipeline.svg?v=survey-20261006-1" alt="작은 연산들을 연결하면 이미지 분류기가 됩니다"></figure>
 <p class="lesson-takeaway">H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 7 · CNN layers</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html" target="_blank" rel="noopener">PyTorch Conv2d</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic">
@@ -173,7 +173,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>23 · CNN 구조의 설계</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">순차·병렬·우회 연결로 서로 다른 구조를 만듭니다</h2>
-<p class="slide-subtitle">VGG는 작은 필터를 쌓고, Inception은 병렬 경로를 결합하며, ResNet은 입력을 우회시켜 변환 결과와 더합니다. 여기서는 연결 원리만 비교합니다.</p>
+<p class="slide-subtitle">VGG는 순차, Inception은 병렬, ResNet은 우회 연결을 사용합니다. 그림은 각 구조의 연결 원리입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_architecture_patterns.svg?v=survey-20261006-1" alt="순차·병렬·우회 연결로 서로 다른 구조를 만듭니다"></figure>
 <p class="lesson-takeaway">깊이만 늘리는 것 외에도 연결 방식이 중요합니다. 구조의 우열은 데이터·정확도·메모리·처리시간을 함께 검증해 결정합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · CNN architectures</a> · <a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener">VGG 원 논문</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Residual 연결" data-level="detail">
