@@ -148,7 +148,7 @@ def build_image_processing_figures():
     out += label(810, 153, "평활화", 23, GREEN, "middle")
     out += label(810, 253, "2칸마다 추출", 22, MUTED, "middle")
     out += box(90, 365, 1020, 81)
-    out += label(600, 400, "Lₖ₊₁ = (Gaussian σ=1로 평활화한 Lₖ)[::2, ::2]", 25, GREEN, "middle", True)
+    out += label(600, 400, "Lₖ₊₁(x,y) = (Gaussian σ=1로 평활화한 Lₖ)(2x,2y)", 25, GREEN, "middle", True)
     out += label(600, 432, "서로 다른 해상도를 비교하도록 세 영상을 같은 화면 크기로 표시", 22, MUTED, "middle")
     save_svg("processing_pyramid", out, "Gaussian 피라미드의 224,112,56 해상도와 평활화 후 2배 축소 계산")
 
