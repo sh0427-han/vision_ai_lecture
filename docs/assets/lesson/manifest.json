@@ -360,153 +360,202 @@
     },
     {
       "number": 8,
+      "topic": "영상처리의 기본",
+      "level": "basic",
+      "title": "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다",
+      "asset": "assets/lesson/processing_point_neighborhood.svg"
+    },
+    {
+      "number": 9,
+      "topic": "Gaussian 필터",
+      "level": "basic",
+      "title": "잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다",
+      "asset": "assets/lesson/processing_gaussian.svg"
+    },
+    {
+      "number": 10,
+      "topic": "평균 필터 계산",
+      "level": "detail",
+      "title": "주변 9개 값을 평균해 출력 한 칸을 계산합니다",
+      "asset": "assets/lesson/processing_mean_detail.svg"
+    },
+    {
+      "number": 11,
+      "topic": "중앙값 필터",
+      "level": "basic",
+      "title": "튀는 점 잡음에는 중앙값이 유용할 수 있습니다",
+      "asset": "assets/lesson/processing_median.svg"
+    },
+    {
+      "number": 12,
+      "topic": "영상 기울기",
+      "level": "basic",
+      "title": "밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다",
+      "asset": "assets/lesson/processing_gradient.svg"
+    },
+    {
+      "number": 13,
+      "topic": "Mask 후처리",
+      "level": "basic",
+      "title": "작은 점 제거와 작은 구멍 메우기는 다른 연산입니다",
+      "asset": "assets/lesson/processing_morphology.svg"
+    },
+    {
+      "number": 14,
       "topic": "이미지의 단서",
       "level": "basic",
       "title": "작은 영역의 경계·밝기 변화를 먼저 살펴봅니다",
       "asset": "assets/lesson/cnn_local_basic.svg"
     },
     {
-      "number": 9,
+      "number": 15,
       "topic": "CNN",
       "level": "basic",
       "title": "CNN은 작은 영역을 보고 같은 가중치를 재사용합니다",
       "asset": "assets/lesson/context_cnn_why_local.svg"
     },
     {
-      "number": 10,
+      "number": 16,
       "topic": "Kernel",
       "level": "basic",
       "title": "같은 필터도 이미지 영역에 따라 반응이 달라집니다",
       "asset": "assets/lesson/kernel_basic.svg"
     },
     {
-      "number": 11,
+      "number": 17,
       "topic": "Convolution",
       "level": "detail",
       "title": "같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다",
       "asset": "assets/lesson/convolution_detail.svg"
     },
     {
-      "number": 12,
+      "number": 18,
       "topic": "Feature Map",
       "level": "basic",
       "title": "반응값을 위치대로 모으면 특징 지도가 됩니다",
       "asset": "assets/lesson/feature_basic.svg"
     },
     {
-      "number": 13,
+      "number": 19,
       "topic": "Feature Map과 Channel",
       "level": "detail",
       "title": "RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다",
       "asset": "assets/lesson/feature_detail.svg"
     },
     {
-      "number": 14,
+      "number": 20,
       "topic": "Stride",
       "level": "basic",
       "title": "필터를 몇 칸씩 이동할지 정합니다",
       "asset": "assets/lesson/stride_basic.svg"
     },
     {
-      "number": 15,
+      "number": 21,
       "topic": "Padding",
       "level": "basic",
       "title": "가장자리 주변에 값을 채워 계산 범위를 조절합니다",
       "asset": "assets/lesson/padding_basic.svg"
     },
     {
-      "number": 16,
+      "number": 22,
       "topic": "Downsampling",
       "level": "basic",
       "title": "공간 해상도를 줄여 더 작은 특징 지도를 만듭니다",
       "asset": "assets/lesson/downsampling_basic.svg"
     },
     {
-      "number": 17,
+      "number": 23,
+      "topic": "이미지 피라미드",
+      "level": "detail",
+      "title": "평활화 후 축소해 여러 해상도의 영상을 만듭니다",
+      "asset": "assets/lesson/processing_pyramid.svg"
+    },
+    {
+      "number": 24,
       "topic": "출력 크기 계산",
       "level": "detail",
       "title": "Kernel·Stride·Padding으로 출력 크기를 계산합니다",
       "asset": "assets/lesson/spatial_detail.svg"
     },
     {
-      "number": 18,
+      "number": 25,
       "topic": "특징의 조합",
       "level": "basic",
       "title": "Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다",
       "asset": "assets/lesson/hierarchy_professional.svg"
     },
     {
-      "number": 19,
+      "number": 26,
       "topic": "Receptive Field",
       "level": "detail",
       "title": "깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다",
       "asset": "assets/lesson/context_receptive_field.svg"
     },
     {
-      "number": 20,
+      "number": 27,
       "topic": "CNN 전체 흐름",
       "level": "basic",
       "title": "작은 연산들을 연결하면 이미지 분류기가 됩니다",
       "asset": "assets/lesson/survey_cnn_pipeline.svg"
     },
     {
-      "number": 21,
+      "number": 28,
       "topic": "Backbone과 Head",
       "level": "basic",
       "title": "특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다",
       "asset": "assets/lesson/backbone_basic.svg"
     },
     {
-      "number": 22,
+      "number": 29,
       "topic": "Backbone과 Head",
       "level": "detail",
       "title": "블록을 연결하고 각 단계의 특징 크기를 표시합니다",
       "asset": "assets/lesson/backbone_detail.svg"
     },
     {
-      "number": 23,
+      "number": 30,
       "topic": "CNN 구조의 설계",
       "level": "basic",
       "title": "순차·병렬·우회 연결로 서로 다른 구조를 만듭니다",
       "asset": "assets/lesson/survey_architecture_patterns.svg"
     },
     {
-      "number": 24,
+      "number": 31,
       "topic": "Residual 연결",
       "level": "detail",
       "title": "입력을 그대로 전달하는 경로와 변환 경로를 더합니다",
       "asset": "assets/lesson/survey_residual_detail.svg"
     },
     {
-      "number": 25,
+      "number": 32,
       "topic": "CNN 학습",
       "level": "basic",
       "title": "CNN의 필터도 오차를 줄이는 방향으로 학습합니다",
       "asset": "assets/lesson/context_cnn_training.svg"
     },
     {
-      "number": 26,
+      "number": 33,
       "topic": "Transfer Learning",
       "level": "basic",
       "title": "이미 배운 가중치에서 내 Task의 학습을 시작합니다",
       "asset": "assets/lesson/transfer_basic.svg"
     },
     {
-      "number": 27,
+      "number": 34,
       "topic": "Freeze와 Fine-tuning",
       "level": "detail",
       "title": "고정할 부분과 추가 학습할 부분을 구분합니다",
       "asset": "assets/lesson/transfer_detail.svg"
     },
     {
-      "number": 28,
+      "number": 35,
       "topic": "평가와 실패 사례",
       "level": "basic",
       "title": "높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다",
       "asset": "assets/lesson/shortcut_professional.svg"
     },
     {
-      "number": 29,
+      "number": 36,
       "topic": "운영 Cycle",
       "level": "basic",
       "title": "문제 정의부터 운영 관찰까지 연결해 개선합니다",

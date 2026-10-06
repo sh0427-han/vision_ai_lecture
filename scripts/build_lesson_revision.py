@@ -16,6 +16,7 @@ from lxml import etree
 
 from build_loss_optimizer_figures import build_loss_optimizer_figures
 from build_survey_figures import build_survey_figures
+from build_image_processing_figures import build_image_processing_figures, SECTIONS as PROCESSING_SECTIONS
 
 REPO_DIR = Path(__file__).resolve().parents[1]
 ASSET_DIR = REPO_DIR / "docs/assets/lesson"
@@ -736,6 +737,14 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
                 f' · <a href="{primary_url}" target="_blank" rel="noopener">{primary_label}</a>'
                 ' · 강의용 재구성</p>'
             )
+        if Path(asset).stem in PROCESSING_SECTIONS:
+            section = PROCESSING_SECTIONS[Path(asset).stem]
+            figure_version = "processing-20261006-1"
+            reference = (
+                '<p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" '
+                f'target="_blank" rel="noopener">Szeliski · Ch. 3 {section}</a>'
+                ' · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p>'
+            )
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "기본 개념"}</span></div>
@@ -808,6 +817,12 @@ def build_lessons():
         ("Label","같은 사진이라도 Task가 바뀌면 정답 형태가 바뀝니다","분류는 이미지 클래스, 검출은 클래스와 Box, 분할은 Pixel Mask를 정답으로 사용합니다.","backbone_basic","여기서 결과 그림을 정답으로 작성한 것이 Label이고, 모델이 계산한 것이 Prediction입니다."),
         ("IoU","위치와 영역은 정답과 얼마나 겹치는지 평가합니다","IoU(Intersection over Union, 교집합/합집합 비율)는 정답 영역과 예측 영역의 겹침 정도입니다.","old:iou_visual","완전 일치하면 1, 겹치는 영역이 없으면 0입니다."),
         ("IoU","겹친 칸 수를 전체 합집합 칸 수로 나눕니다","정답 12칸과 예측 12칸이 4칸 겹치면, 합집합은 12+12−4=20칸입니다.","iou_detail","IoU = 4/20 = 0.2. 검출은 Box, 분할은 Mask의 영역으로 계산합니다.",True),
+        ("영상처리의 기본", "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다", "영상처리는 밝기·잡음·경계 같은 이미지의 성질을 바꿉니다. 같은 사과 사진으로 두 연산을 비교합니다.", "processing_point_neighborhood", "밝기 변환은 해당 Pixel 값으로 계산하고, 필터는 주변 값도 사용합니다. 이 연산 자체가 물체 이름을 예측하지는 않습니다."),
+        ("Gaussian 필터", "잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다", "Gaussian(가우시안) 필터는 가까운 Pixel에 큰 가중치를 주어 평균합니다. σ(시그마)는 퍼짐의 정도를 정합니다.", "processing_gaussian", "σ는 원본 Pixel 단위입니다. 잡음 감소와 작은 결함 보존을 함께 확인하고, 실제 Task의 평가 결과로 전처리를 선택합니다."),
+        ("평균 필터 계산", "주변 9개 값을 평균해 출력 한 칸을 계산합니다", "3×3 평균 필터의 각 가중치는 1/9입니다. 가운데의 큰 값 160도 주변 8개 값과 함께 계산합니다.", "processing_mean_detail", "평균 필터는 사람이 정한 고정 가중치입니다. CNN은 같은 가중합 구조의 필터 값을 데이터에서 학습할 수 있습니다.", True),
+        ("중앙값 필터", "튀는 점 잡음에는 중앙값이 유용할 수 있습니다", "Median(중앙값) 필터는 이웃 값을 정렬해 가운데 값을 선택합니다. 같은 점 잡음 입력에서 평균 필터와 비교합니다.", "processing_median", "중앙값은 선형 가중합이 아닌 비선형 연산입니다. 얇은 선이나 작은 결함도 없어질 수 있어 모든 잡음에 최선인 것은 아닙니다."),
+        ("영상 기울기", "밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다", "Sobel(소벨) 필터로 좌우·상하 밝기 변화를 계산합니다. 부호 있는 값을 계산한 뒤 절댓값과 크기로 시각화합니다.", "processing_gradient", "두 기울기 그림은 같은 최대값으로 표시했습니다. 경계 반응은 밝기 변화의 단서이며, 그 자체가 물체나 결함의 정답은 아닙니다."),
+        ("Mask 후처리", "작은 점 제거와 작은 구멍 메우기는 다른 연산입니다", "Morphology(형태학)는 구조 요소로 Mask의 모양을 처리합니다. 침식은 1 영역을 줄이고, 팽창은 1 영역을 넓힙니다.", "processing_morphology", "Opening·Closing은 원래 Mask를 각각 처리한 결과입니다. 작은 실제 결함이 지워지거나 가까운 영역이 붙을 수 있어 크기를 검증해야 합니다."),
         ("이미지의 단서","작은 영역의 경계·밝기 변화를 먼저 살펴봅니다","이미지에서는 가까운 Pixel의 배치가 중요합니다. 작은 영역의 반응을 여러 위치에서 계산하면 패턴이 있는 위치를 알 수 있습니다.","cnn_local_basic","Patch는 이미지의 작은 영역, Feature Map은 위치별 반응값을 모은 지도입니다."),
         ("CNN","CNN은 작은 영역을 보고 같은 가중치를 재사용합니다","Convolutional Neural Network(합성곱 신경망)는 지역 연결과 가중치 공유로 이미지의 공간적 패턴을 계산합니다.","old:cnn_why_local","Flatten은 값과 순서를 유지하지만, 완전연결층에는 공간 이웃 관계와 가중치 공유가 명시되어 있지 않습니다."),
         ("Kernel","같은 필터도 이미지 영역에 따라 반응이 달라집니다","Kernel 또는 Filter(커널·필터)는 작은 가중치 배열입니다. 세로 밝기 변화가 있는 영역과 평평한 영역의 반응을 비교합니다.","kernel_basic","그림은 사람이 정한 경계 필터 예시입니다. CNN의 필터 값은 학습으로 정해집니다."),
@@ -817,6 +832,7 @@ def build_lessons():
         ("Stride","필터를 몇 칸씩 이동할지 정합니다","Stride(이동 간격)가 1이면 한 칸, 2이면 두 칸씩 이동합니다. 같은 입력과 필터에서 이동 간격이 크면 출력 크기가 작아집니다.","stride_basic","5×5 입력과 3×3 필터, Padding 0: Stride 1은 3×3, Stride 2는 2×2 출력입니다."),
         ("Padding","가장자리 주변에 값을 채워 계산 범위를 조절합니다","Padding(패딩)은 입력 주위를 채우는 방법입니다. 아래는 가장자리 한 칸에 0을 채우는 Zero Padding입니다.","padding_basic","5×5 입력, Kernel 3·Stride 1·Padding 1이면 출력의 공간 크기가 5×5로 유지됩니다."),
         ("Downsampling","공간 해상도를 줄여 더 작은 특징 지도를 만듭니다","Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.","downsampling_basic","8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다."),
+        ("이미지 피라미드", "평활화 후 축소해 여러 해상도의 영상을 만듭니다", "Gaussian Pyramid(가우시안 피라미드)는 매 단계에서 평활화한 뒤 가로·세로를 절반으로 줄입니다. 축소 전 평활화는 Aliasing(가짜 저주파 무늬)을 줄이는 데 쓰입니다.", "processing_pyramid", "사진의 Gaussian 피라미드와 CNN의 Max Pooling은 계산이 다릅니다. 가로·세로가 절반이면 Pixel 수는 1/4이 됩니다.", True),
         ("출력 크기 계산","Kernel·Stride·Padding으로 출력 크기를 계산합니다","H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.","spatial_detail","Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.",True),
         ("특징의 조합","Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다","초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.","hierarchy_professional","경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다."),
         ("Receptive Field","깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다","Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.","old:receptive_field","3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.",True),
@@ -857,6 +873,7 @@ if __name__=="__main__":
     build_loss_optimizer_figures()
     build_opening_figures()
     build_survey_figures()
+    build_image_processing_figures()
     build_lessons()
     for target, source in {
         "and_xor_linear_separability": "and_xor",

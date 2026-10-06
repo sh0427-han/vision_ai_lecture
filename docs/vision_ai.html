@@ -64,155 +64,204 @@
 <p class="slide-subtitle">정답 12칸과 예측 12칸이 4칸 겹치면, 합집합은 12+12−4=20칸입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/iou_detail.svg?v=professional-20261006-2" alt="겹친 칸 수를 전체 합집합 칸 수로 나눕니다"></figure>
 <p class="lesson-takeaway">IoU = 4/20 = 0.2. 검출은 Box, 분할은 Mask의 영역으로 계산합니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
+<section class="slide" data-topic="영상처리의 기본" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>08 · 영상처리의 기본</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다</h2>
+<p class="slide-subtitle">영상처리는 밝기·잡음·경계 같은 이미지의 성질을 바꿉니다. 같은 사과 사진으로 두 연산을 비교합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_point_neighborhood.svg?v=processing-20261006-1" alt="한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다"></figure>
+<p class="lesson-takeaway">밝기 변환은 해당 Pixel 값으로 계산하고, 필터는 주변 값도 사용합니다. 이 연산 자체가 물체 이름을 예측하지는 않습니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.1–3.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
+<section class="slide" data-topic="Gaussian 필터" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>09 · Gaussian 필터</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다</h2>
+<p class="slide-subtitle">Gaussian(가우시안) 필터는 가까운 Pixel에 큰 가중치를 주어 평균합니다. σ(시그마)는 퍼짐의 정도를 정합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_gaussian.svg?v=processing-20261006-1" alt="잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다"></figure>
+<p class="lesson-takeaway">σ는 원본 Pixel 단위입니다. 잡음 감소와 작은 결함 보존을 함께 확인하고, 실제 Task의 평가 결과로 전처리를 선택합니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
+<section class="slide" data-topic="평균 필터 계산" data-level="detail">
+<div class="slide-inner"><div class="lesson-meta"><span>10 · 평균 필터 계산</span>
+<span class="lesson-level lesson-level--detail">상세 설명</span></div>
+<h2 class="slide-title">주변 9개 값을 평균해 출력 한 칸을 계산합니다</h2>
+<p class="slide-subtitle">3×3 평균 필터의 각 가중치는 1/9입니다. 가운데의 큰 값 160도 주변 8개 값과 함께 계산합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_mean_detail.svg?v=processing-20261006-1" alt="주변 9개 값을 평균해 출력 한 칸을 계산합니다"></figure>
+<p class="lesson-takeaway">평균 필터는 사람이 정한 고정 가중치입니다. CNN은 같은 가중합 구조의 필터 값을 데이터에서 학습할 수 있습니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
+<section class="slide" data-topic="중앙값 필터" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>11 · 중앙값 필터</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">튀는 점 잡음에는 중앙값이 유용할 수 있습니다</h2>
+<p class="slide-subtitle">Median(중앙값) 필터는 이웃 값을 정렬해 가운데 값을 선택합니다. 같은 점 잡음 입력에서 평균 필터와 비교합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_median.svg?v=processing-20261006-1" alt="튀는 점 잡음에는 중앙값이 유용할 수 있습니다"></figure>
+<p class="lesson-takeaway">중앙값은 선형 가중합이 아닌 비선형 연산입니다. 얇은 선이나 작은 결함도 없어질 수 있어 모든 잡음에 최선인 것은 아닙니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.3.1</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
+<section class="slide" data-topic="영상 기울기" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>12 · 영상 기울기</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다</h2>
+<p class="slide-subtitle">Sobel(소벨) 필터로 좌우·상하 밝기 변화를 계산합니다. 부호 있는 값을 계산한 뒤 절댓값과 크기로 시각화합니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_gradient.svg?v=processing-20261006-1" alt="밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다"></figure>
+<p class="lesson-takeaway">두 기울기 그림은 같은 최대값으로 표시했습니다. 경계 반응은 밝기 변화의 단서이며, 그 자체가 물체나 결함의 정답은 아닙니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.1–3.2.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
+<section class="slide" data-topic="Mask 후처리" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>13 · Mask 후처리</span>
+<span class="lesson-level">기본 개념</span></div>
+<h2 class="slide-title">작은 점 제거와 작은 구멍 메우기는 다른 연산입니다</h2>
+<p class="slide-subtitle">Morphology(형태학)는 구조 요소로 Mask의 모양을 처리합니다. 침식은 1 영역을 줄이고, 팽창은 1 영역을 넓힙니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_morphology.svg?v=processing-20261006-1" alt="작은 점 제거와 작은 구멍 메우기는 다른 연산입니다"></figure>
+<p class="lesson-takeaway">Opening·Closing은 원래 Mask를 각각 처리한 결과입니다. 작은 실제 결함이 지워지거나 가까운 영역이 붙을 수 있어 크기를 검증해야 합니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.3.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
 <section class="slide" data-topic="이미지의 단서" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>08 · 이미지의 단서</span>
+<div class="slide-inner"><div class="lesson-meta"><span>14 · 이미지의 단서</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">작은 영역의 경계·밝기 변화를 먼저 살펴봅니다</h2>
 <p class="slide-subtitle">이미지에서는 가까운 Pixel의 배치가 중요합니다. 작은 영역의 반응을 여러 위치에서 계산하면 패턴이 있는 위치를 알 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/cnn_local_basic.svg?v=professional-20261006-2" alt="작은 영역의 경계·밝기 변화를 먼저 살펴봅니다"></figure>
 <p class="lesson-takeaway">Patch는 이미지의 작은 영역, Feature Map은 위치별 반응값을 모은 지도입니다.</p></div></section>
 <section class="slide" data-topic="CNN" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>09 · CNN</span>
+<div class="slide-inner"><div class="lesson-meta"><span>15 · CNN</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">CNN은 작은 영역을 보고 같은 가중치를 재사용합니다</h2>
 <p class="slide-subtitle">Convolutional Neural Network(합성곱 신경망)는 지역 연결과 가중치 공유로 이미지의 공간적 패턴을 계산합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_cnn_why_local.svg?v=professional-20261006-2" alt="CNN은 작은 영역을 보고 같은 가중치를 재사용합니다"></figure>
 <p class="lesson-takeaway">Flatten은 값과 순서를 유지하지만, 완전연결층에는 공간 이웃 관계와 가중치 공유가 명시되어 있지 않습니다.</p></div></section>
 <section class="slide" data-topic="Kernel" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>10 · Kernel</span>
+<div class="slide-inner"><div class="lesson-meta"><span>16 · Kernel</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">같은 필터도 이미지 영역에 따라 반응이 달라집니다</h2>
 <p class="slide-subtitle">Kernel 또는 Filter(커널·필터)는 작은 가중치 배열입니다. 세로 밝기 변화가 있는 영역과 평평한 영역의 반응을 비교합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/kernel_basic.svg?v=professional-20261006-2" alt="같은 필터도 이미지 영역에 따라 반응이 달라집니다"></figure>
 <p class="lesson-takeaway">그림은 사람이 정한 경계 필터 예시입니다. CNN의 필터 값은 학습으로 정해집니다.</p></div></section>
 <section class="slide" data-topic="Convolution" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>11 · Convolution</span>
+<div class="slide-inner"><div class="lesson-meta"><span>17 · Convolution</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다</h2>
 <p class="slide-subtitle">입력의 3×3 영역과 필터를 곱해 합산하고, 필터를 옮겨 다음 칸을 계산합니다. 모든 출력은 실제 계산한 값입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/convolution_detail.svg?v=professional-20261006-2" alt="같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다"></figure>
 <p class="lesson-takeaway">이 장은 한 채널·Bias 0 예시입니다. 일반적인 딥러닝 Conv는 필터를 뒤집지 않는 Cross-correlation 연산입니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="Feature Map" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>12 · Feature Map</span>
+<div class="slide-inner"><div class="lesson-meta"><span>18 · Feature Map</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">반응값을 위치대로 모으면 특징 지도가 됩니다</h2>
 <p class="slide-subtitle">서로 다른 필터는 서로 다른 위치에서 반응합니다. 여러 반응 지도를 쌓은 것이 출력 Channel(채널)입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/feature_basic.svg?v=professional-20261006-2" alt="반응값을 위치대로 모으면 특징 지도가 됩니다"></figure>
 <p class="lesson-takeaway">이 그림은 설명용 예시입니다. 실제 학습된 Channel의 의미는 항상 사람이 이름 붙일 수 있지는 않습니다.</p></div></section>
 <section class="slide" data-topic="Feature Map과 Channel" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>13 · Feature Map과 Channel</span>
+<div class="slide-inner"><div class="lesson-meta"><span>19 · Feature Map과 Channel</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다</h2>
 <p class="slide-subtitle">일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/feature_detail.svg?v=professional-20261006-2" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></figure>
 <p class="lesson-takeaway">224×224×3 입력, 64개 필터, Stride 1·Padding 1이면 224×224×64가 됩니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="Stride" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>14 · Stride</span>
+<div class="slide-inner"><div class="lesson-meta"><span>20 · Stride</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">필터를 몇 칸씩 이동할지 정합니다</h2>
 <p class="slide-subtitle">Stride(이동 간격)가 1이면 한 칸, 2이면 두 칸씩 이동합니다. 같은 입력과 필터에서 이동 간격이 크면 출력 크기가 작아집니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/stride_basic.svg?v=professional-20261006-2" alt="필터를 몇 칸씩 이동할지 정합니다"></figure>
 <p class="lesson-takeaway">5×5 입력과 3×3 필터, Padding 0: Stride 1은 3×3, Stride 2는 2×2 출력입니다.</p></div></section>
 <section class="slide" data-topic="Padding" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>15 · Padding</span>
+<div class="slide-inner"><div class="lesson-meta"><span>21 · Padding</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">가장자리 주변에 값을 채워 계산 범위를 조절합니다</h2>
 <p class="slide-subtitle">Padding(패딩)은 입력 주위를 채우는 방법입니다. 아래는 가장자리 한 칸에 0을 채우는 Zero Padding입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/padding_basic.svg?v=professional-20261006-2" alt="가장자리 주변에 값을 채워 계산 범위를 조절합니다"></figure>
 <p class="lesson-takeaway">5×5 입력, Kernel 3·Stride 1·Padding 1이면 출력의 공간 크기가 5×5로 유지됩니다.</p></div></section>
 <section class="slide" data-topic="Downsampling" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>16 · Downsampling</span>
+<div class="slide-inner"><div class="lesson-meta"><span>22 · Downsampling</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">공간 해상도를 줄여 더 작은 특징 지도를 만듭니다</h2>
 <p class="slide-subtitle">Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></figure>
 <p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
+<section class="slide" data-topic="이미지 피라미드" data-level="detail">
+<div class="slide-inner"><div class="lesson-meta"><span>23 · 이미지 피라미드</span>
+<span class="lesson-level lesson-level--detail">상세 설명</span></div>
+<h2 class="slide-title">평활화 후 축소해 여러 해상도의 영상을 만듭니다</h2>
+<p class="slide-subtitle">Gaussian Pyramid(가우시안 피라미드)는 매 단계에서 평활화한 뒤 가로·세로를 절반으로 줄입니다. 축소 전 평활화는 Aliasing(가짜 저주파 무늬)을 줄이는 데 쓰입니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/processing_pyramid.svg?v=processing-20261006-1" alt="평활화 후 축소해 여러 해상도의 영상을 만듭니다"></figure>
+<p class="lesson-takeaway">사진의 Gaussian 피라미드와 CNN의 Max Pooling은 계산이 다릅니다. 가로·세로가 절반이면 Pixel 수는 1/4이 됩니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.5.2–3.5.3</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
 <section class="slide" data-topic="출력 크기 계산" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>17 · 출력 크기 계산</span>
+<div class="slide-inner"><div class="lesson-meta"><span>24 · 출력 크기 계산</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">Kernel·Stride·Padding으로 출력 크기를 계산합니다</h2>
 <p class="slide-subtitle">H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/spatial_detail.svg?v=professional-20261006-2" alt="Kernel·Stride·Padding으로 출력 크기를 계산합니다"></figure>
 <p class="lesson-takeaway">Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="특징의 조합" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>18 · 특징의 조합</span>
+<div class="slide-inner"><div class="lesson-meta"><span>25 · 특징의 조합</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다</h2>
 <p class="slide-subtitle">초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/hierarchy_professional.svg?v=professional-20261006-2" alt="Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다"></figure>
 <p class="lesson-takeaway">경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다.</p><p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p></div></section>
 <section class="slide" data-topic="Receptive Field" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>19 · Receptive Field</span>
+<div class="slide-inner"><div class="lesson-meta"><span>26 · Receptive Field</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다</h2>
 <p class="slide-subtitle">Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_receptive_field.svg?v=professional-20261006-2" alt="깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다"></figure>
 <p class="lesson-takeaway">3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="CNN 전체 흐름" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>20 · CNN 전체 흐름</span>
+<div class="slide-inner"><div class="lesson-meta"><span>27 · CNN 전체 흐름</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">작은 연산들을 연결하면 이미지 분류기가 됩니다</h2>
 <p class="slide-subtitle">224×224×3 입력을 특징 지도로 바꾸고, 전역 평균 풀링으로 요약한 뒤 분류 점수를 계산합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_cnn_pipeline.svg?v=survey-20261006-1" alt="작은 연산들을 연결하면 이미지 분류기가 됩니다"></figure>
 <p class="lesson-takeaway">H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 7 · CNN layers</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html" target="_blank" rel="noopener">PyTorch Conv2d</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>21 · Backbone과 Head</span>
+<div class="slide-inner"><div class="lesson-meta"><span>28 · Backbone과 Head</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다</h2>
 <p class="slide-subtitle">Backbone(백본)은 특징을 추출하고, Head(헤드)는 Task별 결과를 만듭니다. 입력과 결과는 동일한 사과 사진을 사용합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/backbone_basic.svg?v=professional-20261006-2" alt="특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다"></figure>
 <p class="lesson-takeaway">세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다.</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>22 · Backbone과 Head</span>
+<div class="slide-inner"><div class="lesson-meta"><span>29 · Backbone과 Head</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">블록을 연결하고 각 단계의 특징 크기를 표시합니다</h2>
 <p class="slide-subtitle">Architecture(모델 구조)는 어떤 연산을 어떤 순서로 연결하는지 나타냅니다. 아래 크기는 구조를 설명하는 예시입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/backbone_detail.svg?v=professional-20261006-2" alt="블록을 연결하고 각 단계의 특징 크기를 표시합니다"></figure>
 <p class="lesson-takeaway">검출·분할 모델에는 여러 해상도 특징을 결합하는 Neck·Decoder 등이 추가될 수 있습니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="CNN 구조의 설계" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>23 · CNN 구조의 설계</span>
+<div class="slide-inner"><div class="lesson-meta"><span>30 · CNN 구조의 설계</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">순차·병렬·우회 연결로 서로 다른 구조를 만듭니다</h2>
 <p class="slide-subtitle">VGG는 순차, Inception은 병렬, ResNet은 우회 연결을 사용합니다. 그림은 각 구조의 연결 원리입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_architecture_patterns.svg?v=survey-20261006-1" alt="순차·병렬·우회 연결로 서로 다른 구조를 만듭니다"></figure>
 <p class="lesson-takeaway">깊이만 늘리는 것 외에도 연결 방식이 중요합니다. 구조의 우열은 데이터·정확도·메모리·처리시간을 함께 검증해 결정합니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · CNN architectures</a> · <a href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener">VGG 원 논문</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="Residual 연결" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>24 · Residual 연결</span>
+<div class="slide-inner"><div class="lesson-meta"><span>31 · Residual 연결</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">입력을 그대로 전달하는 경로와 변환 경로를 더합니다</h2>
 <p class="slide-subtitle">Residual(잔차) 블록은 F(x)+x를 계산합니다. 56×56×64 입력을 더하려면 두 경로의 Tensor Shape가 같아야 합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/survey_residual_detail.svg?v=survey-20261006-1" alt="입력을 그대로 전달하는 경로와 변환 경로를 더합니다"></figure>
 <p class="lesson-takeaway">원소별 합산이며 Channel 결합과 다릅니다. ResNet v1은 합산 뒤 ReLU를 적용합니다. 우회 경로는 깊은 모델의 최적화를 돕습니다.</p><p class="lesson-reference">참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 20 · ResNet</a> · <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html" target="_blank" rel="noopener">ResNet 원 논문</a> · 강의용 재구성</p></div></section>
 <section class="slide" data-topic="CNN 학습" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>25 · CNN 학습</span>
+<div class="slide-inner"><div class="lesson-meta"><span>32 · CNN 학습</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">CNN의 필터도 오차를 줄이는 방향으로 학습합니다</h2>
 <p class="slide-subtitle">Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" alt="CNN의 필터도 오차를 줄이는 방향으로 학습합니다"></figure>
 <p class="lesson-takeaway">기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다.</p></div></section>
 <section class="slide" data-topic="Transfer Learning" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>26 · Transfer Learning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>33 · Transfer Learning</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">이미 배운 가중치에서 내 Task의 학습을 시작합니다</h2>
 <p class="slide-subtitle">Transfer Learning(전이학습)은 사전학습 모델의 지식을 재사용하는 방법입니다. 처음부터 모든 값을 새로 배우는 것과 비교할 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/transfer_basic.svg?v=professional-20261006-2" alt="이미 배운 가중치에서 내 Task의 학습을 시작합니다"></figure>
 <p class="lesson-takeaway">내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다.</p></div></section>
 <section class="slide" data-topic="Freeze와 Fine-tuning" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>27 · Freeze와 Fine-tuning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>34 · Freeze와 Fine-tuning</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">고정할 부분과 추가 학습할 부분을 구분합니다</h2>
 <p class="slide-subtitle">Freeze는 가중치 고정, Fine-tuning(미세조정)은 사전학습 가중치 일부 또는 전체를 새 데이터로 업데이트하는 과정입니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/transfer_detail.svg?v=professional-20261006-2" alt="고정할 부분과 추가 학습할 부분을 구분합니다"></figure>
 <p class="lesson-takeaway">새 Head만 학습하는 경우와 Backbone까지 학습하는 경우를 구분해 검증합니다.</p><p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p></div></section>
 <section class="slide" data-topic="평가와 실패 사례" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>28 · 평가와 실패 사례</span>
+<div class="slide-inner"><div class="lesson-meta"><span>35 · 평가와 실패 사례</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
 <p class="slide-subtitle">배경·조명·장비가 정답과 우연히 연결되면 모델은 쉬운 Shortcut을 사용할 수 있습니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다"></figure>
 <p class="lesson-takeaway">평균 Metric과 함께 실패 이미지·설비별·조명별 결과를 점검합니다.</p><p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p></div></section>
 <section class="slide" data-topic="운영 Cycle" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>29 · 운영 Cycle</span>
+<div class="slide-inner"><div class="lesson-meta"><span>36 · 운영 Cycle</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">문제 정의부터 운영 관찰까지 연결해 개선합니다</h2>
 <p class="slide-subtitle">성공 기준을 정하고 데이터를 모아 학습·평가·배포합니다. 운영의 실패 사례는 다음 데이터 보강의 근거가 됩니다.</p>
