@@ -68,6 +68,11 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 ## Lecture Design Principles
 
+2026-10-06부터 AI Basics와 Vision AI는 **쉬운 기본 그림 → 관련 개념의 상세 Figure** 순서로 설명합니다.
+상세 Figure는 수식·계산 그래프·Tensor 크기·연산 조건을 담되, 기본 그림과 한 장에 압축하지 않습니다.
+현재 순서와 기본/상세 구분은 `docs/assets/lesson/manifest.json`을 기준으로 합니다.
+계산 그림은 `scripts/build_lesson_revision.py`로 생성하고 `scripts/verify_lesson_revision.py`로 검증합니다.
+
 대상은 Vision AI를 처음 접하는 초보자입니다.
 
 - 한 슬라이드에는 하나의 핵심 메시지만 전달합니다.

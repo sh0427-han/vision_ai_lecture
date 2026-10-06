@@ -212,7 +212,47 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 사용 원칙:
 - 실제 촬영·실측·실제 Model 추론 결과가 아니라 강의용 시각화입니다.
-- Convolution Figure의 숫자 계산은 교육용 예시로 산술적으로 일관되도록 검토했습니다.
+- 당시 생성 Convolution Figure는 전체 Feature Map 값의 오류가 확인되어 2026-10-06 개편에서 사용을 중단했습니다. 현재 계산 그림은 아래 검증된 SVG를 사용합니다.
 - LiDAR Figure는 자동차 예시 없이 로봇청소기와 실내 공간 Scan 예시만 사용합니다.
 - AI / Machine Learning / Deep Learning / Computer Vision의 포함관계는 생성 이미지보다 정확성이 중요한 Diagram이므로 기존 `ai_ml_dl.svg`를 유지합니다.
 - Repository 내부 WebP를 직접 참조하며 외부 이미지 Host나 Runtime base64 조립에 의존하지 않습니다.
+
+## 기본 그림 + 상세 Figure 개편 — 2026-10-06
+
+- `docs/assets/lesson/`: AI Basics와 Vision AI에서 실제 사용하는 그림.
+- `docs/assets/lesson/manifest.json`: 슬라이드 번호·개념·설명 수준·자산 경로.
+- 쉬운 기본 그림 뒤에 계산 그래프, 수식, Tensor 크기, 공간 연산 조건을 담은 상세 Figure를 배치.
+- 특정 논문 Figure를 복제하지 않고 직접 작성한 SVG. 색은 기본 설명과 상세 설명에서 동일하게 사용.
+- 사과 사진은 기존 AI 생성 교육용 이미지. Box·Mask·점수는 실제 모델 출력이 아닌 설명용 예시.
+- AND 경계 `x1+x2=1.5`, XOR의 두 경계, Gradient 방향, 합성곱 전체 출력, RGB 전체 필터 합산을 교정.
+- 5×5 합성곱 예시의 출력: `[[-6,12,16],[-6,8,15],[-4,2,7]]`.
+- RGB 입력 224×224×3, 필터 64개, Kernel 3×3, Stride 1, Padding 1 → 224×224×64.
+- Backbone의 고양이/컵 생성 그림 대신 동일한 사과 사진과 결함 annotation을 사용.
+- `vision_convolution.webp`, `vision_backbone_head.webp`는 배포 슬라이드에서 사용하지 않음.
+- 기존 SVG의 중복 제목을 제거한 context 자산은 원본에서 파생. 데이터는 그림 안에 포함하고 외부 요청을 사용하지 않음.
+
+### 근거 자료
+
+- Stanford CS231n, Optimization: https://cs231n.github.io/optimization-1/
+  - Loss의 Gradient와 반대 방향으로 Parameter를 갱신하는 경사하강법.
+- Stanford CS231n, Backpropagation: https://cs231n.github.io/optimization-2/
+  - 계산 그래프에서 Chain Rule로 Gradient를 역방향 계산.
+- Stanford CS231n, Neural Networks: https://cs231n.github.io/neural-networks-1/
+  - Layer, 비선형 Activation, ReLU와 표현력.
+- Stanford CS231n, CNN: https://cs231n.github.io/convolutional-networks/
+  - Local connectivity, Weight sharing, 공간 출력 크기, Feature Map.
+- PyTorch Conv2d: https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html
+  - Cross-correlation, Channel 합산, Weight shape와 Stride/Padding 조건.
+- PyTorch Transfer Learning: https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+  - 고정된 특징 추출기와 Fine-tuning의 구분.
+- scikit-learn Model Selection: https://scikit-learn.org/stable/modules/cross_validation.html
+  - Train/Test 분리, 교차검증, Group 단위 검증.
+- scikit-learn Metrics: https://scikit-learn.org/stable/modules/model_evaluation.html
+  - Confusion Matrix, Accuracy, Precision, Recall, F1.
+
+### 생성과 검증
+
+- 생성: `python scripts/build_lesson_revision.py`
+- 검증: `python scripts/verify_lesson_revision.py`
+- HTML 슬라이드 수·연속 번호·자산 경로, SVG XML·내부 리소스 참조, 합성곱·Gradient·AND·IoU·평가지표 수치 검증.
+- 두 챕터 전용 `docs/lesson.css`로 레이아웃 적용. Intro의 공통 CSS/JS는 변경하지 않음.

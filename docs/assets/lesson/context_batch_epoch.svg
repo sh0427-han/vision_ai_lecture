@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 105 1200 495">
+<rect width="1200" height="600" fill="#fff"/>
+<g font-family="Arial,sans-serif">
+ <g transform="translate(70 150)">
+  <text x="0" y="0" font-size="21" font-weight="700" fill="#17243b">전체 Dataset · 10 images</text>
+  <g transform="translate(0 35)">
+   <g fill="#dbeafe" stroke="#93c5fd"><rect x="0" y="0" width="75" height="70" rx="8"/><rect x="85" y="0" width="75" height="70" rx="8"/><rect x="170" y="0" width="75" height="70" rx="8"/><rect x="255" y="0" width="75" height="70" rx="8"/></g>
+   <g fill="#dcfce7" stroke="#86efac"><rect x="350" y="0" width="75" height="70" rx="8"/><rect x="435" y="0" width="75" height="70" rx="8"/><rect x="520" y="0" width="75" height="70" rx="8"/><rect x="605" y="0" width="75" height="70" rx="8"/></g>
+   <g fill="#ffedd5" stroke="#fdba74"><rect x="700" y="0" width="75" height="70" rx="8"/><rect x="785" y="0" width="75" height="70" rx="8"/></g>
+   <g font-size="18" fill="#475569" text-anchor="middle"><text x="165" y="100">Batch 1 · 4장</text><text x="515" y="100">Batch 2 · 4장</text><text x="742" y="100">Batch 3 · 2장</text></g>
+  </g>
+ </g>
+ <g transform="translate(70 330)">
+  <rect width="300" height="120" rx="16" fill="#eef6ff"/><text x="150" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#1d4ed8">Batch</text><text x="150" y="78" text-anchor="middle" font-size="18" fill="#475569">한 번에 Model에 넣는 묶음</text>
+  <rect x="350" width="300" height="120" rx="16" fill="#f5f3ff"/><text x="500" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#6d28d9">Iteration</text><text x="500" y="78" text-anchor="middle" font-size="18" fill="#475569">한 Batch 처리 = 보통 1 step</text>
+  <rect x="700" width="300" height="120" rx="16" fill="#ecfdf5"/><text x="850" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#15803d">Epoch</text><text x="850" y="78" text-anchor="middle" font-size="18" fill="#475569">전체 10장을 한 번 모두 봄</text>
+ </g>
+ <text x="600" y="520" text-anchor="middle" font-size="20" font-weight="700" fill="#17243b">이 예에서는 3 Iterations = 1 Epoch</text>
+</g>
+</svg>
