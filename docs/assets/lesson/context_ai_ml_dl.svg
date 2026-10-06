@@ -11,8 +11,8 @@
   <rect width="1200" height="600" fill="#fff"/>
   <line x1="42" y1="80" x2="1158" y2="80" stroke="#d8e1ed"/>
 
-  <ellipse cx="500" cy="332" rx="405" ry="220" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
-  <text x="150" y="174" class="label" fill="#2563eb">Artificial Intelligence</text>
+  <ellipse cx="500" cy="332" rx="405" ry="220" fill="#eff6ff" stroke="#275879" stroke-width="3"/>
+  <text x="150" y="174" class="label" fill="#275879">Artificial Intelligence</text>
   <text x="150" y="205" class="sub">판단 · 추론 · 인식 등을 수행하는 넓은 기술 영역</text>
 
   <ellipse cx="485" cy="358" rx="280" ry="150" fill="#ecfdf5" fill-opacity=".9" stroke="#087f74" stroke-width="3"/>
@@ -23,7 +23,7 @@
   <text x="480" y="392" class="label" fill="#4f46e5" text-anchor="middle">Deep Learning</text>
   <text x="480" y="424" class="sub" text-anchor="middle">다층 신경망 기반</text>
 
-  <ellipse cx="815" cy="340" rx="250" ry="155" fill="#fff7ed" fill-opacity=".78" stroke="#ea580c" stroke-width="4" stroke-dasharray="12 9"/>
+  <ellipse cx="815" cy="340" rx="250" ry="155" fill="#fff7ed" fill-opacity=".78" stroke="#b2773d" stroke-width="4" stroke-dasharray="12 9"/>
   <text x="815" y="266" class="label" fill="#c2410c" text-anchor="middle">Computer Vision</text>
   <text x="815" y="300" class="sub" text-anchor="middle">이미지 · 영상에서 의미를 얻는 분야</text>
   <text x="815" y="348" class="sub" text-anchor="middle">전통적 영상처리</text>

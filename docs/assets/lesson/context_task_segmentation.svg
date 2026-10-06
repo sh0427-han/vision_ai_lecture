@@ -4,11 +4,11 @@
 <text x="600.0" y="575.1999999999999" font-size="18" fill="#53647b" text-anchor="middle">동일한 960 × 640 입력 · 오버레이와 점수는 개념 설명을 위한 예시</text>
 <use href="#apple" xlink:href="#apple" x="32" y="104" width="624" height="416.0"/>
 <rect x="32" y="104" width="624" height="416.0" rx="0" fill="none" stroke="#d8e1ed" stroke-width="2"/>
-<path transform="translate(32 104) scale(0.65)" d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#38bdf8" fill-opacity=".68" stroke="#2563eb" stroke-width="4"/>
+<path transform="translate(32 104) scale(0.65)" d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#38bdf8" fill-opacity=".68" stroke="#275879" stroke-width="4"/>
 <rect x="700" y="104" width="468" height="416" rx="16" fill="#f4f7fc" stroke="#d8e1ed" stroke-width="2"/>
-<rect x="720" y="126" width="5" height="26" rx="2" fill="#2563eb" stroke="none" stroke-width="2"/>
+<rect x="720" y="126" width="5" height="26" rx="2" fill="#275879" stroke="none" stroke-width="2"/>
 <text x="742" y="149.6" font-size="24" fill="#17243b" text-anchor="start">모델 출력</text>
-<text x="934.0" y="236.6" font-size="29" fill="#2563eb" text-anchor="middle">Defect mask</text>
+<text x="934.0" y="236.6" font-size="29" fill="#275879" text-anchor="middle">Defect mask</text>
 <text x="934.0" y="337.1" font-size="23" fill="#53647b" text-anchor="middle">픽셀마다 결함 여부를 구분</text>
 <text x="934.0" y="369.3" font-size="23" fill="#53647b" text-anchor="middle">면적·경계·형상 계산에 활용</text>
 <text x="934.0" y="460.3" font-size="22" fill="#087f74" text-anchor="middle">학습 라벨: Pixel mask</text></svg>

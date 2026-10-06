@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 105 1200 495">
-<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#2563eb"/></marker></defs>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#275879"/></marker></defs>
 <rect width="1200" height="600" fill="#fff"/>
 <g font-family="Arial,sans-serif">
  <g transform="translate(60 140)">
-  <rect width="700" height="380" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-  <ellipse cx="360" cy="205" rx="280" ry="130" fill="none" stroke="#dbeafe" stroke-width="28"/>
+  <rect width="700" height="380" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <ellipse cx="360" cy="205" rx="280" ry="130" fill="none" stroke="#e5edf3" stroke-width="28"/>
   <ellipse cx="390" cy="220" rx="200" ry="92" fill="none" stroke="#bfdbfe" stroke-width="24"/>
-  <ellipse cx="420" cy="235" rx="120" ry="55" fill="none" stroke="#93c5fd" stroke-width="20"/>
+  <ellipse cx="420" cy="235" rx="120" ry="55" fill="none" stroke="#a9bfcc" stroke-width="20"/>
   <circle cx="430" cy="240" r="14" fill="#16a34a"/><text x="460" y="247" font-size="18" font-weight="700" fill="#15803d">낮은 Loss</text>
   <circle cx="135" cy="105" r="15" fill="#e11d48"/><text x="70" y="72" font-size="18" font-weight="700" fill="#be123c">Start</text>
-  <circle cx="215" cy="145" r="12" fill="#f97316"/><circle cx="285" cy="178" r="11" fill="#f59e0b"/><circle cx="345" cy="205" r="10" fill="#2563eb"/><circle cx="395" cy="227" r="10" fill="#2563eb"/>
-  <path d="M150 112L202 140M228 151L272 173M298 184L332 200M358 211L382 222M407 231L418 236" stroke="#2563eb" stroke-width="5" fill="none" marker-end="url(#a)"/>
+  <circle cx="215" cy="145" r="12" fill="#f97316"/><circle cx="285" cy="178" r="11" fill="#f59e0b"/><circle cx="345" cy="205" r="10" fill="#275879"/><circle cx="395" cy="227" r="10" fill="#275879"/>
+  <path d="M150 112L202 140M228 151L272 173M298 184L332 200M358 211L382 222M407 231L418 236" stroke="#275879" stroke-width="5" fill="none" marker-end="url(#a)"/>
  </g>
  <g transform="translate(800 150)">
   <text x="0" y="0" font-size="22" font-weight="700" fill="#17243b">Learning Rate</text>

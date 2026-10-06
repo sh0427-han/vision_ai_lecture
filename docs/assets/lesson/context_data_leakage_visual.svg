@@ -3,9 +3,9 @@
 <rect width="1200" height="600" rx="28" fill="#f8fafc"/>
 <g transform="translate(55 145)" font-family="Arial, Noto Sans KR, sans-serif">
   <g transform="translate(0 0)">
-    <rect width="340" height="365" rx="20" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
+    <rect width="340" height="365" rx="4" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
     <text x="24" y="42" font-size="21" font-weight="700" fill="#be123c">① 같은 원본이 양쪽에</text>
-    <rect x="28" y="82" width="80" height="70" rx="10" fill="#dbeafe"/><text x="68" y="122" text-anchor="middle" font-size="18" fill="#1d4ed8">Video A</text>
+    <rect x="28" y="82" width="80" height="70" rx="10" fill="#e5edf3"/><text x="68" y="122" text-anchor="middle" font-size="18" fill="#1d4ed8">Video A</text>
     <path d="M110 116H165" stroke="#64748b" stroke-width="4" fill="none"/>
     <rect x="175" y="72" width="130" height="58" rx="10" fill="#e0f2fe"/><text x="240" y="108" text-anchor="middle" font-size="18" fill="#0369a1">Train frame 101</text>
     <rect x="175" y="145" width="130" height="58" rx="10" fill="#dcfce7"/><text x="240" y="181" text-anchor="middle" font-size="18" fill="#15803d">Val frame 102</text>
@@ -15,7 +15,7 @@
   </g>
 
   <g transform="translate(375 0)">
-    <rect width="340" height="365" rx="20" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
+    <rect width="340" height="365" rx="4" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
     <text x="24" y="42" font-size="21" font-weight="700" fill="#be123c">② 전체 데이터로 전처리</text>
     <rect x="40" y="85" width="260" height="58" rx="10" fill="#f1f5f9"/><text x="170" y="121" text-anchor="middle" font-size="18" fill="#334155">Train + Val + Test</text>
     <path d="M170 150v42" stroke="#e11d48" stroke-width="5" marker-end="url(#redArrow)" fill="none"/>
@@ -24,7 +24,7 @@
   </g>
 
   <g transform="translate(750 0)">
-    <rect width="340" height="365" rx="20" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
+    <rect width="340" height="365" rx="4" fill="#fff" stroke="#fecdd3" stroke-width="3"/>
     <text x="24" y="42" font-size="21" font-weight="700" fill="#be123c">③ Test를 보며 계속 수정</text>
     <rect x="45" y="82" width="105" height="62" rx="10" fill="#e0f2fe"/><text x="98" y="120" text-anchor="middle" font-size="18" fill="#0369a1">Model</text>
     <rect x="190" y="82" width="105" height="62" rx="10" fill="#fef3c7"/><text x="242" y="120" text-anchor="middle" font-size="18" fill="#92400e">Test</text>

@@ -2,7 +2,7 @@
 <rect width="1200" height="600" fill="#fff"/>
 <g font-family="Arial,sans-serif">
  <g transform="translate(60 145)">
-  <rect width="500" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect width="500" height="390" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
   <text x="25" y="42" font-size="23" font-weight="700" fill="#be123c">Flatten해서 모두 연결하면</text>
   <g transform="translate(40 82)">
    <rect width="190" height="190" rx="12" fill="#fff" stroke="#d8e1ed"/>
@@ -20,20 +20,20 @@
   <text x="250" y="348" text-anchor="middle" font-size="18" fill="#475569">연결 Weight 수도 빠르게 증가</text>
  </g>
  <g transform="translate(640 145)">
-  <rect width="500" height="390" rx="20" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect width="500" height="390" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
   <text x="25" y="42" font-size="23" font-weight="700" fill="#15803d">CNN은 Local 영역을 반복해서 봅니다</text>
   <g transform="translate(40 82)">
    <rect width="190" height="190" rx="12" fill="#fff" stroke="#d8e1ed"/>
    <g fill="#e2e8f0" stroke="#cbd5e1">
     <rect x="15" y="15" width="28" height="28"/><rect x="47" y="15" width="28" height="28"/><rect x="79" y="15" width="28" height="28"/><rect x="111" y="15" width="28" height="28"/><rect x="143" y="15" width="28" height="28"/>
-    <rect x="15" y="47" width="28" height="28"/><rect x="47" y="47" width="28" height="28" fill="#dbeafe"/><rect x="79" y="47" width="28" height="28" fill="#dbeafe"/><rect x="111" y="47" width="28" height="28" fill="#dbeafe"/><rect x="143" y="47" width="28" height="28"/>
-    <rect x="15" y="79" width="28" height="28"/><rect x="47" y="79" width="28" height="28" fill="#dbeafe"/><rect x="79" y="79" width="28" height="28" fill="#2563eb"/><rect x="111" y="79" width="28" height="28" fill="#dbeafe"/><rect x="143" y="79" width="28" height="28"/>
-    <rect x="15" y="111" width="28" height="28"/><rect x="47" y="111" width="28" height="28" fill="#dbeafe"/><rect x="79" y="111" width="28" height="28" fill="#dbeafe"/><rect x="111" y="111" width="28" height="28" fill="#dbeafe"/><rect x="143" y="111" width="28" height="28"/>
+    <rect x="15" y="47" width="28" height="28"/><rect x="47" y="47" width="28" height="28" fill="#e5edf3"/><rect x="79" y="47" width="28" height="28" fill="#e5edf3"/><rect x="111" y="47" width="28" height="28" fill="#e5edf3"/><rect x="143" y="47" width="28" height="28"/>
+    <rect x="15" y="79" width="28" height="28"/><rect x="47" y="79" width="28" height="28" fill="#e5edf3"/><rect x="79" y="79" width="28" height="28" fill="#275879"/><rect x="111" y="79" width="28" height="28" fill="#e5edf3"/><rect x="143" y="79" width="28" height="28"/>
+    <rect x="15" y="111" width="28" height="28"/><rect x="47" y="111" width="28" height="28" fill="#e5edf3"/><rect x="79" y="111" width="28" height="28" fill="#e5edf3"/><rect x="111" y="111" width="28" height="28" fill="#e5edf3"/><rect x="143" y="111" width="28" height="28"/>
     <rect x="15" y="143" width="28" height="28"/><rect x="47" y="143" width="28" height="28"/><rect x="79" y="143" width="28" height="28"/><rect x="111" y="143" width="28" height="28"/><rect x="143" y="143" width="28" height="28"/>
    </g>
-   <rect x="45" y="45" width="98" height="98" fill="none" stroke="#2563eb" stroke-width="5"/>
+   <rect x="45" y="45" width="98" height="98" fill="none" stroke="#275879" stroke-width="5"/>
   </g>
-  <rect x="285" y="120" width="145" height="95" rx="14" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <rect x="285" y="120" width="145" height="95" rx="14" fill="#eff6ff" stroke="#a9bfcc" stroke-width="2"/>
   <text x="357" y="155" text-anchor="middle" font-size="20" font-weight="700" fill="#1d4ed8">3 × 3 Kernel</text>
   <text x="357" y="185" text-anchor="middle" font-size="18" fill="#475569">같은 Weight 재사용</text>
   <path d="M240 175H275" stroke="#64748b" stroke-width="4" fill="none"/>
