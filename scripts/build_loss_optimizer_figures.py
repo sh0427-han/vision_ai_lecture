@@ -202,7 +202,7 @@ def build_optimizer() -> None:
     """Show calculated loss trajectories, holding SGD and all other inputs fixed."""
     figure, axes = plt.subplots(1, 3, figsize=(12, 5.2))
     figure.subplots_adjust(left=0.07, right=0.98, bottom=0.29,
-                           top=0.76, wspace=0.36)
+                           top=0.70, wspace=0.36)
     titles = ["η = 0.025  |  느린 감소", "η = 0.1  |  빠른 감소",
               "η = 0.3  |  Loss 증가"]
     for axis, rate, color, title in zip(axes, LEARNING_RATES,
