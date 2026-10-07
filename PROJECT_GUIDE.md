@@ -12,7 +12,8 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 ### 01. Vision AI Intro
 
 - 사람과 컴퓨터가 이미지를 보는 방식의 차이
-- RGB 3D Tensor: 컴퓨터 입력은 R / G / B 숫자 배열
+- Intro 3: 같은 사과를 Grayscale 1채널로 변환해 사진 → 12×8 Pixel → 실제 밝기 행렬로 대응
+- 다음 Pixel 설명에서 RGB 3채널과 H×W×3 구조를 소개
 - 원근감: 단일 RGB 숫자 배열에는 실제 거리·실제 크기가 직접 들어 있지 않아 가까워서 큰 것과 실제로 큰 것을 해석해야 함
 - Pixel / Channel의 의미와 8-bit 0~255 값
 - Signal / Noise: 판단에 유용한 Pattern과 무관한 변화의 차이
