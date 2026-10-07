@@ -107,6 +107,14 @@ vision_ai_lecture/
 └── docs/
 ```
 
+## 작업 가이드
+
+강의자료를 수정하거나 AI coding agent를 사용할 때는 다음 문서를 우선 확인합니다.
+
+- [PROJECT_GUIDE.md](PROJECT_GUIDE.md) — 강의 범위, 교육 흐름, 프로젝트 전체 원칙
+- [HTML_DESIGN_RULES.md](HTML_DESIGN_RULES.md) — HTML 슬라이드의 시각/레이아웃/구현/검증 기준
+- [AGENTS.md](AGENTS.md) — AI coding agent용 핵심 작업 규칙
+
 ## 작성 원칙
 
 - 수식보다 먼저 **입력 → 처리 → 출력** 흐름을 설명합니다.
