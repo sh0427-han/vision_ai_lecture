@@ -112,6 +112,7 @@ vision_ai_lecture/
 강의자료를 수정하거나 AI coding agent를 사용할 때는 다음 문서를 우선 확인합니다.
 
 - [PROJECT_GUIDE.md](PROJECT_GUIDE.md) — 강의 범위, 교육 흐름, 프로젝트 전체 원칙
+- [CHATGPT_PROJECT_INSTRUCTIONS.md](CHATGPT_PROJECT_INSTRUCTIONS.md) — ChatGPT 프로젝트 개인용 지침
 - [HTML_DESIGN_RULES.md](HTML_DESIGN_RULES.md) — HTML 슬라이드의 시각/레이아웃/구현/검증 기준
 - [AGENTS.md](AGENTS.md) — AI coding agent용 핵심 작업 규칙
 
