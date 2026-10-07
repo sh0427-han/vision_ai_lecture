@@ -302,3 +302,11 @@ https://www.nature.com/articles/s42256-020-00257-z
   https://docs.opencv.org/4.x/d4/d1f/tutorial_pyramids.html
 - 생성: `scripts/build_image_processing_figures.py` (NumPy/Pillow/SciPy).
   출처·계산 조건·현재 페이지: `lectures/SZELISKI_IMAGE_PROCESSING_REVIEW.md`.
+
+## Intro 3 흑백 사진과 밝기 행렬 (2026-10-07)
+
+- 기존 사과 사진을 재사용: Intro 2의 vision_task_apple_reference.jpg와 같은 사진이 포함된 docs/assets/task_classification.svg에서 읽습니다.
+- Pillow로 Grayscale L(8-bit 1채널)로 변환하고 BOX 평균으로 12열×8행에 축소합니다. 중간 Pixel 영상과 오른쪽 숫자 행렬은 같은 96개 값을 사용합니다.
+- 초록 테두리는 4행 6열(1부터 세는 위치), 밝기 97을 세 패널에서 연결합니다. 원본 사진의 테두리는 축소 Pixel에 대응하는 영역입니다.
+- 사진 패널은 표시용 JPEG로 압축합니다. 숫자는 압축 전 원본에서 축소한 실제 8-bit 값입니다.
+- 생성: scripts/build_intro_grayscale.py. 자산: docs/assets/intro_grayscale_values.svg. 외부 Figure를 복제하지 않습니다.
