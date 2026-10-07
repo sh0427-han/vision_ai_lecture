@@ -98,6 +98,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 Repository를 수정하는 AI coding agent와 HTML 작성 작업은 다음 문서를 함께 사용합니다.
 
+- `CHATGPT_PROJECT_INSTRUCTIONS.md` — ChatGPT 프로젝트 개인용 지침에 붙여 넣을 권장 원문
 - `AGENTS.md` — AI coding agent가 작업 전에 확인할 핵심 작업 규칙
 - `HTML_DESIGN_RULES.md` — 강의용 HTML의 레이아웃, Figure, Typography, 구현 및 검증 기준
 - `.github/copilot-instructions.md` — VS Code / GitHub Copilot용 Repository 지침
