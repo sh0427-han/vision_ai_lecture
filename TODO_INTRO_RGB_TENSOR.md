@@ -1,5 +1,16 @@
 # TODO — Intro RGB 3D Tensor 개선
 
+> [!WARNING]
+> **Legacy / Superseded TODO**
+>
+> 이 문서는 2026-09-23 당시의 작업 메모이며 현재 Intro 설계의 기준 문서가 아닙니다.
+> 현재 `PROJECT_GUIDE.md`의 Intro 3은 **같은 사과를 Grayscale 1채널로 변환하여
+> 사진 → 12×8 Pixel → 실제 밝기 행렬로 대응**하는 구성을 우선합니다.
+> RGB 3채널과 H × W × 3 구조는 그 다음 Pixel 설명에서 소개합니다.
+>
+> 새 작업에서는 `PROJECT_GUIDE.md`, `HTML_DESIGN_RULES.md`, 사용자의 최신 요청을
+> 우선하고 이 문서를 그대로 구현하지 마세요.
+
 ## 목적
 
 Intro의 사람 vs 컴퓨터 이미지 인식 설명을 더 직관적으로 수정한다.
