@@ -94,6 +94,16 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - 초보자가 그림만 보고도 개념의 대략적인 의미를 이해할 수 있도록 구성합니다.
 - 각 슬라이드는 발표 화면 한 Viewport 안에 들어오도록 구성하며, 세로 스크롤 없이 보이도록 자동 Fit을 적용합니다. 콘텐츠가 과도하게 길다면 축소에만 의존하지 말고 내용을 분리하거나 단순화합니다.
 
+## AI / HTML 작업 지침
+
+Repository를 수정하는 AI coding agent와 HTML 작성 작업은 다음 문서를 함께 사용합니다.
+
+- `AGENTS.md` — AI coding agent가 작업 전에 확인할 핵심 작업 규칙
+- `HTML_DESIGN_RULES.md` — 강의용 HTML의 레이아웃, Figure, Typography, 구현 및 검증 기준
+- `.github/copilot-instructions.md` — VS Code / GitHub Copilot용 Repository 지침
+
+지침이 충돌하면 **현재 사용자의 명시적 요청 → PROJECT_GUIDE.md → HTML_DESIGN_RULES.md → 기존의 일관된 디자인 → 과거 TODO** 순서로 판단합니다.
+
 ## Repository Structure
 
 주요 웹 강의 파일:
@@ -119,7 +129,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 ## Working Rules
 
-- 수정 전에 Repository의 최신 상태를 확인합니다.
+- 수정 전에 Repository의 최신 상태와 `AGENTS.md`, `HTML_DESIGN_RULES.md`를 확인합니다.
 - 사용자가 강의자료 수정을 요청하면 가능한 경우 실제 Repository 파일까지 수정합니다.
 - 수정 후 HTML 구조와 링크를 검증하고 GitHub Pages 배포 상태를 확인합니다.
 - 기존 강의 흐름과 디자인을 유지하면서 내용을 추가합니다.
